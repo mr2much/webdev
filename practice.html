@@ -31,9 +31,14 @@
 		main {
 			margin: 0 auto;
 			width: 50%;
+			height: 100px;
 			background-color: orange;
 			margin-bottom: 20px;
 			padding: 1.5em;
+		}
+
+		a {
+			text-decoration: none;
 		}
 
 		p {
@@ -43,6 +48,16 @@
 		#img-container {
 			margin: 0 auto;
 			width: 20%;
+		}
+
+		#left {
+			width: 48%;
+			float: left;
+		}
+
+		#right {
+			width: 50%;
+			float: right;
 		}
 
 		.header {
@@ -71,6 +86,35 @@
 			border-radius: 50%;
 		}
 
+		.listing {
+			position: relative;
+			bottom: 14px;
+		}
+
+		#navbar {
+			border: 1px solid #000;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background-color: #909090;
+		}
+
+		nav ul {
+			margin: 0;
+			padding: 5px 0 5px 30px;
+			text-align: left;
+		}
+
+		nav li {
+			display: inline;
+			margin-right: 20px;
+		}
+
+		div li {
+			text-align: left;
+		}
+
 		[type='radio'] {
 			margin: 20px 20px 0 20px;
 		}
@@ -83,6 +127,12 @@
 <body>
 	<div class="all-elements">
 		<div class="header">
+			<nav id="navbar">
+				<ul>
+					<li><a href="">Home</a></li>
+					<li><a href="">Contact</a></li>
+				</ul>
+			</nav>
 			<h2>CatPhotoApp</h2>
 			<hr>
 			<p>Click here to view more <a href="#">cat photos</a></p>
@@ -91,24 +141,30 @@
 				<a href="#"><img class="small-image thick-border" src="https://bit.ly/fcc-relaxing-cat" alt="A cute orange cat laying on its back."></a>
 			</div>
 		</div>
-		<main>
-			<p>Things cats love:</p>
+		<div>
+			<main>
+				<div class="listing">
+					<div id="left">
+						<p>Things cats love:</p>
+					
+						<ul>
+							<li>cat nip</li>
+							<li>laser pointers</li>
+							<li>lasagna</li>
+						</ul>
+					</div>
+					<div id="right">
+						<p>Things cats hate:</p>
 
-			<div>
-				<ul>
-					<li>cat nip</li>
-					<li>laser pointers</li>
-					<li>lasagna</li>
-				</ul>
-
-				<p>Top 3 things cats hate:</p>
-				<ol>
-					<li>flea treatment</li>
-					<li>thunder</li>
-					<li>other cats</li>
-				</ol>
-			</div>
-		</main>
+						<ul>
+							<li>flea treatment</li>
+							<li>thunder</li>
+							<li>other cats</li>
+						</ul>
+					</div>
+				</div>
+			</main>
+		</div>
 		<div class="footer">
 			<form action="/submit-cat-photo">
 				<label for="indoor">
