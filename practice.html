@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML For Testing</title>
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+	<style type="text/css">
+		body {
+			margin: 0 auto;
+			width: 50%;
+		}
+		h2 {
+			color: red;
+			font-size: 40px;
+			font-family: Lobster, sans-serif;
+		}
+
+		form {
+			background-color: gray;
+		}
+
+		main {
+			margin: 0 auto;
+			width: 50%;
+			background-color: orange;
+			margin-bottom: 20px;
+			padding: 1.5em;
+		}
+
+		p {
+			font-weight: bold;
+		}
+
+		#img-container {
+			margin: 0 auto;
+			width: 20%;
+		}
+
+		.all-elements {
+			text-align: justify;
+		}
+
+		.small-image {
+			width: 100px;
+		}
+
+		.thick-border {
+			border: 10px solid green;
+			border-radius: 50%;
+		}
+
+		[type='radio'] {
+			margin: 20px 20px 0 20px;
+		}
+
+		[type='checkbox'] {
+			margin: 15px 0 25px 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="all-elements">
+		<h2>CatPhotoApp</h2>
+		
+		<p>Click here to view more <a href="#">cat photos</a></p>
+
+		<div id="img-container">
+			<a href="#"><img class="small-image thick-border" src="https://bit.ly/fcc-relaxing-cat" alt="A cute orange cat laying on its back."></a>
+		</div>
+
+		<main>
+			<p>Things cats love:</p>
+
+			<div>
+				<ul>
+					<li>cat nip</li>
+					<li>laser pointers</li>
+					<li>lasagna</li>
+				</ul>
+
+				<p>Top 3 things cats hate:</p>
+				<ol>
+					<li>flea treatment</li>
+					<li>thunder</li>
+					<li>other cats</li>
+				</ol>
+			</div>
+		</main>
+		<form action="/submit-cat-photo">
+			<label for="indoor">
+				<input id="indoor" type="radio" name="indoor-outdoor"checked>Indoor
+			</label>
+
+			<label for="outdoor">
+				<input id="outdoor" type="radio" name="indoor-outdoor">Outdoor
+			</label>
+			<br>
+			<input type="text" placeholder="cat photo URL" required="">
+			<br>
+			<label for="loving">
+				<input id="loving" type="checkbox" name="personality" checked>Loving
+			</label>
+			<label for="grumpy">
+				<input id="grumpy" type="checkbox" name="personality">Grumpy
+			</label>
+			<label for="sleepy">
+				<input id="sleepy" type="checkbox" name="personality">Sleepy
+			</label>
+
+			<button type="submit">Submit</button>
+		</form>
+	</div>
+
+</body>
+</html>
