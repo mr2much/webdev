@@ -1,0 +1,80 @@
+.all-elements {
+	margin: 0 auto;
+	width: 80%;
+	border: 1px solid black;
+	padding: 20px;
+}
+
+.header {
+	display: flex;
+}
+
+.header > div {
+	flex: 1;
+}
+
+.institution {
+	font-weight: bold;
+}
+
+.study-header {
+	display: flex;
+}
+
+.study-header > div {
+	flex: 1;
+}
+
+.job-header {
+	display: flex;
+}
+
+.job-header > div {
+	flex: 1;
+}
+
+.project-description p {
+	font-weight: bold;
+}
+
+/*Make collapsible items*/
+
+.collapsible {
+	padding: 0 30px;
+	border-bottom: 3px solid #7D7D7D;
+}
+
+.collapsible ul {
+	list-style: none;
+	padding: 0;
+}
+
+.collapsible li {
+	display: block;
+	padding: 5px;
+}
+
+.collapsible label {
+	font-size: 18px;
+	display: block;
+	cursor: pointer;
+}
+
+.details-content {
+	height: 0;
+	transform: scaleY(0);
+	overflow: hidden;
+	padding: 0 0 0 50px;
+}
+
+input[type="checkbox"] {
+	position: absolute;
+	opacity: 0;
+}
+
+input[type="checkbox"]:checked ~ .details-content {
+	height: 100%;
+	transform-origin: top;
+	transition: transform .3s ease-out;
+	transform: scaleY(1);
+}
