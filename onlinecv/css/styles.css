@@ -54,7 +54,7 @@
 	padding: 5px;
 }
 
-.collapsible label {
+.collapsible label {	
 	font-size: 18px;
 	display: block;
 	cursor: pointer;
@@ -63,7 +63,6 @@
 .details-content {
 	height: 0;
 	transform: scaleY(0);
-	overflow: hidden;
 	padding: 0 0 0 50px;
 }
 
@@ -77,4 +76,8 @@ input[type="checkbox"]:checked ~ .details-content {
 	transform-origin: top;
 	transition: transform .3s ease-out;
 	transform: scaleY(1);
+}
+
+.project-description label {
+	padding-top: 10px;
 }
