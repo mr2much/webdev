@@ -3,6 +3,7 @@
 }
 
 body {
+	background: linear-gradient(black, #000099, #66C2FF, #FFCCCC, #FFEEE6);
 	margin: auto;
 	width: 50%;
 }
@@ -174,6 +175,42 @@ button {
 .listing {
 	position: relative;
 	bottom: 14px;
+}
+
+.stars {
+	background-color: white;
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+	animation-iteration-count: infinite;
+}
+
+.star-1 {
+	margin-top: 15%;
+	margin-left: 60%;
+	animation-name: twinkle-1;
+	animation-duration: 1s;
+}
+
+.star-2 {
+	margin-top: 10px;
+	margin-left: 5px;
+	animation-name: twinkle-2;
+	animation-duration: 1s;
+}
+
+@keyframes twinkle-1 {
+	50% {
+		transform: scale(0.5);
+		opacity: 0.5;
+	}
+}
+
+@keyframes twinkle-2 {
+	20% {
+		transform: scale(0.7);
+		opacity: 0.5;
+	}
 }
 
 #navbar {
