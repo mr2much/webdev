@@ -1,8 +1,12 @@
-## Welcome to GitHub Pages
+# Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/mr2much/webdev/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+
+## CatPhotoApp
+
+When you start with the basic HTML and CSS part of the freecodecamp's curriculum, one of the first things they teach you how to build is the CatPhotoApp. For fun, and for practice, I just kept adding stuff to it as I learned, and then published on GitHub Pages just to learn how to do it. You can see the CatPhotoApp's website [Here](https://mr2much.github.io/webdev/practice)
 
 ### Markdown
 
