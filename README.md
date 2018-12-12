@@ -6,7 +6,7 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ## CatPhotoApp
 
-When you start with the basic HTML and CSS part of the freecodecamp's curriculum, one of the first things they teach you how to build is the CatPhotoApp. For fun, and for practice, I just kept adding stuff to it as I learned, and then published on GitHub Pages just to learn how to do it. You can see the CatPhotoApp's website [Here](https://mr2much.github.io/webdev/practice)
+When you start with the basic HTML and CSS part of the freecodecamp's curriculum, one of the first things they teach you how to build is the CatPhotoApp. For fun, and for practice, I just kept adding stuff to it as I learned, and then published on GitHub Pages just to learn how to do it. You can see the CatPhotoApp's website [Here](https://mr2much.github.io/webdev/catphotoapp/html/practice)
 
 ### Markdown
 
