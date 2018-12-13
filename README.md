@@ -1,22 +1,3 @@
-<html>
-<head>
-	
-</head>
-<body>
-	<div>
-		<h1>About me</h1>
-	</div>
-
-	<div>
-		<div>
-			<h2>My journey</h2>
-			<div>
-				<h3>Not much to say</h3>
-			</div>
-		</div>
-	</div>
-</body>
-</html>
 # Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/mr2much/webdev/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
