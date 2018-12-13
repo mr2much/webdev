@@ -2,11 +2,11 @@
 <head>
 	<title>About</title>
 	<style>
-		* {
+		body {
 			display: flex;
 		}
 		
-		body {
+		body div {
 			flex: 2 1;
 		}
 	</style>
