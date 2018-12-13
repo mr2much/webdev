@@ -2,4 +2,7 @@
 ---
 
 @import "{{ site.theme }}";
-@import "custom";
+
+body {
+  color: green;
+}
