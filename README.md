@@ -1,8 +1,15 @@
-<!DOCTYPE html>
 <html>
 <head>
 	<title>About</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/styles.scss">
+	<style>
+		* {
+			display: flex;
+		}
+		
+		body {
+			flex: 2 1;
+		}
+	</style>
 </head>
 <body>
 	<div>
