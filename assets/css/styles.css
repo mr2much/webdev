@@ -1,0 +1,11 @@
+body {
+  color: red;
+}
+
+main {
+	display: flex;
+}
+
+main > section {
+	flex: 2 1;
+}
