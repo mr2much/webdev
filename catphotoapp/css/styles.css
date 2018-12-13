@@ -4,6 +4,7 @@
 
 body {
 	background: linear-gradient(black, #000099, #66C2FF, #FFCCCC, #FFEEE6);
+	padding-top: 40px;
 	/*margin: auto;*/
 	/*width: 50%;*/
 }
@@ -31,11 +32,12 @@ h2 {
 	width: 100px;
 	height: 100px;
 	margin: 50px auto;
-	position: relative;
+	/*position: relative;*/
 	border-radius: 50%;
 	animation-name: rotatecolor;
 	animation-duration: 3s;
 	animation-iteration-count: infinite;
+	float: left;
 }
 
 @keyframes rotatecolor {
