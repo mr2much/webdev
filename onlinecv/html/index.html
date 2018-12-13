@@ -1,9 +1,11 @@
-<!-- TODO: 
-	-Add nav bar to the top of the resume that moves between sections.
+<!-- TODO: 	
 	-Center all divs inside the all-elements div.
 	-Add icons to collapsible items.
 	-Add the option to change language of the CV from english to spanish and vice versa.
 	-Make CV look cooler by adding themes.
+
+	DONE:
+	-Add nav bar to the top of the resume that moves between sections.
 -->
 <!DOCTYPE html>
 <html>
@@ -14,7 +16,7 @@
 </head>
 <body>
 	<div class="all-elements">
-		<div class="content">
+		<main class="content">
 			<div id="navbar">
 				<ul>
 					<li><a href="#personal">Personal Info</a></li>
@@ -24,7 +26,7 @@
 					<li><a href="#skills">Skills</a></li>
 				</ul>
 			</div>
-			<div class="header">				
+			<section class="header">				
 				<div class="my-address section">
 					<span id="personal" class="anchor"></span>
 					<p>[Home Address]</p>
@@ -38,12 +40,12 @@
 					<p>[E-Mail Address]</p>
 					<p>[Website]</p>
 				</div>
-			</div>
-			<div class="education section">
+			</section>
+			<section class="education section">
 				<span id="education" class="anchor"></span>
 				<h3>Education</h3>
 				<hr>
-				<div class="study-description">
+				<section class="study-description">
 					<div class="study-header">
 						<div>
 							<p>[Country]</p>
@@ -64,13 +66,13 @@
 							<li>sir</li>
 						</ul>
 					</div>
-				</div>
-			</div>
-			<div class="employment section">
+				</section>
+			</section>
+			<section class="employment section">
 				<span id="employment" class="anchor"></span>
 				<h3>Employment</h3>
 				<hr>
-				<div class="job-description">
+				<section class="job-description">
 					<div class="job-header">
 						<div>
 							<p>[Position]</p>
@@ -82,7 +84,7 @@
 							<p>[Hire Date, End Date]</p>
 						</div>
 					</div>
-					<div class="job-detail">
+					<section class="job-detail">
 						<div class="collapsible">
 							<input id="details1" type="checkbox" name="job1">							
 							<label for="details1">
@@ -100,9 +102,9 @@
 								</ul>
 							</div>
 						</div>
-					</div>
-				</div>
-				<div class="job-description">
+					</section>
+				</section>
+				<section class="job-description">
 					<div class="job-header">
 						<div>
 							<p>[Position]</p>
@@ -114,7 +116,7 @@
 							<p>[Hire Date, End Date]</p>
 						</div>
 					</div>
-					<div class="job-detail">
+					<section class="job-detail">
 						<div class="collapsible">
 							<input id="details2" type="checkbox" name="job2">							
 							<label for="details2">
@@ -132,9 +134,9 @@
 								</ul>
 							</div>
 						</div>
-					</div>
-				</div>
-				<div class="job-description">
+					</section>
+				</section>
+				<section class="job-description">
 					<div class="job-header">
 						<div>
 							<p>[Position]</p>
@@ -146,7 +148,7 @@
 							<p>[Hire Date, End Date]</p>
 						</div>
 					</div>
-					<div class="job-detail">
+					<section class="job-detail">
 						<div class="collapsible">
 							<input id="details3" type="checkbox" name="job3">							
 							<label for="details3">
@@ -164,15 +166,15 @@
 								</ul>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="projects section">
+					</section>
+				</section>
+			</section>
+			<section class="projects section">
 				<span id="projects" class="anchor"></span>
 				<h3>Software Projects</h3>
 				<hr>
 				<p><strong>Portfolio Page:</strong><a href="#" target="_blank">[Link to Portfolio]</a></p>
-				<div class="project-description">
+				<section class="project-description">
 					<div class="collapsible">
 						<input id="project-details1" type="checkbox" name="project1">							
 						<label for="project-details1">
@@ -190,8 +192,8 @@
 							</ul>
 						</div>
 					</div>
-				</div>
-				<div class="project-description">
+				</section>
+				<section class="project-description">
 					<div class="collapsible">
 						<input id="project-details2" type="checkbox" name="project2">							
 						<label for="project-details2">
@@ -209,8 +211,8 @@
 							</ul>
 						</div>
 					</div>
-				</div>
-				<div class="project-description">
+				</section>
+				<section class="project-description">
 					<div class="collapsible">
 						<input id="project-details3" type="checkbox" name="project3">							
 						<label for="project-details3">
@@ -228,8 +230,8 @@
 							</ul>
 						</div>
 					</div>
-				</div>
-				<div class="project-description">
+				</section>
+				<section class="project-description">
 					<div class="collapsible">
 						<input id="project-details4" type="checkbox" name="project4">							
 						<label for="project-details4">
@@ -247,8 +249,8 @@
 							</ul>
 						</div>
 					</div>
-				</div>
-				<div class="project-description">
+				</section>
+				<section class="project-description">
 					<div class="collapsible">
 						<input id="project-details5" type="checkbox" name="project5">							
 						<label for="project-details5">
@@ -266,17 +268,17 @@
 							</ul>
 						</div>
 					</div>
-				</div>
-			</div>
-			<div class="skills section">
+				</section>
+			</section>
+			<section class="skills section">
 				<span id="skills" class="anchor"></span>
 				<h3>Skills</h3>
 				<hr>
 				<ul>
 					<li>[Software Skills]</li>
 				</ul>
-			</div>
-		</div>
+			</section>
+		</main>
 	</div>
 </body>
 </html>
