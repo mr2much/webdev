@@ -1,15 +1,6 @@
 <html>
 <head>
-	<title>About</title>
-	<style>
-		body {
-			display: flex;
-		}
-		
-		body div {
-			flex: 2 1;
-		}
-	</style>
+	
 </head>
 <body>
 	<div>
