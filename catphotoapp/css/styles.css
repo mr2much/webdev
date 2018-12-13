@@ -4,8 +4,8 @@
 
 body {
 	background: linear-gradient(black, #000099, #66C2FF, #FFCCCC, #FFEEE6);
-	margin: auto;
-	width: 50%;
+	/*margin: auto;*/
+	/*width: 50%;*/
 }
 
 img:hover {
@@ -148,9 +148,10 @@ button {
 	border-radius: 25px;
 	text-align: justify;
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 15px 15px rgba(0, 0, 0, 0.23);
-	margin: 40px 0 60px 0;
+	margin: auto;
 	padding: 10px;
 	background: linear-gradient(225deg, #CCFFFF, #FFCCCC);
+	width: 80%;
 }
 
 .header {
@@ -187,9 +188,10 @@ button {
 
 .star-1 {
 	margin-top: 15%;
-	margin-left: 60%;
+	/*margin-left: 60%;*/
 	animation-name: twinkle-1;
 	animation-duration: 1s;
+	float: left;
 }
 
 .star-2 {
@@ -197,6 +199,7 @@ button {
 	margin-left: 5px;
 	animation-name: twinkle-2;
 	animation-duration: 1s;
+	float: right;
 }
 
 @keyframes twinkle-1 {
