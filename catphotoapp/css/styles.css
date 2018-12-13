@@ -189,8 +189,8 @@ button {
 }
 
 .star-1 {
-	margin-top: 15%;
-	/*margin-left: 60%;*/
+	margin-top: 30%;
+	margin-left: -10px;
 	animation-name: twinkle-1;
 	animation-duration: 1s;
 	float: left;
