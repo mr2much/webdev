@@ -4,18 +4,18 @@
 	<title>About</title>
 </head>
 <body>
-	<header>
+	<div>
 		<h1>About me</h1>
-	</header>
+	</div>
 
-	<main>
-		<section>
+	<div>
+		<div>
 			<h2>My journey</h2>
-			<article>
+			<div>
 				<h3>Not much to say</h3>
-			</article>
-		</section>
-	</main>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
 # Welcome to GitHub Pages
