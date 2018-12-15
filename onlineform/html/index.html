@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Playing with forms</title>
+	<link rel="stylesheet" type="text/css" href="../css/styles.css">
+</head>
+<body>
+	<header>
+		<h1>Learning About HTML Forms</h1>
+	</header>
+
+	<section>
+		<form>
+			<p>There's a TextField below</p>
+			<label for="email">Email:</label>
+			<input type="text" id="email" name="email">
+
+			<p>Now there's a set of radio buttons</p>
+
+			<fieldset>
+				<legend>
+					This legend looks cool in here
+				</legend>				
+				<input type="radio" id="one" name="choices" value="One">
+				<label for="one">This is the first choice</label>
+				<br>
+				<input type="radio" id="two" name="choices" value="Two">
+				<label for="two">This is the second choice</label>
+			</fieldset>
+
+			<p>The fieldset makes these groups look cooler by enclosing the controls inside a cool square with the lengd</p>
+
+			<p>This is a Date Picker</p>
+
+			<label for="pickdate">Choose a date:</label>
+			<input type="date" id="date" name="date">
+			
+			<p>This is a button</p>
+			<input type="submit" name="submit" value="Submit">
+		</form>
+	</section>
+</body>
+</html>
