@@ -47,6 +47,7 @@
 
 .header {
 	display: flex;
+	text-align: center;
 }
 
 .header > section {
@@ -59,6 +60,7 @@
 
 .study-header {
 	display: flex;
+	text-align: center;
 }
 
 .study-header > div {
@@ -67,6 +69,7 @@
 
 .job-header {
 	display: flex;
+	text-align: center;
 }
 
 .job-header > div {
