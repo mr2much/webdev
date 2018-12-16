@@ -1,12 +1,33 @@
+body {
+	background-color: #CFD8DC;
+	display: flex;
+	justify-content: center;
+}
+
+#container {
+	display: flex;
+	width: 50%;
+	flex-direction: column;
+	border-radius: 15px;
+	border: 2px solid #607D8B;
+}
+
 #registration {
 	display: flex;
 	justify-content: center;
 }
 
+header {
+	background-color: #455A64;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
 h1 {
 	display: flex;
 	justify-content: center;
-	color: #001CFF;
+	color: #FFFFFF;
+	font-size: 56px;
 }
 
 div {
@@ -24,10 +45,12 @@ label {
 }
 
 #button > .button {
-	background-color: #00EDFF;
-	padding: 5px;
+	background-color: #455A64;
+	color: #FFFFFF;
+	padding: 5px 10px 5px 10px;
 	font-weight: bold;
 	border-radius: 5px;
+	font-size: 24px;
 }
 
 #login-details {
