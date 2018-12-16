@@ -1,42 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Playing with forms</title>
+	<title>Registration Form</title>
 	<link rel="stylesheet" type="text/css" href="../css/styles.css">
 </head>
 <body>
 	<header>
-		<h1>Learning About HTML Forms</h1>
+		<h1>Register</h1>
 	</header>
 
-	<section>
+	<section id="registration">
 		<form>
-			<p>There's a TextField below</p>
-			<label for="email">Email:</label>
-			<input type="text" id="email" name="email">
+			<div id="name">
+				<label for="first-name">First Name:</label>
+				<input id="first-name" type="text" name="first-name" placeholder="John" required>
 
-			<p>Now there's a set of radio buttons</p>
+				<label for="last-name">Last Name:</label>
+				<input id="last-name" type="text" name="last-name" placeholder="Doe" required>
+			</div>
 
-			<fieldset>
-				<legend>
-					This legend looks cool in here
-				</legend>				
-				<input type="radio" id="one" name="choices" value="One">
-				<label for="one">This is the first choice</label>
-				<br>
-				<input type="radio" id="two" name="choices" value="Two">
-				<label for="two">This is the second choice</label>
-			</fieldset>
-
-			<p>The fieldset makes these groups look cooler by enclosing the controls inside a cool square with the lengd</p>
-
-			<p>This is a Date Picker</p>
-
-			<label for="pickdate">Choose a date:</label>
-			<input type="date" id="date" name="date">
+			<div id="genders">
+				<label>Gender:</label>
 			
-			<p>This is a button</p>
-			<input type="submit" name="submit" value="Submit">
+				<input id="male" type="radio" name="male" value="Male">
+				<label for="male">Male</label>				
+			
+				<input id="female" type="radio" name="female" value="Female">
+				<label for="female">Female</label>
+			
+				<input id="undefined" type="radio" name="undefined" value="Undefined">
+				<label for="undefined">Other</label>				
+			</div>
+
+			<div id="login-details">
+				<div>
+				<label for="email">Email:</label>
+				<input id="email" type="email" name="email" required placeholder="username@domain">
+				</div>
+				<div>
+				<label for="password">Password:</label>
+				<input id="password" type="password" name="password" pattern=".{5,10}" required title="5 to 10 characters">			
+				</div>
+			</div>
+
+			<div id="dob">
+			<label for="birthday">Birthday:</label>
+			<input id="birthday" type="date" name="date">
+			</div>
+
+			<div id="agree">
+				<label for="do-agree">I agree to the terms and conditions</label>
+				<input id="do-agree" type="checkbox" name="do-agree">
+			</div>
+
+			<div id="button">
+				<input class="button" type="submit" name="submit" value="Submit">
+			</div>
 		</form>
 	</section>
 </body>
