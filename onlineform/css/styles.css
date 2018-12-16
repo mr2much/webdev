@@ -1,3 +1,35 @@
-input {
-	/*display: block;*/
+#registration {
+	display: flex;
+	justify-content: center;
+}
+
+h1 {
+	display: flex;
+	justify-content: center;
+	color: #001CFF;
+}
+
+div {
+	display: flex;
+	padding: 5px;
+}
+
+label {
+	font-weight: bold;
+}
+
+#button {
+	display: flex;
+	justify-content: center;
+}
+
+#button > .button {
+	background-color: #00EDFF;
+	padding: 5px;
+	font-weight: bold;
+	border-radius: 5px;
+}
+
+#login-details {
+	padding: 0;
 }
