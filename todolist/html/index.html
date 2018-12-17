@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo List</title>
+	<link rel="stylesheet" type="text/css" href="../css/styles.css">
+</head>
+<body>
+	<header>
+		<h1>Todo List</h1>
+	</header>
+
+	<main>
+		<form>
+			<h2 for="entry">Add a new item to the list:</h2>
+			<input id="entry" type="text" name="entry" placeholder="New item">
+			<button id="add-item">Add Item</button>
+			<button id="remove" class="button">Remove</button>
+			<div id="items">
+				<input id="item1" type="checkbox">
+				<label for="item1">Add CSS to this page</label>
+
+				<input id="item2" type="checkbox">
+				<label for="item2">Add JavaScript to this page</label>
+
+				<input id="item3" type="checkbox">
+				<label for="item3">Connect the Backend with Database</label>
+
+				<h2 class="done" aria-hidden="true">Done</h2>
+				<h2 class="undone" aria-hidden="true">Not Done</h2>		
+			</div>
+			<input id="save" class="button" type="submit" name="submit" value="Save">			
+		</form>
+	</main>
+
+</body>
+</html>
