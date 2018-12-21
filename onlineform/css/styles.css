@@ -1,7 +1,6 @@
 body {
 	background-color: #CFD8DC;
-	display: flex;
-	justify-content: center;
+	/*justify-content: center;*/
 }
 
 #container {
@@ -13,19 +12,18 @@ body {
 }
 
 #registration {
-	display: flex;
-	justify-content: center;
+	display: block;
+	/*border: 1px solid black;*/
 }
 
 header {
 	background-color: #455A64;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
+	text-align: center;
 }
 
 h1 {
-	display: flex;
-	justify-content: center;
 	color: #FFFFFF;
 	font-size: 56px;
 }
@@ -53,6 +51,73 @@ label {
 	font-size: 24px;
 }
 
-#login-details {
+/*#login-details {
 	padding: 0;
+}*/
+
+.focused {
+	display: block;
+	position: relative;
+}
+
+.focused > label {
+	opacity: 0.3;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+}
+
+.focusable {
+	padding: 10px 10px 10px 30px;
+}
+
+.focusable:focus + label {
+	opacity: 0;
+}
+
+.focusable:valid {
+	background:url("https://paulvincentrudolph.files.wordpress.com/2018/04/screen-shot-2018-04-27-at-11-20-43-am.png?w=351&h=323");
+	background-color: #FFF;
+	background-size: 25px;
+	background-repeat: no-repeat;
+	background-position: 5px;
+}
+
+.focusable:valid + label {
+	opacity: 0;
+}
+
+.focusable:invalid:not(:focus):not(:placeholder-shown) {
+	background: pink;
+}
+
+.focusable:invalid:not(:focus):not(:placeholder-shown) + label {
+	opacity: 0;
+}
+
+.focusable:invalid:focus:not(:placeholder-shown) ~ .requirements {
+	max-height: 200px;
+	padding: 0 0 20px 5px;
+}
+
+.requirements {
+	padding: 0 0 0 5px;
+	color: #999;
+	max-height: 0;
+	transition: 0.28s;
+	overflow: hidden;
+	color: red;
+	font-style: italic;
+}
+
+form {
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+form > div {
+	/*align-items: center;*/
+	/*justify-content: center;*/
+	/*margin: 0 auto;*/
 }

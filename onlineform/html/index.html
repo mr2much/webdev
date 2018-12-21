@@ -6,59 +6,72 @@
 </head>
 <body>
 	<div id="container">
-	<header>
-		<h1>Register</h1>
-	</header>
+		<header>
+			<h1>Login Form</h1>
+		</header>
 
-	<section id="registration">
-		<form>
-			<div id="name">
-				<label for="first-name">First Name:</label>
-				<input id="first-name" type="text" name="first-name" placeholder="John" required>
+		<section id="registration">
+			<form>
+				<div class="text-inputs">
+					<div class="focused">
+						<input class="focusable" id="first-name" type="text" name="first-name" placeholder=" " required>
+						<label for="first-name">First Name:</label>					
+					</div>
 
-				<label for="last-name">Last Name:</label>
-				<input id="last-name" type="text" name="last-name" placeholder="Doe" required>
-			</div>
-
-			<div id="genders">
-				<label>Gender:</label>
-			
-				<input id="male" type="radio" name="male" value="Male">
-				<label for="male">Male</label>				
-			
-				<input id="female" type="radio" name="female" value="Female">
-				<label for="female">Female</label>
-			
-				<input id="undefined" type="radio" name="undefined" value="Undefined">
-				<label for="undefined">Other</label>				
-			</div>
-
-			<div id="login-details">
-				<div>
-				<label for="email">Email:</label>
-				<input id="email" type="email" name="email" required placeholder="username@domain">
+					<div class="focused">
+						<input class="focusable" id="last-name" type="text" name="last-name" placeholder=" " required>
+						<label for="last-name">Last Name:</label>					
+					</div>
 				</div>
-				<div>
-				<label for="password">Password:</label>
-				<input id="password" type="password" name="password" pattern=".{5,10}" required title="5 to 10 characters">			
+
+				<div id="genders">
+					<label>Gender:</label>
+				
+					<input id="male" type="radio" name="male" value="Male">
+					<label for="male">Male</label>				
+				
+					<input id="female" type="radio" name="female" value="Female">
+					<label for="female">Female</label>
+				
+					<input id="undefined" type="radio" name="undefined" value="Undefined">
+					<label for="undefined">Other</label>				
 				</div>
-			</div>
 
-			<div id="dob">
-			<label for="birthday">Birthday:</label>
-			<input id="birthday" type="date" name="date">
-			</div>
+				<div class="text-inputs">
+					<div class="focused">
+						<input class="focusable" id="email" type="email" name="email" required placeholder=" ">
+						<label for="email">username@domain</label>
 
-			<div id="agree">
-				<label for="do-agree">I agree to the terms and conditions</label>
-				<input id="do-agree" type="checkbox" name="do-agree">
-			</div>
+						<div class="requirements">
+							Must be a valid email address.
+						</div>
+					</div>
 
-			<div id="button">
-				<input class="button" type="submit" name="submit" value="Submit">
-			</div>
-		</form>
-	</section>
+					<div class="focused">
+						<input class="focusable" id="password" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" placeholder=" " required>
+						<label for="password">Password:</label>
+						
+						<div class="requirements">
+							Your password must be at least 6 characters long as well as contain at least one uppercase, one lowercase, and one number.
+						</div>
+					</div>
+				</div>
+
+				<div id="dob">
+					<label for="birthday">Birthday:</label>
+					<input id="birthday" type="date" name="date">
+				</div>
+
+				<div id="agree">
+					<label for="do-agree">I agree to the terms and conditions</label>
+					<input id="do-agree" type="checkbox" name="do-agree">
+				</div>
+
+				<div id="button">
+					<input class="button" type="submit" name="submit" value="Login">
+				</div>
+			</form>
+		</section>
 	</div>
 </body>
 </html>
