@@ -14,42 +14,42 @@
 			<form>
 				<div class="text-inputs">
 					<div class="focused">
-						<input class="focusable" id="first-name" type="text" name="first-name" placeholder=" " required>
-						<label for="first-name">First Name:</label>					
+						<input class="focusable border-glow" id="first-name" type="text" name="first-name" placeholder=" " tabindex="1" required>
+						<label for="first-name">Enter your name</label>					
 					</div>
 
 					<div class="focused">
-						<input class="focusable" id="last-name" type="text" name="last-name" placeholder=" " required>
-						<label for="last-name">Last Name:</label>					
+						<input class="focusable border-glow" id="last-name" type="text" name="last-name" placeholder=" " tabindex="2" required>
+						<label for="last-name">Enter your lastname</label>					
 					</div>
 				</div>
 
 				<div id="genders">
 					<label>Gender:</label>
 				
-					<input id="male" type="radio" name="male" value="Male">
+					<input id="male" type="radio" name="male" value="Male" tabindex="3">
 					<label for="male">Male</label>				
 				
-					<input id="female" type="radio" name="female" value="Female">
+					<input id="female" type="radio" name="female" value="Female" tabindex="4">
 					<label for="female">Female</label>
 				
-					<input id="undefined" type="radio" name="undefined" value="Undefined">
+					<input id="undefined" type="radio" name="undefined" value="Undefined" tabindex="5">
 					<label for="undefined">Other</label>				
 				</div>
 
 				<div class="text-inputs">
 					<div class="focused">
-						<input class="focusable" id="email" type="email" name="email" required placeholder=" ">
-						<label for="email">username@domain</label>
+						<input class="focusable border-glow" id="email" type="email" name="email" required placeholder=" " tabindex="6">
+						<label for="email">Enter your email address</label>
 
 						<div class="requirements">
-							Must be a valid email address.
+							Must be a valid email address. Like this: example@domain
 						</div>
 					</div>
 
 					<div class="focused">
-						<input class="focusable" id="password" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" placeholder=" " required>
-						<label for="password">Password:</label>
+						<input class="focusable border-glow" id="password" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" placeholder=" " required tabindex="7">
+						<label for="password">Enter your password</label>
 						
 						<div class="requirements">
 							Your password must be at least 6 characters long as well as contain at least one uppercase, one lowercase, and one number.
@@ -59,16 +59,16 @@
 
 				<div id="dob">
 					<label for="birthday">Birthday:</label>
-					<input id="birthday" type="date" name="date">
+					<input id="birthday" type="date" name="date" tabindex="8">
 				</div>
 
 				<div id="agree">
 					<label for="do-agree">I agree to the terms and conditions</label>
-					<input id="do-agree" type="checkbox" name="do-agree">
+					<input id="do-agree" type="checkbox" name="do-agree" tabindex="9">
 				</div>
 
 				<div id="button">
-					<input class="button" type="submit" name="submit" value="Login">
+					<input class="button" type="submit" name="submit" value="Login" tabindex="10">
 				</div>
 			</form>
 		</section>
