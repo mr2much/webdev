@@ -135,6 +135,7 @@ label {
 	left: 20px;
 }
 
+/*If the user leaves an input field with and invalid value, it will change to a pink background*/
 .focusable:invalid:not(:focus):not(:placeholder-shown) {
 	background: pink;
 }
@@ -143,16 +144,19 @@ label {
 	opacity: 0;
 }
 
+/*Shows the requirements div below the input*/
 .focusable:invalid:focus:not(:placeholder-shown) ~ .requirements {
 	max-height: 200px;
 	padding: 0 5px 20px 5px;
 	text-align: justify;
 }
 
+/*Wait one second when the user is typing before showing the requirements message*/
 .focusable:invalid ~ .requirements {
 	transition-delay: 1s;
 }
 
+/*Shows requirement text below the element, in case of wrong input*/
 .requirements {
 	text-align: justify;
 	padding: 0 5px 0 5px;
@@ -164,6 +168,7 @@ label {
 	font-style: italic;
 }
 
+/*Make elements scale when the mouse hovers over them, without affecting the rest of the layout*/
 .grow:hover {
 	transform: scale(1.01);
 }
