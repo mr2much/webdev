@@ -1,7 +1,3 @@
-div {
-	float: left;
-}
-
 ul {
 	overflow: hidden;
 	list-style-type: none;
@@ -9,31 +5,11 @@ ul {
 }
 
 li {
-	display: inline;
-	margin-right: 20px;
+	display: inline-block;
+	margin-left: 20px;
 }
 
-/*li:not(#foo) > div > span > input[type="radio"] {
-	opacity: 0;
-	float: left;
-	width: 18px;
-}
-
-li:not(#foo) > div > span > input[type="radio"] + label {
-	margin: 0;
-	clear: none;
-	padding: 5px 0 4px 35px;
-	cursor: pointer;
-	background: url("https://cdn2.iconfinder.com/data/icons/interface-vol-3-1/16/radio-button-off-unchecked-round-circle-512.png") left center no-repeat;
-	background-size: 25px;
-}*/
-
-/*li:not(#foo) > div > span > input[type="radio"]:checked + label {
-	background-image: url("data:image/png;base64,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");
-	background-size: 45px;
-	background-position: -10px;
-}*/
-
+/*Removes the default looks for the controls from the view*/
 input[type="radio"]:not(:checked),
 input[type="radio"]:checked,
 input[type="checkbox"]:not(:checked),
@@ -42,21 +18,31 @@ input[type="checkbox"]:checked {
 	left: -9999px;
 }
 
+/*Styles the labels of the radio buttons and checkboxes*/
 input[type="radio"]:not(:checked) + label,
 input[type="radio"]:checked + label,
 input[type="checkbox"]:not(:checked) + label,
 input[type="checkbox"]:checked + label {
 	position: relative;
-	padding-left: 1.95em;
+	padding-left: 35px;
+	margin-bottom: 12px;
 	cursor: pointer;
+	font-size: 18px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	display: block;
 }
 
+/*Creates custom look for radio button*/
 input[type="radio"]:not(:checked) + label:before,
 input[type="radio"]:checked + label:before {
 	content: "";
 	position: absolute;
-	left: 0; top: -1px;
-	width: 1.4em; height: 1.4em;
+	left: 0; top: 0;
+	width: 25px; height: 25px;
 	-webkit-transition: all 0.50s ease-in-out;
 	-moz-transition: all 0.50s ease-in-out;
 	-ms-transition: all 0.50s ease-in-out;
@@ -64,16 +50,17 @@ input[type="radio"]:checked + label:before {
 	transition: all 0.50s ease-in-out;
 	outline: none;
 	border: 2px solid #CCC;
-	background: #fff;
+	background: #eee;
 	border-radius: 50%;	
 }
 
+/*Creates custom look for checkbox*/
 input[type="checkbox"]:not(:checked) + label::before,
 input[type="checkbox"]:checked + label::before {
 	content: "";
 	position: absolute;
 	left: 0; top: -1px;
-	width: 1.4em; height: 1.4em;
+	width: 25px; height: 25px;
 	-webkit-transition: all 0.50s ease-in-out;
 	-moz-transition: all 0.50s ease-in-out;
 	-ms-transition: all 0.50s ease-in-out;
@@ -81,59 +68,76 @@ input[type="checkbox"]:checked + label::before {
 	transition: all 0.50s ease-in-out;
 	outline: none;
 	border: 2px solid #CCC;
-	background: #fff;
+	background: #eee;
 	border-radius: 5px;
 }
 
+/*Creates custom look for the selector inside the radio button*/
 input[type="radio"]:not(:checked) + label::after,
 input[type="radio"]:checked + label::after {
-	content: "\26AB\0020";
+	content: "";
 	position: absolute;
-	top: 0.15em; left: 0.02rem;
-	font-size: 1.4em;
-	line-height: 0.8;
-	color: #000;
-	transition: all .2s;
-	font-family: "Lucida Sans Unicode", "Arial Unicode MS";
+	top: 6px; left: 6px;
+	width: 12px;
+	height: 12px;
+	-webkit-transition: all .2s ease;
+	transition: all .2s ease;
+	background: #003366;
+	border: solid #003366;
+	border-width: 0 5px 5px 0;	/*This border helps keep the circle marker on the center of the radio button*/
+	border-radius: 50%;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 1);
 }
 
+/*Creates custom look for the selector inside the checkbox*/
 input[type="checkbox"]:not(:checked) + label::after,
 input[type="checkbox"]:checked + label::after {
-	content: "\2713\0020";
+	content: "";
 	position: absolute;
-	top: 0.25em; left: 0.25em;
-	font-size: 1.3em;
-	line-height: 0.8;
-	color: #09ad7e;
+	top: 2px; left: 10px;
+	width: 5px; height: 15px;
+	border: solid #003366;
+	border-width: 0 5px 5px 0;
 	transition: all .2s;
-	font-family: "Lucida Sans Unicode", "Arial Unicode MS";
+	-webkit-transform: rotate(45deg) !important;
+	-moz-transform: rotate(45deg) !important;
+	-ms-transform: rotate(45deg) !important;
+	-o-transform: rotate(45deg) !important;
+	transform: rotate(45deg) !important;
 }
 
+/*Hides the 'selected' state marker*/
 input[type="radio"]:not(:checked) + label:after,
 input[type="checkbox"]:not(:checked) + label::after {
 	opacity: 0;
+	-webkit-transform: scale(0);
 	transform: scale(0);
 }
 
+/*Shows the marker when the control is 'selected'*/
 input[type="radio"]:checked + label:after,
 input[type="checkbox"]:checked + label::after {
 	opacity: 1;
+	-webkit-transform: scale(1);
 	transform: scale(1);
 }
 
+/*When the option is 'selected' leaves the border around the control*/
 input[type="radio"]:checked + label:before,
 input[type="checkbox"]:checked + label::before {
 	box-shadow: 0 0 5px rgba(81, 81, 81, 1);
 	border: 2px solid rgba(81, 81, 81, 1);
 }
 
+label {
+	padding: 5px 0;	/*Add padding at top and bottom of the label to make it look vertically centered relative to the controls next to them*/
+}
+
+/*Changes the appearance of the control when the mouse hovers over it, like making it a little bigger and showing a blurry
+border around it and a darker background*/
 label:hover::before {
+	background: #ccc !important;
 	box-shadow: 0 0 5px rgba(81, 81, 81, 1);
 	border: 2px solid rgba(81, 81, 81, 1) !important;
 	transform: scale(1.1);
-}
-
-div {
-	margin-left: 20px;
-	padding: 10px 0px;
 }
