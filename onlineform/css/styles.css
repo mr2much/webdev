@@ -62,12 +62,16 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-	-webkit-transition: all 0.50s ease-in-out;
-	-moz-transition: all 0.50s ease-in-out;
-	-ms-transition: all 0.50s ease-in-out;
-	-o-transition: all 0.50s ease-in-out;
-	transition: all 0.50s ease-in-out;
+	-webkit-transition: all 0.1s ease-in-out 0s;
+	-moz-transition: all 0.1s ease-in-out 0s;
+	-ms-transition: all 0.1s ease-in-out 0s ;
+	-o-transition: all 0.1s ease-in-out 0s;
+	transition: all 0.1s ease-in-out 0s;
 	background-color: #41D873;
+}
+
+input[type="submit"]:focus {
+	outline: 0;
 }
 
 form {
@@ -158,4 +162,8 @@ label {
 	overflow: hidden;
 	color: red;
 	font-style: italic;
+}
+
+.grow:hover {
+	transform: scale(1.01);
 }
