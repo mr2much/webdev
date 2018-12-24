@@ -26,15 +26,23 @@
 
 				<div id="genders">
 					<label>Gender:</label>
-				
-					<input id="male" type="radio" name="male" value="Male" tabindex="3">
-					<label for="male">Male</label>				
-				
-					<input id="female" type="radio" name="female" value="Female" tabindex="4">
-					<label for="female">Female</label>
-				
-					<input id="undefined" type="radio" name="undefined" value="Undefined" tabindex="5">
-					<label for="undefined">Other</label>				
+
+					<ul>
+						<li>
+							<input id="male" type="radio" name="gender" value="Male" tabindex="3">
+							<label for="male">Male</label>
+						</li>
+
+						<li>
+							<input id="female" type="radio" name="gender" value="Female" tabindex="4">
+							<label for="female">Female</label>
+						</li>
+
+						<li>
+							<input id="undefined" type="radio" name="gender" value="Undefined" tabindex="5">
+							<label for="undefined">Other</label>
+						</li>
+					</ul>
 				</div>
 
 				<div class="text-inputs">
@@ -63,8 +71,8 @@
 				</div>
 
 				<div id="agree">
-					<label for="do-agree">I agree to the terms and conditions</label>
 					<input id="do-agree" type="checkbox" name="do-agree" tabindex="9">
+					<label for="do-agree">I agree to the terms and conditions</label>				
 				</div>
 
 				<div id="button">
