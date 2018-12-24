@@ -87,7 +87,6 @@ input[type="radio"] + label,
 input[type="checkbox"] + label {
 	position: relative;
 	padding: 5px 0px 5px 35px;
-	/*padding-left: 35px;*/
 	margin-bottom: 12px;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -98,7 +97,6 @@ input[type="checkbox"] + label {
 }
 
 /*Creates custom look for radio button*/
-/*input[type="radio"]:not(:checked) + label:before,*/
 input[type="radio"] + label:before {
 	content: "";
 	position: absolute;
@@ -116,8 +114,7 @@ input[type="radio"] + label:before {
 }
 
 /*Creates custom look for checkbox*/
-input[type="checkbox"]:not(:checked) + label:before,
-input[type="checkbox"]:checked + label:before {
+input[type="checkbox"] + label:before {
 	content: "";
 	position: absolute;
 	left: 0; top: -1px;
@@ -134,8 +131,6 @@ input[type="checkbox"]:checked + label:before {
 }
 
 /*Creates custom look for the selector inside the radio button*/
-/*input[type="radio"]:not(:checked) + label:after,
-input[type="radio"]:checked + label:after {*/
 input[type="radio"] + label:after {
 	content: "";
 	position: absolute;
@@ -191,6 +186,14 @@ input[type="checkbox"]:checked + label:after {
 	transform: rotate(45deg) scale(1);
 }
 
+input[type="radio"]:checked + label:before,
+input[type="checkbox"]:checked + label:before {
+	box-shadow: 0 0 5px rgba(81, 81, 81, 1);
+	border: 2px solid rgba(81, 81, 81, 1);
+}
+
+/*Changes the appearance of the control when the mouse hovers over it, like making it a little bigger and showing a blurry
+border around it and a darker background*/
 input[type="radio"] + label:hover:before,
 input[type="checkbox"] + label:hover:before {
 	background: #CCC !important;
