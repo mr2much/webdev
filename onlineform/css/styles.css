@@ -74,10 +74,8 @@ li {
 }
 
 /*Removes the default look for the controls from the view*/
-input[type="radio"]:not(:checked),
-input[type="radio"]:checked,
-input[type="checkbox"]:not(:checked),
-input[type="checkbox"]:checked {
+input[type="radio"],
+input[type="checkbox"] {
 	position: absolute;
 	left: -9999px;
 }
