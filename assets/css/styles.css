@@ -46,9 +46,9 @@ h2 {
 h1, h2, strong { color: #333; }
 
 main {
-	grid-column: 1 / span 3;
+	grid-column: 1 / span 5;
 	display: grid;
-	grid-template-columns: repeat(3, 33%);
+	grid-template-columns: repeat(4, 25%);
 	grid-auto-rows: minmax(150px, auto);
 	grid-gap: 1em;
 	justify-content: center;
@@ -72,13 +72,9 @@ main > div {
 	vertical-align: text-bottom;
 }
 
-aside {
-	grid-column: span 2;
-}
-
 @media (max-width: 700px) {
-	main, aside {
-		grid-column: 1 / span 5;
+	main {
+		grid-template-columns: 80%;
 	}
 }
 
