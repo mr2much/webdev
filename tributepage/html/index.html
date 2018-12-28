@@ -1,0 +1,76 @@
+<!-- Responsive Web Design Projects - Build a Tribute Page
+Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/freeCodeCamp/full/zNqgVx.
+Fulfill the below user stories and get all of the tests to pass. Give it your own personal style.
+You can use HTML, JavaScript, and CSS to complete this project. Plain CSS is recommended because that is what the lessons have covered so far and you should get some practice with plain CSS. You can use Bootstrap or SASS if you choose. Additional technologies (just for example jQuery, React, Angular, or Vue) are not recommended for this project, and using them is at your own risk. Other projects will give you a chance to work with different technology stacks like React. We will accept and try to fix all issue reports that use the suggested technology stack for this project. Happy coding!
+User Story #1: My tribute page should have an element with a corresponding id="main", which contains all other elements.
+User Story #2: I should see an element with a corresponding id="title", which contains a string (i.e. text) that describes the subject of the tribute page (e.g. "Dr. Norman Borlaug").
+User Story #3: I should see a div element with a corresponding id="img-div".
+User Story #4: Within the img-div element, I should see an img element with a corresponding id="image".
+User Story #5: Within the img-div element, I should see an element with a corresponding id="img-caption" that contains textual content describing the image shown in img-div.
+User Story #6: I should see an element with a corresponding id="tribute-info", which contains textual content describing the subject of the tribute page.
+User Story #7: I should see an a element with a corresponding id="tribute-link", which links to an outside site that contains additional information about the subject of the tribute page. HINT: You must give your element an attribute of target and set it to _blank in order for your link to open in a new tab (i.e. target="_blank").
+User Story #8: The img element should responsively resize, relative to the width of its parent element, without exceeding its original size.
+User Story #9: The img element should be centered within its parent element.
+You can build your project by forking this CodePen pen. Or you can use this CDN link to run the tests in any environment you like: https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js.
+Once you're done, submit the URL to your working project with all its tests passing. -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tribute Page for John Taylor Gatto - An Excellent Teacher</title>
+	<link rel="stylesheet" type="text/css" href="../css/styles.css">
+</head>
+<body>
+	<div id="main">
+		<header>
+			<h1 id="title">John Taylor Gatto's Biography</h1>
+			<p><em>A tribute page for a remarkable teacher</em></p>
+		</header>
+
+		<div id="img-div">
+			<img id="image" src="https://www.johntaylorgatto.com/wp-content/uploads/2015/01/Gatto11024x576.jpg">
+			<p id="img-caption"><em>It's just impossible for education and schooling to be the same thing</em>. <strong>-John Taylor Gatto</strong></p>
+		</div>
+
+		<section>
+			<h2>Biography</h2>
+			<ul>
+				<li></li>
+			</ul>
+		</section>
+
+		<section id="middle-content">
+			<div>
+				<h2>Main Thesis</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<ul>
+					<li></li>
+				</ul>
+			</div>
+			<div>
+				<img id="seconday-img" src="http://musicians4freedom.com/wp-content/uploads/2012/09/jtg-slider-03-500x187.jpg">
+			</div>
+		</section>
+
+		<section>
+			<h2>Bibliography</h2>
+			<ul>
+				<li></li>
+			</ul>
+		</section>
+
+		<section id="tribute-info">
+			<p>You can learn more about John Taylor Gatto by visiting his <a id="tribute-link" class="link" target="_blank" href="https://en.wikipedia.org/wiki/John_Taylor_Gatto">Wikipedia Page</a> or his personal <a class="link" href="https://www.johntaylorgatto.com/">Website</a></p>
+		</section>
+
+		<footer>
+			<p>Written, coded and maintained by <a target="_blank" href="#"></a>Anubis Lockward</p>
+		</footer>
+	</div>
+	<script type="text/javascript" src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
