@@ -48,7 +48,7 @@ h1, h2, strong { color: #333; }
 main {
 	grid-column: 1 / span 5;
 	display: grid;
-	grid-template-columns: repeat(4, 25%);
+	grid-template-columns: repeat(2, 40%);
 	grid-auto-rows: minmax(150px, auto);
 	grid-gap: 1em;
 	justify-content: center;
