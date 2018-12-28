@@ -1,0 +1,40 @@
+* {
+	box-sizing: border-box;
+	border: 1px solid black;
+}
+
+header {
+	text-align: center;
+}
+
+#main {
+	display: grid;
+	grid-template-columns: auto;
+	justify-items: center;	
+	align-items: center;
+}
+
+#img-div {
+	border: 1px solid #EEE;
+	border-radius: 10px;
+	text-align: center;
+}
+
+#img-div #image {
+	width: 90%;
+	max-width: 1024px;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+}
+
+#middle-content {
+	display: grid;
+	grid-template-columns: auto 1fr;
+}
+
+@media (max-width: 800px) {
+	#middle-content {
+		grid-template-columns: 1fr;
+	}
+}
