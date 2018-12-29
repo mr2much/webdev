@@ -1,6 +1,6 @@
 * {
 	box-sizing: border-box;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 }
 
 body {
@@ -26,6 +26,7 @@ h1, label, legend, p {
 	text-align: left;
 	background: #EAEBEF;
 	margin: 0 auto;
+	padding: 1em 1em;
 }
 
 #content > div {
