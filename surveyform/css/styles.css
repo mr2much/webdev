@@ -1,0 +1,60 @@
+* {
+	box-sizing: border-box;
+	border: 1px solid black;
+}
+
+body {
+	max-width: 50em;
+	margin: 0 auto;
+	font-family: "Helvetica", "Arial", sans-serif;
+	line-height: 1.5;
+	padding: 4em 1em;
+	background: #9BBEFF;
+	color: #555;
+}
+
+h1, label, legend, p {
+	color: #333;
+}
+
+#content {
+	background: #EAEBEF;
+}
+
+legend, p {
+	font-weight: 300;
+	font-size: 1.5em;
+}
+
+input[type="submit"] {
+	border: 1px solid #E81C4F;
+	background: #0AFF91;
+	border-radius: 290486px;
+	color: white;
+	font-size: 0.9em;
+	font-weight: 600;
+	letter-spacing: 0.2em;
+	padding: 1em 2em;
+	text-transform: uppercase;
+	text-decoration: none;
+	transition: none 200ms ease-out;
+	transition-property: color, background;
+}
+
+input[type="submit"]:hover {
+	background: #1CAAFF;
+	color: white;
+}
+
+#customer-info, #reference {
+	padding: 1em 1em;
+}
+
+#customer-info > div {
+	display: flex;
+	justify-content: space-between;
+}
+
+#customer-info > div > input {
+	width: 60%;
+}
