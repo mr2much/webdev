@@ -11,6 +11,11 @@ body {
 	padding: 4em 1em;
 	background: #9BBEFF;
 	color: #555;
+	text-align: center;
+}
+
+h1 {
+	text-align: center;
 }
 
 h1, label, legend, p {
@@ -18,7 +23,13 @@ h1, label, legend, p {
 }
 
 #content {
+	text-align: left;
 	background: #EAEBEF;
+	margin: 0 auto;
+}
+
+#content > div {
+	padding: 0 1em;
 }
 
 legend, p {
@@ -56,5 +67,45 @@ input[type="submit"]:hover {
 }
 
 #customer-info > div > input {
+	width: 60%;
+}
+
+#comment-section {
+	display: flex;
+	justify-content: space-between;
+	padding: 1em 1em;
+}
+
+#comment-section > textarea {
+	width: 50%;
+}
+
+#comment-section > label {
+	align-self: center;
+}
+
+.set-container > fieldset {
+	width: 70%;
+	margin: 5px auto;
+}
+
+#button-container {
+	text-align: center;
+}
+
+#reference {
+	display: grid;
+	grid-template-columns: 1fr 40%;
+	align-content: center;
+	justify-content: center;
+	grid-gap: 2em;
+}
+
+#reference > label {
+	text-align: right;
+}
+
+#reference > select {
+	justify-self: start;
 	width: 60%;
 }
