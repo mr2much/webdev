@@ -42,24 +42,46 @@ legend, p {
 	font-size: 1.5em;
 }
 
+#name-label, #email-label, #number-label {
+	width: 30%;
+	margin-right: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+	display: block;
+	margin: 0 auto;
+	width: 60%;
+	padding: 20px 20px 20px 20px;
+}
+
 input[type="submit"] {
-	border: 1px solid #E81C4F;
+	border: 1px solid #eee;
 	background: #0AFF91;
 	border-radius: 290486px;
+	width: 60%;
 	color: white;
-	font-size: 0.9em;
+	font-size: 1.5rem;
 	font-weight: 600;
 	letter-spacing: 0.2em;
-	padding: 1em 2em;
+	margin: 1.5em 0;
+	padding: 1em;
 	text-transform: uppercase;
 	text-decoration: none;
 	transition: none 200ms ease-out;
 	transition-property: color, background;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
 input[type="submit"]:hover {
 	background: #1CAAFF;
 	color: white;
+}
+
+input[type="submit"]:focus {
+	outline: none;
 }
 
 #customer-info, #reference {
