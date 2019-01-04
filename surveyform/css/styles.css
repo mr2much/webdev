@@ -31,6 +31,7 @@ h1, label, legend, p {
 	background: #EAEBEF;
 	margin: 0 auto;
 	padding: 1em 1em;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 #content > div {
@@ -88,9 +89,9 @@ input[type="submit"]:focus {
 	padding: 1em 1em;
 }
 
-#customer-info > div {
+#customer-info div {
 	display: flex;
-	justify-content: space-between;
+	align-items: center;
 }
 
 #customer-info > div > input {
@@ -154,4 +155,39 @@ input[type="submit"]:focus {
 #reference > select {
 	justify-self: start;
 	width: 60%;
+}
+
+@media (max-width: 800px) {
+	#customer-info {
+		display: flex;
+		flex-direction: column;
+	}
+
+	#customer-info div {
+		grid-template-columns: 1fr;
+		justify-items: center;
+	}
+
+	#reference {
+		grid-template-columns: 1fr;;
+	}
+
+	#reference label {
+		text-align: left;
+	}
+
+	#reference select {
+		justify-self: center;
+	}
+
+	#comment-section {
+		display: grid;
+		text-decoration: column;
+		justify-items: center;
+	}
+
+	#comment-section textarea {
+		width: 100%;
+		height: 150px;
+	}
 }
