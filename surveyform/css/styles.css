@@ -168,11 +168,8 @@ input[type="submit"]:focus {
 	}
 
 	#reference {
-		grid-template-columns: 1fr;;
-	}
-
-	#reference label {
-		text-align: left;
+		grid-template-columns: 1fr;
+		justify-items: center;
 	}
 
 	#reference select {
@@ -182,7 +179,7 @@ input[type="submit"]:focus {
 	#comment-section {
 		display: grid;
 		text-decoration: column;
-		justify-items: center;
+		justify-content: center;
 	}
 
 	#comment-section textarea {
