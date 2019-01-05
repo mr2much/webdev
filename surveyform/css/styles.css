@@ -158,14 +158,13 @@ input[type="submit"]:focus {
 }
 
 @media (max-width: 800px) {
-	#customer-info {
-		display: flex;
+	#customer-info div {
 		flex-direction: column;
+		align-items: flex-start;
 	}
 
-	#customer-info div {
-		grid-template-columns: 1fr;
-		justify-items: center;
+	#customer-info div input {
+		width: 100%;
 	}
 
 	#reference {
