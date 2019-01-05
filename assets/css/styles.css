@@ -94,6 +94,14 @@ main > div {
 	margin-left: 20px;
 }
 
+#social-media a {
+	transition: all 0.2s ease-in-out;
+}
+
+#social-media a:hover {
+	margin: 0 15px 0 15px;
+}
+
 footer {
 	border-top: 2px solid #b7b7b7;
 	text-align: center;
