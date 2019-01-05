@@ -81,3 +81,20 @@ main > div {
 .grow:hover {
 	transform: scale(1.05);
 }
+
+#social-media {
+	list-style-type: none;
+	text-align: center;
+	border-bottom: 2px solid #C9C9C9;
+	padding-bottom: 15px;
+}
+
+#social-media li {
+	display: inline;
+	margin-left: 20px;
+}
+
+footer {
+	border-top: 2px solid #b7b7b7;
+	text-align: center;
+}
