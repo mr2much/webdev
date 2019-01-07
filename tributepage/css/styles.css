@@ -6,10 +6,12 @@
 body {
 	margin: 0 auto;
 	max-width: 60em;
-	font-family: "Quattrocento Sans", "Helvetica", "Arial", sans-serif;
+	font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
 	/*line-height: 1.5;*/
 	padding: 4em 1em;
 	color: #566b78;
+	text-rendering: optimizeLegibility;
+	font-feature-settings: "kern" 1;
 }
 
 .fluid-type {
@@ -40,10 +42,15 @@ header {
 	font-size: 2.3em;
 	font-weight: 300;
 	vertical-align: text-bottom;
-	padding: 2vw 2em;
-	line-height: 1.2;
+	padding: 5vw 2em;
+	line-height: 1.0;
 	vertical-align: middle;
 	text-align: center;
+}
+
+header h1 {
+	font-variant: small-caps;
+	letter-spacing: 0.08em;
 }
 
 section {
