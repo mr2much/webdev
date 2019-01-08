@@ -5,13 +5,15 @@
 
 body {
 	margin: 0 auto;
-	max-width: 60em;
+	max-width: 55em;
 	font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
 	/*line-height: 1.5;*/
 	padding: 4em 1em;
 	color: #566b78;
 	text-rendering: optimizeLegibility;
 	font-feature-settings: "kern" 1;
+	text-align: justify;
+	hyphens: auto;
 }
 
 .fluid-type {
@@ -79,7 +81,7 @@ a {
 }
 
 ul {
-	list-style-type: none;
+	/*list-style-type: none;*/
 }
 
 blockquote {
@@ -97,6 +99,8 @@ blockquote > p {
 	border: 1px solid #EEE;
 	border-radius: 10px;
 	text-align: center;
+	padding: 0.4em;
+	margin-bottom: 0.4em;
 }
 
 #img-div #image {
@@ -112,6 +116,7 @@ blockquote > p {
 	grid-template-columns: auto 1fr;
 	align-items: center;
 	justify-items: center;
+	grid-gap: 0.5em;
 }
 
 #secondary-img {
@@ -129,25 +134,17 @@ blockquote > p {
 
 /*TODO: Quitar los comentarios de esta parte y tratar de implementar el fluid-type pero para los h1 y h2.*/
 /*TODO: Probar que sucede si remuevo la clase .fluid-type y molten-leading y pongo los estilos directamente en el body*/
-/*@media screen and (min-width: 20em) {
-	.fluid-type {
-		font-size: calc(0.875em + 0.5 * ((100vw - 20em) / 60));
-	}
-
+@media screen and (min-width: 20em) {
 	.molten-leading {
 		line-height: calc(1.25em + 0.6 * ((100vw - 20em) / 60));
 	}
 }
 
 @media screen and (min-width: 80em) {
-	.fluid-type {
-		font-size: 1.375em;
-	}
-
 	.molten-leading {
 		line-height: 1.35em;
 	}
-}*/
+}
 
 @media screen and (min-width: 320px) {
 	.fluid-type {
@@ -164,7 +161,6 @@ blockquote > p {
 @media (max-width: 800px) {
 	body {
 		padding: 1em 1em;
-		/*line-height: 1.2;*/
 	}
 
 	#main {
