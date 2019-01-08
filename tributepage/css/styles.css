@@ -164,18 +164,28 @@ blockquote > p {
 	}
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 720px) {
 	#main {
-		grid-gap: 1em;
 		grid-template-rows: 45vmin 1fr 3%;
 	}
+
+	#middle-content {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	/*#main {
+		grid-gap: 1em;
+		grid-template-rows: 45vmin 1fr 3%;
+	}*/
 
 	h2 {
 		margin-top: 0;
 		padding-top: 0;
 	}
 
-	#middle-content {
+	/*#middle-content {
 		grid-template-columns: 1fr;
-	}
+	}*/
 }
