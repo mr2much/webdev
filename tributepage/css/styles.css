@@ -1,13 +1,30 @@
+/*Made text more fluid by following the advice of the following people:
+
+Geoff Graham: https://css-tricks.com/snippets/css/fluid-typography/
+Tim Brown: https://blog.typekit.com/2016/08/17/flexible-typography-with-css-locks/
+Mike Riethmuller: https://www.madebymike.com.au/writing/precise-control-responsive-typography/
+				  https://www.madebymike.com.au/writing/fluid-type-calc-examples/
+Richard Rutter: https://24ways.org/2016/responsive-display-text/
+
+Added Molten leading:
+Tim Brown: https://tbrown.org/notes/2012/02/03/molten-leading-or-fluid-line-height/
+		   https://tbrown.org/notes/2012/02/03/molten-leading-or-fluid-line-height/
+
+Made the text look better by following Matthew Butterick's advice: https://practicaltypography.com/
+*/
 * {
 	box-sizing: border-box;
 	/*border: 1px solid black;*/
 }
 
+html {
+	font-size: 15px;
+}
+
 body {
 	margin: 0 auto;
-	max-width: 55em;
+	max-width: 50em;
 	font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
-	/*line-height: 1.5;*/
 	padding: 4em 1em;
 	color: #566b78;
 	text-rendering: optimizeLegibility;
@@ -16,17 +33,13 @@ body {
 	hyphens: auto;
 }
 
-.fluid-type {
-	font-size: 15px;
-}
-
 .molten-leading {
 	line-height: 1.45em;
 }
 
 #main {
 	display: grid;
-	grid-template-rows: 20% 1fr 5%;
+	grid-template-rows: 25vw 1fr 5%;
 	grid-template-areas: "header"
 						 "main"
 						 "footer";
@@ -41,18 +54,18 @@ header {
 	grid-area: header;
 	background: #eee;
 	text-align: center;
-	font-size: 2.3em;
 	font-weight: 300;
-	vertical-align: text-bottom;
-	padding: 5vw 2em;
+	align-self: center;
+	padding: 8vmin 2rem;
 	line-height: 1.0;
-	vertical-align: middle;
 	text-align: center;
 }
 
 header h1 {
 	font-variant: small-caps;
 	letter-spacing: 0.08em;
+	font-size: 5rem;
+	font-size: calc(24px + (58 - 24) * (100vw -  320px) / (1366 - 320));
 }
 
 section {
@@ -67,8 +80,7 @@ footer {
 }
 
 h2 {
-	margin-top: 1em;
-	padding-top: 1em;
+	font-size: calc(0.5rem + 2.5vmin);
 }
 
 h1, h2, strong {
@@ -80,10 +92,6 @@ a {
 	color: #e81c4f;
 }
 
-ul {
-	/*list-style-type: none;*/
-}
-
 blockquote {
 	border-left: 4px solid #ccc;
 	border-radius: 4px;
@@ -92,7 +100,6 @@ blockquote {
 blockquote > p {
 	margin: 0;
 	padding: 0;
-	/*line-height: 1.2;*/
 }
 
 #img-div {
@@ -147,22 +154,18 @@ blockquote > p {
 }
 
 @media screen and (min-width: 320px) {
-	.fluid-type {
-		font-size: calc(15px + 8 * ((100vw - 320px) / 960));
+	html {
+		font-size: calc(15px + 8 * ((100vw - 320px) / 680));
 	}
 }
 
 @media screen and (min-width: 1280px) {
-	.fluid-type {
-		font-size: 18px;
+	html {
+		font-size: 22px;
 	}
 }
 
 @media (max-width: 800px) {
-	body {
-		padding: 1em 1em;
-	}
-
 	#main {
 		grid-gap: 1em;
 		grid-template-rows: 10% 1fr 3%;
@@ -171,10 +174,6 @@ blockquote > p {
 	h2 {
 		margin-top: 0;
 		padding-top: 0;
-	}
-
-	header {
-		font-size: 1.1em;
 	}
 
 	#middle-content {
