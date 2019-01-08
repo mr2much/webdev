@@ -164,7 +164,7 @@ blockquote > p {
 	}
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 800px) {
 	#main {
 		grid-gap: 1em;
 		grid-template-rows: 45vmin 1fr 3%;
