@@ -135,13 +135,8 @@ blockquote > p {
 	grid-gap: 0.5em;
 }
 
-#secondary-img {
-	display: flex;
-}
-
 #secondary-img > img {
 	max-width: 22em;
-	max-height: 100%;
 	width: auto;
 	height: auto;
 	margin: 0 auto;
@@ -186,9 +181,9 @@ blockquote > p {
 
 	#middle-content {
 		grid-template-columns: 1fr;
-		align-items: center;
+/*		align-items: center;
 		justify-items: center;
-		justify-content: center;
-		align-content: center;
+*//*		justify-content: center;
+		align-content: center;*/
 	}
 }
