@@ -11,6 +11,10 @@
 	width: device-width;
 }
 
+html {
+	font-size: 15px;
+}
+
 body {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
