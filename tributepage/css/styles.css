@@ -181,9 +181,5 @@ blockquote > p {
 
 	#middle-content {
 		grid-template-columns: 1fr;
-/*		align-items: center;
-		justify-items: center;
-*//*		justify-content: center;
-		align-content: center;*/
 	}
 }
