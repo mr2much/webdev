@@ -1,0 +1,28 @@
+* {
+	box-sizing: border-box;
+}
+
+@viewport {
+	width: device-width;
+	zoom: 1.0;
+}
+
+@-ms-viewport {
+	width: device-width;
+}
+
+html {
+	font-size: 15px;
+}
+
+body {
+	font-family: "Helvetica", "Arial", sans-serif;
+	font-size: calc(15px * (25 - 15) * ((100vw - 320px) / (1200 - 320)));
+	line-height: calc(1.2em + (1.45 - 1.2) * ((100vw - 21em) / (80 - 21)));
+	text-rendering: optimizeLegibility;
+	font-feature-settings: "kern" 1;
+}
+
+/*nav-bar should always be on top*/
+/*Should have at least one media query*/
+/*Should utilice flex box*/
