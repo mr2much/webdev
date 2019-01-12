@@ -1,4 +1,6 @@
 * {
+	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
 }
 
@@ -16,9 +18,12 @@ html {
 }
 
 body {
+	/*flex-direction: column;*/
+	margin: 3em auto;
+	max-width: 70em;
 	font-family: "Helvetica", "Arial", sans-serif;
 	font-size: calc(15px * (25 - 15) * ((100vw - 320px) / (1200 - 320)));
-	line-height: calc(1.2em + (1.45 - 1.2) * ((100vw - 21em) / (80 - 21)));
+	line-height: calc(1.3em + (1.45 - 1.3) * ((100vw - 21em) / (70 - 21)));
 	text-rendering: optimizeLegibility;
 	font-feature-settings: "kern" 1;
 }
@@ -26,3 +31,73 @@ body {
 /*nav-bar should always be on top*/
 /*Should have at least one media query*/
 /*Should utilice flex box*/
+section {
+	margin: 0 1em;
+}
+
+section div *:not(h2) {
+	padding: 0.3vw 0;
+	margin-left: 1.8vw;
+}
+
+section div h2 {
+	padding: 1.3em 0;
+}
+
+#header {
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	float: left;
+	padding: 0;
+	margin: 0 auto;
+	width: 100%;
+	background: #ccc;
+	height: 3em;
+}
+
+#header #logo {
+	float: left;
+	margin: auto;
+}
+
+#logo img {
+	display: block;
+	width: 10em;
+}
+
+#nav-bar {
+	align-self: center;
+}
+
+#nav-bar a {
+	display: inline-block;
+	float: left;
+	padding: 0 1.6em;
+}
+
+/*#header #nav-bar {
+	float: right;
+}*/
+
+#content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#instructions {
+	align-self: center;
+}
+
+#instructions iframe {
+	width: calc(30em + (40 - 30) * ((100vw - 21em) / (70 - 21)));
+	height: 22em;
+}
+
+#detail-desc {
+	margin: 0;
+	padding: 0;
+	font-weight: bolder;
+}
