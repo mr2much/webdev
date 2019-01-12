@@ -1,9 +1,3 @@
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
 @viewport {
 	width: device-width;
 	zoom: 1.0;
@@ -11,6 +5,12 @@
 
 @-ms-viewport {
 	width: device-width;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 html {
@@ -60,11 +60,17 @@ section div h2 {
 #header #logo {
 	float: left;
 	margin: auto;
+	/*padding-top: 0;
+	padding-bottom: 0;*/
+	margin-top: 0;
+	margin-bottom: 0;
+	border-right: 3px solid black;
 }
 
 #logo img {
 	display: block;
 	width: 10em;
+	padding: 0.5em 1em 0.5em 0;
 }
 
 #nav-bar {
@@ -77,12 +83,9 @@ section div h2 {
 	padding: 0 1.6em;
 }
 
-/*#header #nav-bar {
-	float: right;
-}*/
-
 #content {
 	display: flex;
+	display: -webkit-flex;
 	flex-direction: column;
 	justify-content: center;
 }
@@ -102,22 +105,12 @@ section div h2 {
 	font-weight: bolder;
 }
 
+/*This fixes an issue with the navbar covering the sections when you jump to them using the anchor tags: 
+https://github.com/twbs/bootstrap/issues/1768*/
 section > [id]:before {
 	display: block;
 	content: " ";
 	margin-top: -2.6em;
-	height: 3em;
+	height: 1.5em;
 	visibility: hidden;
 }
-
-/*
-section div .anchor {
-	display: block;
-	position: absolute;
-	width: 0;
-	height: 0;
-	z-index: -1;
-	top: -40px;
-	left: 0;
-	visibility: hidden;
-}*/
