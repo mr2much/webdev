@@ -58,10 +58,8 @@ section div h2 {
 }
 
 #header #logo {
-	float: left;
+	/*float: left;*/
 	margin: auto;
-	/*padding-top: 0;
-	padding-bottom: 0;*/
 	margin-top: 0;
 	margin-bottom: 0;
 	border-right: 3px solid black;
@@ -75,12 +73,25 @@ section div h2 {
 
 #nav-bar {
 	align-self: center;
+	margin: 0 auto;
 }
 
 #nav-bar a {
 	display: inline-block;
 	float: left;
-	padding: 0 1.6em;
+	padding: 0.25em 0.5em;
+	margin: 0 0.6em;
+	text-decoration: none;
+	border-radius: 0.75em;
+	box-shadow: 0.1em -0.1em 0.1em rgba(0, 0, 0, 0.2),
+				inset 0 0 0 0.15em rgba(0, 0, 0, 0.4);
+	transition: 0.3s all ease-in-out;
+}
+
+#nav-bar a:hover {
+	background-color: rgba(251, 93, 0, 0.8);
+	transform: scale(1.08);
+	color: #fff;
 }
 
 #content {
@@ -113,4 +124,45 @@ section > [id]:before {
 	margin-top: -2.6em;
 	height: 1.5em;
 	visibility: hidden;
+}
+
+@media screen and (max-width: 44em) {
+	body {
+		margin: 0 auto;
+	}
+
+	#header {
+		display: block;
+		position: relative;
+		left: 0;
+		right: 0;
+		margin: 0;
+		padding: 0;
+		height: auto;
+	}
+
+	#header #logo {
+		width: 100%;
+		border-right: none;
+		border-bottom: 3px solid black;
+	}
+
+	#logo img {
+		margin: 0 auto;
+	}
+
+	#nav-bar {
+		position: relative;
+		text-align: center;
+		width: 80%;
+	}
+
+	#nav-bar a {
+		width: 100%;
+		margin: 0.3em 0;
+	}
+
+	#content {
+		clear: both;
+	}
 }
