@@ -32,11 +32,11 @@ Remember to use the Read-Search-Ask method if you get stuck. -->
 		<nav id="nav-bar">
 			<a class="nav-link" href="#product-desc">Product Description</a>
 			<a class="nav-link" href="#item-feats">Item Features</a>
-			<a class="nav-link" href="#shipping">Shipping and Handling</a>
-			<a class="nav-link" href="#additional-details">Additional Details</a>
-			<a class="nav-link" href="#payments">Payments</a>
+			<a class="nav-link" href="#shipping">Shipping and Handling</a>			
+			<a class="nav-link" href="#instructions">How it Works</a>
 			<a class="nav-link" href="#returns">Returns</a>
 			<a class="nav-link" href="#order-changes">Order Cancellations/Address Changes</a>
+			<a class="nav-link" href="#offers">Our Offers</a>
 		</nav>
 	</header>
 	
@@ -45,6 +45,18 @@ Remember to use the Read-Search-Ask method if you get stuck. -->
 			<div id="product-desc">
 				<h2>Product Description</h2>
 				<p>This Hybrid phone case for Motorola droid mini offers impeccable protection for your smart phone. It consists of two pieces: Silicon + Hard case which overlap to create a tight fit for full protection. It also has a built in media Kickstand so you can watch a video or a movie without holding your phone the whole time.</p>
+			</div>
+
+			<div id="thumbnails">
+				<div>
+					<img class="thumbnail" src="../res/reikocoverback.jpg">
+				</div>
+				<div>
+					<img class="thumbnail" src="../res/reikofront.jpg">
+				</div>
+				<div>
+					<img class="thumbnail" src="../res/reikoside.jpg">
+				</div>
 			</div>
 		</section>
 		&nbsp;
@@ -72,14 +84,6 @@ Remember to use the Read-Search-Ask method if you get stuck. -->
 					<li>We do not combine shipping.</li>
 					<li>Once we have confirmed that your order was picked up by the shipping carrier, we will update the tracking information through eBay.</li>
 					<li>Once we have confirmed that your order was picked up by the shipping carrier, we will update the tracking information through eBay. If you don't receive a tracking number after 48 hours of ordering or if you have any concerns about your order before or after delivery you can contact us through eBay's messaging system.</li>
-				</ul>
-			</div>
-		</section>
-		&nbsp;
-		<section>
-			<div id="additional-details">
-				<h2>Additional Details</h2>
-				<ul>
 					<li><span id="detail-desc">Product Dimensions:</span> 0.1" x 2.6" x 4.7"</li>
 					<li><span id="detail-desc">Shipping Weight:</span> 1.6 oz</li>
 					<li><span id="detail-desc">ASIN:</span> B00HHDNLEA</li>
@@ -89,9 +93,9 @@ Remember to use the Read-Search-Ask method if you get stuck. -->
 		</section>
 		&nbsp;
 		<section>
-			<div id="payments">
-				<h2>Payments</h2>
-				<p>We only accept payments via Paypal.</p>
+			<div id="instructions">
+				<h2>How it Works</h2>
+				<iframe id="video" src="https://www.youtube.com/embed/M9w7pWjDHC8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
 		</section>
 		&nbsp;
@@ -121,10 +125,10 @@ Remember to use the Read-Search-Ask method if you get stuck. -->
 			</div>
 		</section>
 		&nbsp;
-		<section id="instructions">
+		<!-- <section id="instructions">
 			<iframe id="video" src="https://www.youtube.com/embed/M9w7pWjDHC8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</section>
-		&nbsp;
+		&nbsp; -->
 		<section>
 			<form id="form" action="https://www.freecodecamp.com/email-submit" method="post">
 				<input id="email" type="email" name="email" placeholder="email@domain">
@@ -132,13 +136,59 @@ Remember to use the Read-Search-Ask method if you get stuck. -->
 				<input id="submit" type="submit" name="submit">
 			</form>
 		</section>
+		&nbsp;
+		<section id="offers">
+			<div id="one-item">
+				<div class="offer-desc">
+					One Case
+				</div>
+				<h2>$10.00</h2>
+				<ul>
+					<li>jibberish</li>
+					<li>jibberish</li>
+					<li>jibberish</li>
+					<li>jibberish</li>
+				</ul>
+				<button class="btn">I Want This</button>
+			</div>
 
-		<footer>
+			<div id="three-items">
+				<div class="offer-desc">
+					Three Cases
+				</div>
+				<h2>$25.00</h2>
+				<ul>
+					<li>One Black</li>
+					<li>One Red</li>
+					<li>One Pink</li>
+					<li>jibberish</li>
+				</ul>
+				<button class="btn">I Want This</button>
+			</div>
+
+			<div id="five-items">
+				<div class="offer-desc">
+					Five Cases
+				</div>
+				<h2>$42.00</h2>
+				<ul>
+					<li>One Blue</li>
+					<li>One Black</li>
+					<li>One Pink</li>
+					<li>One Red</li>
+				</ul>
+				<button class="btn">I Want This</button>
+			</div>
+		</section>
+	</div>
+	&nbsp;
+	<footer id="footer">
+		<div class="container">
 			<p>If I write that this is copywritten, does it really mean something?</p>
 			&nbsp;
 			<p><strong>By:</strong> Anubis Lockward, 2019</p>
-		</footer>
-	</div>
+		</div>
+	</footer>
 
 	<script type="text/javascript" src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </body>
