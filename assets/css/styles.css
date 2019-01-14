@@ -97,6 +97,14 @@ section h1 {
 	}
 }
 
+a {
+	text-decoration: none;
+}
+
+a:visited {
+	color: #555;
+}
+
 .grow:hover {
 	transform: scale(1.05);
 }
