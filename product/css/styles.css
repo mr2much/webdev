@@ -21,6 +21,7 @@ html {
 
 body {
 	margin: 3em auto;
+	padding-top: 1em;
 	max-width: 70em;
 	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 	font-size: calc(15px * (25 - 15) * ((100vw - 320px) / (1200 - 320)));
@@ -106,7 +107,7 @@ a, .btn, [type="submit"] {
 	border-radius: 0.75em;
 }
 
-a:hover, #offers .btn:hover {
+a:hover, #offers .btn:hover, [type="submit"]:hover {
 	background: #FFE0B2 !important;
 	color: #FF5722 !important;
 	transform: scale(1.08);
@@ -173,22 +174,33 @@ a:hover, #offers .btn:hover {
 #cancel-order form {
 	padding: 0.33em;
 	margin: 0 auto;
+	text-align: center;
+}
+
+#cancel-order > form > div {
+	margin: 0;
+	padding: 0;
 }
 
 label {
 	display: block;
 	padding: 0;
 	margin: 0;
-	margin-bottom: 0.3em;
 	text-align: center;
 	font-size: 1.5em;
 	color: #FF5722;
 }
 
+input[type="submit"] {
+	margin: 0 auto;
+	font-size: 1.6em;
+}
+
 input[type="email"] {
-	width: 80%;
+	width: 100%;
 	margin: 0;
 	padding: 0.33em 0.25em;
+	margin-bottom: 0.66em;
 	font-size: 1.7em;
 }
 
@@ -241,7 +253,7 @@ input[type="email"] {
 	color: #212121;
 }
 
-#offers .btn {
+#offers .btn, [type="submit"] {
 	border: 0;
 	margin: 1em 0;
 	height: 2.66em;
@@ -285,9 +297,9 @@ section > [id]:before {
 	visibility: hidden;
 }
 
-@media screen and (min-width: 60em) and (max-width: 90em){
+@media screen and (min-width: 60em) and (max-width: 81em){
 	body {
-		padding-top: 6em;
+		padding-top: 3.5em;
 	}
 
 	#header {
@@ -303,6 +315,7 @@ section > [id]:before {
 @media screen and (max-width: 60em) {
 	body {
 		margin: 0 auto;
+		padding: 0;
 	}
 
 	#header {

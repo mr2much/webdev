@@ -132,10 +132,13 @@ Remember to use the Read-Search-Ask method if you get stuck. -->
 			<div id="cancel-order">
 				<!-- <h2>Do you want to cancel your order?</h2> -->
 				<form id="form" action="https://www.freecodecamp.com/email-submit" method="post">
-					<strong><label for="email">For order changes please enter your email:</label></strong>
-					<input id="email" type="email" name="email" placeholder="email@domain" required>
-
-					<input id="submit" type="submit" name="submit">
+					<div>
+						<strong><label for="email">For order changes please enter your email:</label></strong>
+						<input id="email" type="email" name="email" placeholder="email@domain" required>
+					</div>
+					<div>
+						<input class="uppercased" id="submit" type="submit" name="submit">
+					</div>
 				</form>
 			</div>
 		</section>
