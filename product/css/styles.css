@@ -24,7 +24,7 @@ body {
 	padding-top: 1em;
 	max-width: 70em;
 	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-	font-size: calc(15px * (25 - 15) * ((100vw - 320px) / (1200 - 320)));
+	font-size: calc(15px + (16 - 15) * ((100vw - 320px) / (1200 - 320)));
 	line-height: calc(1.3em + (1.45 - 1.3) * ((100vw - 21em) / (70 - 21)));
 	text-rendering: optimizeLegibility;
 	font-feature-settings: "kern" 1;
@@ -102,7 +102,7 @@ a, .btn, [type="submit"] {
 	display: inline-block;
 	float: left;
 	padding: 0.33em 0.75em;
-	margin: 0 0.6em;
+	margin: 0 0.3em;
 	text-decoration: none;
 	border-radius: 0.75em;
 }
@@ -272,6 +272,7 @@ input[type="email"] {
 	padding: 0.66rem 9999rem;
 	font-size: 1.3em;
 	color: #B2DFDB;
+	height: 20vh;
 }
 
 #footer .container {
