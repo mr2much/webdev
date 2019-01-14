@@ -89,7 +89,7 @@ section div h2 {
 	margin: 0 auto;
 }
 
-a, .btn {
+a, .btn, [type="submit"] {
 	background: #B2DFDB;
 	color: #009688;
 	font-weight: 700;
@@ -160,6 +160,36 @@ a:hover, #offers .btn:hover {
 
 .thumbnail:hover {
 	transform: scale(1.8);
+}
+
+#cancel-order {
+	padding: 0;
+	margin: 0 auto;
+	margin-top: 2em;
+	width: 80%;
+	overflow: hidden;
+}
+
+#cancel-order form {
+	padding: 0.33em;
+	margin: 0 auto;
+}
+
+label {
+	display: block;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 0.3em;
+	text-align: center;
+	font-size: 1.5em;
+	color: #FF5722;
+}
+
+input[type="email"] {
+	width: 80%;
+	margin: 0;
+	padding: 0.33em 0.25em;
+	font-size: 1.7em;
 }
 
 #offers {
@@ -255,6 +285,21 @@ section > [id]:before {
 	visibility: hidden;
 }
 
+@media screen and (min-width: 60em) and (max-width: 90em){
+	body {
+		padding-top: 6em;
+	}
+
+	#header {
+		height: 6.5em;
+		padding: 0;
+	}
+
+	#nav-bar a {
+		margin-top: 0.4em;
+	}
+}
+
 @media screen and (max-width: 60em) {
 	body {
 		margin: 0 auto;
@@ -268,12 +313,11 @@ section > [id]:before {
 	#header #logo {
 		width: 100%;
 		border-right: none;
-		/*margin-bottom: 1.3em;*/
 	}
 
+/*Thanks to Tahir Yasin's answer for the way for vertically centering an image on this thread: 
+https://stackoverflow.com/questions/7273338/how-to-vertically-align-an-image-inside-a-div*/
 	#logo img {
-		/*display: block;
-		margin: 0 auto;*/
 		position: absolute;
 		top: 0;
 		bottom: 0;
