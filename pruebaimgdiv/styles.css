@@ -1,0 +1,78 @@
+/*div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #F5F7F9;
+	border: 0;
+	border-radius: 0.75em;
+	box-shadow: 0 0 5px rgba(90, 90, 90, 1);
+	transition: all 0.2s ease-in-out;
+	padding: 2px 1.5em;
+	text-align: justify;
+	height: 20em;
+	overflow: hidden;
+	background-image: url("tribute-thumb.png");
+	background-size: cover;
+	background-position: center center;
+}
+*/
+
+section h1 {
+	text-align: center;
+}
+#tribute-proj {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
+	vertical-align: middle;
+	background: #F5F7F9;
+	border: 0;
+	border-radius: 0.75em;
+	box-shadow: 0 0 5px rgba(90, 90, 90, 1);
+	transition: all 0.2s ease-in-out;
+	/*padding: 2px 1.5em;*/
+	text-align: justify;
+	height: 20em;
+	overflow: hidden;
+	background-image: url("tribute-thumb.png");
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	width: 60%;
+	margin: 0 auto;	
+}
+
+#tribute-sect {
+	/*font-size: 0;*/
+	/*line-height: 0;*/
+	align-self: stretch;
+	justify-self: stretch;
+	align-content: center;
+	justify-content: center;
+	vertical-align: middle;
+	margin: -9999px !important;
+	padding: 0 !important;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: auto;
+}
+
+#tribute-sect div {
+	flex-direction: column;
+	align-self: center;
+	justify-self: center;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	opacity: 0;
+	background: #000 !important;
+	transition: 0.8s all ease-in-out;
+}
+
+#tribute-sect div:hover {
+	opacity: 0.9;
+}
