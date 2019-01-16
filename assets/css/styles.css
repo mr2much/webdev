@@ -66,6 +66,8 @@ main {
 	justify-content: center;
 }
 
+/*TODO: make the images look like portraits inside a painting, like on Assemble
+TODO: make the images zoom-in inside the container*/
 main div {
 	display: flex;
 	align-items: center;
@@ -111,6 +113,27 @@ section p {
 	opacity: 0.9;
 }
 
+#catapp-proj {
+	background-image: url("../../assets/res/thumbnails/catapp-thumb.jpg");
+	background-size: cover;
+	background-position: 25% 17%;
+	background-repeat: no-repeat;
+}
+
+#onlinecv-proj {
+	background-image: url("../../assets/res/thumbnails/onlinecv-thumb.jpg");
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+#regform-proj {
+	background-image: url("../../assets/res/thumbnails/regform-thumb.jpg");
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
 #tribute-proj {
 	background-image: url("../../assets/res/thumbnails/tribute-thumb.png");
 	background-size: cover;
@@ -122,6 +145,20 @@ section p {
 	background-image: url("../../assets/res/thumbnails/prodland-thumb.png");
 	background-size: cover;
 	background-position: center center;
+	background-repeat: no-repeat;	
+}
+
+#survey-proj {
+	background-image: url('../../assets/res/thumbnails/survey-thumb.jpg');
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;		
+}
+
+#todolist-proj {
+	background-image: url('../../assets/res/thumbnails/todolist-thumb.jpg');
+	background-size: cover;
+	background-position: 25% 17%;
 	background-repeat: no-repeat;	
 }
 
