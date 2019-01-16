@@ -142,7 +142,7 @@ section p {
 }
 
 #prodland-proj {
-	background-image: url("/assets/res/thumbnails/prodland-thumb.png");
+	background-image: url("../../assets/res/thumbnails/prodland-thumb.png");
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;	
