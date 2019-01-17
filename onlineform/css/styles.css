@@ -42,7 +42,7 @@ header {
 
 h1 {
 	color: #FFFFFF;
-	font-size: 3.73em;
+	font-size: 5vw;
 }
 
 div {
@@ -351,10 +351,18 @@ label {
 	#container {
 		width: 100%;
 	}
+
+	h1 {
+		font-size: 10vw;
+	}
 }
 
 @media screen and (min-width: 48em) and (max-width: 82em) {
 	#container {
 		width: 70%;
+	}
+
+	h1 {
+		font-size: 7vw;
 	}
 }
