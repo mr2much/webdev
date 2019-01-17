@@ -3,9 +3,24 @@
 	/*border: 1px solid black;*/
 }
 
+@viewport {
+	width: device-width;
+	zoom: 1.0;
+}
+
+@-ms-viewport {
+	width: device-width;
+}
+
+html {
+	font-size: 15px;
+}
+
 body {
 	background-color: #FFFFEF;
 	font-family: "PT Sans", sans-serif;
+	font-size: calc(15px + (18 - 15) * ((100vw - 720px) / (1200 - 720)));
+	line-height: calc(1.3em + (1.45 - 1.3) * ((100vw - 22em) / (170 - 22)));
 }
 
 #container {
@@ -27,17 +42,17 @@ header {
 
 h1 {
 	color: #FFFFFF;
-	font-size: 56px;
+	font-size: 3.73em;
 }
 
 div {
-	padding: 5px;
+	padding: 0.33rem;
 }
 
 #agree {
 	display: flex;
 	justify-content: center;
-	padding-top: 15px;
+	padding-top: 0.66rem;
 	padding-bottom: 0;
 }
 
@@ -45,18 +60,18 @@ div {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 3em;
+	height: 5%;
 }
 
 ul {
 	overflow: hidden;
 	list-style-type: none;
-	padding: 15px 0px 5px 0px;
+	padding: 0.66rem 0px 0.05rem 0px;
 }
 
 li {
 	display: inline-block;
-	margin-left: 20px;
+	margin-left: 1.33rem;
 }
 
 .border-glow {
@@ -84,8 +99,8 @@ input[type="checkbox"] {
 input[type="radio"] + label,
 input[type="checkbox"] + label {
 	position: relative;
-	padding: 5px 0px 5px 35px;
-	margin-bottom: 12px;
+	padding: 0.33rem 0px 0.33rem 2.33rem;
+	margin-bottom: 0.8rem;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -99,7 +114,7 @@ input[type="radio"] + label:before {
 	content: "";
 	position: absolute;
 	left: 0; top: 0;
-	width: 25px; height: 25px;
+	width: 1.5em; height: 1.5em;
 	-webkit-transition: all 0.50s ease-in-out;
 	-moz-transition: all 0.50s ease-in-out;
 	-ms-transition: all 0.50s ease-in-out;
@@ -116,7 +131,7 @@ input[type="checkbox"] + label:before {
 	content: "";
 	position: absolute;
 	left: 0; top: -1px;
-	width: 25px; height: 25px;
+	width: 1.5em; height: 1.5em;
 	-webkit-transition: all 0.50s ease-in-out;
 	-moz-transition: all 0.50s ease-in-out;
 	-ms-transition: all 0.50s ease-in-out;
@@ -138,8 +153,8 @@ input[type="radio"] + label:after {
 	-o-transition: all .2s ease;
 	transition: all .2s ease;
 	top: 6px; left: 6px;
-	width: 12px;
-	height: 12px;
+	width: 0.8em;
+	height: 0.8em;
 	background: #003366;
 	border: solid #003366;
 	border-width: 0 5px 5px 0; /*This border helps keep the circle marker on the center of the radio button*/
@@ -157,7 +172,7 @@ input[type="checkbox"] + label:after {
 	-o-transition: all .2s ease;
 	transition: all .2s ease;
 	top: 2px; left: 10px;
-	width: 5px; height: 15px;
+	width: 0.33em; height: 1em;
 	border: solid #003366;
 	border-width: 0 5px 5px 0;
 }
@@ -207,12 +222,12 @@ input[type="checkbox"] + label:hover:before {
 input[type="submit"] {
 	display: block;
 	width: 100%;
-	margin: 20px 0;
+	margin: 1.33rem 0;
 	margin-top: 0;
 	border-radius: 15px;
 	color: white;
 	border: 0;
-	padding: 20px;
+	padding: 1.33rem;
 	font-size: 2rem;
 	background: #455A64;
 	font-weight: bold;
@@ -264,7 +279,7 @@ label {
 	display: block;
 	margin: 0 auto;
 	width: 100%;
-	padding: 20px 20px 20px 50px;
+	padding: 1.33rem 1.33rem 1.33rem 3.33rem;
 	background: #CCCCCC;
 }
 
@@ -306,7 +321,7 @@ label {
 /*Shows the requirements div below the input*/
 .focusable:invalid:focus:not(:placeholder-shown) ~ .requirements {
 	max-height: 200px;
-	padding: 0 5px 20px 5px;
+	padding: 0 0.33rem 1.33rem 0.33rem;
 	text-align: justify;
 }
 
@@ -318,7 +333,7 @@ label {
 /*Shows requirement text below the element, in case of wrong input*/
 .requirements {
 	text-align: justify;
-	padding: 0 5px 0 5px;
+	padding: 0 0.33rem 0 0.33rem;
 	color: #999;
 	max-height: 0;
 	transition: 0.28s;
@@ -330,4 +345,16 @@ label {
 /*Make elements scale when the mouse hovers over them, without affecting the rest of the layout*/
 .grow:hover {
 	transform: scale(1.01);
+}
+
+@media screen and (max-width: 48em) {
+	#container {
+		width: 100%;
+	}
+}
+
+@media screen and (min-width: 48em) and (max-width: 82em) {
+	#container {
+		width: 70%;
+	}
 }
