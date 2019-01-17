@@ -258,7 +258,7 @@ form > div {
 }
 
 label {
-	font-size: 18px;
+	/*font-size: 18px;*/
 	font-weight: bold;
 }
 
@@ -354,6 +354,15 @@ label {
 
 	h1 {
 		font-size: 9.8vw;
+	}
+
+	#genders {
+		flex-direction: column;
+	}
+
+	#genders > label {
+		margin-left: 1.5rem;
+		align-self: flex-start;
 	}
 }
 
