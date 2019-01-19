@@ -235,10 +235,6 @@ input[type="checkbox"]:checked {
 		margin: 0.3rem 0 0.3rem 0;
 	}
 
-	#items {
-		height: 45vh;
-	}
-
 	#save {
 		margin-top: 1rem;
 	}
