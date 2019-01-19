@@ -69,21 +69,22 @@ h2::after {
 	content: ' (' counter(undone-items) ')';
 }
 
+
+label:hover, input:focus + label {
+	font-weight: bold;
+}
+
 input[type="checkbox"] {
-	/*display: inline;*/
-	/*height: 53px;*/
-	/*margin: 0 0 -53px -9999px;*/
 	position: absolute;
 	left: -9999px;
 	order: 4;
-	/*outline: none;*/
 	counter-increment: undone-items;
 }
 
 input[type="checkbox"] + label {
 	display: inline;
 	position: relative;
-	padding: 0.33rem 0 0.33rem 2.33rem;
+	padding: 0.15rem 0 0.15rem 2.33rem;
 	margin-bottom: 0.8rem;
 	order: 4;
 	animation: undone 0.5s;
@@ -95,39 +96,9 @@ input[type="checkbox"] + label {
 	display: block;
 }
 
-/*label {
-	display: inline;
-	position: relative;
-	padding: 15px 0 15px 45px;
-	order: 4;
-	cursor: pointer;
-	animation: undone .5s;
-}
-
-label::before {
-	content: '[ ]';
-	display: block;
-	position: absolute;
-	top: 11px;
-	left: 10px;
-}
-
-label:hover, input:focus + label {
-	font-weight: bold;
-}
-
-input[type="checkbox"]:checked + label {
-	order: 2;
-	font-weight: bold;
-	animation: done .5s;
-}
-
-input[type="checkbox"]:checked + label::before {
-	content: '[+]';
-}*/
-
 input[type="checkbox"] + label:before {
 	content: "";
+	display: block;
 	position: absolute;
 	left: 0; top: -1px;
 	width: 1.5em; height: 1.5em;
@@ -164,6 +135,12 @@ input[type="checkbox"]:not(:checked) + label:after {
 	-ms-transform: rotate(45deg) scale(0);
 	-o-transform: rotate(45deg) scale(0);
 	transform: rotate(45deg) scale(0);
+}
+
+input[type="checkbox"]:checked + label {
+	order: 2;
+	font-weight: bold;
+	animation: done 0.5s;
 }
 
 input[type="checkbox"]:checked + label:after {
