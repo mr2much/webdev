@@ -215,4 +215,31 @@ input[type="checkbox"]:checked {
 	body {
 		width: 90%;
 	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		/*margin: 0.3rem;*/
+	}
+
+	form * {
+		width: 100%;
+	}
+
+	#main-controls {
+		display: flex;
+		flex-direction: column;
+	}
+
+	#main-controls * {
+		margin: 0.3rem 0 0.3rem 0;
+	}
+
+	#items {
+		height: 45vh;
+	}
+
+	#save {
+		margin-top: 1rem;
+	}
 }
