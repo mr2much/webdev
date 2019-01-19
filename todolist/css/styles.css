@@ -214,6 +214,6 @@ input[type="checkbox"]:checked {
 
 @media screen and (max-width: 48em) {
 	body {
-		width: 25em;
+		width: 90%;
 	}
 }
