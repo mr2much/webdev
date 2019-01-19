@@ -1,0 +1,27 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 15px;
+}
+
+body {
+	margin: 2.66rem;
+}
+
+.wrapper {
+	display: grid;
+	grid-template-columns: repeat(3, 100px);
+	grid-gap: 0.66rem;
+	background: #FFF;
+	color: #444;
+}
+
+.box {
+	background: #444;
+	color: #FFF;
+	border-radius: 0.33em;
+	padding: 1.33rem;
+	font-size: 1.5em;
+}
