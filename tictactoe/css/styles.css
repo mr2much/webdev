@@ -1,0 +1,38 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 15px;
+}
+
+body {
+	margin: 1.33rem auto;
+	padding: 0;
+}
+
+table {
+	margin: 0 auto;
+}
+
+td {
+	width: 100px;
+	height: 100px;
+}
+
+#container {
+	width: 70%;
+	margin: 0 auto;
+}
+
+.border_right {
+	border-right: 1px solid black;
+}
+
+.border_bottom {
+	border-bottom: 1px solid black;
+}
+
+.border_left {
+	border-left: 1px solid black;
+}
