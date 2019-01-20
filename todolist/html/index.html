@@ -15,8 +15,10 @@
 			<div id="main-controls">
 				<h2 for="entry">Add new list item:</h2>
 				<input id="entry" type="text" name="entry" placeholder="New item">
-				<button id="add-item">Add Item</button>
-				<button id="remove" class="button">Remove</button>
+				<div>
+					<button class="button grow" id="add-item">Add Item</button>
+					<button class="button grow" id="remove" class="button">Remove</button>
+				</div>
 			</div>
 			<div id="items">
 				<input id="item1" type="checkbox" checked>
@@ -52,7 +54,9 @@
 				<h2 class="done" aria-hidden="true">Done</h2>
 				<h2 class="undone" aria-hidden="true">Not Done</h2>		
 			</div>
-			<input id="save" class="button" type="submit" name="submit" value="Save">			
+			<div>
+				<input id="save" class="button grow" type="submit" name="submit" value="Save">			
+			</div>
 		</form>
 	</main>
 
