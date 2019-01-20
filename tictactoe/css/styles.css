@@ -25,14 +25,12 @@ td {
 	margin: 0 auto;
 }
 
-.border_right {
-	border-right: 1px solid black;
-}
-
-.border_bottom {
+.horizontal {
+	border-top: 1px solid black;
 	border-bottom: 1px solid black;
 }
 
-.border_left {
+.vertical {
 	border-left: 1px solid black;
+	border-right: 1px solid black;
 }
