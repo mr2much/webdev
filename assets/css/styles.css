@@ -162,6 +162,10 @@ section p {
 	background-repeat: no-repeat;	
 }
 
+#imggallery-proj {
+	
+}
+
 a {
 	font-size: calc(15px + (17 - 15) * ((100vw - 400px) / (800 - 400)));
 	text-decoration: none;
