@@ -11,9 +11,53 @@ body {
 	padding: 0;
 	left: 0;
 	right: 0;
+	font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI","San Francisco","Helvetica Neue", 
+		Helvetica,Ubuntu,Roboto,Noto,Arial,sans-serif;
+	font-size: calc(15px + (25 - 15) * ((100vw - 320px) / (1200px - 320px)));
+	line-height: calc(1.25em + (1.45 - 1.25) * ((100vw - 21em) / (70 - 21)));
 }
 
+p {
+	margin-bottom: -0.13rem;
+}
+
+.creditbadge {
+	background-color: black;
+	color:white;
+	text-decoration:none;
+	padding:0.27rem 0.4rem;
+	font-weight:bold;
+	display:inline-block;
+	border-radius:0.2em;
+	text-align: center;
+	vertical-align: text-bottom;
+}
+
+.unsplashlogo-pre {
+	display:inline-block;
+	padding: 0.13rem 0.2rem;
+}
+
+.unsplashlogo-svg {
+	height: 0.8rem;
+	width: auto;
+	position: relative;
+	vertical-align: middle;
+	top:-2px;
+	fill:white;
+}
+
+.author-name {
+	display:inline-block;
+	padding:0.13rem 0.2rem;
+}
+
+/*Thanks to Josh Crozier's answer on this question: 
+https://stackoverflow.com/questions/526035/how-can-i-position-my-div-at-the-bottom-of-its-container*/
 .image {
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
 	width: 30%;
 	height: 300px;
 	margin: 1.66%;
@@ -23,37 +67,37 @@ body {
 }
 
 .image1 {
-	background-image: url("../res/hossam-m-omar-1308692-unsplash.jpg");
+	background-image: url("../res/thumb/thumb-hossam-m-omar-1308692-unsplash.jpg");
 }
 
 .image2 {
-	background-image: url("../res/elias-arnar-1309173-unsplash.jpg");
+	background-image: url("../res/thumb/thumb-elias-arnar-1309173-unsplash.jpg");
 }
 
 .image3 {
-	background-image: url("../res/phil-botha-1308059-unsplash.jpg");
+	background-image: url("../res/thumb/thumb-phil-botha-1308059-unsplash.jpg");
 }
 
 .image4 {
-	background-image: url("../res/karl-s-1308985-unsplash.jpg");
+	background-image: url("../res/thumb/thumb-karl-s-1308985-unsplash.jpg");
 }
 
 .image5 {
-	background-image: url("../res/ian-keefe-1309035-unsplash.jpg");
+	background-image: url("../res/thumb/thumb-ian-keefe-1309035-unsplash.jpg");
 }
 
 .image6 {
-	background-image: url("../res/eberhard-grossgasteiger-1308674-unsplash.jpg");
+	background-image: url("../res/thumb/thumb-eberhard-grossgasteiger-1308674-unsplash.jpg");
 }
 
 .image7 {
-	background-image: url("../res/gleb-makarov-1309023-unsplash.jpg");
+	background-image: url("../res/thumb/thumb-gleb-makarov-1309023-unsplash.jpg");
 }
 
 .image8 {
-	background-image: url("../res/jose-fontano-1310027-unsplash.jpg");
+	background-image: url("../res/thumb/thumb-jose-fontano-1310027-unsplash.jpg");
 }
 
 .image9 {
-	background-image: url("../res/sebastian-pociecha-1309675-unsplash.jpg");
+	background-image: url("../res/thumb/thumb-sebastian-pociecha-1309675-unsplash.jpg");
 }
