@@ -40,6 +40,7 @@ p {
 #container {
 	margin: 0 auto;
 }
+
 .fullimage {
 	width: 100%;
 	height: 100%;
@@ -136,4 +137,39 @@ https://stackoverflow.com/questions/526035/how-can-i-position-my-div-at-the-bott
 
 .image9 {
 	background-image: url("../res/thumb/thumb-sebastian-pociecha-1309675-unsplash.jpg");
+}
+
+@media screen and (min-width: 46em) and (max-width: 80em) {
+	/*#container {
+		display: flex;
+		flex-direction: column;
+	}*/
+
+	.outer {
+		width: 45%;
+		margin: 2.5%;
+	}
+}
+
+@media screen and (max-width: 46em) {
+	#container {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.outer {
+		width: 80%;
+		margin: 1.33rem auto;
+	}
+
+	header {
+		margin: 2rem;
+	}
+
+	header h1 {
+		text-align: center;
+		font-size: 6vw;
+		margin: 0;
+		width: 100%;
+	}
 }
