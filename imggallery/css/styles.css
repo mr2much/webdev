@@ -34,11 +34,12 @@ header h1 {
 }
 
 p {
-	margin-bottom: -0.13rem;
+	margin: 0;
 }
 
 #container {
 	margin: 0 auto;
+	/*padding: 0;*/
 }
 
 .fullimage {
@@ -62,7 +63,8 @@ p {
 }
 
 .creditbadge {
-	background-color: black;
+	float: left;
+	background-color: rgba(20, 20, 20, 0.5);
 	color:white;
 	text-decoration:none;
 	padding:0.27rem 0.4rem;
@@ -90,7 +92,10 @@ p {
 
 .author-name {
 	display:inline-block;
-	padding:0.13rem 0.2rem;
+	font-size: 1.1em;
+	font-weight: 400;
+	padding:0.13rem 0.6rem;
+	letter-spacing: 0.10em;
 }
 
 /*Thanks to Josh Crozier's answer on this question: 
