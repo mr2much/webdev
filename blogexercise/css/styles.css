@@ -45,7 +45,7 @@ header h2 {
 	display: inline;
 	text-transform: capitalize;
 	font-size: calc(0.5rem + 10vmin);
-	line-height: 1;
+	line-height: 0.9em;
 }
 
 p {
