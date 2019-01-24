@@ -2,44 +2,54 @@
 	box-sizing: border-box;
 }
 
+@viewport {
+	width: device-width;
+	zoom: 1.0;
+}
+
+@-ms-viewport {
+	width: device-width;
+}
+
 html {
 	font-size: 15px;
 }
 
 body {
 	margin: 0;
-	padding: 0;
+	padding: 1rem;
 	left: 0;
 	right: 0;
 	font-family: 'Aleo', Helvetica, sans-serif;
-	font-size: calc(15px + (25 - 15) * ((100vw - 320px) / (1200px - 320px)));
-	line-height: calc(1.45em + (1.45 - 1.25) * ((100vw - 22em) / (90 - 45)));
+	font-size: calc(15px + (25 - 15) * ((100vw - 320px) / (1920 - 320)));
+	line-height: calc(1.3em + (1.45 - 1.3) * ((100vw - 22em) / (40 - 21)));
 	text-rendering: optimizeLegibility;
 	font-feature-settings: "kern" 1;
 }
 
-header h2 {
-	font-size: calc(0.4rem + 1.3vw);
-	font-weight: 400;
-	padding: 0;
-	margin: 0;
+header {
+	padding-top: 0.33rem;
+}
+
+header h3 {
+	font-size: calc(0.5rem + 2vmin);
+	padding: 0.33rem 0;
+	font-weight: 300;
 	text-transform: uppercase;
-	letter-spacing: 0.12em;
+	letter-spacing: 0.10em;
 	color: #09AAFF;
 }
 
-header h1 {
+header h2 {
+	padding: 1rem auto;
+	display: inline;
 	text-transform: capitalize;
-	font-size: calc(0.4rem + 5vw);
+	font-size: calc(0.5rem + 10vmin);
+	line-height: 1;
 }
 
 p {
-	margin: 0;
-	padding: 0.66rem;
-}
-
-article {
-	margin-bottom: 2em;
+	padding: 0.75rem;
 }
 
 hr {
@@ -49,13 +59,13 @@ hr {
 }
 
 #container {
-	margin: 1.33rem auto;
-	padding: 1.33rem;
+	margin: 0.88rem auto;
+	padding: 1.66rem;
 	width: 100%;
-	max-width: 70em;
-	border: 20px solid #555;
+	max-width: 60rem;
+	border: 20px solid #777;
 }
 
 .thickborder {
-	border-left: 5px solid #555;
+	border-left: 5px solid #777;
 }
