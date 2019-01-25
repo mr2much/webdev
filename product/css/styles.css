@@ -56,7 +56,7 @@ section div h2 {
 	line-height: calc(1.3em + (1.45 - 1.3) * ((100vw - 22em) / (70 - 25)));
 }
 
-#header, #footer {
+#header, .footer {
 	background: #00796B;
 }
 
@@ -127,13 +127,6 @@ a:hover, #offers .btn:hover, [type="submit"]:hover {
 	background: #FFE0B2 !important;
 	color: #FF5722 !important;
 	transform: scale(1.08);
-}
-
-#content {
-	display: flex;
-	display: -webkit-flex;
-	flex-direction: column;
-	justify-content: center;
 }
 
 /*Thanks to Alohci for the answer: https://stackoverflow.com/questions/8366957/how-to-center-an-iframe-horizontally*/
@@ -280,23 +273,29 @@ input[type="email"] {
 	color: #B2DFDB;
 }
 
-#footer {
+.footer {
 	display: block;
 	bottom: 100%;
 	margin: 0 -9999rem;
-	margin-top: 1.66em;
-	padding: 0.66rem 9999rem;
-	font-size: 1.3em;
-	color: #B2DFDB;
+	margin-top: 1.66rem;
+	padding: 0 9999rem;
+		font-size: calc(15px + (22 - 15) * ((100vw - 320px) / (1920 - 320)));
+	line-height: calc(1.3em + (1.45 - 1.3) * ((100vw - 22em) / (42 - 25)));
+	/*font-size: 1.3rem;	*/
 	height: 20vh;
 }
 
-#footer .content {
+.footer .content {
+	padding-top: 1.66rem;
+}
+
+.footer .content .text-muted {
 	left: 0;
 	right: 0;
 	margin: 0 auto;
 	bottom: 0;
 	text-align: center;
+	color: #B2DFDB;
 }
 
 .uppercased {
