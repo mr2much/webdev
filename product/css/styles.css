@@ -339,7 +339,7 @@ section > [id]:before {
 }
 
 @media screen and (max-width: 60em) {
-	html .container-fullwidth, body .container {
+	html, body {
 		overflow-x: hidden;
 	}
 	
