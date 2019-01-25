@@ -326,6 +326,7 @@ section > [id]:before {
 @media screen and (min-width: 60em) and (max-width: 81em){
 	body {
 		padding-top: 3.5em;
+		overflow: hidden;
 	}
 
 	/*#header {
@@ -340,7 +341,7 @@ section > [id]:before {
 
 @media screen and (max-width: 60em) {
 	html, body {
-		overflow-x: hidden;
+		overflow: hidden;
 	}
 	
 	body {
