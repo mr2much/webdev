@@ -330,6 +330,7 @@ section > [id]:before {
 
 	body {
 		padding-top: 3.5em;
+		overflow-x: hidden;
 	}
 
 	/*#header {
