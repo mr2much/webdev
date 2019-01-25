@@ -59,43 +59,6 @@ section div h2 {
 	background: #00796B;
 }
 
-/*DONE: nav-bar should always be on top*/
-/*DONE: Should utilice flex box*/
-/*#header {
-	display: flex;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	padding: 0;
-	margin: 0 auto;
-	width: 100%;
-	height: 4em;
-	z-index: 9999;
-	border-bottom: 3px solid #BDBDBD;
-}*/
-
-/*#header #logo {
-	margin: auto;
-	margin-top: 0;
-	margin-bottom: 0;
-	border-right: 3px solid #BDBDBD;
-}*/
-
-/*#header-img {
-	display: inline-block;
-	width: 10em;
-	height: 100%;
-	padding: 0.5em 1em 0.5em 0;
-	margin-left: 0;
-	vertical-align: middle;
-}*/
-
-/*#nav-bar {
-	align-self: center;
-	margin: 0 auto;
-}*/
-
 a, .btn, [type="submit"] {
 	background: #B2DFDB;
 	color: #009688;
@@ -115,8 +78,6 @@ a, .btn, [type="submit"] {
 }
 
 #navbar a {
-	/*display: inline-block;*/
-	/*float: left;*/
 	padding: 0.33em 0.75em;
 	margin: 0 0.5em;
 	margin-top: 0.66em;
@@ -287,7 +248,6 @@ input[type="email"] {
 	padding: 0 9999rem;
 		font-size: calc(15px + (22 - 15) * ((100vw - 320px) / (1920 - 320)));
 	line-height: calc(1.3em + (1.45 - 1.3) * ((100vw - 22em) / (42 - 25)));
-	/*font-size: 1.3rem;	*/
 	height: 20vh;
 }
 
@@ -319,10 +279,14 @@ section > [id]:before {
 	visibility: hidden;
 }
 
-/*.container {
-	background: #B2DFDB;
-}*/
+/*overflow-x:hidden added on botch queries to solve a bug with the footer margins affecting mobile displays.
+For more context check the answers at:
 
+https://www.codeproject.com/Questions/989229/overflow-x-hidden-is-not-working-in-mobile
+
+And
+
+https://stackoverflow.com/questions/20962524/bootstrap-3-0-affix-doesnt-work-when-body-has-overflow-xhidden*/
 @media screen and (min-width: 60em) and (max-width: 81em){
 	html {
 		overflow-x: hidden;
@@ -332,15 +296,6 @@ section > [id]:before {
 		padding-top: 3.5em;
 		overflow-x: hidden;
 	}
-
-	/*#header {
-		height: 6.5em;
-		padding: 0;
-	}
-
-	#nav-bar a {
-		margin-top: 0.4em;
-	}*/
 }
 
 @media screen and (max-width: 60em) {	
@@ -354,16 +309,6 @@ section > [id]:before {
 		overflow-x: hidden;
 	}
 
-	/*#header {
-		display: block;
-		position: relative;
-	}
-
-	#header #logo {
-		width: 100%;
-		border-right: none;
-	}*/
-
 /*Thanks to Tahir Yasin's answer for the way for vertically centering an image on this thread: 
 https://stackoverflow.com/questions/7273338/how-to-vertically-align-an-image-inside-a-div*/
 	/*#logo img {
@@ -375,24 +320,6 @@ https://stackoverflow.com/questions/7273338/how-to-vertically-align-an-image-ins
 		margin: auto;
 		padding: 0;
 		max-height: 80%;
-	}
-
-	#nav-bar {
-		position: relative;
-		text-align: center;
-		width: 80%;
-		padding-top: 4em;
-	}
-
-	#nav-bar a {
-		width: 100%;
-		margin: 0.3em auto;
-		background: #00796B;
-		color: #B2DFDB;
-	}*/
-
-	/*#content {
-		clear: both;
 	}*/
 
 	#thumbnails {
@@ -422,11 +349,4 @@ https://stackoverflow.com/questions/7273338/how-to-vertically-align-an-image-ins
 		margin: 0 auto;
 		margin-bottom: 0.33em;
 	}
-
-	/*.footer {
-		width: 100%;
-		margin: 0;
-		padding: 0.66em 0;
-	}*/
-
 }
