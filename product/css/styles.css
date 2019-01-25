@@ -339,14 +339,11 @@ section > [id]:before {
 	}*/
 }
 
-@media screen and (max-width: 60em) {
-	html, body {
-		overflow-x: hidden;
-	}
-	
+@media screen and (max-width: 60em) {	
 	body {
 		margin: 0 auto;
 		padding: 0;
+		overflow-x: hidden;
 	}
 
 	/*#header {
