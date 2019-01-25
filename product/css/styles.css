@@ -324,9 +324,12 @@ section > [id]:before {
 }*/
 
 @media screen and (min-width: 60em) and (max-width: 81em){
+	html {
+		overflow-x: hidden;
+	}
+
 	body {
 		padding-top: 3.5em;
-		overflow-x: hidden;
 	}
 
 	/*#header {
@@ -340,10 +343,13 @@ section > [id]:before {
 }
 
 @media screen and (max-width: 60em) {	
+	html {
+		overflow-x: hidden;
+	}
+
 	body {
 		margin: 0 auto;
 		padding: 0;
-		overflow-x: hidden;
 	}
 
 	/*#header {
