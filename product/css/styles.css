@@ -339,6 +339,10 @@ section > [id]:before {
 }
 
 @media screen and (max-width: 60em) {
+	html .container, body .container {
+		overflow-x: hidden;
+	}
+	
 	body {
 		margin: 0 auto;
 		padding: 0;
