@@ -15,8 +15,7 @@
 
 html {
 	font-size: 15px;
-	overflow-x: hidden;
-	
+	overflow-x: hidden !important;	
 }
 
 body {
@@ -76,21 +75,21 @@ section div h2 {
 	border-bottom: 3px solid #BDBDBD;
 }*/
 
-#header #logo {
+/*#header #logo {
 	margin: auto;
 	margin-top: 0;
 	margin-bottom: 0;
 	border-right: 3px solid #BDBDBD;
-}
+}*/
 
-#header-img {
+/*#header-img {
 	display: inline-block;
 	width: 10em;
 	height: 100%;
 	padding: 0.5em 1em 0.5em 0;
 	margin-left: 0;
 	vertical-align: middle;
-}
+}*/
 
 #nav-bar {
 	align-self: center;
