@@ -76,6 +76,7 @@ a, .btn, [type="submit"] {
 	color: #B2DFDB;
 }
 
+/*How to centralize bootstrap navbar: https://stackoverflow.com/questions/18535441/bootstrap-3-how-to-make-a-centered-navbar*/
 .navbar-nav {
 	float: none;
 	margin: 0 auto;
