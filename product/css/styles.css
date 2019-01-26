@@ -398,8 +398,16 @@ https://stackoverflow.com/questions/7273338/how-to-vertically-align-an-image-ins
 	}
 }
 
-@media screen and ( max-width: 47em) {
+@media screen and (max-width: 51em) {
 	#nav-bar #navbar .navbar-nav .nav-link {
-		font-size: 1em;
+		font-size: 0.8em;
+	}
+}
+
+@media screen and (max-width: 47em) {
+	#nav-bar #navbar .navbar-nav .nav-link {
+		font-size: 1.0em;
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
 	}
 }
