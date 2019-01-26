@@ -76,10 +76,18 @@ a, .btn, [type="submit"] {
 	color: #B2DFDB;
 }
 
+.navbar-nav {
+	float: none;
+	margin: 0 auto;
+	display: table;
+	text-align: center;
+	margin-bottom: 0.8rem;
+}
+
 #navbar a {
-	padding: 0.33em 0.75em;
-	margin: 0 0.5em;
-	margin-top: 0.66em;
+	padding: 0.33rem 0.75rem;
+	margin: 0 0.5rem;
+	margin-top: 0.66rem;
 	text-decoration: none;
 	border-radius: 0.75em;
 }
@@ -110,12 +118,6 @@ a:hover, #offers .btn:hover, [type="submit"]:hover {
 	margin: 0 auto;
 }
 
-.navbar-nav {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-}
-
 .detail-desc {
 	margin: 0;
 	padding: 0;
@@ -123,7 +125,7 @@ a:hover, #offers .btn:hover, [type="submit"]:hover {
 }
 
 #thumbnails {
-	padding: 0.8em 0;
+	padding: 0.8rem 0;
 	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
@@ -138,7 +140,7 @@ a:hover, #offers .btn:hover, [type="submit"]:hover {
 
 #thumbnails .thumbnail {
 	display: block;
-	margin: -0.3em auto;
+	margin: -0.3rem auto;
 	padding: 0;
 	width: auto;
 	height: 20em;
@@ -154,13 +156,13 @@ a:hover, #offers .btn:hover, [type="submit"]:hover {
 #cancel-order {
 	padding: 0;
 	margin: 0 auto;
-	margin-top: 2em;
+	margin-top: 2rem;
 	width: 80%;
 	overflow: hidden;
 }
 
 #cancel-order form {
-	padding: 0.33em;
+	padding: 0.33rem;
 	margin: 0 auto;
 	text-align: center;
 }
@@ -187,13 +189,13 @@ input[type="submit"] {
 input[type="email"] {
 	width: 100%;
 	margin: 0;
-	padding: 0.33em 0.25em;
-	margin-bottom: 0.66em;
+	padding: 0.33rem 0.25rem;
+	margin-bottom: 0.66rem;
 	font-size: 1.7em;
 }
 
 #offers {
-	margin-top: 4em;
+	margin-top: 4rem;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -205,7 +207,7 @@ input[type="email"] {
 	align-items: center;
 	text-align: center;
 	width: calc(100% / 3);
-	margin: 0.33em;
+	margin: 0.33rem;
 	border: 1px solid #000;
 	border-radius: 0.5em;
 	overflow: hidden;
@@ -216,38 +218,38 @@ input[type="email"] {
 	background: #009688;
 	color: #B2DFDB;
 	margin: 0;
-	padding: 2em 0 1em 0;
+	padding: 2rem 0 1rem 0;
 	width: 100%;
 	font-weight: 600;
 }
 
 #offers h2 {
 	margin: 0;
-	margin-top: 1em;
-	padding: 0.75em 0;
+	margin-top: 1rem;
+	padding: 0.75rem 0;
 	color: #FF5722;
 	font-size: 2em;
 }
 
 #offers ul {
 	margin: 0;
-	padding: 1em 0;
+	padding: 1rem 0;
 }
 
 #offers ul li {
 	margin: 0;
-	padding: 0.33em 0;
+	padding: 0.33rem 0;
 	list-style: none;
 	color: #212121;
 }
 
 #offers .btn, [type="submit"] {
 	border: 0;
-	margin: 1em 0;
+	margin: 1rem 0;
 	height: 2.66em;
 	border-radius: 0.25em;
 	font-size: 1em;
-	padding: 0 1.33em;
+	padding: 0 1.33rem;
 	background: #00796B;
 	color: #B2DFDB;
 }
@@ -286,7 +288,7 @@ https://github.com/twbs/bootstrap/issues/1768*/
 section > [id]:before {
 	display: block;
 	content: " ";
-	margin-top: -2.6em;
+	margin-top: -2.6rem;
 	height: 1.5em;
 	visibility: hidden;
 }
@@ -299,31 +301,30 @@ https://www.codeproject.com/Questions/989229/overflow-x-hidden-is-not-working-in
 And
 
 https://stackoverflow.com/questions/20962524/bootstrap-3-0-affix-doesnt-work-when-body-has-overflow-xhidden*/
+@media screen and (max-width: 85em) {
+	#header-img {
+		display: none !important;
+		visibility: hidden !important;
+	}
+}
+
 @media screen and (min-width: 60em) and (max-width: 81em){
 	html {
 		overflow-x: hidden;
 	}
 
 	body {
-		padding-top: 3.5em;
+		padding-top: 3.5rem;
 		overflow-x: hidden;
 	}
 
-	#header-img {
-		display: none;
-		visibility: hidden;
-	}
-
-	#navbar a {
-		padding: 0.33em 0;
-		margin: 0 0.2em;
-		margin-top: 0.66em;
-		text-decoration: none;
-		border-radius: 0;
-	}
-
 	.navbar-nav {
-		float: none;
+		font-size: 0.8em;
+	}
+
+	#navbar .navbar-nav .nav-link {
+		margin-left: 0.2rem;
+		margin-right: 0.2rem;
 	}
 }
 
@@ -339,23 +340,12 @@ https://stackoverflow.com/questions/20962524/bootstrap-3-0-affix-doesnt-work-whe
 		overflow-x: hidden;
 	}
 
-	#header-img {
-		display: none;
-		visibility: hidden;
-	}
-
-	#navbar a {
-		padding: 0.33em 0.1rem;
-		margin: 0 0.1rem;
-		margin-top: 0.66em;
-		text-decoration: none;
+	#navbar .navbar-nav .nav-link {
 		font-size: 0.8em;
-		border-radius: 0;
-		border: 1px solid #555;
-	}
-
-	.navbar-nav {
-		float: none;
+		padding-left: 0.1rem;
+		padding-right: 0.1rem;
+		margin-left: 0.1rem;
+		margin-right: 0.1rem;
 	}
 
 /*Thanks to Tahir Yasin's answer for the way for vertically centering an image on this thread: 
