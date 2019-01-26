@@ -1,0 +1,59 @@
+* {
+	box-sizing: border-box;
+}
+
+@viewport {
+	width: device-width;
+	zoom: 1;
+}
+
+@-ms-viewport {
+	width: device-width;
+}
+
+body {
+	margin: 40px;
+}
+
+.wrapper {
+	display: grid;
+	grid-gap: 10px;
+	grid-template-columns: repeat(3, 100px);
+	grid-template-rows: 100px;
+	grid-auto-columns: 100px;
+	background: #fff;
+	color: #444;
+}
+
+.box {
+	background-color: #444;
+	color: #fff;
+	border-radius: 5px;
+	padding: 20px;
+	font-size: 150%;
+}
+
+.a {
+	grid-column: 1 / span 2;
+	grid-row: 1;
+}
+
+.b {
+	grid-column: 3;
+	grid-row: 1 / span 2;
+}
+
+.c {
+	grid-column: 1;
+	grid-row: 2;
+}
+
+.d {
+	grid-column: 2;
+	grid-row: 2;
+}
+
+.e {
+	grid-column: 4 / 5;
+	grid-row: 1 / span 3;
+}
