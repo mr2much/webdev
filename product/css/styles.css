@@ -110,6 +110,12 @@ a:hover, #offers .btn:hover, [type="submit"]:hover {
 	margin: 0 auto;
 }
 
+.navbar-nav {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
 .detail-desc {
 	margin: 0;
 	padding: 0;
@@ -302,6 +308,23 @@ https://stackoverflow.com/questions/20962524/bootstrap-3-0-affix-doesnt-work-whe
 		padding-top: 3.5em;
 		overflow-x: hidden;
 	}
+
+	#header-img {
+		display: none;
+		visibility: hidden;
+	}
+
+	#navbar a {
+		padding: 0.33em 0;
+		margin: 0 0.2em;
+		margin-top: 0.66em;
+		text-decoration: none;
+		border-radius: 0;
+	}
+
+	.navbar-nav {
+		float: none;
+	}
 }
 
 @media screen and (max-width: 60em) {	
@@ -314,6 +337,25 @@ https://stackoverflow.com/questions/20962524/bootstrap-3-0-affix-doesnt-work-whe
 		margin-top: 3.6rem;
 		padding: 0;
 		overflow-x: hidden;
+	}
+
+	#header-img {
+		display: none;
+		visibility: hidden;
+	}
+
+	#navbar a {
+		padding: 0.33em 0.1rem;
+		margin: 0 0.1rem;
+		margin-top: 0.66em;
+		text-decoration: none;
+		font-size: 0.8em;
+		border-radius: 0;
+		border: 1px solid #555;
+	}
+
+	.navbar-nav {
+		float: none;
 	}
 
 /*Thanks to Tahir Yasin's answer for the way for vertically centering an image on this thread: 
