@@ -62,6 +62,7 @@ body {
 	padding: 10vw 2em;
 	text-align: center;
 	text-shadow: 1px 1px 10px #000;
+	color: #fff;
 }
 
 .full-width {
@@ -74,7 +75,11 @@ body {
 }
 
 .header h1 {
-	font-size: 7em;
+	font-size: calc(0.5rem + 12vmin);
+}
+
+.header p, .header q {
+	font-size: 4vmin;
 }
 
 .header p {
@@ -84,12 +89,12 @@ body {
 h1, h2, strong { color: #222; }
 
 main {
-	/*grid-column: 1 / span 5;*/
 	display: grid;
-	grid-template-columns: repeat(3, 31%);
-	grid-auto-rows: minmax(20em, auto);
-	grid-gap: 1.3em;
+	grid-gap: 1rem;
 	justify-content: center;
+	grid-template-columns: 75%;
+	grid-auto-rows: auto;
+
 }
 
 /*TODO: make the images look like portraits inside a painting, like on Assemble
@@ -214,11 +219,8 @@ a:hover {
 	list-style-type: none;
 	text-align: center;
 	border-bottom: 2px solid #C9C9C9;
+	padding: 0;
 	padding-bottom: 15px;
-}
-
-#social-media li {
-	display: inline;
 }
 
 #social-media a {
@@ -230,12 +232,10 @@ a:hover {
 }
 
 footer {
+	display: flex;
+	flex-direction: column;	
 	border-top: 2px solid #b7b7b7;
 	text-align: center;
-}
-
-.margin-left {
-	margin-left: 20px;
 }
 
 .thumb-preview {
@@ -274,12 +274,31 @@ footer {
 	height: 1%;
 }
 
-@media (max-width: 700px) {
+@media only screen and (min-width: 568px) {
+	#social-media li {
+		display: inline;
+		margin: 1rem;
+	}
+}
+
+@media only screen and (min-width: 650px) {
 	main {
-		grid-template-columns: 80%;
+		grid-template-columns: repeat(2, 40%);
 	}
 
-	header {
-		background-size: contain;
+	.header h1 {
+		font-size: calc(0.5rem + 15vmin);
+	}
+}
+
+@media only screen and (min-width: 900px) {
+	main {
+		grid-template-columns: repeat(2, 45%);
+	}	
+}
+
+@media only screen and (min-width: 1200px) {
+	main {
+		grid-template-columns: repeat(3, 31%);
 	}
 }
