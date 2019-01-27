@@ -1,0 +1,70 @@
+* {
+	box-sizing: border-box;
+}
+
+@viewport {
+	width: device-width;
+	zoom: 1.0;
+}
+
+@-ms-viewport {
+	width: device-width;
+}
+
+html {
+	font-size: 15px;
+}
+
+body {
+	margin: 2.66rem;
+}
+
+.wrapper {
+	display: grid;
+	grid-gap: 0.66rem;
+	grid-template-columns: repeat(5, [col] 100px);
+	grid-template-rows: repeat(3, [row] auto);
+	background: #FFF;
+	color: #444;
+}
+
+.box {
+	background: #444;
+	color: #FFF;
+	border-radius: 0.33em;
+	padding: 1.33rem;
+	font-size: 1.5em;
+	z-index: 10;
+}
+
+.a {
+	grid-column: col / span 2;
+	grid-row: row;
+}
+
+.b {
+	grid-column: col 3 / span 3;
+	grid-row: row;
+}
+
+.c {
+	grid-column: col;
+	grid-row: row 2;
+}
+
+.d {
+	grid-column: col 2 / span 3;
+	grid-row: row 2;
+}
+
+.e {
+	grid-column: col / span 5;
+	grid-row: row 3;
+}
+
+.f {
+	grid-column: col 3 / span 3;
+	grid-row: row 2;
+	background-color: rgba(49, 121, 207, 0.5);
+	z-index: 20;
+}
