@@ -19,20 +19,41 @@ html {
 /*TODO: Cambiar el tipo de letra*/
 
 body {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-gap: 1em;
 	color: #000;
-	margin: 0 auto;
-	max-width: 75em;
 	font-family: "Helvetica", "Arial", sans-serif;
-	padding: 4em 1em;
+	padding: 1em 1em 0 1em;
 	text-rendering: optimizeLegibility;
 	font-feature-settings: "kern" 1;
 	hyphens: auto;
+	overflow-x: hidden;
 }
 
-header {
+.wrapper {
+	max-width: 75em;
+	margin: 0 auto;
+	display: grid;
+	grid-gap: 1.3em;
+	grid-template-columns: 100%;
+	grid-template-areas: 
+		"header"
+		"content"
+		"footer";
+	justify-content: center;
+}
+
+.header {
+	grid-area: header;
+}
+
+.content {
+	grid-area: content;
+}
+
+.footer {
+	grid-area: footer;
+}
+
+.header {
 	background-position: center center;
 	background-image: url("../res/jpegs/rawpixel-558599-unsplash-minified.jpg");
 	background-repeat: no-repeat;
@@ -43,24 +64,29 @@ header {
 	text-shadow: 1px 1px 10px #000;
 }
 
-header, footer {
-	grid-column: 1 / span 5;
+.full-width {
+	width: 100vw;
+	position: relative;
+	left: 50%;
+	right: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
 }
 
-header > h1 {
-	font-size: 4em;
+.header h1 {
+	font-size: 7em;
 }
 
-header > p {
+.header p {
 	font-weight: bolder;
 }
 
 h1, h2, strong { color: #222; }
 
 main {
-	grid-column: 1 / span 5;
+	/*grid-column: 1 / span 5;*/
 	display: grid;
-	grid-template-columns: repeat(2, 40%);
+	grid-template-columns: repeat(3, 31%);
 	grid-auto-rows: minmax(20em, auto);
 	grid-gap: 1.3em;
 	justify-content: center;
@@ -176,6 +202,10 @@ a:visited {
 	color: #555;
 }
 
+a:hover {
+	text-decoration: none;
+}
+
 .grow:hover {
 	/*transform: scale(1.05);*/
 }
@@ -207,19 +237,6 @@ footer {
 .margin-left {
 	margin-left: 20px;
 }
-
-/*#tribute-proj::after {
-	transition: 0.9s all ease-in-out;
-	content: "";
-	opacity: 1;
-	
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	position: absolute;
-	z-index: -1;
-}*/
 
 .thumb-preview {
 	position: relative !important;
@@ -256,18 +273,6 @@ footer {
 	display: inline-block;
 	height: 1%;
 }
-
-/*.transparent {
-	transition: 0.5s all ease-in-out;
-}*/
-
-/*#tribute-proj:hover .transparent {
-	opacity: 0;
-}
-
-#tribute-proj:hover::after {
-	opacity: 1;
-}*/
 
 @media (max-width: 700px) {
 	main {
