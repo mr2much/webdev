@@ -14,3 +14,26 @@
 html {
 	font-size: 15px;
 }
+
+body {
+	padding-top: 4.66rem;
+}
+
+#main-content {
+	display: grid;
+	grid-gap: 1rem;
+	grid-template-columns: 100%;
+	justify-content: center;
+}
+
+@media only screen and (min-width: 600px) {
+	#main-content {
+		grid-template-columns: repeat(2, 40%);
+	}
+}
+
+@media only screen and (min-width: 800px) {
+	#main-content {
+		grid-template-columns: repeat(3, 30%);
+	}
+}
