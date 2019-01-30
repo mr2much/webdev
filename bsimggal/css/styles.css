@@ -131,6 +131,11 @@ a:hover {
 	box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.7);
 }
 
+.logo-pre {
+	display: inline-block;
+	padding: 0.13rem 0.1rem;
+}
+
 .unsplashlogo-pre {
 	display:inline-block;
 	padding: 0.13rem 0.2rem;
