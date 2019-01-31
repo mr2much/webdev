@@ -27,12 +27,13 @@ body {
 
 h1 {
 	font-weight: 700;
-	font-size: calc(0.5rem + 11vmin);
+	font-size: calc(0.5rem + 10vmin);
 }
 
 hr {
 	border-top: 1px solid #F8F8F8;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	max-width: 90%;
 	width: 400px;
 }
 
