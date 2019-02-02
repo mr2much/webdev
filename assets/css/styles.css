@@ -60,6 +60,9 @@ body {
 	background-size: cover;
 	/*line-height: calc(1.2em + (1.45 - 1.2) * ((100vw - 46em) / (70 - 46)));*/
 	/*padding: 10vw 2em;*/
+	text-shadow: 0 0 10px rgba(100, 100, 100, 0.4),
+				 0 0 20px rgba(100, 100, 100, 0.1),
+				 0 0 30px rgba(255, 255, 255, 0.6);
 	text-align: center;	
 	color: #fff;
 }
@@ -74,9 +77,6 @@ body {
 }
 
 .header h1 {
-	text-shadow: 1px 4px 3px rgba(0, 0, 0, 0.8),
-				 1px 8px 13px rgba(0, 0, 0, 0.4),
-				 1px 18px 23px rgba(0, 0, 0, 0.4);
 	font-size: calc(0.5rem + 12vmin);
 }
 
@@ -88,17 +88,7 @@ body {
 	font-weight: bolder;
 }
 
-.header p, .header q {
-	text-shadow: 0 0 10px rgba(100, 100, 100, 0.4),
-				 0 0 20px rgba(100, 100, 100, 0.1),
-				 0 0 30px rgba(255, 255, 255, 0.6);
-}
-
-.wrapper .jumbotron .container h1 {
-	/*margin-bottom: 3.5rem;*/
-}
-
-h2, strong { color: #222; }
+h1, h2, strong { color: #444; }
 
 main {
 	display: grid;
