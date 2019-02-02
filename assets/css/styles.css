@@ -89,9 +89,9 @@ body {
 }
 
 .header p, .header q {
-	text-shadow: 0 0 10px rgba(0, 0, 0, 0.6),
-				 0 0 20px rgba(0, 0, 0, 0.3),
-				 0 0 30px rgba(0, 0, 0, 0.1);
+	text-shadow: 0 0 10px rgba(100, 100, 100, 0.4),
+				 0 0 20px rgba(100, 100, 100, 0.1),
+				 0 0 30px rgba(255, 255, 255, 0.6);
 }
 
 .wrapper .jumbotron .container h1 {
