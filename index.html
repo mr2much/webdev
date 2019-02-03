@@ -13,139 +13,154 @@
 </head>
 <body>	
 	<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-	  <a class="navbar-brand" href="#">LockedWard</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
+		<div class="container-fluid">
+		  <a class="navbar-brand" href="#">LockedWard</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
 
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	  	<div class="container">
-	  		<ul class="navbar-nav float-right">
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	  		<ul class="navbar-nav ml-auto">
 		      <li class="nav-item active">
 		        <button class="btn btn-secondary bg-danger my-2 my-lg-1">View Portfolio Code In GitHub</button>
 		      </li>
 		    </ul>
-	  	</div>
-	  </div>
+		  </div>
+		</div>
 	</nav>
 
 	<div class="wrapper">
 		<div class="jumbotron header d-flex flex-column justify-content-center">
-			<div class="container p-5 text-dark">
-				<h1 class="mb-5">About me</h1>
-				<p>Not much to say right now, I'm just learning web design</p>
+			<div class="container p-lg-5 text-dark">
+				<h1 class="mb-0 mb-lg-5">About me</h1>
+				<p class="text-white">Not much to say right now, I'm just learning web design</p>
 				<q>Photo by rawpixel on Unsplash</q>
 			</div>
 		</div>
 
 		<main class="content full-width">
 			<div id="img-container" class="card bg-info text-dark rounded-top mx-auto">
-				<div></div>
-				<div class="card-body border-0 rounded-0 d-flex flex-column">
+				<div id="catapp-proj" class="thumb-view rounded-0"></div>
+				<div class="card-body border-0 rounded-0 d-flex flex-column w-100">
 					<h5 class="card-title my-1">CatPhotoApp</h5>
 					<h6 class="card-subtitle mb-2 text-muted">
 						HTML/CSS
 					</h6>
 					<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
 					<div id="btn-container" class="rounded-0 border-0">
-						<a href="#" class="btn card-link bg-danger text-white px-5 float-left">GitHub</a>
-					<a href="#" class="btn card-link bg-danger text-white px-5 float-right">Visit Page</a>
+						<a href="#" class="btn card-link bg-danger text-white">GitHub</a>
+						<a href="https://mr2much.github.io/webdev/catphotoapp/html/practice" target="_blank" class="btn card-link bg-danger text-white">Visit Page</a>
 					</div>					
 				</div>
 			</div>
-			<a target="_blank" href="https://mr2much.github.io/webdev/catphotoapp/html/practice">
-			<div class="grow" id="catapp-proj">
-				<!-- TODO: Make the divs clickable and remove the initial <p> -->
-				
-				<section class="thumb-preview">
-					<div>
-						<h1>CatPhotoApp</h1>
-						<section>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-						</section>
-					</div>
-				</section>
-				
+
+			<div id="img-container" class="card bg-info text-dark rounded-top mx-auto">
+				<div id="onlinecv-proj" class="thumb-view rounded-0"></div>
+				<div class="card-body border-0 rounded-0 d-flex flex-column w-100">
+					<h5 class="card-title my-1">Online CV</h5>
+					<h6 class="card-subtitle mb-2 text-muted">
+						HTML/CSS
+					</h6>
+					<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+					<div id="btn-container" class="rounded-0 border-0">
+						<a href="#" class="btn card-link bg-danger text-white">GitHub</a>
+					<a href="https://mr2much.github.io/webdev/onlinecv/html/index" target="_blank" class="btn card-link bg-danger text-white">Visit Page</a>
+					</div>					
+				</div>
 			</div>
-			</a>
-			<a target="_blank" href="https://mr2much.github.io/webdev/onlinecv/html/index">
-				<div class="grow" id="onlinecv-proj">			
-					<section class="thumb-preview">
-						<div>
-							<h1>Online CV</h1>
-							<section>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-							</section>
-						</div>
-					</section>			
-				</div>
-			</a>
-			<a target="_blank" href="https://mr2much.github.io/webdev/onlineform/html/index">
-				<div class="grow" id="regform-proj">				
-					<section class="thumb-preview">
-						<div>
-							<h1>Registration Form</h1>
-							<section>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-							</section>
-						</div>
-					</section>				
-				</div>
-			</a>
-			<a target="_blank" href="https://mr2much.github.io/webdev/todolist/html/index">
-				<div class="grow" id="todolist-proj">			
-					<section class="thumb-preview">
-						<div>
-							<h1>TODO List</h1>
-							<section>
-								<p>I'm taking a course called <strong><em>The Web Developer Bootcamp</em></strong> on Udemy. One of the lessons consisted on showing a simple TODO List and learning about how to make checkboxes. I got curious about finding how to customize the look of them and stumbled upon this cool looking effect using CSS only. That's what's implemented here.</p>
-							</section>
-						</div>
-					</section>			
-				</div>
-			</a>
-			<a target="_blank" href="https://mr2much.github.io/webdev/tributepage/html/index">
-				<div class="grow" id="tribute-proj">
-					<section class="thumb-preview" id="tribute-sect">
-						<div>
-							<h1 class="transparent">Tribute Page for John Taylor Gatto</h1>
-							<section>
-								<p class="transparent">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-							</section>
-						</div>
-					</section>
-				</div>
-			</a>
-			<a target="_blank" href="https://mr2much.github.io/webdev/surveyform/html/">
-				<div class="grow" id="survey-proj">			
-					<section class="thumb-preview">
-						<div>
-							<h1>Responsive Survey Form</h1>
-							<section>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-							</section>
-						</div>
-					</section>			
-				</div>
-			</a>
 
-			<a target="_blank" href="https://mr2much.github.io/webdev/product/html/index">		
-				<div class="grow" id="prodland-proj">
-					<!-- TODO: Make the divs clickable and remove the initial <p> -->				
-					<section class="thumb-preview">
-						<div>
-							<h1>Product Landing Page Project</h1>
-							<section>
-								<p>Back in 2013, I was jobless, with a toddler, and a pregnant wife. I tried drop-shipping on eBay, and it seemed like a good idea to have a web page to advertise my products. This project shows what it would have looked like.</p>
-							</section>
-						</div>
-					</section>				
+			<div id="img-container" class="card bg-info text-dark rounded-top mx-auto">
+				<div id="regform-proj" class="thumb-view rounded-0"></div>
+				<div class="card-body border-0 rounded-0 d-flex flex-column w-100">
+					<h5 class="card-title my-1">Registration Form</h5>
+					<h6 class="card-subtitle mb-2 text-muted">
+						HTML/CSS
+					</h6>
+					<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+					<div id="btn-container" class="rounded-0 border-0">
+						<a href="#" class="btn card-link bg-danger text-white">GitHub</a>
+					<a href="https://mr2much.github.io/webdev/onlineform/html/index" target="_blank" class="btn card-link bg-danger text-white">Visit Page</a>
+					</div>					
 				</div>
-			</a>
+			</div>
 
-			<a target="_blank" href="https://mr2much.github.io/webdev/imggallery/html/index">		
+			<div id="img-container" class="card bg-info text-dark rounded-top mx-auto">
+				<div id="todolist-proj" class="thumb-view rounded-0"></div>
+				<div class="card-body border-0 rounded-0 d-flex flex-column w-100">
+					<h5 class="card-title my-1">TODO List</h5>
+					<h6 class="card-subtitle mb-2 text-muted">
+						HTML/CSS
+					</h6>
+					<p class="card-text">I don't remember where I found this cool looking effect, this is CSS only.</p>
+					<div id="btn-container" class="rounded-0 border-0">
+						<a href="#" class="btn card-link bg-danger text-white">GitHub</a>
+					<a href="https://mr2much.github.io/webdev/todolist/html/index" target="_blank" class="btn card-link bg-danger text-white">Visit Page</a>
+					</div>					
+				</div>
+			</div>
+
+			<div id="img-container" class="card bg-info text-dark rounded-top mx-auto">
+				<div id="tribute-proj" class="thumb-view rounded-0"></div>
+				<div class="card-body border-0 rounded-0 d-flex flex-column w-100">
+					<h5 class="card-title my-1">Tribute Page For John Taylor Gatto</h5>
+					<h6 class="card-subtitle mb-2 text-muted">
+						HTML/CSS
+					</h6>
+					<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					<div id="btn-container" class="rounded-0 border-0">
+						<a href="#" class="btn card-link bg-danger text-white">GitHub</a>
+					<a href="https://mr2much.github.io/webdev/tributepage/html/index" target="_blank" class="btn card-link bg-danger text-white">Visit Page</a>
+					</div>					
+				</div>
+			</div>
+
+			<div id="img-container" class="card bg-info text-dark rounded-top mx-auto">
+				<div id="survey-proj" class="thumb-view rounded-0"></div>
+				<div class="card-body border-0 rounded-0 d-flex flex-column w-100">
+					<h5 class="card-title my-1">Responsive Survey Form</h5>
+					<h6 class="card-subtitle mb-2 text-muted">
+						HTML/CSS
+					</h6>
+					<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					<div id="btn-container" class="rounded-0 border-0 mt-auto">
+						<a href="#" class="btn card-link bg-danger text-white px-5 float-left">GitHub</a>
+					<a href="https://mr2much.github.io/webdev/surveyform/html/" target="_blank" class="btn card-link bg-danger text-white px-5 float-right">Visit Page</a>
+					</div>					
+				</div>
+			</div>
+
+			<div id="img-container" class="card bg-info text-dark rounded-top mx-auto">
+				<div id="prodland-proj" class="thumb-view rounded-0"></div>
+				<div class="card-body border-0 rounded-0 d-flex flex-column w-100">
+					<h5 class="card-title my-1">Product Landing Page Project</h5>
+					<h6 class="card-subtitle mb-2 text-muted">
+						HTML/CSS
+					</h6>
+					<p class="card-text">This project is something that I wanted to do since 2013.</p>
+					<div id="btn-container" class="rounded-0 border-0 mt-auto">
+						<a href="#" class="btn card-link bg-danger text-white px-5 float-left">GitHub</a>
+					<a href="https://mr2much.github.io/webdev/product/html/index" target="_blank" class="btn card-link bg-danger text-white px-5 float-right">Visit Page</a>
+					</div>					
+				</div>
+			</div>
+
+			<div id="img-container" class="card bg-info text-dark rounded-top mx-auto">
+				<div id="imggallery-proj" class="thumb-view rounded-0"></div>
+				<div class="card-body border-0 rounded-0 d-flex flex-column w-100">
+					<h5 class="card-title my-1">Image Gallery Project</h5>
+					<h6 class="card-subtitle mb-2 text-muted">
+						HTML/CSS
+					</h6>
+					<p class="card-text">Just a simple image gallery. With a credit tag from Unsplash that I customized.</p>
+					<div id="btn-container" class="rounded-0 border-0 mt-auto">
+						<a href="#" class="btn card-link bg-danger text-white px-5 float-left">GitHub</a>
+					<a href="https://mr2much.github.io/webdev/imggallery/html/index" target="_blank" class="btn card-link bg-danger text-white px-5 float-right">Visit Page</a>
+					</div>					
+				</div>
+			</div>
+
+			<!-- <a target="_blank" href="https://mr2much.github.io/webdev/imggallery/html/index">		
 				<div class="grow" id="imggallery-proj">
-					<!-- TODO: Make the divs clickable and remove the initial <p> -->				
 					<section class="thumb-preview">
 						<div>
 							<h1>Image Gallery Project</h1>
@@ -155,7 +170,7 @@
 						</div>
 					</section>				
 				</div>
-			</a>
+			</a> -->
 		</main>
 	</div>
 
