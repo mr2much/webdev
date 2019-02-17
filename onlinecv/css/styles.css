@@ -55,12 +55,12 @@ body {
 	visibility: hidden;
 }
 
-.all-elements {
+/*.all-elements {
 	margin: 50px auto;
 	width: 80%;
 	border: 1px solid black;
 	padding: 30px;
-}
+}*/
 
 .institution {
 	font-weight: bold;
