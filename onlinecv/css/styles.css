@@ -19,6 +19,10 @@ ul {
 	list-style-type: none;
 }
 
+#social li {
+	margin: 0 0.5rem;
+}
+
 .section {
 	position: relative;
 }
@@ -32,19 +36,6 @@ ul {
 	margin-top: -60px;
 	left: 0;
 	visibility: hidden;
-}
-
-.institution {
-	font-weight: bold;
-}
-
-.study-header {
-	display: flex;
-	text-align: center;
-}
-
-.study-header > div {
-	flex: 1;
 }
 
 .project-description p {
