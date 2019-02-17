@@ -47,15 +47,6 @@ ul {
 	flex: 1;
 }
 
-.job-header {
-	display: flex;
-	text-align: center;
-}
-
-.job-header > div {
-	flex: 1;
-}
-
 .project-description p {
 	font-weight: bold;
 }
@@ -63,7 +54,6 @@ ul {
 /*Make collapsible items*/
 
 .collapsible {
-	padding: 0 30px;
 	border-bottom: 3px solid #7D7D7D;
 }
 
