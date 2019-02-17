@@ -62,15 +62,6 @@ body {
 	padding: 30px;
 }
 
-.header {
-	display: flex;
-	text-align: center;
-}
-
-.header > section {
-	flex: 1;
-}
-
 .institution {
 	font-weight: bold;
 }
@@ -140,4 +131,14 @@ input[type="checkbox"]:checked ~ .details-content {
 
 .project-description label {
 	padding-top: 10px;
+}
+
+.personal-intro {
+	display: none;
+}
+
+@media only screen and (min-width: 992px) {
+	.personal-intro {
+		display: block;
+	}
 }
