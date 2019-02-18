@@ -56,52 +56,21 @@ ul {
 	visibility: hidden;
 }
 
-.project-description p {
-	font-weight: bold;
+.project-description button {
+	vertical-align: text-bottom;
 }
 
 /*Make collapsible items*/
 
 .collapsible {
 	border-bottom: 3px solid #7D7D7D;
-}
-
-.collapsible ul {
-	list-style: none;
-	padding: 0;
-}
-
-.collapsible li {
-	display: block;
-	padding: 5px;
-}
-
-.collapsible label {	
-	font-size: 18px;
-	display: block;
-	cursor: pointer;
+	padding-bottom: 0.2rem;
 }
 
 .details-content {
 	height: 0;
 	transform: scaleY(0);
 	padding: 0 0 0 50px;
-}
-
-input[type="checkbox"] {
-	position: absolute;
-	opacity: 0;
-}
-
-input[type="checkbox"]:checked ~ .details-content {
-	height: 100%;
-	transform-origin: top;
-	transition: transform .3s ease-out;
-	transform: scaleY(1);
-}
-
-.project-description label {
-	padding-top: 10px;
 }
 
 .personal-intro {
