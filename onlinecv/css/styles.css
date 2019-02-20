@@ -20,6 +20,10 @@ ul {
 	list-style-type: none;
 }
 
+footer h4 {
+	font-size: calc(0.6rem + 10vmin);
+}
+
 #portfolio-link {
 	-webkit-transition: 0.3s all ease-in-out;
 	-moz-transition: 0.3s all ease-in-out;
@@ -38,8 +42,17 @@ ul {
 	transform: scale(1.1);
 }
 
+#social {
+	font-size: calc(0.5rem + 10vmin);
+}
+
 #social li {
 	margin: 0 0.5rem;
+}
+
+.jumbotron {
+	margin-left: -15px;
+	margin-right: -15px;
 }
 
 .section {
@@ -76,6 +89,23 @@ ul {
 
 .personal-intro {
 	display: none;
+}
+
+.emp-details p {
+	flex: 50%;
+}
+
+@media only screen and (min-width: 568px) {
+	.emp-details p {
+		flex: 1;
+	}
+}
+
+@media only screen and (min-width: 576px) {
+	.jumbotron {
+		margin-left: 0;
+		margin-right: 0;
+	}
 }
 
 @media only screen and (min-width: 992px) {
