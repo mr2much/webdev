@@ -95,6 +95,24 @@ footer h4 {
 	flex: 50%;
 }
 
+.testimonials {
+	display: grid;
+	grid-template-columns: repeat(2, [col] 50%);
+	grid-template-areas: 
+		"header header";
+	grid-gap: 0.5rem;
+	justify-content: center;
+}
+
+.header-test {
+	grid-area: header;
+}
+
+.how-we-met {
+	font-weight: 400;
+	font-size: 0.8rem;
+}
+
 @media only screen and (min-width: 568px) {
 	.emp-details p {
 		flex: 1;
