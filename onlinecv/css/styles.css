@@ -97,15 +97,19 @@ footer h4 {
 
 .testimonials {
 	display: grid;
-	grid-template-columns: repeat(2, [col] 50%);
+	grid-template-columns: 100%;
 	grid-template-areas: 
-		"header header";
+		"header";
 	grid-gap: 0.5rem;
 	justify-content: center;
 }
 
 .header-test {
 	grid-area: header;
+}
+
+.testimony {
+
 }
 
 .how-we-met {
@@ -129,5 +133,11 @@ footer h4 {
 @media only screen and (min-width: 992px) {
 	.personal-intro {
 		display: block;
+	}
+
+	.testimonials {
+		grid-template-columns: repeat(2, [col] 50%);
+		grid-template-areas: 
+			"header header";
 	}
 }
