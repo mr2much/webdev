@@ -130,7 +130,8 @@ footer h4 {
 }
 
 #social-nets {
-	height: 100%;
+	/*height: 100%;*/
+	overflow-x: hidden;
 }
 
 #social-nets .row .soc-btn {
@@ -141,12 +142,29 @@ footer h4 {
 	width: 100%;
 	height: 400px;
 	margin: 0;
+	text-decoration: none;
 }
 
-#social-nets .soc-btn a {
+#social-nets .soc-btn {
 	width: 100%;
-	/*height: 100%;*/
 	font-size: 5rem;
+	color: #CC0109;
+}
+
+#ico-facebook {
+	background-color: #656565;
+}
+
+#ico-twitter {
+	background-color: #989898;
+}
+
+#ico-linkedin {
+	background-color: #989898;
+}
+
+#ico-portfolio {
+	background-color: #656565;
 }
 
 @media only screen and (min-width: 568px) {
