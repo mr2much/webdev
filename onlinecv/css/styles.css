@@ -12,6 +12,7 @@
 }
 
 body {
+	overflow-x: hidden;
 	margin-top: 60px;
 	color: #888;
 }
@@ -115,6 +116,37 @@ footer h4 {
 .how-we-met {
 	font-weight: 400;
 	font-size: 0.8rem;
+}
+
+#mail-form {
+}
+
+#mail-form .text-input {
+	padding: 0.8rem;
+}
+
+#social-links {
+	width: 45%;
+}
+
+#social-nets {
+	height: 100%;
+}
+
+#social-nets .row .soc-btn {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	width: 100%;
+	height: 400px;
+	margin: 0;
+}
+
+#social-nets .soc-btn a {
+	width: 100%;
+	/*height: 100%;*/
+	font-size: 5rem;
 }
 
 @media only screen and (min-width: 568px) {

@@ -269,6 +269,7 @@
 				<div class="header-test">
 					<span id="testimonials" class="anchor"></span>
 					<h3 class="display-4">Testimonials</h3>
+					<a href="#" class="btn btn-lg btn-primary"><i class="fas fa-plus"></i> Add Testimonial</a>
 					<hr>
 				</div>
 				<div class="card mb-3 testimony">
@@ -324,32 +325,61 @@
 	</div>
 	<span id="social-media" class="anchor"></span>
 	<footer class="footer mx-0 mt-auto bg-light text-dark">
-		<div class="d-flex flex-column flex-lg-row justify-content-between align-items-end">
-			<div class="text-center mx-auto">
+		<div class="d-flex flex-column flex-lg-row justify-content-between align-items-stretch">
+			<div class="p-5">
 				<!-- TODO: add form for sending emails
 						   make div fill whole space of outer div -->
-				<div class="text-left py-5 px-4 border border-danger flex-grow-1">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<button class="btn btn-primary btn-lg">Send Mail</button>
-					<button class="btn btn-lg btn-danger">Clear</button>
+				<h2 class="display-4 text-uppercase">Send me an email</h2>
+				<div id="mail-form" class="text-left py-5">
+					<form>
+						<div class="d-flex flex-column justify-content-between mb-5">
+							<label for="sender-name">Full Name</label>
+							<input class="text-input" id="sender-name" type="text" name="sender-name">
+						</div>
+						<div class="d-flex flex-column justify-content-between mb-5">
+							<label for="sender-mail">Email</label>
+							<input class="text-input" id="sender-mail" type="sender-mail" name="sender-mail">
+						</div>
+						<div class="d-flex flex-column mb-5">
+							<label for="sender-msg">Type your message below</label>
+							<textarea class="text-input" id="sender-msg" name="sender-msg" rows="5" cols="33"></textarea>
+						</div>
+						<div class="text-center">
+							<button class="btn btn-primary btn-lg"><i class="far fa-envelope"></i> Send Mail</button>
+							<input class="btn btn-lg btn-danger" type="submit" name="reset" value="Clear">
+						</div>
+					</form>
 				</div>
 			</div>
-			<div class="text-center align-self-stretch px-5 bg-dark text-white">
+			<div id="social-links" class="text-center align-self-stretch bg-dark text-white">
 				<h4>Contact Me</h4>
 				
 				<!-- TODO: split this div into four pieces.
 					  include portfolio link and remove envelope for email -->
-				<ul id="social" class="d-flex justify-content-center px-0">
-					<li><a href="#"><i class="far fa-envelope"></i></a></li>
-					<li><a href="#"><i class="fab fa-facebook"></i></a></li>
-					<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-					<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-				</ul>
+				<div id="social-nets">
+					<div class="row">
+						<div class="col-md-6 soc-btn">
+							<a href="#"><i class="fab fa-facebook"></i></a>
+						</div>
+						<div class="col-md-6 soc-btn">
+							<a href="#"><i class="fab fa-twitter"></i></a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 soc-btn">
+							<a href="#"><i class="fab fa-linkedin"></i></a>
+						</div>
+						<div class="col-md-6 soc-btn">
+							<a href="#"><i class="fas fa-briefcase"></i></a>
+						</div>
+					</div>
+				</div>
+				<!-- <ul id="social" class="d-flex justify-content-center px-0">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul> -->
 			</div>
 		</div>
 		<div class="text-center">
