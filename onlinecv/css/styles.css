@@ -125,6 +125,12 @@ textarea {
 #mail-form {
 }
 
+#mail-form #mail-btn .btn {
+	width: 40%;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+}
+
 #mail-form .text-input {
 	padding: 0.8rem;
 }
