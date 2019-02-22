@@ -25,6 +25,10 @@ footer h4 {
 	font-size: calc(0.6rem + 10vmin);
 }
 
+textarea {
+	resize: none;
+}
+
 #portfolio-link {
 	-webkit-transition: 0.3s all ease-in-out;
 	-moz-transition: 0.3s all ease-in-out;
@@ -134,7 +138,7 @@ footer h4 {
 	overflow-x: hidden;
 }
 
-#social-nets .row .soc-btn {
+#social-nets .soc-btn {
 	display: flex;
 	flex-direction: column;
 	align-content: center;
@@ -143,12 +147,14 @@ footer h4 {
 	height: 400px;
 	margin: 0;
 	text-decoration: none;
-}
-
-#social-nets .soc-btn {
-	width: 100%;
 	font-size: 5rem;
 	color: #CC0109;
+	transition: all 0.6s ease-in-out;
+}
+
+#social-nets .soc-btn:hover {
+	color: #fff;
+	background-color: #aa0917;
 }
 
 #ico-facebook {
