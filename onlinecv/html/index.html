@@ -326,27 +326,27 @@
 	<span id="social-media" class="anchor"></span>
 	<footer class="footer mx-0 mt-auto bg-dark text-light">
 		<div class="d-flex flex-column flex-lg-row justify-content-between align-items-stretch">
-			<div class="pt-5 px-5 w-50">
+			<div id="mail-div" class="pt-5 px-2 px-sm-5 w-100 d-flex flex-column">
 				<!-- TODO: add form for sending emails
 						   make div fill whole space of outer div -->
-				<h2 class="display-4 text-uppercase">Send me an email</h2>
+				<h2 class="text-uppercase">Send me an email</h2>
 				<div id="mail-form" class="text-left py-5">
 					<form>
 						<div class="d-flex flex-column justify-content-between mb-5">
-							<label for="sender-name">Full Name</label>
-							<input class="text-input" id="sender-name" type="text" name="sender-name">
+							<label for="sender-name">Your Full Name</label>
+							<input class="text-input border-glow" id="sender-name" type="text" name="sender-name" placeholder="Ex: What your parents call you">
 						</div>
 						<div class="d-flex flex-column justify-content-between mb-5">
-							<label for="sender-mail">Email</label>
-							<input class="text-input" id="sender-mail" type="sender-mail" name="sender-mail">
+							<label for="sender-mail">Your Email</label>
+							<input class="text-input border-glow" id="sender-mail" type="sender-mail" name="sender-mail" placeholder="Ex: account@domain">
 						</div>
 						<div class="d-flex flex-column mb-5">
-							<label for="sender-msg">Type your message below</label>
-							<textarea class="text-input" id="sender-msg" name="sender-msg" rows="5" cols="33"></textarea>
+							<label for="sender-msg">Type Your Message Below</label>
+							<textarea class="text-input border-glow" id="sender-msg" name="sender-msg" rows="5" cols="33" placeholder="Ex: This site sucks!"></textarea>
 						</div>
 						<div id="mail-btn" class="text-center">
-							<button class="btn btn-primary btn-lg"><i class="far fa-envelope"></i> Send Mail</button>
-							<input class="btn btn-lg btn-danger" type="submit" name="reset" value="Clear">
+							<button class="btn btn-lg btn-primary"><i class="far fa-envelope"></i> Send Mail</button>
+							<button class="btn btn-lg btn-primary">Clear</button>
 						</div>
 					</form>
 				</div>
@@ -377,8 +377,8 @@
 			</div>
 		</div>
 		<div class="d-flex justify-content-between pt-3 px-4 text-center bg-light text-dark">
-			<p>2019. Legal mumbo jumbo about reserved rights that I'm not sure if I have or how it works</p>
-			<p>Created by <a href="">Anubis Lockward</a></p>
+			<p class="text-left">2019. Legal mumbo jumbo about reserved rights that I'm not sure if I have or how it works</p>
+			<p class="text-right">Created by <a href="">Anubis Lockward</a></p>
 		</div>
 	</footer>
 
