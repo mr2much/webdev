@@ -122,21 +122,45 @@ textarea {
 	font-size: 0.8rem;
 }
 
+footer h2 {
+	color: #CC0109;
+	font-weight: 700;
+	font-size: calc(0.5rem + 5vmin);
+	letter-spacing: 0.09em;
+}
+
+#mail-form .border-glow {
+	/*transition: */
+}
+
 #mail-form {
 }
 
 #mail-form #mail-btn .btn {
-	width: 40%;
-	margin-left: 0.5rem;
-	margin-right: 0.5rem;
+	width: 100%;
+	margin-top: 0.8rem;
 }
 
 #mail-form .text-input {
 	padding: 0.8rem;
 }
 
+#mail-btn button {
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	background-color: transparent;
+	border: 0;
+	border-radius: 0;
+	border-top: 3px solid #666;
+	border-bottom: 3px solid #666;
+}
+
+#mail-btn button:hover {
+	border-color: #eee;
+}
+
 #social-links {
-	width: 45%;
+	width: 100%;
 }
 
 #social-nets {
@@ -149,8 +173,8 @@ textarea {
 	flex-direction: column;
 	align-content: center;
 	justify-content: center;
-	width: 100%;
-	height: 400px;
+	width: 50%;
+	height: 200px;
 	margin: 0;
 	text-decoration: none;
 	font-size: 5rem;
@@ -183,12 +207,36 @@ textarea {
 	.emp-details p {
 		flex: 1;
 	}
+
+	.px-sm-5 {
+		padding-left: 3rem !important;
+	}
+
+	.px-sm-5 {
+		padding-right: 3rem !important;
+	}
+
+	#mail-form #mail-btn .btn {
+		width: 40%;
+		margin-left: 0.5rem;
+		margin-right: 0.5rem;
+	}
+
+	#social-nets .soc-btn {
+		height: 300px;
+	}
 }
 
 @media only screen and (min-width: 576px) {
 	.jumbotron {
 		margin-left: 0;
 		margin-right: 0;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	#social-nets .soc-btn {
+		height: 400px;
 	}
 }
 
@@ -201,5 +249,13 @@ textarea {
 		grid-template-columns: repeat(2, [col] 50%);
 		grid-template-areas: 
 			"header header";
+	}
+
+	#mail-div {
+		width: 65% !important;
+	}
+
+	#social-links {
+		width: 45%;
 	}
 }
