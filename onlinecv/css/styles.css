@@ -164,17 +164,19 @@ footer h2 {
 }
 
 #social-nets {
-	/*height: 100%;*/
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	overflow-x: hidden;
 }
 
 #social-nets .soc-btn {
 	display: flex;
 	flex-direction: column;
-	align-content: center;
+	align-items: center;
 	justify-content: center;
 	width: 50%;
-	height: 200px;
+	height: 150px;
 	margin: 0;
 	text-decoration: none;
 	font-size: 5rem;
@@ -216,14 +218,8 @@ footer h2 {
 		padding-right: 3rem !important;
 	}
 
-	#mail-form #mail-btn .btn {
-		width: 40%;
-		margin-left: 0.5rem;
-		margin-right: 0.5rem;
-	}
-
-	#social-nets .soc-btn {
-		height: 300px;
+	#social-links {
+		width: 80%;
 	}
 }
 
@@ -235,8 +231,20 @@ footer h2 {
 }
 
 @media only screen and (min-width: 768px) {
+	#social-nets {
+		padding: 0 !important;
+	}
+
 	#social-nets .soc-btn {
 		height: 400px;
+	}
+
+	#mail-div {
+		width: 65% !important;
+	}
+
+	#social-links {
+		width: 45%;
 	}
 }
 
@@ -251,11 +259,9 @@ footer h2 {
 			"header header";
 	}
 
-	#mail-div {
-		width: 65% !important;
-	}
-
-	#social-links {
-		width: 45%;
+	#mail-form #mail-btn .btn {
+		width: 40%;
+		margin-left: 0.5rem;
+		margin-right: 0.5rem;
 	}
 }
