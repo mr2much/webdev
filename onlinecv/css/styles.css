@@ -12,8 +12,9 @@
 }
 
 body {
+	/*font-family: 'Open Sans', sans-serif;*/
 	overflow-x: hidden;
-	margin-top: 60px;
+	/*margin-top: 60px;*/
 	color: #888;
 }
 
@@ -27,6 +28,57 @@ footer h4 {
 
 textarea {
 	resize: none;
+}
+
+#head-cover {
+	position: relative;
+	color: #fff;
+	height: 110vh;
+	text-shadow: 0 4px 3px rgba(0, 0, 0, 0.4),
+				 0 8px 13px rgba(0, 0, 0, 0.1),
+				 0 18px 23px rgba(0, 0, 0, 0.1);
+}
+
+#head-cover h1 {
+	font-family: 'Playfair Display', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	/*font-size: calc(1.5rem + 10vmin);*/
+	font-weight: 900;
+}
+
+#head-cover span {
+	display: inline-block;
+}
+
+#head-cover .name {
+	position: relative;
+	font-size: calc(3rem + 15vmin);
+	right: 10rem;
+	color: #989898;
+	z-index: 99;
+}
+
+#head-cover .lastname {
+	position: absolute;
+	font-size: calc(1.5rem + 15vmin);
+	top: 8rem;
+	left: 1rem;
+	padding-left: 10rem;
+	line-height: 0;
+	color: #CC0109;
+	z-index: 100;
+}
+
+#inner-cover {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
 }
 
 #portfolio-link {
@@ -55,9 +107,23 @@ textarea {
 	margin: 0 0.5rem;
 }
 
+.navbar {
+	background-color: transparent !important;
+}
+
+.navbar .nav-item .nav-link {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #989898;
+}
+
 .jumbotron {
-	margin-left: -15px;
-	margin-right: -15px;
+	background: url("../res/tomas-yates-696872-unsplash.jpg");
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	/*margin-left: -15px;
+	margin-right: -15px;*/
 }
 
 .section {
@@ -70,7 +136,7 @@ textarea {
 	width: 0;
 	height: 0;
 	z-index: -1;
-	margin-top: -60px;
+	margin-top: -35px;
 	left: 0;
 	visibility: hidden;
 }
@@ -127,10 +193,6 @@ footer h2 {
 	font-weight: 700;
 	font-size: calc(0.5rem + 5vmin);
 	letter-spacing: 0.09em;
-}
-
-#mail-form .border-glow {
-	/*transition: */
 }
 
 #mail-form {
