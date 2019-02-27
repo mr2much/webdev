@@ -11,6 +11,10 @@
 	width: device-width;
 }
 
+html {
+	overflow-x: hidden;
+}
+
 body {
 	font-family: 'Open Sans', sans-serif;
 	overflow-x: hidden;
@@ -223,6 +227,10 @@ footer h2 {
 	letter-spacing: 0.09em;
 }
 
+#foot-container {
+	overflow-y: hidden;
+}
+
 #mail-form {
 }
 
@@ -261,7 +269,7 @@ footer h2 {
 	overflow-x: hidden;*/
 }
 
-#social-nets .soc-btn {
+#social-links .soc-btn {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -275,7 +283,7 @@ footer h2 {
 	transition: all 0.6s ease-in-out;
 }
 
-#social-nets .soc-btn:hover {
+#social-links .soc-btn:hover {
 	color: #fff;
 	background-color: #aa0917;
 }
@@ -309,8 +317,9 @@ footer h2 {
 		padding-right: 3rem !important;
 	}
 
-	#social-links {
-		width: 80%;
+	#social-links .soc-btn {
+		/*width: 80%;*/
+		height: 200px;
 	}
 }
 
@@ -324,16 +333,17 @@ footer h2 {
 @media only screen and (min-width: 768px) {
 	#social-nets {
 		padding: 0 !important;
+		border: 1px solid black;
 	}
 
 	#social-links {
-		border: 1px solid red;
-		float: right;
+		/*border: 1px solid red;*/
+		
 	}
 
-	#social-nets .soc-btn {
+	#social-links .soc-btn {
 		/*height: 400px;*/
-		float: right;
+		height: 50%
 	}
 
 	#mail-div {
@@ -342,6 +352,8 @@ footer h2 {
 
 	#social-links {
 		width: 45%;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
 	}
 }
 
