@@ -183,24 +183,31 @@ section p {
 }
 
 #catapp-proj {
-	background-image: url("../../assets/res/thumbnails/catapp-thumb.jpg");
+	background-image: url("../../assets/res/thumbnails/catapp-thumb.png");
 	background-size: cover;
-	background-position: center 20%;
+	background-position: center center;
 	background-repeat: no-repeat;
 }
 
 #onlinecv-proj {
-	background-image: url("../../assets/res/thumbnails/onlinecv-thumb.jpg");
+	background-image: url("../../assets/res/thumbnails/onlinecv-thumb.png");
 	background-size: cover;
-	background-position: center 20%;
+	background-position: center center;
 	background-repeat: no-repeat;
 }
 
 #regform-proj {
-	background-image: url("../../assets/res/thumbnails/regform-thumb.jpg");
+	background-image: url("../../assets/res/thumbnails/regform-thumb.png");
 	background-size: cover;
-	background-position: center 20%;
+	background-position: center center;
 	background-repeat: no-repeat;
+}
+
+#todolist-proj {
+	background-image: url('../../assets/res/thumbnails/todolist-thumb.png');
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;	
 }
 
 #tribute-proj {
@@ -210,6 +217,13 @@ section p {
 	background-repeat: no-repeat;
 }
 
+#survey-proj {
+	background-image: url('../../assets/res/thumbnails/survey-thumb.png');
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;		
+}
+
 #prodland-proj {
 	background-image: url("../../assets/res/thumbnails/prodland-thumb.png");
 	background-size: cover;
@@ -217,22 +231,11 @@ section p {
 	background-repeat: no-repeat;	
 }
 
-#survey-proj {
-	background-image: url('../../assets/res/thumbnails/survey-thumb.jpg');
+#imggallery-proj {
+	background-image: url('../../assets/res/thumbnails/imggal-thumb.png');
 	background-size: cover;
 	background-position: center center;
-	background-repeat: no-repeat;		
-}
-
-#todolist-proj {
-	background-image: url('../../assets/res/thumbnails/todolist-thumb.jpg');
-	background-size: cover;
-	background-position: 25% 17%;
-	background-repeat: no-repeat;	
-}
-
-#imggallery-proj {
-	
+	background-repeat: no-repeat;
 }
 
 a {
