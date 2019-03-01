@@ -17,7 +17,11 @@ html {
 
 body {
 	margin: 0 auto;
+<<<<<<< HEAD
 	width: 80%;
+=======
+	width: 80em;
+>>>>>>> d12e74f21108b06dcf85a29fa139464a85d968b9
 	font-size: calc(15px + (18 - 15) * ((100vw - 320px) / (1200 - 320)));
 	line-height: calc(1.3em + (1.45 - 1.3) * ((100vw - 21em) / (80 - 21)));
 	margin-bottom: 0.75rem;
