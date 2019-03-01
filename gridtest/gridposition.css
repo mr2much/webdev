@@ -1,0 +1,86 @@
+* {
+	box-sizing: border-box;
+}
+
+@viewport {
+	width: device-width;
+	zoom: 1.0;
+}
+
+@-ms-viewport {
+	width: device-width;
+}
+
+html {
+	font-size: 15px;
+}
+
+body {
+	margin: 2.66rem;
+}
+
+.wrapper {
+	display: grid;
+	margin: 0 auto;
+	grid-gap: 0.66rem;
+	grid-template-columns: repeat(3, 200px);
+	grid-template-areas: 
+		"header header header"
+		"sidebar content content"
+		"footer footer footer";
+	background: #FFF;
+	color: #444;
+}
+
+.box {
+	background: #444;
+	color: #FFF;
+	border-radius: 0.33em;
+	padding: 50px;
+	font-size: 1.5em;
+}
+
+.header {
+	grid-area: header;
+}
+
+.sidebar {
+	grid-area: sidebar;
+}
+
+.content {
+	grid-area: content;
+	position: relative;
+}
+
+.footer {
+	grid-area: footer;
+}
+
+.header, .footer {
+	background-color: #999;
+}
+
+.topleft {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.topright {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.bottomleft {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.bottomright {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}

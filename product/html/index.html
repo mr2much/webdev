@@ -1,0 +1,216 @@
+<!-- User Story #1: My product landing page should have a header element with a corresponding id="header".
+User Story #2: I can see an image within the header element with a corresponding id="header-img". A company logo would make a good image here.
+User Story #3: Within the #header element I can see a nav element with a corresponding id="nav-bar".
+User Story #4: I can see at least three clickable elements inside the nav element, each with the class nav-link.
+User Story #5: When I click a .nav-link button in the nav element, I am taken to the corresponding section of the landing page.
+User Story #6: I can watch an embedded product video with id="video".
+User Story #7: My landing page has a form element with a corresponding id="form".
+User Story #8: Within the form, there is an input field with id="email" where I can enter an email address.
+User Story #9: The #email input field should have placeholder text to let the user know what the field is for.
+User Story #10: The #email input field uses HTML5 validation to confirm that the entered text is an email address.
+User Story #11: Within the form, there is a submit input with a corresponding id="submit".
+User Story #12: When I click the #submit element, the email is submitted to a static page (use this mock URL: https://www.freecodecamp.com/email-submit) that confirms the email address was entered and that it posted successfully.
+User Story #13: The navbar should always be at the top of the viewport.
+User Story #14: My product landing page should have at least one media query.
+User Story #15: My product landing page should utilize CSS flexbox at least once.
+You can build your project by forking this CodePen pen. Or you can use this CDN link to run the tests in any environment you like: https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js
+Once you're done, submit the URL to your working project with all its tests passing.
+Remember to use the Read-Search-Ask method if you get stuck. -->
+
+<!-- TODO: Make the images used for the product be smaller -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Product Landing Page Project</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../css/styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+	<span id="header">
+		<nav id="nav-bar" class="navbar navbar-default navbar-fixed-top clearfix" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<img class="navbar-brand" id="header-img" src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" />
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a class="nav-link" href="#product-desc">Product Description</a></li>
+						<li><a class="nav-link" href="#item-feats">Item Features</a></li>
+						<li><a class="nav-link" href="#shipping">Shipping and Handling</a></li>
+						<li><a class="nav-link" href="#instructions">How it Works</a></li>
+						<li><a class="nav-link" href="#returns">Returns</a></li>
+						<li><a class="nav-link" href="#order-changes">Order Cancellations/Address Changes</a></li>
+						<li><a class="nav-link" href="#offers">Out Offers</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</span>
+	
+	<div id="main-content" class="container clearfix center-block">
+		<section>
+			<div class="jumbotron fluid-typography" id="product-desc">
+				<h2>Product Description</h2>
+				<p>This Hybrid phone case for Motorola droid mini offers impeccable protection for your smart phone. It consists of two pieces: Silicon + Hard case which overlap to create a tight fit for full protection. It also has a built in media Kickstand so you can watch a video or a movie without holding your phone the whole time.</p>
+			</div>
+
+			<div id="thumbnails">
+				<div>
+					<img class="thumbnail" src="../res/reikocoverback.jpg">
+				</div>
+				<div>
+					<img class="thumbnail" src="../res/reikofront.jpg">
+				</div>
+				<div>
+					<img class="thumbnail" src="../res/reikoside.jpg">
+				</div>
+			</div>
+		</section>
+		&nbsp;
+		<section>
+			<div id="item-feats">
+				<h2>Item Features</h2>
+				<ul>
+					<li>The unique combination of hard and soft materials gives your phone double protection.</li>
+					<li>Silicone plugs provide coverage for ports.</li>
+					<li>Premium Hybrid Case for Cell Phone.</li>
+					<li><span class="uppercased">EASY INSTALLATION.</span></li>
+					<li>Designed for your <span class="uppercased">MOTOROLA DROID MINI XT1030.</span></li>
+				</ul>
+			</div>
+		</section>
+		&nbsp;
+		<section>
+			<div id="shipping">
+				<h2>Shipping and Handling</h2>
+				<ul>
+					<li>Your order will be processed within 3 to 5 business day after receipt of cleared payment.</li>
+					<li>Orders are not processed for shipping on Weekends or Holidays.</li>
+					<li>We Do Not Ship to <span class="uppercased">PO/APO</span> Boxes, Alaska, Puerto Rico, US Virgin Islands, Guam.</li>
+					<li>We Do Not Ship Outside of the 48 Continental US.</li>
+					<li>We do not combine shipping.</li>
+					<li>Once we have confirmed that your order was picked up by the shipping carrier, we will update the tracking information through eBay.</li>
+					<li>Once we have confirmed that your order was picked up by the shipping carrier, we will update the tracking information through eBay. If you don't receive a tracking number after 48 hours of ordering or if you have any concerns about your order before or after delivery you can contact us through eBay's messaging system.</li>
+					<li><span class="detail-desc">Product Dimensions:</span> 0.1" x 2.6" x 4.7"</li>
+					<li><span class="detail-desc">Shipping Weight:</span> 1.6 oz</li>
+					<li><span class="detail-desc uppercased">ASIN:</span> <span class="uppercased">B00HHDNLEA</span></li>
+					<li><span class="detail-desc">Item model number:</span> <span class="uppercased">SLCPC12-MOT1030BK</span></li>
+				</ul>
+			</div>
+		</section>
+		&nbsp;
+		<section>
+			<div id="instructions">
+				<h2>How it Works</h2>
+				<iframe id="video" src="https://www.youtube.com/embed/M9w7pWjDHC8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+		</section>
+		&nbsp;
+		<section>
+			<div id="returns">
+				<h2>Returns</h2>
+				<ul>
+					<li>You have to wait 14 days in order to get your money back or item exchange.</li>
+					<li>Buyers Pay for Return Shipping Cost, except for defective items.</li>
+					<li>We offer hassle free return, Must Contact us first via eBay Message. Do not return the item before contacting us.</li>
+					<li>Any returns <span class="uppercased">HAVE</span> to include a return authorization number provided for us.</li>
+					<li>Item must be returned within 7 days after instructions have been provided.</li>
+					<li>For hassle free returns we are going to provide a Shipping Label. Buyer Must Contact us First.</li>
+				</ul>
+			</div>
+		</section>
+		&nbsp;
+		<section>
+			<div id="order-changes">
+				<h2>Order Cancellations/Address Changes</h2>
+				<ul>
+					<li>Please make sure that you are buying the item you need and that the shipping address you have registered on eBay is correct.</li>
+					<li>Once the item is shipped we will not be able to cancel the delivery or change the address it was sent to.</li>
+					<li>Messages are handled in the order they are received. Generally our response time is 24 to 48 hours.</li>
+					<li>It is possible that orders are processed before messages are handled.</li>
+				</ul>
+			</div>
+		</section>
+		&nbsp;
+		<section>
+			<div id="cancel-order">
+				<!-- <h2>Do you want to cancel your order?</h2> -->
+				<form id="form" action="https://www.freecodecamp.com/email-submit" method="post">
+					<div>
+						<strong><label for="email">For order changes please enter your email:</label></strong>
+						<input id="email" type="email" name="email" placeholder="email@domain" required>
+					</div>
+					<div>
+						<input class="uppercased" id="submit" type="submit" name="submit">
+					</div>
+				</form>
+			</div>
+		</section>
+		&nbsp;
+		<section id="offers">
+			<div id="one-item">
+				<div class="offer-desc uppercased">
+					One Case
+				</div>
+				<h2>$10.00</h2>
+				<ul>
+					<li>jibberish</li>
+					<li>jibberish</li>
+					<li>jibberish</li>
+					<li>jibberish</li>
+				</ul>
+				<button class="btn uppercased">I Want This</button>
+			</div>
+
+			<div id="three-items">
+				<div class="offer-desc uppercased">
+					Three Cases
+				</div>
+				<h2>$25.00</h2>
+				<ul>
+					<li>One Black</li>
+					<li>One Red</li>
+					<li>One Pink</li>
+					<li>jibberish</li>
+				</ul>
+				<button class="btn uppercased">I Want This</button>
+			</div>
+
+			<div id="five-items">
+				<div class="offer-desc uppercased">
+					Five Cases
+				</div>
+				<h2>$42.00</h2>
+				<ul>
+					<li>One Blue</li>
+					<li>One Black</li>
+					<li>One Pink</li>
+					<li>One Red</li>
+				</ul>
+				<button class="btn uppercased">I Want This</button>
+			</div>
+		</section>
+	</div>
+	&nbsp;
+	<footer class="footer">
+		<div class="container">
+			<p class="text-muted">If I write that this is copywritten, does it really mean something?</p>
+			&nbsp;
+			<p class="text-muted">Anubis Lockward, 2019</p>
+		</div>
+	</footer>
+
+	<script type="text/javascript" src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

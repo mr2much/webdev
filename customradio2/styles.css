@@ -1,0 +1,148 @@
+ul {
+	overflow: hidden;
+	list-style-type: none;
+	padding: 5px 0px 5px 0px;
+}
+
+li {
+	display: inline-block;
+	margin-left: 20px;
+}
+
+/*Removes the default looks for the controls from the view*/
+input[type="radio"]:not(:checked),
+input[type="radio"]:checked,
+input[type="checkbox"]:not(:checked),
+input[type="checkbox"]:checked {
+	position: absolute;
+	left: -9999px;
+}
+
+/*Styles the labels of the radio buttons and checkboxes*/
+input[type="radio"]:not(:checked) + label,
+input[type="radio"]:checked + label,
+input[type="checkbox"]:not(:checked) + label,
+input[type="checkbox"]:checked + label {
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 18px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	display: block;
+}
+
+/*Creates custom look for radio button*/
+input[type="radio"]:not(:checked) + label:before,
+input[type="radio"]:checked + label:before {
+	content: "";
+	position: absolute;
+	left: 0; top: 0;
+	width: 25px; height: 25px;
+	-webkit-transition: all 0.50s ease-in-out;
+	-moz-transition: all 0.50s ease-in-out;
+	-ms-transition: all 0.50s ease-in-out;
+	-o-transition: all 0.50s ease-in-out;
+	transition: all 0.50s ease-in-out;
+	outline: none;
+	border: 2px solid #CCC;
+	background: #eee;
+	border-radius: 50%;	
+}
+
+/*Creates custom look for checkbox*/
+input[type="checkbox"]:not(:checked) + label::before,
+input[type="checkbox"]:checked + label::before {
+	content: "";
+	position: absolute;
+	left: 0; top: -1px;
+	width: 25px; height: 25px;
+	-webkit-transition: all 0.50s ease-in-out;
+	-moz-transition: all 0.50s ease-in-out;
+	-ms-transition: all 0.50s ease-in-out;
+	-o-transition: all 0.50s ease-in-out;
+	transition: all 0.50s ease-in-out;
+	outline: none;
+	border: 2px solid #CCC;
+	background: #eee;
+	border-radius: 5px;
+}
+
+/*Creates custom look for the selector inside the radio button*/
+input[type="radio"]:not(:checked) + label::after,
+input[type="radio"]:checked + label::after {
+	content: "";
+	position: absolute;	
+	-webkit-transition: all .2s ease;
+	transition: all .2s ease;
+	top: 6px; left: 6px;
+	width: 12px;
+	height: 12px;
+	background: #003366;
+	border: solid #003366;
+	border-width: 0 5px 5px 0;	/*This border helps keep the circle marker on the center of the radio button*/
+	border-radius: 50%;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 1);
+}
+
+/*Creates custom look for the selector inside the checkbox*/
+input[type="checkbox"]:not(:checked) + label::after,
+input[type="checkbox"]:checked + label::after {
+	content: "";
+	position: absolute;
+	-webkit-transition: all .2s ease;
+	-moz-transition: all .2s ease;
+	-ms-transition: all .2s ease;
+	-o-transition: all .2s ease;
+	transition: all .2s ease;
+	top: 2px; left: 10px;
+	width: 5px; height: 15px;
+	border: solid #003366;
+	border-width: 0 5px 5px 0;
+}
+
+/*Hides the 'selected' state marker*/
+input[type="radio"]:not(:checked) + label:after,
+input[type="checkbox"]:not(:checked) + label:after {
+	opacity: 0;
+	-webkit-transform: rotate(45deg) scale(0);
+	-moz-transform: rotate(45deg) scale(0);
+	-ms-transform: rotate(45deg) scale(0);
+	-o-transform: rotate(45deg) scale(0);
+	transform: rotate(45deg) scale(0);
+}
+
+/*Shows the marker when the control is 'selected'*/
+input[type="radio"]:checked + label:after,
+input[type="checkbox"]:checked + label:after {
+	opacity: 1;
+	-webkit-transform: rotate(45deg) scale(1);
+	-moz-transform: rotate(45deg) scale(1);
+	-ms-transform: rotate(45deg) scale(1);
+	-o-transform: rotate(45deg) scale(1);
+	transform: rotate(45deg) scale(1);
+}
+
+/*When the option is 'selected' leaves the border around the control*/
+input[type="radio"]:checked + label:before,
+input[type="checkbox"]:checked + label:before {
+	box-shadow: 0 0 5px rgba(81, 81, 81, 1);
+	border: 2px solid rgba(81, 81, 81, 1);
+}
+
+label {
+	padding: 5px 0;	/*Add padding at top and bottom of the label to make it look vertically centered relative to the controls next to them*/
+}
+
+/*Changes the appearance of the control when the mouse hovers over it, like making it a little bigger and showing a blurry
+border around it and a darker background*/
+label:hover:before {
+	background: #ccc !important;
+	box-shadow: 0 0 5px rgba(81, 81, 81, 1);
+	border: 2px solid rgba(81, 81, 81, 1) !important;
+	transform: scale(1.1);
+}
