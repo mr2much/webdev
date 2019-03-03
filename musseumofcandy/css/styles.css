@@ -1,0 +1,35 @@
+* {
+	box-sizing: border-box;
+}
+
+@viewport {
+	width: device-width;
+	zoom: 1.0;
+}
+
+@-ms-viewport {
+	width: device-width;
+}
+
+body {
+	background-color: #f5d9d5;
+	font-family: 'Nunito', sans-serif;
+}
+
+#mainNavbar {
+	font-size: 1.5rem;
+	font-weight: 100;
+}
+
+#mainNavbar .nav-link {
+	color: #fff;
+}
+
+#mainNavbar .nav-link:hover {
+	color: #EA1C2C;
+}
+
+#mainNavbar .navbar-brand {
+	color: #EA1C2C;
+	font-size: 1.5rem;
+}
