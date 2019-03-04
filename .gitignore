@@ -1,9 +1,9 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 node_modules/
-=======
-/node_modules
->>>>>>> 31daf9a... Added ignore file to ignore Node
-=======
-node_modules/
->>>>>>> d12e74f21108b06dcf85a29fa139464a85d968b9
+flexboxtest
+gridtest
+navpractice
+customradio
+customradio2
+blogexercise
+bouncy
+bs4
