@@ -77,6 +77,11 @@ textarea {
 	height: 100%;
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0.6);
+	-webkit-transition: background 0.8s ease-in-out;
+	-moz-transition: background 0.8s ease-in-out;
+	-ms-transition: background 0.8s ease-in-out;
+	-o-transition: background 0.8s ease-in-out;
+	transition: background 0.8s ease-in-out
 }
 
 #inner-cover .btn-primary {
@@ -121,13 +126,23 @@ textarea {
 }
 
 .navbar {
-	background-color: transparent !important;
+	-webkit-transition: background 0.8s ease-in-out;
+	-moz-transition: background 0.8s ease-in-out;
+	-ms-transition: background 0.8s ease-in-out;
+	-o-transition: background 0.8s ease-in-out;
+	transition: background 0.8s ease-in-out;
 }
 
 .navbar .nav-item .nav-link {
 	font-size: 1.2rem;
 	font-weight: 700;
 	color: #DDD;
+	transition: all 0.6s ease-in-out;
+}
+
+.navbar .nav-item .nav-link:hover {
+	color: #fff;
+	transform: scale(1.5);
 }
 
 .jumbotron {
@@ -271,6 +286,47 @@ footer h2 {
 
 #ico-portfolio {
 	background-color: #656565;
+}
+
+.scrolled {
+	background-color: #aa0917;
+	animation-duration: 1s;
+	animation-name: paddingIn;
+	animation-fill-mode: forwards;
+}
+
+@keyframes paddingIn {
+	0% {
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+	}
+
+	100% {
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
+	}
+}
+
+.nonScrolled {
+	animation-duration: 0.3s;
+	animation-name: paddingOut;
+	animation-fill-mode: forwards;
+}
+
+@keyframes paddingOut {
+	0% {
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
+	}
+
+	100% {
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+	}
+}
+
+.darkerBG {
+	background-color: rgba(0, 0, 0, 0.9) !important;
 }
 
 @media only screen and (min-width: 568px) {
