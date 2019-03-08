@@ -215,11 +215,6 @@ https://stackoverflow.com/questions/526035/how-can-i-position-my-div-at-the-bott
 }
 
 @media screen and (min-width: 46em) and (max-width: 80em) {
-	/*#container {
-		display: flex;
-		flex-direction: column;
-	}*/
-
 	.outer {
 		width: 45%;
 		margin: 2.5%;

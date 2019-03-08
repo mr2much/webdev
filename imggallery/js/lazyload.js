@@ -1,3 +1,5 @@
+// Special thanks to Rahul Nanwani for this solution
+// https://css-tricks.com/the-complete-guide-to-lazy-loading-images/
 document.addEventListener("DOMContentLoaded", function() {
 	var lazyloadImages;
 
