@@ -190,6 +190,30 @@ https://stackoverflow.com/questions/526035/how-can-i-position-my-div-at-the-bott
 	background-image: url("../res/thumb/thumb-sebastian-pociecha-1309675-unsplash.jpg");
 }
 
+#image10.lazy {
+	background-image: none;
+}
+
+#image10 {
+	background-image: url("../res/journey-man-1364190-unsplash.jpg");
+}
+
+#image11.lazy {
+	background-image: none;
+}
+
+#image11 {
+	background-image: url("../res/daniel-lee-1414689-unsplash.jpg");
+}
+
+#image12.lazy {
+	background-image: none;
+}
+
+#image12 {
+	background-image: url("../res/hanan-edwards-1399891-unsplash.jpg");
+}
+
 @media screen and (min-width: 46em) and (max-width: 80em) {
 	/*#container {
 		display: flex;
