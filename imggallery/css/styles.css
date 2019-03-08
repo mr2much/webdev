@@ -115,50 +115,106 @@ https://stackoverflow.com/questions/526035/how-can-i-position-my-div-at-the-bott
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
+	background-color: #ccc;
 }
 
-.image1 {
+#image1.lazy {
+	background-image: none;
+}
+
+#image1 {
 	background-image: url("../res/thumb/thumb-hossam-m-omar-1308692-unsplash.jpg");
 }
 
-.image2 {
+#image2.lazy {
+	background-image: none;
+}
+
+#image2 {
 	background-image: url("../res/thumb/thumb-elias-arnar-1309173-unsplash.jpg");
 }
 
-.image3 {
+#image3.lazy {
+	background-image: none;
+}
+
+#image3 {
 	background-image: url("../res/thumb/thumb-phil-botha-1308059-unsplash.jpg");
 }
 
-.image4 {
+#image4.lazy {
+	background-image: none;
+}
+
+#image4 {
 	background-image: url("../res/thumb/thumb-karl-s-1308985-unsplash.jpg");
 }
 
-.image5 {
+#image5.lazy {
+	background-image: none;
+}
+
+#image5 {
 	background-image: url("../res/thumb/thumb-ian-keefe-1309035-unsplash.jpg");
 }
 
-.image6 {
+#image6.lazy {
+	background-image: none;
+}
+
+#image6 {
 	background-image: url("../res/thumb/thumb-eberhard-grossgasteiger-1308674-unsplash.jpg");
 }
 
-.image7 {
+#image7.lazy {
+	background-image: none;
+}
+
+#image7 {
 	background-image: url("../res/thumb/thumb-gleb-makarov-1309023-unsplash.jpg");
 }
 
-.image8 {
+#image8.lazy {
+	background-image: none;
+}
+
+#image8 {
 	background-image: url("../res/thumb/thumb-jose-fontano-1310027-unsplash.jpg");
 }
 
-.image9 {
+#image9.lazy {
+	background-image: none;
+}
+
+#image9 {
 	background-image: url("../res/thumb/thumb-sebastian-pociecha-1309675-unsplash.jpg");
 }
 
-@media screen and (min-width: 46em) and (max-width: 80em) {
-	/*#container {
-		display: flex;
-		flex-direction: column;
-	}*/
+#image10.lazy {
+	background-image: none;
+}
 
+#image10 {
+	background-image: url("../res/journey-man-1364190-unsplash.jpg");
+}
+
+#image11.lazy {
+	background-image: none;
+}
+
+#image11 {
+	background-image: url("../res/daniel-lee-1414689-unsplash.jpg");
+}
+
+#image12.lazy {
+	background-image: none;
+}
+
+#image12 {
+	background-image: url("../res/hanan-edwards-1399891-unsplash.jpg");
+}
+
+@media screen and (min-width: 46em) and (max-width: 80em) {
 	.outer {
 		width: 45%;
 		margin: 2.5%;
