@@ -13,10 +13,6 @@
 	width: device-width;
 }
 
-html {
-	/*overflow-x: hidden;*/
-}
-
 body {
 	font-family: 'Open Sans', sans-serif;
 	overflow-x: hidden;
@@ -40,8 +36,6 @@ textarea {
 section {
 	display: flex;
 	flex-direction: column;
-	/*align-items: center;*/
-	/*justify-content: center;*/
 	width: 100%;
 	min-height: 100vh;
 	height: 100%;
@@ -50,7 +44,6 @@ section {
 #head-cover {
 	position: relative;
 	color: #fff;
-	/*height: 110vh;*/
 	text-shadow: 0 4px 3px rgba(0, 0, 0, 0.4),
 				 0 8px 13px rgba(0, 0, 0, 0.1),
 				 0 18px 23px rgba(0, 0, 0, 0.1);
@@ -90,11 +83,12 @@ section {
 	height: 100%;
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0.6);
+
 	-webkit-transition: background 0.8s ease-in-out;
-	-moz-transition: background 0.8s ease-in-out;
-	-ms-transition: background 0.8s ease-in-out;
-	-o-transition: background 0.8s ease-in-out;
-	transition: background 0.8s ease-in-out
+	   -moz-transition: background 0.8s ease-in-out;
+		-ms-transition: background 0.8s ease-in-out;
+		 -o-transition: background 0.8s ease-in-out;
+			transition: background 0.8s ease-in-out;
 }
 
 #inner-cover .btn-primary {
@@ -114,10 +108,10 @@ section {
 
 #portfolio-link {
 	-webkit-transition: 0.3s all ease-in-out;
-	-moz-transition: 0.3s all ease-in-out;
-	-ms-transition: 0.3s all ease-in-out;
-	-o-transition: 0.3s all ease-in-out;
-	transition: 0.3s all ease-in-out;
+	   -moz-transition: 0.3s all ease-in-out;
+	    -ms-transition: 0.3s all ease-in-out;
+	     -o-transition: 0.3s all ease-in-out;
+	        transition: 0.3s all ease-in-out;
 }
 
 #portfolio-link:hover { 
@@ -150,8 +144,6 @@ section {
 	font-size: 1.2rem;
 	font-weight: 700;
 	color: #DDD;
-	/*padding-top: 1.5rem;*/
-	/*padding-bottom: 1.5rem;*/
 	transition: all 0.6s ease-in-out;
 }
 
@@ -161,7 +153,6 @@ section {
 
 .navbar .nav-item .nav-link:hover {
 	color: #fff;
-	/*transform: scale(1.5);*/
 }
 
 .jumbotron {
