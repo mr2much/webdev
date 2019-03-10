@@ -1,5 +1,7 @@
 * {
 	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 @viewport {
@@ -137,12 +139,14 @@ textarea {
 	font-size: 1.2rem;
 	font-weight: 700;
 	color: #DDD;
+	/*padding-top: 1.5rem;*/
+	/*padding-bottom: 1.5rem;*/
 	transition: all 0.6s ease-in-out;
 }
 
 .navbar .nav-item .nav-link:hover {
 	color: #fff;
-	transform: scale(1.5);
+	/*transform: scale(1.5);*/
 }
 
 .jumbotron {
@@ -297,13 +301,13 @@ footer h2 {
 
 @keyframes paddingIn {
 	0% {
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
 	}
 
 	100% {
-		padding-top: 1.5rem;
-		padding-bottom: 1.5rem;
+		padding-top: 0;
+		padding-bottom: 0;
 	}
 }
 
@@ -315,13 +319,13 @@ footer h2 {
 
 @keyframes paddingOut {
 	0% {
-		padding-top: 1.5rem;
-		padding-bottom: 1.5rem;
+		padding-top: 0;
+		padding-bottom: 0;
 	}
 
 	100% {
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
 	}
 }
 
