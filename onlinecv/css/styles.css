@@ -22,6 +22,7 @@ body {
 	overflow-x: hidden;
 	color: #888;
 	margin: 0 auto;
+	height: 100vh;
 }
 
 ul {
@@ -36,10 +37,20 @@ textarea {
 	resize: none;
 }
 
+section {
+	display: flex;
+	flex-direction: column;
+	/*align-items: center;*/
+	/*justify-content: center;*/
+	width: 100%;
+	min-height: 100vh;
+	height: 100%;
+}
+
 #head-cover {
 	position: relative;
 	color: #fff;
-	height: 110vh;
+	/*height: 110vh;*/
 	text-shadow: 0 4px 3px rgba(0, 0, 0, 0.4),
 				 0 8px 13px rgba(0, 0, 0, 0.1),
 				 0 18px 23px rgba(0, 0, 0, 0.1);
