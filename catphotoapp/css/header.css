@@ -2,7 +2,7 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: #333;
+	background: #F9FCFF;
 	font-size: 1.4rem;
 	height: 100vh;
 	overflow: hidden;
@@ -28,6 +28,7 @@ header:before {
 }
 
 header:after {
+	animation: rotate-up 0.5s 0.5s cubic-bezier(0, 0.5, 0, 1) forwards;
 	background: #F9FCFF;
 	content: "";
 	height: 40rem;
@@ -36,7 +37,7 @@ header:after {
 	   right: -5%;
 	     top: 90%;
 	transform-origin: 0 0;
-	transform: rotateZ(-4deg);
+	z-index: 0;
 }
 
 @keyframes fade-slide-down {
@@ -47,5 +48,39 @@ header:after {
 	100% {
 		opacity: 1;
 		transform: none;
+	}
+}
+
+.animate-pop-in {
+	animation: pop-in 0.6s cubic-bezier(0, 0.9, 0.3, 1.2) forwards;
+	opacity: 0;
+}
+
+@keyframes pop-in {
+	0% {
+		opacity: 0;
+		transform: translateY(-4rem) scale(0.8);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.header-title {
+	animation-delay: 0.6s;
+}
+
+.header-subtitle {
+	animation-delay: 0.8s;
+}
+
+.header-button {
+	animation-delay: 0.9s;
+}
+
+@keyframes rotate-up {
+	100% {
+		transform: rotateZ(-4deg);
 	}
 }
