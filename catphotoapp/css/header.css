@@ -72,6 +72,7 @@ header:after {
 	position: relative;
 	-webkit-transform: translateZ(0.1px);
 	        transform: translateZ(0.1px);
+	margin-top: 11rem;
 	z-index: 10;
 }
 
