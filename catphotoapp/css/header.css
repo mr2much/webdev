@@ -1,3 +1,8 @@
+.js-loading *, .js-loading *:before, .js-loading *:after {
+	-webkit-animation-play-state: paused !important;
+	        animation-play-state: paused !important;
+}
+
 * {
 	box-sizing: border-box;
 	padding: 0;
