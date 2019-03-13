@@ -93,11 +93,13 @@
 }
 
 #inner-cover .git-btn {
+	transform: translateY(4rem) scale(1.8);
 	-webkit-animation-delay: 1.2s;
 	animation-delay: 1.2s;
 }
 
 #inner-cover .blog-btn {
+	transform: translateY(-4rem) scale(0.6);
 	-webkit-animation-delay: 1.4s;
 	animation-delay: 1.4s;
 }
