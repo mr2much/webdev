@@ -85,21 +85,26 @@
 	animation-delay: 1s;
 }
 
-#inner-cover .btn {
+#inner-cover .git-btn {
 	position: relative;
-	-webkit-transform: translateZ(0.1px);
-	transform: translateZ(0.1px);
+	-webkit-transform: translateZ(0.1px) translateY(4rem) scale(1.8) rotate(-90deg);
+	transform: translateZ(0.1px) translateY(4rem) scale(1.8) rotate(-90deg);
 	z-index: 10;
 }
 
 #inner-cover .git-btn {
-	transform: translateY(4rem) scale(1.8);
 	-webkit-animation-delay: 1.2s;
 	animation-delay: 1.2s;
 }
 
 #inner-cover .blog-btn {
-	transform: translateY(-4rem) scale(0.6);
+	position: relative;
+	-webkit-transform: translateZ(0.1px) translateY(-4rem) scale(0.6) rotate(90deg);
+	transform: translateZ(0.1px) translateY(-4rem) scale(0.6) rotate(90deg);
+	z-index: 10;
+}
+
+#inner-cover .blog-btn {
 	-webkit-animation-delay: 1.4s;
 	animation-delay: 1.4s;
 }
@@ -125,20 +130,6 @@
 @keyframes no-transform {
 	100% {
 		opacity: 1;
-		-webkit-transform: none;
-		transform: none;
-	}
-}
-
-@-webkit-keyframes rotate-up {
-	0% {
-		-webkit-transform: none;
-		transform: none;
-	}
-}
-
-@keyframes rotate-up {
-	0% {
 		-webkit-transform: none;
 		transform: none;
 	}
