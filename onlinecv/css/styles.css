@@ -156,12 +156,13 @@ section, header {
 	color: #fff;
 }
 
-/*.jumbotron {
-	background: url("../res/tomas-yates-696872-unsplash.jpg");
+.jumbotron {
+/*	background: url("../res/tomas-yates-696872-unsplash.jpg");
 	background-size: cover;
 	background-position: center center;
-	background-repeat: no-repeat;
-}*/
+	background-repeat: no-repeat;*/
+	border-radius: 0;
+}
 
 .section {
 	position: relative;

@@ -27,13 +27,14 @@
 	right: 0;
 	left: 0;
 	bottom: 0;
-	-webkit-transform: translateY(-4rem);
-	transform: translateY(-4rem);
+	-webkit-transform: scale(2);
+	transform: scale(2);
 	z-index: -1;
 }
 
 #head-cover:after {
-	animation: rotate-up 0.5s 0.5s cubic-bezier(0, 0.5, 0, 1) forwards;
+/*	animation: rotate-up 0.8s 0.5s cubic-bezier(0, 0.5, 0, 1) forwards;
+	background: #989898;
 	content: "";
 	height: 40rem;	
 	position: absolute;
@@ -44,7 +45,7 @@
 	transform: rotateZ(-4deg);
 	-webkit-transform-origin: 0 0;
 	transform-origin: 0 0;
-	z-index: 0;	
+	z-index: 0;	*/
 }
 
 #inner-cover .name {
@@ -100,6 +101,20 @@
 @keyframes no-transform {
 	100% {
 		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	}
+}
+
+@-webkit-keyframes rotate-up {
+	0% {
+		-webkit-transform: none;
+		transform: none;
+	}
+}
+
+@keyframes rotate-up {
+	0% {
 		-webkit-transform: none;
 		transform: none;
 	}
