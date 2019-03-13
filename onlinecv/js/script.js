@@ -1,5 +1,9 @@
-$(document).ready(function() {
-	console.log("Page ready");
+(function() {
+	document.body.className += " js-loading";
+
+	window.addEventListener("load", function() {
+		document.body.className = document.body.className.replace("js-loading", "");
+	}, false);
 });
 
 $(document).scroll(function() {
