@@ -289,7 +289,7 @@
 			<section class="testimonials section mb-2">
 				<div class="header-test">
 					<h3 class="display-5">Testimonials</h3>
-					<a href="#" class="btn btn-lg btn-primary"><i class="fas fa-plus"></i> Add Testimonial</a>
+					<button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-plus"></i> Add Testimonial</button>
 					<hr>
 				</div>
 				<div class="card mb-3 testimony">
@@ -393,6 +393,44 @@
 			<p class="text-right">Created by <a href="">Anubis Lockward</a></p>
 		</div>
 	</footer>
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalCenterTitle">Add Testimonial</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <form>
+	          <div class="form-group">
+	            <label for="poster-name" class="col-form-label">Your Name:</label>
+	            <input type="text" class="form-control" id="poster-name">
+	          </div>
+	          <div class="form-group">
+	            <label for="recipient-title" class="col-form-label">Your Job Title:</label>
+	            <input type="text" class="form-control" id="recipient-title">
+	          </div>
+	          <div class="form-group">
+	            <label for="meet-date" class="col-form-label">When Did We Meet?</label>
+	            <input type="date" class="form-control" id="meet-date" value="yyyy/mm/dd">
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="col-form-label">What Do You Have To Say About Me?</label>
+	            <textarea class="form-control" id="message-text" rows="5"></textarea>
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+	        <button type="button" class="btn btn-primary">Post</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 	<!-- Smooth Scroll -->
 	<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@14.0.0/dist/smooth-scroll.polyfills.min.js"></script>
