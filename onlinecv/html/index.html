@@ -427,10 +427,12 @@
 	            <textarea class="form-control" id="message-text" rows="5" placeholder="ex: This guy is lazy and unskilled"></textarea>
 	          </div>
 	          <div class="form-group">
-	          	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-	          	<button id="postButton" type="submit" class="btn btn-primary" value="default">Post</button>	          	
 	          </div>
 	        </form>
+	      </div>
+	      <div class="modal-footer">
+	      	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+	        <button id="postButton" type="submit" class="btn btn-primary testimonial-submit" value="default">Post</button>         	
 	      </div>
 	    </div>
 	  </div>
@@ -446,10 +448,17 @@
     <script src="../js/script.js"></script>
 
     <script type="text/javascript">
-    	$('#postButton').click(function(e) {
-    		e.preventDefault();
-    		$('#exampleModalCenter').modal('hide');
+    	$(function() {
+    		$('body').on('click', '.testimonial-submit', function(e) {
+    			$('#testForm').submit();
+    			$('#exampleModalCenter').modal('hide');
+    		});
     	});
+
+    	// $('#postButton').click(function(e) {
+    	// 	e.preventDefault();
+    	// 	$('#exampleModalCenter').modal('hide');
+    	// });
     </script>
 </body>
 </html>
