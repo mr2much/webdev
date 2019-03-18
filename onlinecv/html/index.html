@@ -452,6 +452,32 @@
     		$('body').on('click', '.testimonial-submit', function(e) {
     			$('#testForm').submit();
     			$('#exampleModalCenter').modal('hide');
+
+    			var name = $("#testForm #poster-name").val();
+    			var title = $("#testForm #recipient-title").val();
+    			var date = $("#testForm #meet-date").val();
+    			var msg = $("#testForm #message-text").val();
+    			console.log("Name: " + name + 
+    				"\nTitle: " + title + "\nDate: " + date + 
+    				"\nMessage: " + msg);
+    			// showValues();
+
+    // 			<div class="card mb-3 testimony">
+				// 	<div class="row no-gutters">
+				// 		<div class="col-md-4 my-auto px-2 pt-2">
+				// 			<h5>[Poster's Name]</h5>
+				// 			<p>[Profession]</p>
+				// 			<h6 class="how-we-met">[year] We met on a rainy Sunday under a tree.</h6>
+				// 		</div>
+				// 		<div class="col-md-8 border-left">
+				// 			<div class="card-body">
+				// 				<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				// 				tempor incididunt ut labore et dolore magna aliqua.</p>
+				// 				<p class="card-text"><small class="text-muted"><strong>Posted on:</strong> Feb 21, 2019</small></p>
+				// 			</div>
+				// 		</div>
+				// 	</div>
+				// </div>
     		});
     	});
 
