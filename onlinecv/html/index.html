@@ -452,13 +452,28 @@
     		$('body').on('click', '.testimonial-submit', function(e) {
     			$('#testForm').submit();
     			$('#exampleModalCenter').modal('hide');
+
+    			var name = $("#testForm #poster-name").val();
+    			var title = $("#testForm #recipient-title").val();
+    			var date = $("#testForm #meet-date").val();
+    			var msg = $("#testForm #message-text").val();
+    			console.log("Name: " + name + 
+    				"\nTitle: " + title + "\nDate: " + date + 
+    				"\nMessage: " + msg);
+    			var testimonialSection = document.querySelector("section.testimonials");
+    			var testimony = testimonialSection.querySelector(".testimony").cloneNode(true);
+    			var h5 = testimony.querySelector("h5");
+    			var jobTitle = testimony.querySelector("p");
+    			var h6 = testimony.querySelector("h6");
+    			var para = testimony.querySelector(".card-body p");
+    			h5.textContent = name;
+    			jobTitle.textContent = title;
+    			h6.textContent = date.split("-").reverse().join("/");
+    			para.textContent = msg;
+
+    			testimonialSection.appendChild(testimony);
     		});
     	});
-
-    	// $('#postButton').click(function(e) {
-    	// 	e.preventDefault();
-    	// 	$('#exampleModalCenter').modal('hide');
-    	// });
     </script>
 </body>
 </html>
