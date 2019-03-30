@@ -40,6 +40,13 @@ body {
   font-size: calc(0.5rem + 1.8vw);
 }
 
+.gift-cards {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: left;
+}
+
 .lead {
   font-size: calc(0.3rem + 1.45vw);
 }
