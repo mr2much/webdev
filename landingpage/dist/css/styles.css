@@ -25,6 +25,21 @@ body {
   line-height: 1.6;
 }
 
+/* Section  */
+
+.section {
+  padding: 2rem 0;
+}
+
+.section-head {
+  font-size: calc(0.5rem + 3vw);
+  margin: 0;
+}
+
+.section h3 {
+  font-size: calc(0.5rem + 1.8vw);
+}
+
 .lead {
   font-size: calc(0.3rem + 1.45vw);
 }
@@ -68,6 +83,11 @@ body {
   color: var(--light-color);
 }
 
+section#entertainment {
+  background: url("../res/img/section-bg.jpg") no-repeat bottom / cover;
+  padding: 10rem 0;
+}
+
 /* Showcase */
 #showcase {
   margin: 0;
@@ -91,21 +111,6 @@ body {
 #showcase h2 {
   font-size: calc(0.5rem + 3vw);
   margin-bottom: 0;
-}
-
-/* Section  */
-
-.section {
-  padding: 2rem 0;
-}
-
-.section-head {
-  font-size: calc(0.5rem + 3vw);
-  margin: 0;
-}
-
-.section h3 {
-  font-size: calc(0.5rem + 1.8vw);
 }
 
 @media only screen and (min-width: 768px) {
