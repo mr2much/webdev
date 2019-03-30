@@ -27,11 +27,29 @@ body {
 }
 
 #showcase .section-main {
-  margin-top: 25vh;
+  margin-top: 15vh;
+}
+
+#showcase h1 {
+  font-size: calc(0.5rem + 10vw);
+  margin-bottom: 0;
+}
+
+#showcase h2 {
+  font-size: calc(0.5rem + 3vw);
+  margin-bottom: 0;
+}
+
+#shocase p {
+  font-size: 1.3rem;
 }
 
 @media only screen and (min-width: 768px) {
   #showcase {
     height: 100vh;
+  }
+
+  #showcase .section-main {
+    margin-top: 25vh;
   }
 }
