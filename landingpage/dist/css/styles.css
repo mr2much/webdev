@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=PT+Sans");
 
+/* CSS Variables */
+
+:root {
+  --primary-color: #b90415;
+  --primary-color-hover: #d3071b;
+  --secondary-color: #103063;
+  --secondary-color-hover: #143f85;
+  --light-color: #f4f4f4;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -13,6 +23,49 @@ body {
   margin-top: 60px;
   color: #fff;
   line-height: 1.6;
+}
+
+.lead {
+  font-size: calc(0.3rem + 1.45vw);
+}
+
+/* Button */
+
+.btn {
+  display: inline-block;
+  padding: 1rem;
+  color: #fff;
+  border: 0;
+  outline: 0;
+}
+
+.btn.btn-primary {
+  background: var(--primary-color);
+}
+
+.btn.btn-primary:hover {
+  background-color: var(--primary-color-hover);
+}
+
+.btn.btn-secondary {
+  background: var(--secondary-color);
+}
+
+.btn.btn-secondary:hover {
+  background-color: var(--secondary-color-hover);
+}
+
+/* Text Classes */
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.text-light {
+  color: var(--light-color);
 }
 
 /* Showcase */
@@ -40,8 +93,19 @@ body {
   margin-bottom: 0;
 }
 
-#shocase p {
-  font-size: 1.3rem;
+/* Section  */
+
+.section {
+  padding: 2rem 0;
+}
+
+.section-head {
+  font-size: calc(0.5rem + 2.8vw);
+  margin: 0;
+}
+
+.section h3 {
+  font-size: calc(0.5rem + 1.5vw);
 }
 
 @media only screen and (min-width: 768px) {
