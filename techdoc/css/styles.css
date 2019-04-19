@@ -8,7 +8,12 @@ body {
   overflow: hidden;
 }
 
-.side-nav {
+header {
+  padding-top: 3rem;
+  padding-bottom: 1.3rem;
+}
+
+.side-nav nav {
   width: 20%;
   border-right: 0.25em solid #666;
   float: left;
@@ -16,6 +21,16 @@ body {
   height: 100%;
   max-height: 100vh;
   overflow-y: scroll;
+}
+
+.side-nav #navbar header {
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.side-nav #navbar header h3 {
+  font-size: calc(0.5rem + 2vmin);
 }
 
 .index {
@@ -32,20 +47,33 @@ body {
   border: none;
 }
 
-.container.main {
+.container {
+  scroll-behavior: smooth;
+  scroll-snap-type: mandatory;
+  scroll-snap-type: y mandatory;
+}
+
+.container section {
+  scroll-snap-align: center;
+}
+
+.container#main-doc {
   width: 100%;
   max-width: 80%;
-  height: 100%;
-  max-height: 100vh;
+  height: 100vh;
   float: right;
   padding: 3.2rem;
   overflow-y: scroll;
 }
 
-.main h2 {
+#main-doc h2 {
   margin-bottom: 1.3rem;
 }
 
-.main p {
+#main-doc p {
   text-align: justify;
+}
+
+.main-section ul {
+  margin: 1.3rem 2.8rem;
 }
