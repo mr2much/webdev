@@ -89,6 +89,23 @@ p {
   clear: both;
 }
 
+.l-heading {
+  font-size: 2.25rem;
+}
+
+/* Padding */
+.py-1 {
+  padding: 0.6rem;
+}
+
+.py-2 {
+  padding: 1.25rem;
+}
+
+.py-3 {
+  padding: 1.9rem;
+}
+
 #navbar {
   background: #333;
   color: #fff;
