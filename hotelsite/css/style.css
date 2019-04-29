@@ -90,7 +90,8 @@ p {
 }
 
 .l-heading {
-  font-size: 2.25rem;
+  font-size: calc(1.5rem + 6vmin);
+  line-height: 1.25;
 }
 
 /* Padding */
@@ -116,7 +117,7 @@ p {
   color: #fff;
 }
 
-#navbar h1 {
+#navbar .logo {
   padding-top: 10px;
   float: left;
 }
