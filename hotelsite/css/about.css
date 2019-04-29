@@ -20,7 +20,7 @@
 
 /* Testimonials */
 #testimonials {
-  height: 100vh;
+  height: 100%;
   background: url("../res/img/test-bg.jpg") no-repeat center center / cover;
   padding-top: 80px;
 }
