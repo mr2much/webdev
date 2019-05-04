@@ -29,6 +29,13 @@ p {
 }
 
 /* Utility Classes */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 2rem;
+  overflow: hidden;
+}
+
 .text-primary {
   color: #93cb52;
 }
@@ -39,9 +46,31 @@ p {
   line-height: 1.25;
 }
 
+.m-heading {
+  font-size: calc(0.5rem + 4vmin);
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
+}
+
+.text-center {
+  text-align: center;
+}
+
 .lead {
   font-size: calc(0.3rem + 2vmin);
   margin-bottom: 2rem;
+}
+
+.py-1 {
+  padding: 1.5rem 0;
+}
+
+.py-2 {
+  padding: 2rem 0;
+}
+
+.py-3 {
+  padding: 3rem 0;
 }
 
 .btn {
@@ -73,6 +102,7 @@ p {
   color: #fff;
   z-index: 1;
   padding: 1rem;
+  height: 60px;
 }
 
 #navbar ul {
@@ -105,12 +135,35 @@ p {
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 100%;
+  max-width: 100%;
   text-align: center;
   padding: 0 2rem;
 
   /* Overlay */
   position: absolute;
-  top: 61px;
+  top: 60px;
   left: 0;
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Section: what we do */
+#what .items {
+  display: flex;
+  padding: 1rem;
+}
+
+#what .items .item {
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+}
+
+#what .items .item i {
+  background: #93cb52;
+  padding: 1rem;
+  border-radius: 50%;
+  margin-bottom: 1rem;
 }
