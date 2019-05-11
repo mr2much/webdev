@@ -26,7 +26,7 @@
 }
 
 /* Smartphones */
-@media only screen and (max-width: 730px) {
+@media only screen and (max-width: 500px) {
   #navbar {
     flex-direction: column;
     align-items: center;
@@ -58,24 +58,13 @@
   }
 
   #contact {
-    display: block;
-    /* flex-direction: column;
+    flex-direction: column;
     align-items: center;
-    justify-content: center; */
-  }
-
-  #contact .map,
-  #contact .contact-form {
-    display: block;
-    width: 100%;
-  }
-
-  #contact .contact-form {
-    display: none;
+    justify-content: center;
   }
 
   #contact .map {
-    height: 100%;
+    height: 200px;
     border-top: 4px solid #333;
   }
 }
