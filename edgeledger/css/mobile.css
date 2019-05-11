@@ -66,6 +66,7 @@
 
   #contact .map,
   #contact .contact-form {
+    display: block;
     width: 100%;
   }
 
@@ -74,8 +75,7 @@
   }
 
   #contact .map {
-    display: block;
-    height: 30%;
+    height: 100%;
     border-top: 4px solid #333;
   }
 }
