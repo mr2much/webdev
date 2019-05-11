@@ -69,6 +69,10 @@
     width: 100%;
   }
 
+  #contact .contact-form {
+    display: none;
+  }
+
   #contact .map {
     display: block;
     height: 30%;
