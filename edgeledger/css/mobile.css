@@ -64,6 +64,11 @@
     justify-content: center; */
   }
 
+  #contact .map,
+  #contact .contact-form {
+    width: 100%;
+  }
+
   #contact .map {
     display: block;
     height: 30%;
