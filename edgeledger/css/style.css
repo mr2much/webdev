@@ -237,6 +237,7 @@ p {
 /* Section: Contact */
 #contact {
   display: flex;
+  height: 100%;
 }
 
 #contact .map,
