@@ -26,7 +26,7 @@
 }
 
 /* Smartphones */
-@media (max-width: 500px) {
+@media screen only and (max-width: 500px) {
   #navbar {
     flex-direction: column;
     align-items: center;
@@ -74,7 +74,7 @@
   }
 }
 
-@media (max-height: 568px) {
+@media screen only and (max-height: 568px) {
   .l-heading {
     font-size: 3rem;
   }
