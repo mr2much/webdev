@@ -13,9 +13,10 @@ document.getElementById("list").onclick = function(event) {
   var list = document.getElementById("list");
 
   var li = event.target;
+
   li.className = li.className + " hide";
 
   setTimeout(function() {
     list.removeChild(li);
-  }, 10);
+  }, 100);
 };
