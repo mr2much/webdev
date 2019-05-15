@@ -25,16 +25,15 @@ li.hide {
   margin: 0;
 }
 
-.fade li {
+.slide-fade li {
   transition: all 0.4s ease-out;
   opacity: 0;
-  height: 2em;
 }
 
-.fade li.show {
+.slide-fade li.show {
   opacity: 1;
 }
 
-#list.fade li.hide {
+#list.slide-fade li.hide {
   opacity: 0;
 }

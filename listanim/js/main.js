@@ -18,5 +18,5 @@ document.getElementById("list").onclick = function(event) {
 
   setTimeout(function() {
     list.removeChild(li);
-  }, 100);
+  }, 500);
 };
