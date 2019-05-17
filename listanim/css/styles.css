@@ -4,6 +4,11 @@
   padding: 0;
 }
 
+body {
+  display: flex;
+  align-items: center;
+}
+
 li {
   list-style: none;
   background: #d1703c;
@@ -36,4 +41,19 @@ li.hide {
 
 #list.slide-fade li.hide {
   opacity: 0;
+}
+
+/* Swinging List Elements */
+.swing {
+  perspective: 100px;
+}
+
+.swing li {
+  transform: rotateX(-45deg);
+  transition: all 0.5s cubic-bezier(0.36, -0.64, 0.34, 1.76);
+}
+
+.swing li.show {
+  transform: none;
+  transition: all 0.5s cubic-bezier(0.36, -0.64, 0.34, 1.76);
 }
