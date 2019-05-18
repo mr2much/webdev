@@ -9,6 +9,10 @@ body {
   align-items: center;
 }
 
+ul {
+  padding: 1em;
+}
+
 li {
   list-style: none;
   background: #d1703c;
@@ -27,7 +31,16 @@ li.show {
 
 li.hide {
   height: 0;
-  margin: 0;
+}
+
+.fade li {
+  transition: all 0.4s ease-out;
+  opacity: 0;
+  height: 2em;
+}
+
+.fade li.show {
+  opacity: 1;
 }
 
 .slide-fade li {
@@ -39,21 +52,27 @@ li.hide {
   opacity: 1;
 }
 
-#list.slide-fade li.hide {
+.slide-fade li.hide {
   opacity: 0;
 }
 
 /* Swinging List Elements */
 .swing {
-  perspective: 100px;
+  perspective: 200px;
 }
 
 .swing li {
-  transform: rotateX(-45deg);
+  transform: rotateY(-90deg);
   transition: all 0.5s cubic-bezier(0.36, -0.64, 0.34, 1.76);
 }
 
 .swing li.show {
   transform: none;
   transition: all 0.5s cubic-bezier(0.36, -0.64, 0.34, 1.76);
+}
+
+.swing li.hide {
+  height: 0;
+  transform: rotateY(-90deg);
+  transition: all 0.5s ease-out;
 }
