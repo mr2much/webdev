@@ -85,6 +85,16 @@ input:focus + label {
   font-weight: bold;
 }
 
+input[type="text"] {
+  width: 100%;
+  padding: 0.75rem;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border: 1px solid #ff572299;
+}
+
 input[type="checkbox"] {
   position: absolute;
   left: -9999px;
