@@ -245,10 +245,10 @@ input[type="checkbox"]:checked {
   font-weight: 700;
   font-size: 1.5rem;
   width: 40%;
+  transition: all 0.3s ease-in-out;
 }
 
 .button:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8), inset 0 0 15px #ffcdd2cc;
   background: #d32f2f;
   color: #fff !important;
 }
