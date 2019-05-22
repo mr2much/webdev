@@ -46,6 +46,21 @@ section p {
   color: var(--secondary-color);
 }
 
+#page2 {
+  background-color: #aaa;
+  color: #fff;
+}
+
+/* #page3 {
+} */
+
+#page3:before {
+  content: "";
+  background: center center / contain no-repeat
+    url("../img/dollar-gill-1266298-unsplash.jpg");
+  z-index: 9999;
+}
+
 .btn {
   background: var(--secondary-color);
   color: var(--primary-color);
