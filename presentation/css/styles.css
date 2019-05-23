@@ -106,7 +106,13 @@ section p {
   transition: all 0.8s ease-out;
 }
 
-.btn:hover {
+.btn:hover,
+.btn-dark {
   background-color: var(--primary-color);
   color: var(--secondary-color);
+}
+
+.btn-dark:hover {
+  background: #f4f4f4;
+  color: #333;
 }
