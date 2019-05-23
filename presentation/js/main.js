@@ -1,5 +1,5 @@
 // Smooth scrolling
-$("#navbar a, .btn").on("click", function(event) {
+$(".btn").on("click", function(event) {
   if (this.hash !== "") {
     const hash = this.hash;
 

@@ -57,7 +57,7 @@ section p {
   transform: translateX(-1500px);
   animation: no-transform var(--animation-speed)
     cubic-bezier(0.3, 0.9, 0.4, 1.2) forwards;
-  animation-delay: 2.6s;
+  animation-delay: 2.2s;
 }
 
 #page1 div {
