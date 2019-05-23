@@ -1,6 +1,7 @@
 :root {
   --primary-color: #333;
   --secondary-color: #eee;
+  --animation-speed: 2.3s;
 }
 
 * {
@@ -44,6 +45,24 @@ section p {
 
 #page1 {
   background-color: #0e5cfe;
+}
+
+#page1 h1 {
+  transform: translateY(-1200px);
+  animation: no-transform var(--animation-speed) 0.5s ease-out forwards;
+}
+
+#page1 p {
+  transform: translateX(-1500px);
+  animation: no-transform var(--animation-speed)
+    cubic-bezier(0.3, 0.9, 0.4, 1.2) forwards;
+  animation-delay: 2.6s;
+}
+
+#page1 div {
+  transform: scale(0);
+  animation: no-transform 0.8s cubic-bezier(0, 0.9, 0.3, 1.2) forwards;
+  animation-delay: 3s;
 }
 
 #page2 {
@@ -115,4 +134,10 @@ section p {
 .btn-dark:hover {
   background: #f4f4f4;
   color: #333;
+}
+
+@keyframes no-transform {
+  100% {
+    transform: none;
+  }
 }
