@@ -49,7 +49,8 @@ section p {
 
 #page1 h1 {
   transform: translateY(-1200px);
-  animation: no-transform var(--animation-speed) 0.5s ease-out forwards;
+  animation: no-transform var(--animation-speed) cubic-bezier(0, 0.4, 0.7, 1.3)
+    forwards;
 }
 
 #page1 p {
@@ -62,7 +63,7 @@ section p {
 #page1 div {
   transform: scale(0);
   animation: no-transform 0.8s cubic-bezier(0, 0.9, 0.3, 1.2) forwards;
-  animation-delay: 3s;
+  animation-delay: 3.3s;
 }
 
 #page2 {
