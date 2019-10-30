@@ -1,103 +1,67 @@
-var todoList = document.querySelector("#items");
-var listItems = todoList.querySelectorAll("input[type='checkbox']");
-var todoLabels = todoList.querySelectorAll("label");
-var itemCount = listItems.length;
-var btnAdd = document.querySelector("#add-item");
+document.addEventListener("DOMContentLoaded", function() {
+  var todoList = document.querySelector("#items");
+  var listItems = todoList.querySelectorAll("input[type='checkbox']");
+  var itemCount = listItems.length;
+  var btnAdd = document.querySelector("#add-item");
+  var btnRemove = document.querySelector("#remove");
 
-listItems.forEach(function(checkbox) {
-  checkbox.className = checkbox.className + " show";
-});
+  btnAdd.addEventListener("click", function() {
+    // create new TODO list item
+    createNewTODOListItem(getTODODescription());
+  });
 
-// add remove event listener to each TODO item
-todoLabels.forEach(function(label) {
-  label.className = label.className + " show";
-  label.addEventListener("contextmenu", removeTODO);
-});
+  // retrieve text value from textfield
+  function getTODODescription() {
+    var entryItem = document.querySelector("#entry");
+    var todoDescription = entryItem.value;
+    entryItem.value = "";
 
-function removeTODO() {
-  var clickedLabel = this;
-  // get ID of clicked element
-  var elementID = this.getAttribute("for");
+    return todoDescription;
+  }
 
-  // get clicked checkbox using its ID
-  var clickedCheckbox = todoList.querySelector("#" + elementID);
-
-  clickedCheckbox.className = clickedCheckbox.className + " hide";
-
-  clickedLabel.className = clickedLabel.className + " hide";
-
-  // remove the TODO item (checkbox and label)
-  setTimeout(function() {
-    todoList.removeChild(clickedCheckbox);
-    todoList.removeChild(clickedLabel);
-  }, 500);
-}
-
-btnAdd.addEventListener("click", function() {
-  // create new TODO list item
-  createNewTODOListItem(getTODODescription());
-});
-
-// retrieve text value from textfield
-function getTODODescription() {
-  var entryItem = document.querySelector("#entry");
-  var todoDescription = entryItem.value;
-  entryItem.value = "";
-
-  return todoDescription;
-}
-
-function createNewTODOListItem(todoDescription) {
-  if (todoDescription !== "") {
-    itemCount++;
+  function createNewTODOListItem(todoDescription) {
+    updateItemCount();
     var newInput = createNewInput();
     var newLabel = createNewLabel(todoDescription);
 
     // Add new TODO list item to the TODO list
     addNewTODOToList(newInput, newLabel);
+    console.log(newInput, newLabel);
   }
-}
 
-// to create new TODO list item:
-function createNewInput() {
-  // 1. create new unchecked input with type=checkbox
-  var newCheckbox = document.createElement("input");
-  newCheckbox.setAttribute("type", "checkbox");
+  function updateItemCount() {
+    itemCount = todoList.querySelectorAll("input[type='checkbox']").length;
+  }
 
-  // 2. assign id to be equal to itemCount + 1
-  newCheckbox.setAttribute("id", getNewID());
+  // to create new TODO list item:
+  function createNewInput() {
+    // 1. create new unchecked input with type=checkbox
+    var newCheckbox = document.createElement("input");
+    newCheckbox.setAttribute("type", "checkbox");
 
-  return newCheckbox;
-}
+    // 2. assign id to be equal to itemCount + 1
+    newCheckbox.setAttribute("id", getNewID());
 
-function getNewID() {
-  return "item" + itemCount;
-}
+    return newCheckbox;
+  }
 
-function createNewLabel(todoDescription) {
-  // 3. create new label with for equal to the id of the new checkbox
-  var newLabel = document.createElement("label");
-  newLabel.setAttribute("for", getNewID());
+  function getNewID() {
+    return "item" + (itemCount + 1);
+  }
 
-  // 4. label must have the text equal to the text field entry
-  newLabel.textContent = todoDescription;
+  function createNewLabel(todoDescription) {
+    // 3. create new label with for equal to the id of the new checkbox
+    var newLabel = document.createElement("label");
+    newLabel.setAttribute("for", getNewID());
 
-  return newLabel;
-}
+    // 4. label must have the text equal to the text field entry
+    newLabel.textContent = todoDescription;
 
-function addNewTODOToList(newInput, newLabel) {
-  // add remove event listener to new label
-  newLabel.addEventListener("contextmenu", removeTODO);
-  todoList.appendChild(newInput);
-  todoList.appendChild(newLabel);
+    return newLabel;
+  }
 
-  setTimeout(function() {
-    newInput.className = newInput.className + " show";
-    newLabel.className = newLabel.className + " show";
-  }, 10);
-}
-
-// disable context menu on right click
-todoList.addEventListener("contextmenu", e => {
-  e.preventDefault();
+  function addNewTODOToList(newInput, newLabel) {
+    todoList.appendChild(newInput);
+    todoList.appendChild(newLabel);
+  }
 });
