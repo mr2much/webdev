@@ -257,6 +257,30 @@ input[type="checkbox"]:checked {
   transform: scale(1.1);
 }
 
+input[type="checkbox"],
+label {
+  opacity: 0;
+}
+
+input[type="checkbox"].show,
+label.show {
+  opacity: 1;
+}
+
+.slide-fade label,
+.slide-fade input[type="checkbox"] {
+  transition: all 0.4s ease-out;
+  opacity: 0;
+}
+
+.slide-fade label.show {
+  opacity: 1;
+}
+
+.slide-fade label.hide {
+  opacity: 0;
+}
+
 @keyframes done {
   0% {
     opacity: 0;

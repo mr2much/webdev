@@ -1,8 +1,37 @@
 var todoList = document.querySelector("#items");
 var listItems = todoList.querySelectorAll("input[type='checkbox']");
+var todoLabels = todoList.querySelectorAll("label");
 var itemCount = listItems.length;
 var btnAdd = document.querySelector("#add-item");
-var btnRemove = document.querySelector("#remove");
+
+listItems.forEach(function(checkbox) {
+  checkbox.className = checkbox.className + " show";
+});
+
+// add remove event listener to each TODO item
+todoLabels.forEach(function(label) {
+  label.className = label.className + " show";
+  label.addEventListener("contextmenu", removeTODO);
+});
+
+function removeTODO() {
+  var clickedLabel = this;
+  // get ID of clicked element
+  var elementID = this.getAttribute("for");
+
+  // get clicked checkbox using its ID
+  var clickedCheckbox = todoList.querySelector("#" + elementID);
+
+  clickedCheckbox.className = clickedCheckbox.className + " hide";
+
+  clickedLabel.className = clickedLabel.className + " hide";
+
+  // remove the TODO item (checkbox and label)
+  setTimeout(function() {
+    todoList.removeChild(clickedCheckbox);
+    todoList.removeChild(clickedLabel);
+  }, 500);
+}
 
 btnAdd.addEventListener("click", function() {
   // create new TODO list item
@@ -19,17 +48,14 @@ function getTODODescription() {
 }
 
 function createNewTODOListItem(todoDescription) {
-  updateItemCount();
-  var newInput = createNewInput();
-  var newLabel = createNewLabel(todoDescription);
+  if (todoDescription !== "") {
+    itemCount++;
+    var newInput = createNewInput();
+    var newLabel = createNewLabel(todoDescription);
 
-  // Add new TODO list item to the TODO list
-  addNewTODOToList(newInput, newLabel);
-  console.log(newInput, newLabel);
-}
-
-function updateItemCount() {
-  itemCount = todoList.querySelectorAll("input[type='checkbox']").length;
+    // Add new TODO list item to the TODO list
+    addNewTODOToList(newInput, newLabel);
+  }
 }
 
 // to create new TODO list item:
@@ -45,7 +71,7 @@ function createNewInput() {
 }
 
 function getNewID() {
-  return "item" + (itemCount + 1);
+  return "item" + itemCount;
 }
 
 function createNewLabel(todoDescription) {
@@ -60,6 +86,18 @@ function createNewLabel(todoDescription) {
 }
 
 function addNewTODOToList(newInput, newLabel) {
+  // add remove event listener to new label
+  newLabel.addEventListener("contextmenu", removeTODO);
   todoList.appendChild(newInput);
   todoList.appendChild(newLabel);
+
+  setTimeout(function() {
+    newInput.className = newInput.className + " show";
+    newLabel.className = newLabel.className + " show";
+  }, 10);
 }
+
+// disable context menu on right click
+todoList.addEventListener("contextmenu", e => {
+  e.preventDefault();
+});
