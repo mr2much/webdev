@@ -65,9 +65,3 @@ document.addEventListener("DOMContentLoaded", function() {
     todoList.appendChild(newLabel);
   }
 });
-
-(function(entry) {
-  if (chrome.runtime.lastError) {
-    console.log("Error: " + chrome.runtime.lastError);
-  }
-})();
