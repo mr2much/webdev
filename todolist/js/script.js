@@ -55,7 +55,6 @@ function createNewTODOListItem(todoDescription) {
 
     // Add new TODO list item to the TODO list
     addNewTODOToList(newInput, newLabel);
-    console.log(newInput, newLabel);
   }
 }
 
