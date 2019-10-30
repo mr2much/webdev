@@ -1,8 +1,26 @@
 var todoList = document.querySelector("#items");
 var listItems = todoList.querySelectorAll("input[type='checkbox']");
+var todoLabels = todoList.querySelectorAll("label");
 var itemCount = listItems.length;
 var btnAdd = document.querySelector("#add-item");
 var btnRemove = document.querySelector("#remove");
+
+todoLabels.forEach(function(label) {
+  label.addEventListener("contextmenu", removeTODO);
+});
+
+function removeTODO(event) {
+  // get ID of clicked element
+  var clickedLabel = this;
+  var elementID = this.getAttribute("for");
+  var clickedCheckbox = todoList.querySelector("#" + elementID);
+
+  setTimeout(function() {
+    todoList.removeChild(clickedCheckbox);
+    todoList.removeChild(clickedLabel);
+    itemCount--;
+  }, 500);
+}
 
 btnAdd.addEventListener("click", function() {
   // create new TODO list item
@@ -63,3 +81,8 @@ function addNewTODOToList(newInput, newLabel) {
   todoList.appendChild(newInput);
   todoList.appendChild(newLabel);
 }
+
+// disable context menu on right click
+todoList.addEventListener("contextmenu", e => {
+  e.preventDefault();
+});
