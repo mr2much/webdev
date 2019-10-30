@@ -66,8 +66,8 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
-function errorHandler(entry) {
+(function(entry) {
   if (chrome.runtime.lastError) {
-    console.log("Error: " + chrome.runtime.lastError.message);
+    console.log("Error: " + chrome.runtime.lastError);
   }
-}
+})();
