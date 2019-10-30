@@ -4,8 +4,13 @@ var todoLabels = todoList.querySelectorAll("label");
 var itemCount = listItems.length;
 var btnAdd = document.querySelector("#add-item");
 
+listItems.forEach(function(checkbox) {
+  checkbox.className = checkbox.className + " show";
+});
+
 // add remove event listener to each TODO item
 todoLabels.forEach(function(label) {
+  label.className = label.className + " show";
   label.addEventListener("contextmenu", removeTODO);
 });
 
@@ -16,6 +21,10 @@ function removeTODO() {
 
   // get clicked checkbox using its ID
   var clickedCheckbox = todoList.querySelector("#" + elementID);
+
+  clickedCheckbox.className = clickedCheckbox.className + " hide";
+
+  clickedLabel.className = clickedLabel.className + " hide";
 
   // remove the TODO item (checkbox and label)
   setTimeout(function() {
@@ -82,6 +91,11 @@ function addNewTODOToList(newInput, newLabel) {
   newLabel.addEventListener("contextmenu", removeTODO);
   todoList.appendChild(newInput);
   todoList.appendChild(newLabel);
+
+  setTimeout(function() {
+    newInput.className = newInput.className + " show";
+    newLabel.className = newLabel.className + " show";
+  }, 10);
 }
 
 // disable context menu on right click
