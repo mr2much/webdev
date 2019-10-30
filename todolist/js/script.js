@@ -9,7 +9,7 @@ todoLabels.forEach(function(label) {
   label.addEventListener("contextmenu", removeTODO);
 });
 
-function removeTODO(event) {
+function removeTODO() {
   // get ID of clicked element
   var clickedLabel = this;
   var elementID = this.getAttribute("for");
@@ -18,7 +18,6 @@ function removeTODO(event) {
   setTimeout(function() {
     todoList.removeChild(clickedCheckbox);
     todoList.removeChild(clickedLabel);
-    itemCount--;
   }, 500);
 }
 
@@ -37,17 +36,15 @@ function getTODODescription() {
 }
 
 function createNewTODOListItem(todoDescription) {
-  updateItemCount();
-  var newInput = createNewInput();
-  var newLabel = createNewLabel(todoDescription);
+  if (todoDescription !== "") {
+    itemCount++;
+    var newInput = createNewInput();
+    var newLabel = createNewLabel(todoDescription);
 
-  // Add new TODO list item to the TODO list
-  addNewTODOToList(newInput, newLabel);
-  console.log(newInput, newLabel);
-}
-
-function updateItemCount() {
-  itemCount = todoList.querySelectorAll("input[type='checkbox']").length;
+    // Add new TODO list item to the TODO list
+    addNewTODOToList(newInput, newLabel);
+    console.log(newInput, newLabel);
+  }
 }
 
 // to create new TODO list item:
@@ -63,7 +60,7 @@ function createNewInput() {
 }
 
 function getNewID() {
-  return "item" + (itemCount + 1);
+  return "item" + itemCount;
 }
 
 function createNewLabel(todoDescription) {
@@ -78,6 +75,7 @@ function createNewLabel(todoDescription) {
 }
 
 function addNewTODOToList(newInput, newLabel) {
+  newLabel.addEventListener("contextmenu", removeTODO);
   todoList.appendChild(newInput);
   todoList.appendChild(newLabel);
 }
