@@ -64,10 +64,10 @@ document.addEventListener("DOMContentLoaded", function() {
     todoList.appendChild(newInput);
     todoList.appendChild(newLabel);
   }
-
-  (function(entry) {
-    if (chrome.runtime.lastError) {
-      console.log("Error: " + chrome.runtime.lastError.message);
-    }
-  })();
 });
+
+(function(entry) {
+  if (chrome.runtime.lastError) {
+    console.log("Error: " + chrome.runtime.lastError.message);
+  }
+})();
