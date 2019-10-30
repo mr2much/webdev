@@ -1,64 +1,84 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Todo List</title>
-	<link rel="stylesheet" type="text/css" href="../css/styles.css">
-</head>
-<body>
-	<header>
-		<h1>TODO List</h1>
-	</header>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Todo List</title>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>TODO List</h1>
+    </header>
 
-	<main>
-		<form>
-			<div id="main-controls">
-				<h2 for="entry">Add new list item:</h2>
-				<input id="entry" type="text" name="entry" placeholder="New item">
-				<div>
-					<button class="button grow" id="add-item">Add Item</button>
-					<button class="button grow" id="remove" class="button">Remove</button>
-				</div>
-			</div>
-			<div id="items">
-				<input id="item1" type="checkbox" checked>
-				<label for="item1">Add CSS to this page</label>
+    <main>
+      <form>
+        <div id="main-controls">
+          <h2 for="entry">Add new list item:</h2>
+          <input id="entry" type="text" name="entry" placeholder="New item" />
+          <div>
+            <button type="button" class="button grow" id="add-item">
+              Add Item
+            </button>
+            <button
+              type="button"
+              class="button grow"
+              id="remove"
+              class="button"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+        <div id="items">
+          <input id="item1" type="checkbox" checked />
+          <label for="item1">Add CSS to this page</label>
 
-				<input id="item2" type="checkbox">
-				<label for="item2">Add JavaScript to this page</label>
+          <input id="item2" type="checkbox" />
+          <label for="item2">Add JavaScript to this page</label>
 
-				<input id="item3" type="checkbox">
-				<label for="item3">Connect the Backend with Database</label>
+          <input id="item3" type="checkbox" />
+          <label for="item3">Connect the Backend with Database</label>
 
-				<input id="item4" type="checkbox" checked>
-				<label for="item4">Customize buttons</label>
+          <input id="item4" type="checkbox" checked />
+          <label for="item4">Customize buttons</label>
 
-				<input id="item5" type="checkbox">
-				<label for="item5">Customize text input</label>
+          <input id="item5" type="checkbox" />
+          <label for="item5">Customize text input</label>
 
-				<input id="item6" type="checkbox">
-				<label for="item6">Customize text input</label>
+          <input id="item6" type="checkbox" />
+          <label for="item6">Customize text input</label>
 
-				<input id="item7" type="checkbox" checked>
-				<label for="item7">Ensure that TODO area expands everytime a new item is added</label>
+          <input id="item7" type="checkbox" checked />
+          <label for="item7"
+            >Ensure that TODO area expands everytime a new item is added</label
+          >
 
-				<input id="item8" type="checkbox">
-				<label for="item8">Make the remove button work</label>
+          <input id="item8" type="checkbox" />
+          <label for="item8">Make the remove button work</label>
 
-				<input id="item9" type="checkbox">
-				<label for="item9">Make the add item button work</label>
+          <input id="item9" type="checkbox" />
+          <label for="item9">Make the add item button work</label>
 
-				<input id="item10" type="checkbox">
-				<label for="item10">Prevent duplicates from being added to the list</label>
+          <input id="item10" type="checkbox" />
+          <label for="item10"
+            >Prevent duplicates from being added to the list</label
+          >
 
-				<h2 class="done" aria-hidden="true">Done</h2>
-				<h2 class="undone" aria-hidden="true">Not Done</h2>		
-			</div>
-			<div>
-				<input id="save" class="button grow" type="submit" name="submit" value="Save">			
-			</div>
-		</form>
-	</main>
+          <h2 class="done" aria-hidden="true">Done</h2>
+          <h2 class="undone" aria-hidden="true">Not Done</h2>
+        </div>
+        <div>
+          <input
+            id="save"
+            class="button grow"
+            type="submit"
+            name="submit"
+            value="Save"
+          />
+        </div>
+      </form>
+    </main>
 
-</body>
+    <script text="text/javascript" src="../js/script.js"></script>
+  </body>
 </html>
