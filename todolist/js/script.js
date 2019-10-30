@@ -3,7 +3,6 @@ var listItems = todoList.querySelectorAll("input[type='checkbox']");
 var todoLabels = todoList.querySelectorAll("label");
 var itemCount = listItems.length;
 var btnAdd = document.querySelector("#add-item");
-var btnRemove = document.querySelector("#remove");
 
 // add remove event listener to each TODO item
 todoLabels.forEach(function(label) {
