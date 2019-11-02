@@ -10,6 +10,10 @@ h1 {
   color: #fff;
 }
 
+span {
+  color: #fff;
+}
+
 .square {
   float: left;
   background: purple;
