@@ -11,6 +11,7 @@ var messageDisplay = document.querySelector("#message");
 
 var squares = document.querySelectorAll(".square");
 var pickedColor = colors[3];
+var pickedColor = pickColor();
 var colorDisplay = document.getElementById("colorDisplay");
 colorDisplay.textContent = pickedColor;
 
@@ -31,6 +32,12 @@ for (var i = 0; i < squares.length; i++) {
       this.style.backgroundColor = "#232323";
     }
   });
+}
+
+function pickColor() {
+  var random = Math.floor(Math.random() * colors.length);
+
+  return colors[random];
 }
 
 function changeColors(color) {
