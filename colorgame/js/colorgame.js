@@ -41,7 +41,7 @@ resetBtn.addEventListener("click", function() {
     });
   }
 
-  h1.style.backgroundColor = "#232323";
+  h1.style.backgroundColor = "steelblue";
 });
 
 easyBtn.addEventListener("click", function() {
