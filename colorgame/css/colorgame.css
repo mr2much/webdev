@@ -18,6 +18,10 @@ h1 {
   padding-bottom: 30%;
 }
 
+.selected {
+  background-color: blue;
+}
+
 #container {
   margin: 0 auto;
   max-width: 600px;
