@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #232323;
+}
+
+h1 {
+  color: #fff;
+}
+
+.square {
+  float: left;
+  background: purple;
+  width: 30%;
+  margin: 1.66%;
+  padding-bottom: 30%;
+}
+
+#container {
+  margin: 0 auto;
+  max-width: 600px;
+}
