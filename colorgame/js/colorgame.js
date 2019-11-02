@@ -7,6 +7,38 @@ var squares = document.querySelectorAll(".square");
 var pickedColor = pickColor();
 var colorDisplay = document.getElementById("colorDisplay");
 colorDisplay.textContent = pickedColor;
+var resetBtn = document.querySelector("#reset");
+
+resetBtn.addEventListener("click", function() {
+  // generate all new colors
+  colors = generateRandomColors(6);
+
+  // pick a new rancom color from array
+  pickedColor = pickColor();
+  colorDisplay.textContent = pickedColor;
+
+  // change color of squares
+  for (var i = 0; i < squares.length; i++) {
+    // add initial colors to squares
+    squares[i].style.backgroundColor = colors[i];
+
+    // add click listener to squares
+    squares[i].addEventListener("click", function() {
+      //grab color of clicked square
+      var clickedColor = this.style.backgroundColor;
+      //compare color to pickedColor
+      if (clickedColor === pickedColor) {
+        messageDisplay.textContent = "Correct!";
+        changeColors(clickedColor);
+      } else {
+        messageDisplay.textContent = "Try Again!";
+        this.style.backgroundColor = "#232323";
+      }
+    });
+  }
+
+  h1.style.backgroundColor = "#232323";
+});
 
 for (var i = 0; i < squares.length; i++) {
   // add initial colors to squares
@@ -19,6 +51,7 @@ for (var i = 0; i < squares.length; i++) {
     //compare color to pickedColor
     if (clickedColor === pickedColor) {
       messageDisplay.textContent = "Correct!";
+      resetBtn.textContent = "Play Again?";
       changeColors(clickedColor);
     } else {
       messageDisplay.textContent = "Try Again!";
