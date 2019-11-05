@@ -1,38 +1,47 @@
 var maxColors = 6;
-var colors = generateRandomColors(maxColors);
+var colors = [];
+var pickedColor;
 
 var messageDisplay = document.querySelector("#message");
 var h1 = document.querySelector("h1");
-
 var resetBtn = document.querySelector("#reset");
-var easyBtn = document.querySelector("#easyBtn");
-var hardBtn = document.querySelector("#hardBtn");
-
+var modeButtons = document.querySelectorAll(".mode");
 var squares = document.querySelectorAll(".square");
-var pickedColor = pickColor();
 var colorDisplay = document.getElementById("colorDisplay");
-colorDisplay.textContent = pickedColor;
 
-resetBtn.addEventListener("click", function() {
-  // generate all new colors
-  colors = generateRandomColors(maxColors);
+initialize();
 
-  // pick a new rancom color from array
-  pickedColor = pickColor();
-  colorDisplay.textContent = pickedColor;
+function initialize() {
+  setModeButtonListeners();
+  setSquaresListeners();
+  reset();
+}
 
-  // change color of squares
+function setModeButtonListeners() {
+  // mode buttons event listeners
+  for (var i = 0; i < modeButtons.length; i++) {
+    modeButtons[i].addEventListener("click", function() {
+      modeButtons[0].classList.remove("selected");
+      modeButtons[1].classList.remove("selected");
+      this.classList.add("selected");
+
+      maxColors = this.textContent === "Easy" ? 3 : 6;
+
+      reset();
+    });
+  }
+}
+
+function setSquaresListeners() {
+  // add click listener to squares
   for (var i = 0; i < squares.length; i++) {
-    // add initial colors to squares
-    squares[i].style.backgroundColor = colors[i];
-
-    // add click listener to squares
     squares[i].addEventListener("click", function() {
       //grab color of clicked square
       var clickedColor = this.style.backgroundColor;
       //compare color to pickedColor
       if (clickedColor === pickedColor) {
         messageDisplay.textContent = "Correct!";
+        resetBtn.textContent = "Play Again?";
         changeColors(clickedColor);
       } else {
         messageDisplay.textContent = "Try Again!";
@@ -40,62 +49,35 @@ resetBtn.addEventListener("click", function() {
       }
     });
   }
+}
 
-  h1.style.backgroundColor = "steelblue";
-});
-
-easyBtn.addEventListener("click", function() {
-  easyBtn.classList.add("selected");
-  hardBtn.classList.remove("selected");
-  maxColors = 3;
-
+function reset() {
+  // generate all new colors
   colors = generateRandomColors(maxColors);
+
+  // pick a new rancom color from array
   pickedColor = pickColor();
   colorDisplay.textContent = pickedColor;
+  resetBtn.textContent = "New Colors";
+  messageDisplay.textContent = "";
 
+  // change color of squares
   for (var i = 0; i < squares.length; i++) {
+    // add initial colors to squares
     if (colors[i]) {
+      squares[i].style.display = "block";
       squares[i].style.backgroundColor = colors[i];
     } else {
       squares[i].style.display = "none";
     }
   }
-});
 
-hardBtn.addEventListener("click", function() {
-  hardBtn.classList.add("selected");
-  easyBtn.classList.remove("selected");
-
-  maxColors = 6;
-  colors = generateRandomColors(maxColors);
-  pickedColor = pickColor();
-  colorDisplay.textContent = pickedColor;
-
-  for (var i = 0; i < squares.length; i++) {
-    squares[i].style.backgroundColor = colors[i];
-    squares[i].style.display = "block";
-  }
-});
-
-for (var i = 0; i < squares.length; i++) {
-  // add initial colors to squares
-  squares[i].style.backgroundColor = colors[i];
-
-  // add click listener to squares
-  squares[i].addEventListener("click", function() {
-    //grab color of clicked square
-    var clickedColor = this.style.backgroundColor;
-    //compare color to pickedColor
-    if (clickedColor === pickedColor) {
-      messageDisplay.textContent = "Correct!";
-      resetBtn.textContent = "Play Again?";
-      changeColors(clickedColor);
-    } else {
-      messageDisplay.textContent = "Try Again!";
-      this.style.backgroundColor = "#232323";
-    }
-  });
+  h1.style.backgroundColor = "steelblue";
 }
+
+resetBtn.addEventListener("click", function() {
+  reset();
+});
 
 function generateRandomColors(num) {
   // make an array
