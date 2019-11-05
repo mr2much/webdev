@@ -20,6 +20,7 @@ resetBtn.addEventListener("click", function() {
   // pick a new rancom color from array
   pickedColor = pickColor();
   colorDisplay.textContent = pickedColor;
+  this.textContent = "New Colors";
 
   // change color of squares
   for (var i = 0; i < squares.length; i++) {
@@ -41,6 +42,7 @@ resetBtn.addEventListener("click", function() {
     });
   }
 
+  messageDisplay.textContent = "";
   h1.style.backgroundColor = "steelblue";
 });
 
