@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;    
+}
+
+@viewport {
+    width: device-width;
+    zoom: 1;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+body {        
+    margin: 0 auto;    
+    max-width: 50em;
+    border: 1px solid red;
+    text-rendering: optimizeLegibility;    
+    font-feature-settings: "kern" 1;        
+    margin-top: 60px;
+    height: 100vh;
+    color: #333;
+}
+
+div {
+    margin-top: 1.15em;
+}
+
+#contact-info {
+    padding: 1.5em;
+    height: 25%;
+    border: 5px solid black;
+    border-radius: 15px;
+    padding: 1.25em 4.75em 1.25em 4.75em;
+    
+}
+
+#contact-list {
+    border: 5px solid black;
+    border-top-right-radius: 15%;
+    border-bottom-left-radius: 15%;
+    padding: 1.75em 3.75em;    
+    width: 100%;    
+    height: 65%;
+}
+
+#buttons {
+    text-align: right;
+}
+
+.light-grey {
+    background-color: #eee;
+}
+
+/* using table-layout: fixed; you ensure that things are more predictable when adding rows and values to a table, since you only have to set the values for the first row, like the width and height, and when you add more to the table, they inherit those same values. Normally, a table uses table-layout: auto; which make the values on the columns change the general layout of the table and it's unpredictable. */
+.contacts {
+    table-layout: fixed;
+    width: 100%;    
+    white-space: nowrap;
+    text-align: center;
+    border: 1px solid orange;
+}
+
+.contacts th {
+    background-color: black;
+    color: #ddd;
+    padding: 5px;
+}
+
+#contact-data tr {    
+    background-color: #555;
+    color: #eee;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#contact-data tr td {
+    padding: 0.25rem;
+}
+
+#contact-data tr:nth-child(even) {
+    background-color: #eee;
+    color: #555;
+}
+
+.row-name {
+    width: 20%;
+}
+
+.row-lastname {
+    width: 30%;
+}
+
+.row-phone {
+    width: 20%;
+}
+
+.del-button {    
+    background: transparent !important;
+    width: 5%;
+}
+
+.centered {
+    text-align: center;
+}
+
+.button-delete {
+    color: red;
+    font-weight: bold;
+    padding: 0 0.25rem;
+    border: 0;
+    outline: none;
+}
+
+.button-delete:hover {
+    font-size: 1rem;
+}

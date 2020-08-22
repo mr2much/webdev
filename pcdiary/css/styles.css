@@ -1,0 +1,12 @@
+#characters {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#characters > li {
+    cursor: pointer;
+}
+#characters > li:hover {
+    padding-left: 15px;
+}
