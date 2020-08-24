@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Basic HTML Table With Semantics</title>
+</head>
+<body>
+    <!-- When you use thead and tbody there cannot be any TR that is a direct child of the table element. In other words, all TR elements must be inside either thead, tbody or tfoot -->
+    <table>
+        <!-- The thead contains only the names of the columns -->
+        <thead>
+            <tr>
+                <th>Name</th>                
+                <th>ID</th>                
+                <th>Favorite Color</th>                
+            </tr>
+        </thead>
+        <!-- All the rows of data must be inside of tbody -->
+        <tbody>
+            <tr>
+                <td>Jim</td>
+                <td>00001</td>
+                <td>Blue</td>
+            </tr>
+            <tr>
+                <td>Sue</td>
+                <td>00002</td>
+                <td>Red</td>
+            </tr>
+            <tr>
+                <td>Barb</td>
+                <td>00003</td>
+                <td>Green</td>
+            </tr>
+        </tbody>
+    </table>    
+</body>
+</html>

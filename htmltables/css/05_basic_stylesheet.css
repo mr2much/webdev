@@ -1,0 +1,15 @@
+table {
+    /* With border spacing, one can control the spacing between the rows and the columns in a table */
+    /* border-spacing: 0.5rem; */
+
+    /* It is more common to just remove the spacing between the rows and the columns by collapsing them with: */
+    border-collapse: collapse;    
+}
+/* By default, all table cells are spaced out from one another by 2px (via the user-agent stylesheet) */
+
+/* The user-agent stylesheet: is the basic styling that the browser provides to display the data in absence of any custom styling provided by the page or by the user. */
+th, td{
+    border: 1px solid #999;
+    padding: 0.5rem;
+    text-align: left;
+}
