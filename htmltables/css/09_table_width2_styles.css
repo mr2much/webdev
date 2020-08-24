@@ -1,0 +1,20 @@
+body {
+    background: #ccc;
+}
+
+.wrap {
+    margin: 0 auto;
+    width: 45vw;
+    background: white;
+}
+
+table {
+    border: solid thin red;
+    white-space: nowrap;
+    margin-bottom: 0.5rem;
+}
+
+td {
+    border: solid thin green;
+    padding: 0 0.55rem;
+}
