@@ -1,0 +1,15 @@
+body {
+    padding: 1rem;
+}
+
+th {
+    background: lightblue;
+    border-color: white;
+}
+
+th, td {
+    border: solid thin #ccc;
+    width: 4rem;
+    height: 2rem;
+    text-align: center;
+}
