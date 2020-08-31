@@ -8,7 +8,7 @@ body {
     background: white;
 }
 
-table {
+table {    
     border: solid thin red;
     white-space: nowrap;
     margin-bottom: 0.5rem;

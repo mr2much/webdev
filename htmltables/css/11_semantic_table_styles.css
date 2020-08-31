@@ -1,0 +1,28 @@
+body {
+    padding: 1rem;
+    background: #ccc;
+}
+
+header {
+    font-weight: bold;
+}
+
+.table-view {
+    display: table;
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-spacing: 2px;        
+}
+
+.row-table {
+    display: table-row;
+}
+
+.cell-table {
+    display: table-cell;    
+    border: solid thin black;    
+    background: green;
+    color: white;
+
+}

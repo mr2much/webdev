@@ -1,0 +1,22 @@
+body {
+    font: normal medium/2 sans-serif;
+}
+/* Table reset */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    /* Setting the table to inline "un-tables" a table */
+    display: inline;
+    padding: 0.25rem;
+    border: 1px solid #ccc;
+}
+
+/* Table reset */
+
+/* setting parent elements to display: block; ensures displaying the information properly on small displays*/
+/* table, thead, tbody, tfoot, tr, td, th, caption {
+    display: block;
+} */
