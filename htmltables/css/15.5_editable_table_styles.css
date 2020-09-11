@@ -5,6 +5,7 @@
 }
 
 body {
+    background: #ddd;
     font: normal medium/1.4 sans-serif;
 }
 
@@ -13,19 +14,40 @@ table {
     border-collapse: collapse;    
     border-spacing: 0;        
     width: 80%;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);    
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);   
+    background: white; 
 }
 
 thead th {
-    font-size: 1.1em;
+    font-size: 1.45em;
+    font-weight: lighter;
     padding: 0.75rem;
     background: #0044ee;
     border-top: 1px solid #00eeff;
-    color: #fff
+    color: #fff;
+    text-shadow: 1px 1px 0 #38678f;
+    border: 1px solid #38678f;
 }
 
-th, td {    
-    border: 1px solid #eee;    
+tbody {
+    transition: all 300ms;
+}
+
+tbody tr {
+    border-bottom: 1px solid #ccc;    
+}
+
+tbody tr:last-child {
+    border-bottom: 0;
+}
+
+tbody tr td {
+    border-right: 1px solid #ccc;    
+    transition: all 0.2s;
+}
+
+tbody tr td:hover {
+    background: rgba(200, 200, 200, 0.15);
 }
 
 th:first-child, td:first-child {
@@ -41,16 +63,24 @@ table tr:last-child td {
 }
 
 tbody tr td input {
+    font-size: 18px;
     height: 100%;
     width: 100%;
     background: none;
     outline: none;
     border: 0;
-    padding: 0.25rem;
+    padding: 0.45rem;
+    transition: all 400ms;
 }
 
 .noPadding { 
     padding: 0;
     margin: 0;    
     line-height: 0;
+}
+        
+tbody tr td input:focus {        
+    color: #0044ee;            
+    box-shadow: 0 1px 0 steelblue;                
+    padding: 0.75rem;    
 }
