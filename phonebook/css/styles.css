@@ -21,11 +21,15 @@ body {
     font-feature-settings: "kern" 1;        
     margin-top: 60px;
     height: 100vh;
-    color: #333;
+    color: #333;    
 }
 
 div {
     margin-top: 1.15em;
+}
+
+input, button {
+    font-family: inherit !important;        
 }
 
 #contact-info {
@@ -54,6 +58,12 @@ div {
 
 .light-grey {
     background-color: #eee;
+}
+
+.noPadding {
+    padding: 0;
+    margin: 0;
+    line-height: 0;
 }
 
 /* using table-layout: fixed; you ensure that things are more predictable when adding rows and values to a table, since you only have to set the values for the first row, like the width and height, and when you add more to the table, they inherit those same values. Normally, a table uses table-layout: auto; which make the values on the columns change the general layout of the table and it's unpredictable. */
@@ -91,6 +101,7 @@ div {
     background: transparent;
     opacity: 0;
 }
+
 #contact-data tr:first-child td:last-child {
     border-top-right-radius: 10px;
 }
@@ -101,6 +112,17 @@ div {
 
 #contact-data tr:last-child td:last-child {
     border-bottom-right-radius: 10px;
+}
+
+#contact-data input {
+    outline: none;
+    border: none;
+    background: none;
+    font-size: 1.2em;
+    height: 100%;
+    width: 100%;    
+    padding: 0.75em;
+    text-align: center;
 }
 
 /* #contact-data tr {    

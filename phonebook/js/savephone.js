@@ -1,9 +1,7 @@
 console.log("Connected");
 //IIFE - Immediately Invoked Function Expression
 (function() {
-    var saveButton = document.getElementById('savebutton');
-    // var btnRemoveContact = document.getElementsByClassName('button-delete')[0];
-    // var removeContact = btnRemoveContact.cloneNode(true);
+    var saveButton = document.getElementById('savebutton');    
 
     saveButton.addEventListener('click', function(event) {        
         event.preventDefault();
@@ -26,13 +24,25 @@ console.log("Connected");
 
         // add name, last name and phone number to the table as a new row                
         var tdName = document.createElement('td');
-        tdName.textContent = name;
+        var tdInputName = document.createElement('input');
+        tdInputName.setAttribute('id', 'contact-name');
+        tdInputName.setAttribute('type', 'text');
+        tdInputName.setAttribute('value', name);
+        tdName.appendChild(tdInputName);
 
         var tdLastName = document.createElement('td');
-        tdLastName.textContent = lastName;
+        var tdInputLastName = document.createElement('input');
+        tdInputLastName.setAttribute('id', 'contact-lastName');
+        tdInputLastName.setAttribute('type', 'text');
+        tdInputLastName.setAttribute('value', lastName);
+        tdLastName.appendChild(tdInputLastName);
 
         var tdCPhoneNumber = document.createElement('td');
-        tdCPhoneNumber.textContent = phoneNumber;
+        var tdInputPhoneNumber = document.createElement('input');
+        tdInputPhoneNumber.setAttribute('id', 'contact-phone');
+        tdInputPhoneNumber.setAttribute('type', 'text');
+        tdInputPhoneNumber.setAttribute('value', phoneNumber);
+        tdCPhoneNumber.appendChild(tdInputPhoneNumber);
 
         var removeContact = document.createElement('button');
         removeContact.innerText = "X";
