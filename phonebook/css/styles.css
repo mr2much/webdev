@@ -14,8 +14,8 @@
 }
 
 body {        
-    margin: 0 auto;    
-    max-width: 50em;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 60px auto;
     border: 1px solid red;
     text-rendering: optimizeLegibility;    
     font-feature-settings: "kern" 1;        
@@ -29,21 +29,23 @@ div {
 }
 
 #contact-info {
-    padding: 1.5em;
+    /* padding: 1.5em; */
     height: 25%;
-    border: 5px solid black;
+    border: 1px solid black;
     border-radius: 15px;
     padding: 1.25em 4.75em 1.25em 4.75em;
     
 }
 
 #contact-list {
-    border: 5px solid black;
-    border-top-right-radius: 15%;
-    border-bottom-left-radius: 15%;
+    margin: 25px auto;
+    border: 1px solid black;
     padding: 1.75em 3.75em;    
-    width: 100%;    
-    height: 65%;
+    width: 70%;
+    height: 60%;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    overflow-y: auto;
 }
 
 #buttons {
@@ -60,7 +62,13 @@ div {
     width: 100%;    
     white-space: nowrap;
     text-align: center;
-    border: 1px solid orange;
+    border-spacing: 0;    
+    /* border-collapse: collapse; */    
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);     */
+}
+
+.contacts th, .contacts td {    
+    border: 1px solid #bbb;
 }
 
 .contacts th {
@@ -69,17 +77,43 @@ div {
     padding: 5px;
 }
 
-#contact-data tr {    
+.contacts th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.contacts th:nth-child(3) {
+    border-top-right-radius: 10px;
+}
+
+.contacts thead th:last-child {
+    border: none;
+    outline: none;
+    background: transparent;
+    opacity: 0;
+}
+#contact-data tr:first-child td:last-child {
+    border-top-right-radius: 10px;
+}
+
+#contact-data tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;    
+}
+
+#contact-data tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+/* #contact-data tr {    
     background-color: #555;
     color: #eee;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
+} */
 
-#contact-data tr td {
+/* #contact-data tr td {
     padding: 0.25rem;
-}
+} */
 
 #contact-data tr:nth-child(even) {
     background-color: #eee;
@@ -107,14 +141,17 @@ div {
     text-align: center;
 }
 
-.button-delete {
-    color: red;
+.button-delete {    
+    color: red;    
     font-weight: bold;
+    font-size: 1.15em;
     padding: 0 0.25rem;
     border: 0;
     outline: none;
+    transition: all 300ms;    
+    background: none;
 }
 
 .button-delete:hover {
-    font-size: 1rem;
+    transform: scale(1.1);
 }
