@@ -78,5 +78,17 @@ function getTextValueOfElementWithID(id, focus) {
 }
 
 function deleteEvent(event) {
-    console.log("Clicked!");
+    var tableRow = event.target.parentElement.parentElement;    
+
+    if(tableRow) {
+        console.log("Clicked table row number: " + tableRow.rowIndex);
+        var rowIdx = tableRow.rowIndex;
+        
+        var parentTable = tableRow.parentElement;
+
+        if(parentTable) {
+            parentTable.deleteRow(rowIdx-1);
+        }
+    }
+    // console.log("Clicked! " + event.target.parentElement.parentElement.rowIndex);
 }
