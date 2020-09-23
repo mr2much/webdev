@@ -57,6 +57,8 @@ console.log("Connected");
         newTableRow.appendChild(tdCPhoneNumber);
         newTableRow.appendChild(tdButtonRemoveContact);
 
+        newTableRow.classList.add(".noPadding");
+        newTableRow.classList.add(".contact");
         tableBody.appendChild(newTableRow);
     });
 
@@ -77,18 +79,11 @@ function getTextValueOfElementWithID(id, focus) {
     return textValue;
 }
 
-function deleteEvent(event) {
-    var tableRow = event.target.parentElement.parentElement;    
+function deleteEvent(event) {    
+    var tableRow = event.target.closest('tr');
+    console.log(tableRow);
 
     if(tableRow) {
-        console.log("Clicked table row number: " + tableRow.rowIndex);
-        var rowIdx = tableRow.rowIndex;
-        
-        var parentTable = tableRow.parentElement;
-
-        if(parentTable) {
-            parentTable.deleteRow(rowIdx-1);
-        }
-    }
-    // console.log("Clicked! " + event.target.parentElement.parentElement.rowIndex);
+        tableRow.remove();
+    }    
 }
