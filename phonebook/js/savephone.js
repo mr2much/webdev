@@ -1,7 +1,7 @@
 console.log("Connected");
 //IIFE - Immediately Invoked Function Expression
 (function() {
-    var saveButton = document.getElementById('savebutton');    
+    var saveButton = document.getElementById('savebutton');
 
     saveButton.addEventListener('click', function(event) {        
         event.preventDefault();
@@ -47,6 +47,7 @@ console.log("Connected");
         var removeContact = document.createElement('button');
         removeContact.innerText = "X";
         removeContact.classList.add('button-delete');
+        removeContact.addEventListener('click', deleteEvent);
         var tdButtonRemoveContact = document.createElement('td');
 
         tdButtonRemoveContact.appendChild(removeContact);
@@ -58,6 +59,10 @@ console.log("Connected");
 
         tableBody.appendChild(newTableRow);
     });
+
+    var delButton = document.querySelector(".button-delete");
+
+    delButton.addEventListener('click', deleteEvent);
 })();
 
 function getTextValueOfElementWithID(id, focus) {
@@ -70,4 +75,8 @@ function getTextValueOfElementWithID(id, focus) {
     }
 
     return textValue;
+}
+
+function deleteEvent(event) {
+    console.log("Clicked!");
 }

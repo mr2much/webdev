@@ -32,9 +32,7 @@ input, button {
     font-family: inherit !important;        
 }
 
-#contact-info {
-    /* padding: 1.5em; */
-    height: 25%;
+#contact-info {    
     border: 1px solid black;
     border-radius: 15px;
     padding: 1.25em 4.75em 1.25em 4.75em;
@@ -46,7 +44,7 @@ input, button {
     border: 1px solid black;
     padding: 1.75em 3.75em;    
     width: 70%;
-    height: 60%;
+    height: 50%;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
     overflow-y: auto;
@@ -54,6 +52,11 @@ input, button {
 
 #buttons {
     text-align: right;
+}
+
+.heading {
+    font-size: 2.55em;
+    padding: 1.35rem 0 2.35rem 0;
 }
 
 .light-grey {
@@ -73,8 +76,6 @@ input, button {
     white-space: nowrap;
     text-align: center;
     border-spacing: 0;    
-    /* border-collapse: collapse; */    
-    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);     */
 }
 
 .contacts th, .contacts td {    
@@ -102,6 +103,17 @@ input, button {
     opacity: 0;
 }
 
+.contacts .header {
+    font-weight: normal;
+    padding: 1.75rem 0;
+    font-size: 1.55em;
+    transition: all 500ms;
+}
+
+.contacts .header:hover {
+    color: rgb(70, 134, 230);
+}
+
 #contact-data tr:first-child td:last-child {
     border-top-right-radius: 10px;
 }
@@ -123,19 +135,17 @@ input, button {
     width: 100%;    
     padding: 0.75em;
     text-align: center;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    transition: all 400ms;
 }
 
-/* #contact-data tr {    
-    background-color: #555;
-    color: #eee;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-} */
-
-/* #contact-data tr td {
-    padding: 0.25rem;
-} */
+#contact-data tr td input:focus {
+    font-size: 1.35em;    
+    text-shadow: none;
+    background: rgba(100,100,100,0.3);
+    box-shadow: 0 2px 0 rgba(0,0,155,0.6);
+    padding: 1.0em;
+}
 
 #contact-data tr:nth-child(even) {
     background-color: #eee;
