@@ -1,0 +1,22 @@
+body { font-family: 'Segoe UI', Futura, Arial, sans-serif; }
+h1 {
+    text-align: center;
+    font-weight: 400;
+    text-decoration: overline;
+    letter-spacing: 0.75em;
+    font-size: 48px;
+    text-transform: uppercase;    
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    text-align: right;    
+    line-height: 1.35;
+}
