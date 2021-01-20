@@ -1,7 +1,116 @@
-.lightgray {
-    background-color: #eee;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;    
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    line-height: 1.25em;
+    border-bottom: 0.05em solid #999;
+    margin-bottom: 0.35em;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+div.content {    
+    padding: 1.5em;        
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 0.8rem;
+    /* width: 30%; */
+    padding: 3em;
+}
+
+aside div { 
+}
+
+header {
+    display: block;    
+}
+
+header .summary {
+    display: flex;    
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+header .nav {    
+    font-size: 0.90em;
+    display: inline-block;
+    line-height: 1.55em;    
+    padding: 0.45em;    
+    border: 1px solid #a1a1a1;
+    margin-top: 0.75em;
+}
+
+header .nav h4 {
+    text-align: center;
+}
+
+header .nav ol {        
+    text-align: left;
+    margin: 0.35em 0;    
+    padding-inline-start: 1.15em;
+}
+
+header .nav ol li {
+    padding: 0;
+    margin-bottom: 0.1em;
+}
+
+/* header .blurb, header .thumbnail {
+    display: inline-block;        
+} */
+
+header .summary .blurb {    
+    max-width: 100%;
+    margin: 1em 0.55em 0 0;
+}
+
+.content header .summary .thumbnail {    
+    font-size: 0.80rem;
+    text-align: center;
+    overflow: hidden;
+    padding: 0.55em;    
+    margin: 0.5em 0 1.3em 1.4em;
+    width: 15%;    
+}
+
+.content header .summary .thumbnail img {    
+    max-width: 100%;
+    width: auto;
+}
+
+.content header .summary .thumbnail .caption {
+    text-align: left;
+    padding: 0 0.55em;
+}
+
+.content {
+    border: 1px solid black;
+    /* width: 80%; */
 }
 
 .thumbnail img {
     
+}
+
+.lightgray {
+    background-color: #fafafa;
 }
