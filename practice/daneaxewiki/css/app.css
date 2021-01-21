@@ -10,21 +10,29 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-h1 {
-    line-height: 1.25em;    
-    margin-bottom: 0.35em;
-}
 
 h1, h2 {
+    font-weight: normal;
+    line-height: 1.55em;    
     border-bottom: 0.05em solid #999;
+    margin-bottom: 0.35em;
+    overflow: hidden;
 }
 
 h2 {
-    font-weight: normal;    
+    margin-top: 1.35em;    
 }
 
 a {
     text-decoration: none;
+}
+
+p {
+    margin: 0.75em 0;
+}
+
+p.quote {
+    margin: 0;
 }
 
 ul {
@@ -40,7 +48,7 @@ aside {
     flex-direction: column;
     justify-content: flex-start;
     font-size: 0.8rem;
-    /* width: 30%; */
+    width: 40%;
     padding: 3em;
 }
 
@@ -96,7 +104,7 @@ header .summary .blurb {
     overflow: hidden;
     padding: 0.55em;    
     margin: 0.5em 0 1.3em 1.4em;
-    width: 15%;    
+    width: 20%;        
     float: right;
     clear: right;
     border: 0.05em solid #bbb;
@@ -105,6 +113,7 @@ header .summary .blurb {
 .thumbnail img {    
     max-width: 100%;
     width: auto;
+    height: auto;
 }
 
 .thumbnail .caption {
