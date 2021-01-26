@@ -50,7 +50,7 @@ aside {
   justify-content: flex-start;
   font-size: 0.8rem;
   width: 40%;
-  padding: 2em;
+  padding: 0 2em 2em 2em;
 }
 
 aside nav {
@@ -75,6 +75,26 @@ aside ul li {
   margin: 0;
   padding: 0.2em 0;
   line-height: 1.125em;
+}
+
+aside #wikilogo {
+  width: 12em;
+  height: 170px;
+  margin-bottom: 3em;
+  padding-top: 0.65em;
+}
+
+aside #wikilogo a {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 12em;
+  height: 170px;
+  display: block;
+}
+
+aside #wikilogo .logowiki {
+  background-image: url(https://upload.wikimedia.org/wikipedia/en/thumb/a/af/Wikipedia_logo_one_billion_edits_v2.svg/1320px-Wikipedia_logo_one_billion_edits_v2.svg.png);
 }
 
 header {
