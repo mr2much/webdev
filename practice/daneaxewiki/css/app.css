@@ -11,7 +11,8 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   font-weight: normal;
   line-height: 1.55em;
   border-bottom: 0.05em solid #999;
@@ -59,12 +60,12 @@ aside nav {
 }
 
 aside nav h3 {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: normal;
-  color: #555;
+  color: #54595d;
   border-bottom: 1px solid #c1c1c1;
   padding: 0.25em 0;
-  margin: 1em 0 0.45em 0;
+  margin: 0.5em 0 0.45em 0;
 }
 
 aside div {
@@ -95,6 +96,21 @@ aside #wikilogo a {
 
 aside #wikilogo .logowiki {
   background-image: url(https://upload.wikimedia.org/wikipedia/en/thumb/a/af/Wikipedia_logo_one_billion_edits_v2.svg/1320px-Wikipedia_logo_one_billion_edits_v2.svg.png);
+}
+
+#lang-nav .lang-settings {
+  background: center / contain no-repeat
+    url(https://www.pngfind.com/pngs/m/145-1454360_cog-web-fundamentals-android-gear-icon-png-transparent.png);
+  height: 16px;
+  width: 16px;
+  float: right;
+  border: 0;
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+#lang-nav .lang-settings:hover {
+  opacity: 1;
 }
 
 header {
