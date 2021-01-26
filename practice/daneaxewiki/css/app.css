@@ -80,7 +80,7 @@ aside ul li {
 
 aside #wikilogo {
   width: 12em;
-  height: 170px;
+  height: 160px;
   margin-bottom: 3em;
   padding-top: 0.65em;
 }
@@ -90,12 +90,12 @@ aside #wikilogo a {
   background-repeat: no-repeat;
   background-size: cover;
   width: 12em;
-  height: 170px;
+  height: 160px;
   display: block;
 }
 
 aside #wikilogo .logowiki {
-  background-image: url(https://upload.wikimedia.org/wikipedia/en/thumb/a/af/Wikipedia_logo_one_billion_edits_v2.svg/1320px-Wikipedia_logo_one_billion_edits_v2.svg.png);
+  background-image: url(https://en.wikipedia.org/static/images/project-logos/enwiki20a.png);
 }
 
 #lang-nav .lang-settings {
@@ -111,6 +111,25 @@ aside #wikilogo .logowiki {
 
 #lang-nav .lang-settings:hover {
   opacity: 1;
+}
+
+#lang-nav .btn-lang-selector {
+  background-image: url(https://en.wikipedia.org/w/extensions/UniversalLanguageSelector/resources/images/language-base20.svg?2004a);
+  background-position: left 6px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  margin: 0.25em 0 0.5em;
+  padding: 0.45em 0.5em 0.45em 2.65em;
+  font-size: 0.75rem;
+  border: 1px solid #a2a9b1;
+  border-radius: 0.15em;
+  width: 7em;
+  background-color: #f8f9fa;
+  color: #202122;
+}
+
+#lang-nav .btn-lang-selector:hover {
+  background-color: #fefffd;
 }
 
 header {
