@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 16px;
+}
+
 body {
   display: flex;
   flex-direction: row;
@@ -306,4 +310,35 @@ footer .wiki-foundation img {
   cursor: pointer;
   line-height: 2;
   margin-left: 0.5em;
+}
+
+.disc-list {
+  list-style-type: disc;
+  margin: 0.3em 0 0 1.6em;
+}
+
+.disc-list li {
+  margin-bottom: 0.25em;
+}
+
+#references ol {
+  column-count: 3;
+  margin: 0.3em 0 0 3.2em;
+  padding: 0;
+  line-height: 1.6;
+  padding-inline-start: 2.5em;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+#references ol li {
+  width: 90%;
+  margin-bottom: 0.1em;
+}
+
+.external {
+  background-image: url(https://en.wikipedia.org/w/skins/Vector/resources/skins.vector.styles/images/external-link-ltr-icon.svg?b4b84);
+  background-position: right center;
+  background-repeat: no-repeat;
+  padding-right: 0.97em;
 }
