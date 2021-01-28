@@ -7,6 +7,8 @@
 body {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  /* flex: 1 100%; */
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -50,11 +52,16 @@ div.content {
 }
 
 aside {
+  position: absolute;
+  left: 0;
+  top: 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: flex-start;
+  /* order: 1; */
   font-size: 0.8rem;
-  width: 40%;
+  width: 14em;
   padding: 0 2em 2em 2em;
 }
 
@@ -130,6 +137,7 @@ aside #wikilogo .logowiki {
   width: 7em;
   background-color: #f8f9fa;
   color: #202122;
+  cursor: pointer;
 }
 
 #lang-nav .btn-lang-selector:hover {
@@ -229,12 +237,26 @@ header .summary .blurb {
 }
 
 .content {
-  border: 1px solid black;
+  border-left: 1px solid #a7d7f9;
+  border-bottom: 1px solid #a7d7f9;
   background-color: #fff;
+  /* order: 2;
+  flex: 2 0px; */
   /* width: 80%; */
 }
 
 body,
 .lightgray {
   background-color: #fafafa;
+}
+
+.content,
+footer {
+  margin-left: 12em;
+}
+
+footer {
+  display: block;
+  /* order: 3; */
+  align-self: flex-end;
 }
