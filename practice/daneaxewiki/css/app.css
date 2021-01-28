@@ -220,6 +220,7 @@ header .summary .blurb {
   padding: 0.55em;
   margin: 0.5em 0 1.3em 1.4em;
   width: 20%;
+  min-width: 250px;
   float: right;
   clear: right;
   border: 0.05em solid #bbb;
