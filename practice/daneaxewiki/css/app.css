@@ -8,7 +8,6 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* flex: 1 100%; */
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -31,6 +30,7 @@ a {
   color: #0b0080;
 }
 
+footer .footer-nav li:hover,
 a:hover {
   text-decoration: underline;
 }
@@ -67,7 +67,6 @@ aside {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  /* order: 1; */
   font-size: 0.8rem;
   width: 14em;
   padding: 0 2em 2em 2em;
@@ -212,10 +211,6 @@ header .summary {
   margin-bottom: 0.1em;
 }
 
-/* header .blurb, header .thumbnail {
-    display: inline-block;        
-} */
-
 header .summary .blurb {
   max-width: 100%;
   margin: 0.45em 0.55em 0 0;
@@ -228,8 +223,6 @@ header .summary .blurb {
   padding: 0.55em;
   margin: 0.5em 0 1.3em 1.4em;
   width: 250px;
-  /* min-width: 250px; */
-  /* display: inline; */
   float: right;
   clear: right;
   border: 0.05em solid #bbb;
@@ -238,7 +231,6 @@ header .summary .blurb {
 .thumbnail img {
   max-width: 100%;
   width: 250px;
-  /* height: auto; */
 }
 
 .thumbnail .caption {
@@ -250,9 +242,6 @@ header .summary .blurb {
   border-left: 1px solid #a7d7f9;
   border-bottom: 1px solid #a7d7f9;
   background-color: #fff;
-  /* order: 2;
-  flex: 2 0px; */
-  /* width: 80%; */
 }
 
 body,
@@ -262,11 +251,59 @@ body,
 
 .content,
 footer {
+  margin: 0;
   margin-left: 12em;
 }
 
 footer {
   display: block;
-  /* order: 3; */
   align-self: flex-end;
+  padding: 1.35em;
+}
+
+footer div {
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin: 0;
+  padding: 0.4em 0;
+}
+
+footer .footer-nav {
+  font-size: 0.8rem;
+}
+
+footer ul,
+footer ul li {
+  margin: 0;
+  padding: 0;
+}
+
+footer .footer-nav li {
+  display: inline-block;
+  margin-right: 1em;
+  padding: 0.4em 0;
+  line-height: 2;
+}
+
+footer .wiki-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer .wiki-foundation {
+  float: right;
+}
+
+footer .wiki-foundation img {
+  width: 90px;
+  height: 30px;
+  vertical-align: middle;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  line-height: 2;
+  margin-left: 0.5em;
 }
