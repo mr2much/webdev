@@ -23,7 +23,7 @@ h3 {
 }
 
 h2 {
-  margin-top: 1.35em;
+  margin-top: 0.75em;
 }
 
 a {
@@ -41,6 +41,14 @@ p {
 
 p.quote {
   margin: 0;
+}
+
+main:after {
+  content: "";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
 }
 
 ul {
@@ -180,26 +188,26 @@ header .summary {
   justify-content: space-between;
 }
 
-header .nav {
+.intro .nav {
   font-size: 0.9em;
-  display: inline-block;
+  display: table;
   line-height: 1.55em;
   padding: 0.45em;
   border: 1px solid #a1a1a1;
   margin-top: 0.75em;
 }
 
-header .nav h4 {
+.intro .nav h4 {
   text-align: center;
 }
 
-header .nav ol {
+.intro .nav ol {
   text-align: left;
   margin: 0.35em 0;
   padding-inline-start: 1.15em;
 }
 
-header .nav ol li {
+.intro .nav ol li {
   padding: 0;
   margin-bottom: 0.1em;
 }
@@ -210,7 +218,7 @@ header .nav ol li {
 
 header .summary .blurb {
   max-width: 100%;
-  margin: 1em 0.55em 0 0;
+  margin: 0.45em 0.55em 0 0;
 }
 
 .thumbnail {
@@ -219,8 +227,9 @@ header .summary .blurb {
   overflow: hidden;
   padding: 0.55em;
   margin: 0.5em 0 1.3em 1.4em;
-  width: 20%;
-  min-width: 250px;
+  width: 250px;
+  /* min-width: 250px; */
+  /* display: inline; */
   float: right;
   clear: right;
   border: 0.05em solid #bbb;
@@ -228,8 +237,8 @@ header .summary .blurb {
 
 .thumbnail img {
   max-width: 100%;
-  width: auto;
-  height: auto;
+  width: 250px;
+  /* height: auto; */
 }
 
 .thumbnail .caption {
