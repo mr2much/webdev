@@ -1,0 +1,45 @@
+div {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    border: 3px solid #555;    
+    background-color: #ccc;
+}
+
+#middle {
+    background-color: yellow;
+}
+
+#static #middle {
+    position: static;
+}
+
+#relative #middle {
+    position: relative;
+    top: 50px;
+    right: 50px;
+}
+
+/* If the container of an element with position: absolute is also positiioned, the element will be possitioned relative to its parent, instead of the body */
+#absolute {
+    position: relative;
+}
+
+#absolute #middle {
+    position: absolute;
+    top: 80px;
+    left: 500px;
+}
+
+#fixed #middle {
+    position: fixed;
+    top: 205px;
+    left: 10px;
+}
+
+/* Sticky only works on elements with their display set to Block */
+#sticky {        
+    position: sticky;
+    top: 40px
+}
