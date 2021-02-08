@@ -14,10 +14,10 @@ h1 {
 }
 
 img {
-  max-width: 100%;
-  width: auto;
-  height: 400px;
-  margin: 1rem 1rem;
+  width: 30%;
+  height: auto;
+  margin: 1.25rem;
+  vertical-align: middle;
   filter: grayscale();
   transition: filter ease-in 0.3s, transform ease-in 0.3s,
     box-shadow ease-in 0.3s;
