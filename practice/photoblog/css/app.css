@@ -11,12 +11,16 @@ h1 {
   font-weight: 300;
   font-size: 3.5rem;
   font-variant: small-caps;
+  border-bottom: 2px solid #f1f1f1;
+  width: 30%;
+  margin-left: calc(10% / 6);
+  padding: 0.75em 0;
 }
 
 img {
   width: 30%;
   height: auto;
-  margin: 1.25rem;
+  margin: calc(9% / 6);
   vertical-align: middle;
   filter: grayscale();
   transition: filter ease-in 0.3s, transform ease-in 0.3s,
