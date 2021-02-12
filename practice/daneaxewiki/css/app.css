@@ -336,9 +336,87 @@ footer .wiki-foundation img {
   margin-bottom: 0.1em;
 }
 
+#table-container {
+  width: 100%;
+}
+
+#table-container table {
+  font-size: 0.75rem;
+  border: 1px solid #eee;
+}
+
+#table-container .navbar {
+  float: left;
+}
+
+#table-container span {
+  float: right;
+}
+
+table th {
+  background-color: #ddddff;
+}
+
+table tbody th {
+  width: 10%;
+  text-align: right;
+}
+
+table th,
+table td {
+  padding: 0.55em 0.95em;
+}
+
+table .ext-image {
+  width: 1px;
+  padding: 0 0 0 0.1em;
+}
+
+#table-container table tbody tr:nth-of-type(2n) {
+  background-color: #fafafa;
+}
+
+#external-links table {
+  width: 100%;
+  margin-top: 0.95em;
+  border: 1px solid #ccc;
+}
+
+#categories {
+  margin-top: 0.95em;
+  border: 1px solid #ccc;
+  padding: 0.6em 0.4em;
+}
+
+#categories ul li {
+  border-right: 1px solid blue;
+  padding: 0 0.55em 0 0.25em;
+}
+
+#categories ul li:last-of-type {
+  border-right: none;
+}
+
 .external {
   background-image: url(https://en.wikipedia.org/w/skins/Vector/resources/skins.vector.styles/images/external-link-ltr-icon.svg?b4b84);
   background-position: right center;
   background-repeat: no-repeat;
   padding-right: 0.97em;
+}
+
+.line-list li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  list-style-type: none none;
+  line-height: 1.5;
+}
+
+.line-list li::after {
+  content: " · ";
+  font-weight: bold;
+}
+
+.line-list li:last-of-type::after {
+  content: "";
 }
