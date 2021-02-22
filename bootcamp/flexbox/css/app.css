@@ -31,8 +31,8 @@ h2 {
 }
 
 .container .wrapper div {
-  width: 200px;
-  height: 200px;
+  width: 3%;
+  height: 10%;
 }
 
 #row-reverse {
@@ -70,4 +70,42 @@ h2 {
 
 #column-reverse {
   flex-direction: column-reverse;
+}
+
+#flex-start {
+  justify-content: flex-start;
+}
+
+#start-reverse {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+#start-column {
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#start-column-reverse {
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+}
+
+#flex-end {
+  justify-content: flex-end;
+}
+
+#end-reverse {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+#end-column {
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#end-column-reverse {
+  flex-direction: column-reverse;
+  justify-content: flex-end;
 }
