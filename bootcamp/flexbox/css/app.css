@@ -27,85 +27,71 @@ h2 {
 
 .container .wrapper {
   display: flex;
+  width: 100%;
   height: 100%;
 }
 
 .container .wrapper div {
-  width: 3%;
-  height: 10%;
+  display: flex;
+  width: 15%;
+  height: 40%;
+  font-weight: bold;
+  font-size: 2.5em;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  color: #f00;
 }
 
-#row-reverse {
+.wrapper.wider div {
+  width: 30%;
+}
+
+.row-reverse {
   flex-direction: row-reverse;
 }
 
-#center-main {
+.justify-center {
   justify-content: center;
 }
 
-#center-cross {
+.align-center {
   align-items: center;
 }
 
-#center-both {
-  justify-content: center;
-  align-items: center;
-}
-
-#space-around {
+.space-around {
   justify-content: space-around;
 }
 
-#space-between {
+.space-between {
   justify-content: space-between;
 }
 
-#space-evenly {
+.space-evenly {
   justify-content: space-evenly;
 }
 
-#flex-column {
+.flex-column {
   flex-direction: column;
 }
 
-#column-reverse {
+.column-reverse {
   flex-direction: column-reverse;
 }
 
-#flex-start {
+.flex-start {
   justify-content: flex-start;
 }
 
-#start-reverse {
-  flex-direction: row-reverse;
-  justify-content: flex-start;
-}
-
-#start-column {
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-#start-column-reverse {
-  flex-direction: column-reverse;
-  justify-content: flex-start;
-}
-
-#flex-end {
+.flex-end {
   justify-content: flex-end;
 }
 
-#end-reverse {
-  flex-direction: row-reverse;
-  justify-content: flex-end;
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
-#end-column {
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-#end-column-reverse {
-  flex-direction: column-reverse;
-  justify-content: flex-end;
+.wrap-reverse {
+  flex-wrap: wrap-reverse;
 }
