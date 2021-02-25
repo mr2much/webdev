@@ -95,3 +95,11 @@ h2 {
 .wrap-reverse {
   flex-wrap: wrap-reverse;
 }
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
+}
