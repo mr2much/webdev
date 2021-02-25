@@ -27,47 +27,79 @@ h2 {
 
 .container .wrapper {
   display: flex;
+  width: 100%;
   height: 100%;
 }
 
 .container .wrapper div {
-  width: 200px;
-  height: 200px;
+  display: flex;
+  width: 15%;
+  height: 40%;
+  font-weight: bold;
+  font-size: 2.5em;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  color: #f00;
 }
 
-#row-reverse {
+.wrapper.wider div {
+  width: 30%;
+}
+
+.row-reverse {
   flex-direction: row-reverse;
 }
 
-#center-main {
+.justify-center {
   justify-content: center;
 }
 
-#center-cross {
+.align-center {
   align-items: center;
 }
 
-#center-both {
-  justify-content: center;
-  align-items: center;
-}
-
-#space-around {
+.space-around {
   justify-content: space-around;
 }
 
-#space-between {
+.space-between {
   justify-content: space-between;
 }
 
-#space-evenly {
+.space-evenly {
   justify-content: space-evenly;
 }
 
-#flex-column {
+.flex-column {
   flex-direction: column;
 }
 
-#column-reverse {
+.column-reverse {
   flex-direction: column-reverse;
+}
+
+.flex-start {
+  justify-content: flex-start;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
 }
