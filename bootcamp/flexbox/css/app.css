@@ -103,3 +103,31 @@ h2 {
 .align-end {
   align-items: flex-end;
 }
+
+.align-baseline {
+  align-items: baseline;
+}
+
+.content-start {
+  align-content: flex-start;
+}
+
+.content-end {
+  align-content: flex-end;
+}
+
+.content-center {
+  align-content: center;
+}
+
+.content-around {
+  align-content: space-around;
+}
+
+.content-between {
+  align-content: space-between;
+}
+
+.content-stretch {
+  align-content: stretch;
+}
