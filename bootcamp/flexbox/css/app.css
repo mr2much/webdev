@@ -48,6 +48,10 @@ h2 {
   width: 30%;
 }
 
+.flx-basis-300 > div {
+  flex-basis: 300px;
+}
+
 .row-reverse {
   flex-direction: row-reverse;
 }
@@ -130,4 +134,64 @@ h2 {
 
 .content-stretch {
   align-content: stretch;
+}
+
+.self-center {
+  align-self: center;
+}
+
+.self-start {
+  align-self: flex-start;
+}
+
+.self-stretch {
+  align-self: stretch;
+}
+
+.self-end {
+  align-self: flex-end;
+}
+
+.flx-grow-1 {
+  flex-grow: 1;
+}
+
+.flx-grow-2 {
+  flex-grow: 2;
+}
+
+.flx-grow-3 {
+  flex-grow: 3;
+}
+
+.flx-grow-4 {
+  flex-grow: 4;
+}
+
+.flx-grow-5 {
+  flex-grow: 5;
+}
+
+.flx-shrink-1 {
+  flex-shrink: 1;
+}
+
+.flx-shrink-2 {
+  flex-shrink: 2;
+}
+
+.flx-shrink-3 {
+  flex-shrink: 3;
+}
+
+.flx-shrink-4 {
+  flex-shrink: 4;
+}
+
+.flx-shrink-5 {
+  flex-shrink: 5;
+}
+
+.flx-shrink-0 {
+  flex-shrink: 0;
 }
