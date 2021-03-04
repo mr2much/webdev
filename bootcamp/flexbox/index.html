@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="css/app.css" />
-    <title>Fun With CSS</title>
+    <title>Fun With CSS Flexbox</title>
   </head>
   <body>
     <h1>Let's Play With Flexbox</h1>
@@ -467,7 +467,7 @@
       </div>
     </section>
 
-    <h2>Flex Direction Row, Flex Wrap, Align Content Stretch</h2>
+    <h2>Flex Direction Column, Flex Wrap, Align Content Stretch</h2>
     <section class="container">
       <div
         class="wrapper justify-center flex-wrap flex-column wider content-stretch"
@@ -477,6 +477,174 @@
         <div style="background: #495057">3</div>
         <div style="background: #6c757d">4</div>
         <div style="background: #adb5bd">5</div>
+      </div>
+    </section>
+
+    <h2>Flex Direction Row, Flex Start, Align-Self Centered</h2>
+    <section class="container">
+      <div class="wrapper justify-center flex-row align-start">
+        <div style="background: #212529">1</div>
+        <div style="background: #343a40">2</div>
+        <div class="self-center" style="background: #495057">3</div>
+        <div style="background: #6c757d">4</div>
+        <div style="background: #adb5bd">5</div>
+      </div>
+    </section>
+
+    <h2>Flex Direction Row, Flex End, Align-Self Start</h2>
+    <section class="container">
+      <div class="wrapper justify-center align-end">
+        <div style="background: #212529">1</div>
+        <div style="background: #343a40">2</div>
+        <div class="self-start" style="background: #495057">3</div>
+        <div style="background: #6c757d">4</div>
+        <div style="background: #adb5bd">5</div>
+      </div>
+    </section>
+
+    <h2>
+      Flex Direction Column, Flex-Wrap, Spaced Evenly, Flex End, Align-Self
+      Start
+    </h2>
+    <section class="container">
+      <div class="wrapper flex-wrap wider flex-column space-evenly align-end">
+        <div style="background: #212529">1</div>
+        <div style="background: #343a40">2</div>
+        <div class="self-start" style="background: #495057">3</div>
+        <div style="background: #6c757d">4</div>
+        <div style="background: #adb5bd">5</div>
+      </div>
+    </section>
+
+    <h2>
+      Flex Direction Column, Flex-Wrap, Spaced Evenly, Flex Start, Align-Self
+      End
+    </h2>
+    <section class="container">
+      <div class="wrapper flex-wrap wider flex-column space-evenly align-start">
+        <div style="background: #212529">1</div>
+        <div style="background: #343a40">2</div>
+        <div class="self-end" style="background: #495057">3</div>
+        <div style="background: #6c757d">4</div>
+        <div style="background: #adb5bd">5</div>
+      </div>
+    </section>
+
+    <h2>Playing with Flex Grow 1</h2>
+    <section class="container">
+      <div class="wrapper flex-row flex-wrap">
+        <div class="flx-grow-1" style="background: #212529">1</div>
+        <div style="background: #343a40">2</div>
+        <div style="background: #495057">3</div>
+        <div style="background: #6c757d">4</div>
+        <div style="background: #adb5bd">5</div>
+      </div>
+    </section>
+    <h2>Playing with Flex Grow 2</h2>
+    <section class="container">
+      <div class="wrapper flex-row flex-wrap">
+        <div class="flx-grow-1" style="background: #212529">1</div>
+        <div class="flx-grow-2" style="background: #343a40">2</div>
+        <div style="background: #495057">3</div>
+        <div style="background: #6c757d">4</div>
+        <div style="background: #adb5bd">5</div>
+      </div>
+    </section>
+
+    <h2>Playing with Flex Grow 3</h2>
+    <section class="container">
+      <div class="wrapper flex-row flex-wrap">
+        <div class="flx-grow-1" style="background: #212529">1</div>
+        <div class="flx-grow-3" style="background: #343a40">2</div>
+        <div style="background: #495057">3</div>
+        <div style="background: #6c757d">4</div>
+        <div style="background: #adb5bd">5</div>
+      </div>
+    </section>
+
+    <h2>Playing with Flex Grow 4</h2>
+    <section class="container">
+      <div class="wrapper flex-row flex-wrap">
+        <div class="flx-grow-1" style="background: #212529">1</div>
+        <div class="flx-grow-4" style="background: #343a40">2</div>
+        <div style="background: #495057">3</div>
+        <div style="background: #6c757d">4</div>
+        <div style="background: #adb5bd">5</div>
+      </div>
+    </section>
+
+    <h2>Playing with Flex Grow 5</h2>
+    <section class="container">
+      <div class="wrapper flex-row flex-wrap">
+        <div style="background: #212529">1</div>
+        <div class="flx-grow-5" style="background: #343a40">2</div>
+        <div style="background: #495057">3</div>
+        <div style="background: #6c757d">4</div>
+        <div style="background: #adb5bd">5</div>
+      </div>
+    </section>
+
+    <h2>Playing with Flex Shrink 1</h2>
+    <section class="container">
+      <div class="wrapper flex-row flx-basis-300">
+        <div class="flx-shrink-1" style="background: #212529">1</div>
+        <div class="flx-grow-1" style="background: #343a40">2</div>
+        <div class="flx-grow-1" style="background: #495057">3</div>
+        <div class="flx-grow-1" style="background: #6c757d">4</div>
+        <div class="flx-grow-1" style="background: #adb5bd">5</div>
+      </div>
+    </section>
+
+    <h2>Playing with Flex Shrink 2</h2>
+    <section class="container">
+      <div class="wrapper flex-row flx-basis-300">
+        <div class="flx-shrink-1" style="background: #212529">1</div>
+        <div class="flx-shrink-2" style="background: #343a40">2</div>
+        <div class="flx-shrink-1" style="background: #495057">3</div>
+        <div class="flx-grow-1" style="background: #6c757d">4</div>
+        <div class="flx-grow-1" style="background: #adb5bd">5</div>
+      </div>
+    </section>
+
+    <h2>Playing with Flex Shrink 3</h2>
+    <section class="container">
+      <div class="wrapper flex-row flx-basis-300">
+        <div class="flx-grow-1 flx-shrink-1" style="background: #212529">1</div>
+        <div class="flx-grow-1 flx-shrink-3" style="background: #343a40">2</div>
+        <div class="flx-grow-1" style="background: #495057">3</div>
+      </div>
+    </section>
+
+    <h2>Playing with Flex Shrink 4</h2>
+    <section class="container">
+      <div class="wrapper flex-row flx-basis-300">
+        <div class="flx-grow-1 flx-shrink-1" style="background: #212529">1</div>
+        <div class="flx-grow-1 flx-shrink-4" style="background: #343a40">2</div>
+        <div class="flx-grow-1 flx-shrink-2" style="background: #495057">3</div>
+        <div class="flx-grow-1" style="background: #6c757d">4</div>
+        <div class="flx-grow-1" style="background: #adb5bd">5</div>
+      </div>
+    </section>
+
+    <h2>Playing with Flex Shrink 5</h2>
+    <section class="container">
+      <div class="wrapper flex-row flx-basis-300">
+        <div class="flx-shrink-3" style="background: #212529">1</div>
+        <div style="background: #343a40">2</div>
+        <div class="flx-shrink-5" style="background: #495057">3</div>
+        <div style="background: #6c757d">4</div>
+        <div style="background: #adb5bd">5</div>
+      </div>
+    </section>
+
+    <h2>Playing with Flex Shrink 0</h2>
+    <section class="container">
+      <div class="wrapper flex-row flx-basis-300">
+        <div class="flx-shrink-3" style="background: #212529">1</div>
+        <div style="background: #343a40">2</div>
+        <div class="flx-shrink-5" style="background: #495057">3</div>
+        <div style="background: #6c757d">4</div>
+        <div class="flx-shrink-0" style="background: #adb5bd">5</div>
       </div>
     </section>
   </body>
