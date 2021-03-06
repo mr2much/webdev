@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0077b6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #0077b6;
+}
+
+h1 {
+  text-align: center;
+  font-family: Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 4em;
+}
+
+section {
+  border-top: 1px solid #00b4d8;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2.35em;
+  margin-top: 1.75em;
+}
+
+section form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+section form label {
+  text-transform: uppercase;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  line-height: 1.25;
+}
+
+section form textarea {
+  font-family: inherit;
+  font-size: 1.15em;
+  letter-spacing: 1px;
+  margin: 1.35em 0;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+  border: none;
+  outline: none;
+}
+
+section form textarea:hover,
+section form textarea:focus {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 3px #0077b6ee;
+}
+
+#lista-atms {
+  resize: none;
+  white-space: nowrap;
+  overflow: auto;
+}
+
+.panel {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #caf0f8;
+  width: 60%;
+  padding: 3em 1.3em;
+  border-radius: 0.75em;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
+}
+
+#button-panel {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 0.5em;
+  justify-content: space-around;
+}
+
+#button-panel button,
+#clear-all {
+  display: inline-block;
+  flex: 1;
+  padding: 1.15em 1.55em;
+  border-radius: 0.55em;
+  border: none;
+  outline: none;
+  letter-spacing: 1px;
+  font-size: 0.9em;
+  margin: 0.25em 1em;
+  transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+button:hover,
+button:focus,
+#clear-all:hover {
+  background-color: #0077b6;
+  color: white;
+}
