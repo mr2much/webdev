@@ -8,13 +8,13 @@ btnRemove.addEventListener("click", function() {
     var text = txtaAtmList.value;
 
     // find tab, new line, carriage return characters and replace them with a simple space
-    text = text.replace(/[\t\r\n]+/g, " ");    
+    text = text.replace(/[\t\r\n]+/g, " ");
 
     // delete original text from textarea
     txtaAtmList.value = '';
 
     // replace textarea's contents with new string
-    txtaAtmList.value = text;
+    txtaAtmList.value = text.trim();
 });
 
 btnClear.addEventListener("click", function() {
