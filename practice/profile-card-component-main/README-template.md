@@ -70,6 +70,38 @@ background: left -90% top 60% / 75% no-repeat url("../images/bg-pattern-top.svg"
     hsl(185, 75%, 39%);
 ```
 
+Positioning the image to look like the one in the example was a lot trickier than I thought, and despite my best efforts, I had to do some googling to see how it was done. At first I was trying to do some ``position: relative`` to set it relative to its parent container, as if trying to position the image between two divs, but then I realized that there was no other div in the first place. In the end, what I found didn't work because of the layout on the HTML, so I added another div, set the image as its background, and then another div with the information. Then it was only a matter of making the div with the image round, adding a bit of negative marging on the top, and then setting the image to occupy 100% of the space inside of the div. Here is the HTML:
+
+```html
+<!-- This is inside of a parent .card container -->
+      <div class="heading"></div>
+      <div class="main">
+        <div class="img"></div>
+        <div class="info">
+          <p><span class="name">Victor Crest</span> 26</p>
+          <p>London</p>
+        </div>
+      </div>
+<!-- This is inside of a parent .card container -->
+```
+
+And here is the CSS:
+
+```css
+.card .img {
+  border: 0.35em solid #fff;
+  background: center / cover url("../images/image-victor.jpg");
+  position: relative;
+  top: -48px;
+  border-radius: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  width: 106px;
+  height: 106px;
+}
+```
+
+
 To see how you can add code snippets, see below:
 
 ```html
