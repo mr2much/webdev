@@ -60,6 +60,16 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
 
+For the first time ever, I managed to use the ``background`` property to set various stuff at the same time, like the images at the top and bottom as well as the background color. I had to read some documentation on MDN since I didn't want to google around code snippets on Stack Overflow. Positioning the images took me a few minutes and was not as straight forward as just setting ``left top`` or ``right bottom``.
+
+Here's how I did it:
+
+```css
+background: left -90% top 60% / 75% no-repeat url("../images/bg-pattern-top.svg"),
+    right -90% top -40% / 75% no-repeat url("../images/bg-pattern-bottom.svg"),
+    hsl(185, 75%, 39%);
+```
+
 To see how you can add code snippets, see below:
 
 ```html
