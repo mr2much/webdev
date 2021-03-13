@@ -14,6 +14,7 @@ body {
   background: left -90% top 60% / 75% no-repeat url("../images/bg-pattern-top.svg"),
     right -90% top -40% / 75% no-repeat url("../images/bg-pattern-bottom.svg"),
     hsl(185, 75%, 39%);
+  color: hsl(0, 0%, 59%);
 }
 
 .card {
@@ -22,7 +23,7 @@ body {
   background: top / contain no-repeat url("../images/bg-pattern-card.svg"), #fff;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   border-radius: 1em;
   box-shadow: 0px 15px 70px rgba(0, 0, 0, 0.3);
@@ -39,5 +40,13 @@ body {
 
 .name,
 .stats {
+  color: #000;
+  font-weight: 700;
   font-size: 18px;
+}
+
+.statistics {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
