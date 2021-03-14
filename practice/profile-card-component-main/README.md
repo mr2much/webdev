@@ -1,87 +1,124 @@
-# Frontend Mentor - Profile card component
+# Frontend Mentor - Profile card component solution
 
-![Design preview for the Profile card component coding challenge](./design/desktop-preview.jpg)
+This is a solution to the [Profile card component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/profile-card-component-cfArpWshJ). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for checking out this front-end coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+## Overview
 
-**To do this challenge, you need a basic understanding of HTML and CSS.**
+### The challenge
 
-## The challenge
+- Build out the project to the designs provided
 
-Your challenge is to build out this profile card component and get it looking as close to the design as possible.
+### Screenshot
 
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
+![](./screenshot.png)
 
-Want some support on the challenge? [Join our Slack community](https://www.frontendmentor.io/slack) and ask questions in the **#help** channel.
+### Links
 
-## Where to find everything
+- Solution URL: [GitHub for Profile Card Component](https://github.com/mr2much/webdev/tree/master/practice/profile-card-component-main)
+- Live Site URL: [Profile Card Component](https://github.com/mr2much/webdev/tree/master/practice/profile-card-component-main)
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+## My process
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+### Built with
 
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+- ~~Semantic HTML5 markup~~ Will update project later to include Semantic markup
+- CSS custom properties
+- Flexbox
+- Mobile-first workflow
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+### What I learned
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+For the first time ever, I managed to use the ``background`` property to set various stuff at the same time, like the images at the top and bottom as well as the background color. I had to read some documentation on MDN since I didn't want to google around code snippets on Stack Overflow. Positioning the images took me a few minutes and was not as straight forward as just setting ``left top`` or ``right bottom``.
 
-## Building your project
+Here's how I did it:
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+```css
+background: left -90% top 60% / 75% no-repeat url("../images/bg-pattern-top.svg"),
+    right -90% top -40% / 75% no-repeat url("../images/bg-pattern-bottom.svg"),
+    hsl(185, 75%, 39%);
+```
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+In the end, I had to make some adjustments to the background positioning, since it was not working on different media sizes. I also set a couple extra media queries for different viewports that were not specified in the design document, basically only aiming the width of the central card container. I also adjusted the CSS a bit to be Mobile first, then adjusted for wider viewports with these media queries.
 
-## Deploying your project
+Positioning the image to look like the one in the example was a lot trickier than I thought, and despite my best efforts, I had to do some googling to see how it was done. At first I was trying to do some ``position: relative`` to set it relative to its parent container, as if trying to position the image between two divs, but then I realized that there was no other div in the first place. In the end, what I found didn't work because of the layout on the HTML, so I added another div, set the image as its background, and then another div with the information. Then it was only a matter of making the div with the image round, adding a bit of negative marging on the top with half of the image's height, and then setting the image to occupy 100% of the space inside of the div. 
 
-As mentioned above, there are many ways to host your project for free. Our recommend hosts are:
+Here is the HTML:
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+```html
+<!-- This is inside of a parent .card container -->
+      <div class="heading"></div>
+      <div class="main">
+        <div class="img"></div>
+        <div class="info">
+          <p><span class="name">Victor Crest</span> 26</p>
+          <p>London</p>
+        </div>
+      </div>
+<!-- This is inside of a parent .card container -->
+```
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+And here is the CSS:
 
-## Create a custom `README.md`
+```css
+.card .img {
+  border: 0.35em solid #fff;
+  background: center / cover url("../images/image-victor.jpg");
+  position: relative;
+  top: -53px;
+  border-radius: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  width: 106px;
+  height: 106px;
+}
+```
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+Yet there was something off about the way I did this. The DIV containing the image was kind of messing up the layout, and thus, it was causing problems with the positioning of the text below it. But then, I remembered that I had some other practice project I did a while back when learning about the ``position`` property from a Web Dev course that I am taking. I did this project to help me understand what was going on, so I remembered that if you place an absolute positioned element inside of another element that's positioned relative, then the first element will be "absolutely positioned, relative to its parent", yet when I did this, my alreadly centered image went bonkers, and I had to change the CSS a bit to manage to center the image once again. For this, I once again had to check some code on Stack Overflow. I included the link to the answer down at Useful Resources. A note about this, if you don't set the ``left: 0; right 0;`` then ``margin: 0 auto;`` won't work.
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+Here's the new CSS:
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+```css
+.card .img {
+  border: 0.35em solid #fff;
+  background: center / cover url("../images/image-victor.jpg");
+  position: absolute;
+  top: -53px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 100%;
+  overflow: hidden;
+  width: 106px;
+  height: 106px;
+}
+```
 
-## Submitting your solution
+Finally, I had some struggle to position the footer at the bottom of the page, I couldn't figure out how to do it since I had set up the ``body`` element to be a Flex container with its elements centered, and when reading on MDN I found out that ``justify-self`` property is ignored when the display of an element is set to Flex. So, I decided to set the position to absolute on the footer element, with a bottom value of 0. Added some background color, a bit of padding and made it 100% width to make it stand out a bit, and voila. I'm quite happy with the result.
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+### Continued development
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+I think I would like to create a similar layout to this one in the future, positioning the images on the corners was specially tricky, and I'm not quite happy with the end result, even if it looks pretty similar to the image provided for the design. I would also like to practice a bit more with positioning the round image between the two divs, this is something that I have seen done quite often and it was quite fun doing it, but I don't feel too good having to have Googled how to do it correctly in the first place.
 
-## Sharing your solution
+### Useful resources
 
-There are multiple places you can share your solution:
+- [Positioning Offset Background Images](https://css-tricks.com/positioning-offset-background-images/) - Amazing article explaining how to position images with an offset.
+- [Center an element with "absolute" position and undefined with in CSS](https://stackoverflow.com/questions/1776915/center-an-element-with-absolute-position-and-undefined-width-in-css) - I was having some issues with positioning the DIV containing the image horizontally, this answer helped me.
 
-1. Share your solution page in the **#finished-projects** channel of the [Slack community](https://www.frontendmentor.io/slack). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+## Author
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
-
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
-
-**Have fun building!** 🚀
+- Website - [My Portfolio, please not that it is still a work in progress](https://mr2much.github.io/webdev/)
+- Frontend Mentor - [@mr2much](https://www.frontendmentor.io/profile/mr2much)
+- Twitter - [@Cold_Dog](https://twitter.com/Cold_Dog)
