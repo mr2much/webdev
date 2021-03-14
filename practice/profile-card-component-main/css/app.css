@@ -17,43 +17,59 @@ body {
   color: hsl(0, 0%, 59%);
 }
 
-.main {
-  border: 1px solid purple;
+p {
+  margin: 0.35em 0;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 25vh;
+  height: 80%;
+}
+
+#content .main {
+  position: relative;
+  height: 100%;
 }
 
 .card .img {
   border: 0.35em solid #fff;
   background: center / cover url("../images/image-victor.jpg");
-  position: relative;
-  top: -48px;
+  position: absolute;
+  top: -53px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   border-radius: 100%;
   overflow: hidden;
-  margin: 0 auto;
   width: 106px;
   height: 106px;
 }
 
-.card .info {
+#content .main .info {
+  display: flex;
+  flex-direction: column;
   border: 1px solid red;
   text-align: center;
-  margin-top: 25px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3em;
+  height: 100%;
 }
 
-.card .heading {
-  width: 100%;
-  height: 20vh;
+#content .heading {
+  height: 100%;
   background: top / cover no-repeat url("../images/bg-pattern-card.svg");
 }
 
 .card {
   background-color: #fff;
-  width: 25%;
+  width: 24%;
   height: 50vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   align-items: center;
   border-radius: 1em;
   box-shadow: 0px 15px 70px rgba(0, 0, 0, 0.3);
@@ -78,8 +94,9 @@ body {
 
 .statistics {
   width: 100%;
-  height: 5vh;
+  height: 20%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   text-align: center;
 }

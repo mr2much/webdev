@@ -70,7 +70,7 @@ background: left -90% top 60% / 75% no-repeat url("../images/bg-pattern-top.svg"
     hsl(185, 75%, 39%);
 ```
 
-Positioning the image to look like the one in the example was a lot trickier than I thought, and despite my best efforts, I had to do some googling to see how it was done. At first I was trying to do some ``position: relative`` to set it relative to its parent container, as if trying to position the image between two divs, but then I realized that there was no other div in the first place. In the end, what I found didn't work because of the layout on the HTML, so I added another div, set the image as its background, and then another div with the information. Then it was only a matter of making the div with the image round, adding a bit of negative marging on the top, and then setting the image to occupy 100% of the space inside of the div. Here is the HTML:
+Positioning the image to look like the one in the example was a lot trickier than I thought, and despite my best efforts, I had to do some googling to see how it was done. At first I was trying to do some ``position: relative`` to set it relative to its parent container, as if trying to position the image between two divs, but then I realized that there was no other div in the first place. In the end, what I found didn't work because of the layout on the HTML, so I added another div, set the image as its background, and then another div with the information. Then it was only a matter of making the div with the image round, adding a bit of negative marging on the top with half of the image's height, and then setting the image to occupy 100% of the space inside of the div. Here is the HTML:
 
 ```html
 <!-- This is inside of a parent .card container -->
@@ -92,7 +92,7 @@ And here is the CSS:
   border: 0.35em solid #fff;
   background: center / cover url("../images/image-victor.jpg");
   position: relative;
-  top: -48px;
+  top: -53px;
   border-radius: 100%;
   overflow: hidden;
   margin: 0 auto;
@@ -101,6 +101,25 @@ And here is the CSS:
 }
 ```
 
+Yet there was something off about the way I did this. The DIV containing the image was kind of messing up the layout, and thus, it was causing problems with the positioning of the text below it. But then, I remembered that I had some other practice project I did while back when learning about the ``position`` property from a Web Dev course that I am taking. I did this project to help me understand what was going on, so I remembered that if you place an absolute positioned element inside of another element that's positioned relative, then the first element will be "absolutely positioned, relative to its parent", yet when I did this, my alreadly centered image went bonkers, and I had to change the CSS a bit to manage to center the image once again. For this, I once again had to check some code on Stack Overflow. I included the link to the answer down at Useful Resources. A note about this, if you don't set the ``left: 0; right 0;`` then ``margin: 0 auto;`` won't work.
+
+Here's the new CSS:
+
+```css
+.card .img {
+  border: 0.35em solid #fff;
+  background: center / cover url("../images/image-victor.jpg");
+  position: absolute;
+  top: -53px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 100%;
+  overflow: hidden;
+  width: 106px;
+  height: 106px;
+}
+```
 
 To see how you can add code snippets, see below:
 
@@ -132,6 +151,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 - [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
 - [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Center an element with "absolute" position and undefined with in CSS](https://stackoverflow.com/questions/1776915/center-an-element-with-absolute-position-and-undefined-width-in-css) - I was having some issues with positioning the DIV containing the image horizontally, this answer helped me.
 
 **Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
