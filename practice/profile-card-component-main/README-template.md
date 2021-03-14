@@ -70,7 +70,9 @@ background: left -90% top 60% / 75% no-repeat url("../images/bg-pattern-top.svg"
     hsl(185, 75%, 39%);
 ```
 
-Positioning the image to look like the one in the example was a lot trickier than I thought, and despite my best efforts, I had to do some googling to see how it was done. At first I was trying to do some ``position: relative`` to set it relative to its parent container, as if trying to position the image between two divs, but then I realized that there was no other div in the first place. In the end, what I found didn't work because of the layout on the HTML, so I added another div, set the image as its background, and then another div with the information. Then it was only a matter of making the div with the image round, adding a bit of negative marging on the top with half of the image's height, and then setting the image to occupy 100% of the space inside of the div. Here is the HTML:
+Positioning the image to look like the one in the example was a lot trickier than I thought, and despite my best efforts, I had to do some googling to see how it was done. At first I was trying to do some ``position: relative`` to set it relative to its parent container, as if trying to position the image between two divs, but then I realized that there was no other div in the first place. In the end, what I found didn't work because of the layout on the HTML, so I added another div, set the image as its background, and then another div with the information. Then it was only a matter of making the div with the image round, adding a bit of negative marging on the top with half of the image's height, and then setting the image to occupy 100% of the space inside of the div. 
+
+Here is the HTML:
 
 ```html
 <!-- This is inside of a parent .card container -->
@@ -120,6 +122,8 @@ Here's the new CSS:
   height: 106px;
 }
 ```
+
+Finally, I had some struggle to position the footer at the bottom of the page, I couldn't figure out how to do it since I had set up the ``body`` element to be a Flex container with its elements centered, and found out that ``justify-self`` property is ignored when the display of an element is set to Flex. So, I decided to set the position to absolute on the footer element, with a bottom value of 0. Added some background color, a bit of padding and made it 100% width to make it stand out a bit, and voila. I'm quite happy with the result.
 
 To see how you can add code snippets, see below:
 
