@@ -11,8 +11,8 @@ body {
   align-items: center;
   justify-content: center;
   font-family: "Kumbh Sans", sans-serif;
-  background: left -90% top 60% / 75% no-repeat url("../images/bg-pattern-top.svg"),
-    right -90% top -40% / 75% no-repeat url("../images/bg-pattern-bottom.svg"),
+  background: left -80% top 190% / 70% no-repeat url("../images/bg-pattern-top.svg"),
+    right -90% top -95% / 75% no-repeat url("../images/bg-pattern-bottom.svg"),
     hsl(185, 75%, 39%);
   color: hsl(0, 0%, 59%);
 }
