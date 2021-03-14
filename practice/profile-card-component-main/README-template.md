@@ -14,9 +14,6 @@ This is a solution to the [Profile card component challenge on Frontend Mentor](
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -26,15 +23,7 @@ This is a solution to the [Profile card component challenge on Frontend Mentor](
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![](./screenshot.png)
 
 ### Links
 
@@ -45,20 +34,12 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Built with
 
-- Semantic HTML5 markup
+- ~~Semantic HTML5 markup~~ Will update project later to include Semantic markup
 - CSS custom properties
 - Flexbox
-- CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
-
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
 
 For the first time ever, I managed to use the ``background`` property to set various stuff at the same time, like the images at the top and bottom as well as the background color. I had to read some documentation on MDN since I didn't want to google around code snippets on Stack Overflow. Positioning the images took me a few minutes and was not as straight forward as just setting ``left top`` or ``right bottom``.
 
@@ -70,7 +51,11 @@ background: left -90% top 60% / 75% no-repeat url("../images/bg-pattern-top.svg"
     hsl(185, 75%, 39%);
 ```
 
-Positioning the image to look like the one in the example was a lot trickier than I thought, and despite my best efforts, I had to do some googling to see how it was done. At first I was trying to do some ``position: relative`` to set it relative to its parent container, as if trying to position the image between two divs, but then I realized that there was no other div in the first place. In the end, what I found didn't work because of the layout on the HTML, so I added another div, set the image as its background, and then another div with the information. Then it was only a matter of making the div with the image round, adding a bit of negative marging on the top with half of the image's height, and then setting the image to occupy 100% of the space inside of the div. Here is the HTML:
+In the end, I had to make some adjustments to the background positioning, since it was not working on different media sizes. I also set a couple extra media queries for different viewports that were not specified in the design document, basically only aiming the width of the central card container. I also adjusted the CSS a bit to be Mobile first, then adjusted for wider viewports with these media queries.
+
+Positioning the image to look like the one in the example was a lot trickier than I thought, and despite my best efforts, I had to do some googling to see how it was done. At first I was trying to do some ``position: relative`` to set it relative to its parent container, as if trying to position the image between two divs, but then I realized that there was no other div in the first place. In the end, what I found didn't work because of the layout on the HTML, so I added another div, set the image as its background, and then another div with the information. Then it was only a matter of making the div with the image round, adding a bit of negative marging on the top with half of the image's height, and then setting the image to occupy 100% of the space inside of the div. 
+
+Here is the HTML:
 
 ```html
 <!-- This is inside of a parent .card container -->
@@ -101,7 +86,7 @@ And here is the CSS:
 }
 ```
 
-Yet there was something off about the way I did this. The DIV containing the image was kind of messing up the layout, and thus, it was causing problems with the positioning of the text below it. But then, I remembered that I had some other practice project I did while back when learning about the ``position`` property from a Web Dev course that I am taking. I did this project to help me understand what was going on, so I remembered that if you place an absolute positioned element inside of another element that's positioned relative, then the first element will be "absolutely positioned, relative to its parent", yet when I did this, my alreadly centered image went bonkers, and I had to change the CSS a bit to manage to center the image once again. For this, I once again had to check some code on Stack Overflow. I included the link to the answer down at Useful Resources. A note about this, if you don't set the ``left: 0; right 0;`` then ``margin: 0 auto;`` won't work.
+Yet there was something off about the way I did this. The DIV containing the image was kind of messing up the layout, and thus, it was causing problems with the positioning of the text below it. But then, I remembered that I had some other practice project I did a while back when learning about the ``position`` property from a Web Dev course that I am taking. I did this project to help me understand what was going on, so I remembered that if you place an absolute positioned element inside of another element that's positioned relative, then the first element will be "absolutely positioned, relative to its parent", yet when I did this, my alreadly centered image went bonkers, and I had to change the CSS a bit to manage to center the image once again. For this, I once again had to check some code on Stack Overflow. I included the link to the answer down at Useful Resources. A note about this, if you don't set the ``left: 0; right 0;`` then ``margin: 0 auto;`` won't work.
 
 Here's the new CSS:
 
@@ -121,50 +106,19 @@ Here's the new CSS:
 }
 ```
 
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+Finally, I had some struggle to position the footer at the bottom of the page, I couldn't figure out how to do it since I had set up the ``body`` element to be a Flex container with its elements centered, and when reading on MDN I found out that ``justify-self`` property is ignored when the display of an element is set to Flex. So, I decided to set the position to absolute on the footer element, with a bottom value of 0. Added some background color, a bit of padding and made it 100% width to make it stand out a bit, and voila. I'm quite happy with the result.
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+I think I would like to create a similar layout to this one in the future, positioning the images on the corners was specially tricky, and I'm not quite happy with the end result, even if it looks pretty similar to the image provided for the design. I would also like to practice a bit more with positioning the round image between the two divs, this is something that I have seen done quite often and it was quite fun doing it, but I don't feel too good having to have Googled how to do it correctly in the first place.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Positioning Offset Background Images](https://css-tricks.com/positioning-offset-background-images/) - Amazing article explaining how to position images with an offset.
 - [Center an element with "absolute" position and undefined with in CSS](https://stackoverflow.com/questions/1776915/center-an-element-with-absolute-position-and-undefined-width-in-css) - I was having some issues with positioning the DIV containing the image horizontally, this answer helped me.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Website - [My Portfolio, please not that it is still a work in progress](https://mr2much.github.io/webdev/)
+- Frontend Mentor - [@mr2much](https://www.frontendmentor.io/profile/mr2much)
+- Twitter - [@Cold_Dog](https://twitter.com/Cold_Dog)
