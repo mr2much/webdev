@@ -17,7 +17,6 @@ body {
   font-family: "Kumbh Sans", sans-serif;
   background: no-repeat url("../images/bg-pattern-top.svg"),
     no-repeat url("../images/bg-pattern-bottom.svg");
-
   background-position: right 30vw bottom 50vh, left 50vw top 40vh;
   color: hsl(0, 0%, 59%);
 }
