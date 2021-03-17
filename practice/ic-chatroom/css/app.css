@@ -17,12 +17,13 @@ body {
     center / cover no-repeat url("../images/tavern_bg.jpg");
   width: 70vw;
   height: 90vh;
+  max-height: 100%;
   background-color: white;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: flex-end;
   padding: 0 1em;
+  overflow-y: auto;
 }
 
 .chatbox {
@@ -37,11 +38,12 @@ body {
 .chatbox .message {
   display: flex;
   position: relative;
-  background: #333;
+  background: rgba(90, 90, 90, 0.75);
   color: #eee;
   flex-direction: row-reverse;
   align-items: center;
   border-radius: 2em;
+  border: 3px solid red;
 }
 
 .chatbox .message .token {
@@ -50,8 +52,12 @@ body {
   border-radius: 100%;
   width: 106px;
   height: 106px;
-  border: 1px solid red;
+  border: 5px solid red;
   overflow: hidden;
+}
+
+.chatbox:not(#tze-khan) .message .token {
+  right: -10px;
 }
 
 .chatbox .message .token img {
@@ -67,7 +73,6 @@ body {
 .chatbox .message .content .text {
   width: 90%;
   padding-left: 0.75em;
-  /* height: 100%; */
 }
 
 #tze-khan {
@@ -80,5 +85,5 @@ body {
 
 #tze-khan .message .content .text {
   width: 100%;
-  padding-left: 6.35em;
+  padding-left: 6em;
 }
