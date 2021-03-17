@@ -57,7 +57,7 @@ body {
 }
 
 .chatbox:not(#tze-khan) .message .token {
-  right: -10px;
+  right: -5px;
 }
 
 .chatbox .message .token img {
@@ -67,12 +67,31 @@ body {
 }
 
 .chatbox .message .content {
-  padding: 0.75em 0;
+  overflow: hidden;
 }
 
 .chatbox .message .content .text {
   width: 90%;
+  padding: 0.5em;
   padding-left: 0.75em;
+  background: #333;
+  background: transparent;
+}
+
+.chatbox .message .content .text span {
+  display: block;
+  color: #111;
+  text-align: left;
+  font-size: 0.75rem;
+  margin-top: 0.75em;
+  padding-right: 1em;
+  font-weight: bold;
+}
+
+.chatbox .message .content .text span time {
+  font-weight: normal;
+  font-style: italic;
+  margin-left: 1em;
 }
 
 #tze-khan {
