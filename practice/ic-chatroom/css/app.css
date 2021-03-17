@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333;
+}
+
+#chatroom {
+  margin: 0 auto;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.45),
+      rgba(255, 255, 255, 0.45)
+    ),
+    center / cover no-repeat url("../images/tavern_bg.jpg");
+  width: 70vw;
+  height: 90vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  padding: 0 1em;
+}
+
+.chatbox {
+  background: #333;
+  display: flex;
+  margin: 1.75em 0;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.chatbox .message {
+  display: flex;
+  position: relative;
+  background: #333;
+  color: #eee;
+  flex-direction: row-reverse;
+  align-items: center;
+  border-radius: 2em;
+}
+
+.chatbox .message .token {
+  position: absolute;
+  margin-left: -15px;
+  border-radius: 100%;
+  width: 106px;
+  height: 106px;
+  border: 1px solid red;
+  overflow: hidden;
+}
+
+.chatbox .message .token img {
+  display: inline-block;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.chatbox .message .content {
+  padding: 0.75em 0;
+}
+
+.chatbox .message .content .text {
+  width: 90%;
+  padding-left: 0.75em;
+  /* height: 100%; */
+}
+
+#tze-khan {
+  align-self: flex-start;
+}
+
+#tze-khan .message {
+  flex-direction: row;
+}
+
+#tze-khan .message .content .text {
+  width: 100%;
+  padding-left: 6.35em;
+}
