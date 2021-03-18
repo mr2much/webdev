@@ -111,3 +111,21 @@ body {
 #tze-khan .message .content .text span {
   text-align: left;
 }
+
+.tze-khan-message {
+  background: rgba(13, 13, 13, 0.75) !important;
+}
+
+.tze-khan-message,
+.tze-khan-message .content .text span {
+  color: #e1e1e1 !important;
+}
+
+.simon-message {
+  background: rgba(153, 217, 242, 0.75) !important;
+}
+
+.simon-message,
+.simon-message .content .text span {
+  color: #2a4359 !important;
+}
