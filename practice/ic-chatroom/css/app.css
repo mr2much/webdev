@@ -81,10 +81,10 @@ body {
 .chatbox .message .content .text span {
   display: block;
   color: #111;
-  text-align: left;
+  text-align: right;
   font-size: 0.75rem;
   margin-top: 0.75em;
-  padding-right: 1em;
+  padding-right: 0.5em;
   font-weight: bold;
 }
 
@@ -105,4 +105,8 @@ body {
 #tze-khan .message .content .text {
   width: 100%;
   padding-left: 6em;
+}
+
+#tze-khan .message .content .text span {
+  text-align: left;
 }
