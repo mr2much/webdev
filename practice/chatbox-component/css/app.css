@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #777;
+  font-family: "Open Sans", sans-serif;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #444;
+  margin-left: -5px;
+}
+
+.chatbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 60%;
+  color: white;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.65);
+  transform-style: preserve-3d;
+  /* backface-visibility: hidden; */
+  transition: transform 300ms ease-in-out;
+}
+
+.chatbox .token {
+  position: absolute;
+  top: 0;
+  left: -55px;
+  width: 110px;
+  height: 110px;
+  border-radius: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+}
+
+.chatbox .token img {
+  width: 100%;
+  height: 100%;
+}
+
+.chatbox .message {
+  background-color: rgba(255, 0, 0, 0.55);
+  border-top-right-radius: 3em;
+  border-bottom-right-radius: 3em;
+  border-bottom-left-radius: 0.75em;
+  overflow: hidden;
+  padding: 0 0.85rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.75);
+}
+
+.chatbox .message .filler {
+  border-radius: 100%;
+  margin-left: -80px;
+  shape-outside: circle(35%);
+  width: 130px;
+  height: 130px;
+  float: left;
+}
+
+.chatbox .message .char-name {
+  display: inline-block;
+  background-color: red;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.75rem;
+  margin: 0.45rem 0;
+  margin-left: -0.55rem;
+  border: 2px solid black;
+  border-radius: 1em;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+}
+
+.chatbox .message .text {
+  text-align: justify;
+  margin-bottom: 0.75rem;
+  line-height: 1.35;
+}
+
+.chatbox .message .entry {
+  padding: 0.35rem 0;
+  font-size: 0.55rem;
+  /* border-top: 1px solid #222; */
+}
+
+.chatbox:hover {
+  transform: translateY(-7px);
+}
