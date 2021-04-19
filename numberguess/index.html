@@ -2,12 +2,113 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Number Guessing Game</title>
+    <title>Guessing Game</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="res/fonts/specimen_files/bouncy_personal_specimen_stylesheet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="res/fonts/specimen_files/specimen_stylesheet.css"
+    />
+    <link rel="stylesheet" href="res/fonts/stylesheet.css" />
+    <link rel="stylesheet" href="res/fonts/bouncy-personal.css" />
+    <link rel="stylesheet" href="css/app.css" />
   </head>
   <body>
-    <h1>Simple Guessing Game</h1>
-    <script text="text/javascript" src="js/script.js"></script>
+    <main id="container">
+      <div class="heading">
+        <h1>
+          <span class="single-word">Welcome</span>
+          <span class="single-word">To</span>
+          <span class="single-word">The</span>
+          <span class="single-word">Guessing</span>
+          <span class="single-word">Game</span>
+        </h1>
+      </div>
+
+      <section id="instructions">
+        <h3>Instructions:</h3>
+        <ol class="accordion">
+          <label for="list-instructions">Click for more</label>
+          <input type="checkbox" id="list-instructions" unchecked />
+          <ul class="inner">
+            <li>Start the game by introducing maximum number to guess</li>
+            <li>
+              The game will then ask you to guess a random number between 1 and
+              the maximum number you provided
+            </li>
+            <li>Input your guess in the box and press the Guess button</li>
+            <li>
+              The game will tell you if the number is higher or lower than your
+              guess
+            </li>
+            <li>
+              Keep guessing until you get it or press the Quit button when you
+              give up
+            </li>
+          </ul>
+        </ol>
+      </section>
+
+      <section id="init" class="">
+        <form action="">
+          <div>
+            <label for="maximum">Maximum Number:</label>
+            <div class="num-container">
+              <input type="number" id="maximum" min="2" value="0" />
+              <div class="spin-container">
+                <button id="up"><i class="fas fa-plus"></i></button>
+                <button id="down"><i class="fas fa-minus"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <button id="start" type="submit">Start</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="game" class="">
+        <h2>I picked a number between 1 and <span id="max-guess"></span></h2>
+        <form action="">
+          <div>
+            <label for="guess">Enter your guess:</label>
+            <div class="num-container">
+              <input type="number" id="guess" min="1" value="0" />
+              <div class="spin-container">
+                <button id="up"><i class="fas fa-plus"></i></button>
+                <button id="down"><i class="fas fa-minus"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <button id="guess-button" type="submit">Guess</button>
+            <button id="quit" type="reset">Quit</button>
+          </div>
+        </form>
+      </section>
+      <div id="output" class="">
+        <!-- <p>Yay! You did it!</p>
+        <p>
+          It took you: <span id="attempts">9</span> attempts to guess the
+          correct number!
+        </p> -->
+      </div>
+    </main>
+    <!-- <script async defer src="js/app.js"></script> -->
   </body>
 </html>
