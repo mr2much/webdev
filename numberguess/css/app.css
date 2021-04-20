@@ -98,7 +98,7 @@ input[type="number"]::-webkit-inner-spin-button {
   color: #9a031e;
 }
 
-#instructions ol {
+#instructions ul {
   width: 95%;
   font-size: 1.5rem;
   list-style-type: none;
@@ -136,9 +136,9 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 #instructions .inner {
-  position: relative;
+  /* position: relative; */
   top: -1.5rem;
-  transform: scaleY(0);
+  /* transform: scaleY(0); */
   transition: all 300ms ease;
   padding: 2rem 0;
   overflow: hidden;
@@ -149,7 +149,7 @@ input[type="number"]::-webkit-inner-spin-button {
   padding: 0 2rem;
 }
 
-#instructions ol ul li {
+#instructions ul li {
   display: flex;
   text-align: justify;
   align-items: center;
@@ -158,11 +158,11 @@ input[type="number"]::-webkit-inner-spin-button {
   transition: text-shadow 0.3s ease-in-out;
 }
 
-#instructions ol:hover {
+#instructions ul:hover {
   text-shadow: 0 0 5px #fff, 0 0 10px #fb8b24, 0 0 15px #9a031e, 0 0 25px #f00;
 }
 
-#instructions ol li::before {
+#instructions ul li::before {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   font-size: 32px;
@@ -173,23 +173,23 @@ input[type="number"]::-webkit-inner-spin-button {
   animation: spinning 4s infinite linear;
 }
 
-#instructions ol li:nth-of-type(1)::before {
+#instructions ul li:nth-of-type(1)::before {
   animation-delay: 0.1s;
 }
-#instructions ol li:nth-of-type(2)::before {
+#instructions ul li:nth-of-type(2)::before {
   animation-delay: 0.3s;
 }
-#instructions ol li:nth-of-type(3)::before {
+#instructions ul li:nth-of-type(3)::before {
   animation-delay: 0.5s;
 }
-#instructions ol li:nth-of-type(4)::before {
+#instructions ul li:nth-of-type(4)::before {
   animation-delay: 0.7s;
 }
-#instructions ol li:nth-of-type(5)::before {
+#instructions ul li:nth-of-type(5)::before {
   animation-delay: 0.9s;
 }
 
-#instructions ol li:hover:before {
+#instructions ul li:hover:before {
   animation-play-state: paused;
 }
 
