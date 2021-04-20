@@ -90,6 +90,18 @@ input[type="number"]::-webkit-inner-spin-button {
   height: 100%;
 }
 
+#instructions details {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: all 0.3s linear;
+}
+
+#instructions details:hover,
+#instructions details:hover ul {
+  text-shadow: 0 0 5px #fff, 0 0 10px #fb8b24, 0 0 15px #9a031e, 0 0 25px #f00;
+}
+
 #instructions h3 {
   font-family: "bouncyblack_personal_use_only";
   letter-spacing: 0.12em;
@@ -98,8 +110,14 @@ input[type="number"]::-webkit-inner-spin-button {
   color: #9a031e;
 }
 
-#instructions ul {
+#instructions details ul {
+  cursor: auto;
   width: 95%;
+  /* position: absolute;
+  left: 0;
+  top: 50px;
+  right: 0;
+  margin: 0 auto; */
   font-size: 1.5rem;
   list-style-type: none;
   text-align: justify;
@@ -135,14 +153,17 @@ input[type="number"]::-webkit-inner-spin-button {
   animation: collapse 250ms forwards;
 }
 
+#instructions details[open] ul {
+  animation: animateOpen 1s linear forwards;
+}
+
 #instructions .inner {
-  /* position: relative; */
-  top: -1.5rem;
-  /* transform: scaleY(0); */
-  transition: all 300ms ease;
+  height: auto;
+  max-height: 0;
   padding: 2rem 0;
   overflow: hidden;
   text-align: justify;
+  transition: all 300ms ease;
 }
 
 #instructions .inner li {
@@ -158,8 +179,17 @@ input[type="number"]::-webkit-inner-spin-button {
   transition: text-shadow 0.3s ease-in-out;
 }
 
-#instructions ul:hover {
-  text-shadow: 0 0 5px #fff, 0 0 10px #fb8b24, 0 0 15px #9a031e, 0 0 25px #f00;
+@keyframes animateOpen {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 400px;
+  }
 }
 
 #instructions ul li::before {
