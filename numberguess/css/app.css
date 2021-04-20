@@ -113,11 +113,6 @@ input[type="number"]::-webkit-inner-spin-button {
 #instructions details ul {
   cursor: auto;
   width: 95%;
-  /* position: absolute;
-  left: 0;
-  top: 50px;
-  right: 0;
-  margin: 0 auto; */
   font-size: 1.5rem;
   list-style-type: none;
   text-align: justify;
@@ -154,13 +149,12 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 #instructions details[open] ul {
-  animation: animateOpen 1s linear forwards;
+  animation: animateOpen 0.25s linear forwards;
 }
 
 #instructions .inner {
   height: auto;
   max-height: 0;
-  padding: 2rem 0;
   overflow: hidden;
   text-align: justify;
   transition: all 300ms ease;
@@ -171,6 +165,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 #instructions ul li {
+  transform: translateY(15px);
   display: flex;
   text-align: justify;
   align-items: center;
