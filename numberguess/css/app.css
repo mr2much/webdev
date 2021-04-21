@@ -117,6 +117,7 @@ input[type="number"]::-webkit-inner-spin-button {
   list-style-type: none;
   text-align: justify;
   line-height: 1.25em;
+  transition: all 0.2s ease-in-out;
   text-shadow: 0 0 1px #ffd60a, 0px 0px 7px #ffba08, 0px 0px 9px #e85d04,
     0 0px 15px #ffd60a;
 }
@@ -124,15 +125,6 @@ input[type="number"]::-webkit-inner-spin-button {
 .accordion .inner {
   transform: translateZ(0);
   backface-visibility: hidden;
-}
-
-#instructions label {
-  display: inline-block;
-  cursor: pointer;
-  margin-bottom: 1.75rem;
-  width: 100%;
-  text-align: center;
-  transition: all 0.1s ease-in-out;
 }
 
 #instructions input[type="checkbox"] {
@@ -148,15 +140,33 @@ input[type="number"]::-webkit-inner-spin-button {
   animation: collapse 250ms forwards;
 }
 
-#instructions details[open] ul {
+#instructions details[data-open] .inner {
+  clip-path: inset(0);
+  /* max-height: 0; */
+  animation: animateClose 0.25s linear forwards;
+  transition-timing-function: ease-out;
+}
+
+#instructions details[open] .inner {
   animation: animateOpen 0.25s linear forwards;
 }
 
+/* #instructions details[closed] summary + * {
+  max-height: 0;
+  opacity: 0;
+  transform: scale(0.9);
+  transform-origin: bottom center;
+} */
+
 #instructions .inner {
   height: auto;
-  max-height: 0;
+  /* max-height: 0; */
   overflow: hidden;
   text-align: justify;
+  clip-path: inset(0 0 100% 0);
+  /* opacity: 0; */
+  transform: scale(0.5);
+  transform-origin: bottom center;
   transition: all 300ms ease;
 }
 
@@ -182,8 +192,21 @@ input[type="number"]::-webkit-inner-spin-button {
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     max-height: 400px;
+  }
+}
+
+@keyframes animateClose {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+    max-height: 400px;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-15px) scale(0.9);
+    max-height: 0;
   }
 }
 
