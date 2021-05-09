@@ -1,3 +1,9 @@
+:root {
+  --red-hue: 200;
+  --red-lightness: 50%;
+  --black-transparent-overlay: hsl(0 0% 0% / 0.45);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,9 +12,11 @@
 
 body {
   font-family: "Nunito", sans-serif;
-  background-color: #107369;
-  color: #5f0f40;
-  text-shadow: 2px 1px 3px #e36414, 2px 1px 3px #fb8b24, 2px 1px 3px #fff;
+  background-color: #e1e1e1;
+  /* background-color: #107369; */
+  color: #333;
+  /* color: #5f0f40; */
+  /* text-shadow: 2px 1px 3px #e36414, 2px 1px 3px #fb8b24, 2px 1px 3px #fff; */
   height: 100vh;
   padding: 2em 0;
 }
@@ -21,16 +29,64 @@ section {
   background-color: rgba(22, 28, 64, 0.85);
 } */
 
-h1 {
+/* Header Styling */
+
+.heading h1 {
   font-size: 5rem;
   font-family: "bouncypersonal_use_only";
   font-variant: small-caps;
   letter-spacing: 0.07em;
   text-align: center;
   line-height: 1.25;
-  animation: ease 1s infinite alternate glow;
+
   padding: 2rem 0;
   margin-bottom: 0;
+
+  position: relative;
+}
+
+.heading .single-word {
+  display: inline-block;
+  text-transform: capitalize;
+  background: linear-gradient(
+    hsl(55 100% 50% / 1),
+    hsl(39 100% 50% / 1),
+    hsl(0 100% 60% / 1),
+    hsl(0 100% 50% / 1)
+  );
+
+  color: transparent;
+
+  text-shadow: 0 0 0.15em rgba(255, 0, 0, 0.6);
+
+  -webkit-background-clip: text;
+
+  padding: 0.1em;
+  position: relative;
+}
+
+.heading .single-word::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 0, 0, 0.1);
+  box-shadow: 0 -0.25em 0.75em yellow;
+  filter: blur(0.5em);
+  opacity: 0.5;
+  animation: glow 5s linear alternate infinite;
+}
+
+@keyframes glow {
+  to {
+    opacity: 1;
+  }
+}
+
+.single-word::first-letter {
+  font-family: "bouncyblack_personal_use_only" !important;
 }
 
 label {
@@ -75,7 +131,14 @@ input[type="number"]::-webkit-inner-spin-button {
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  background-color: #115259;
+  background-color: #fff;
+  background: linear-gradient(
+      var(--black-transparent-overlay),
+      var(--black-transparent-overlay)
+    ),
+    center / cover no-repeat url("../res/img/wizard_lab.jpg");
+
+  /* background-color: #115259; */
   border-radius: 1.75em;
   box-shadow: 0 0 20px rgba(22, 28, 64, 0.8);
   overflow: hidden;
@@ -254,15 +317,6 @@ input[type="number"]::-webkit-inner-spin-button {
   color: red;
 }
 
-.single-word {
-  display: inline-block;
-  text-transform: capitalize;
-}
-
-.single-word::first-letter {
-  font-family: "bouncyblack_personal_use_only" !important;
-}
-
 .hidden {
   display: none;
 }
@@ -362,14 +416,6 @@ input[type="number"]::-webkit-inner-spin-button {
     transform-origin: top;
     transform: scaleY(0);
     display: none;
-  }
-}
-
-@keyframes glow {
-  to {
-    color: #ffea00;
-    text-shadow: 0 0 5px #5f0f40, 0 0 10px #5f0f40, 0 0 20px #ff0054,
-      0 0 35px #ff0054, 0 0 20px #fff;
   }
 }
 
