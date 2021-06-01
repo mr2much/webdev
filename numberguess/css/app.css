@@ -69,7 +69,7 @@ section {
   padding: 0.1em;
   position: relative;
 
-  animation: gradient-anim 5s linear alternate infinite;
+  animation: gradient-anim 10s linear alternate infinite;
 }
 
 @keyframes gradient-anim {
