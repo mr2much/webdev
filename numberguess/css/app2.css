@@ -29,10 +29,11 @@ section {
 #container {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 70%;
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
+  padding: 0 0.75em;
   /* background-color: #fff; */
   /* background: linear-gradient(
       var(--black-transparent-overlay),
@@ -40,7 +41,7 @@ section {
     ),
     center / cover no-repeat url("../res/img/wizard_lab.jpg"); */
 
-  border-radius: 1.75em;
+  border-radius: 1em;
   box-shadow: 0 0 10px rgba(22, 28, 64, 0.3);
   overflow: hidden;
 }
