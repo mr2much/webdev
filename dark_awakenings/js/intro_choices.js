@@ -1,181 +1,192 @@
 const localStorage = window.localStorage;
 
-const punch = {
-  name: "Punch",
-  damage: 4,
+const gameObject = {
+  punch: {
+    name: "Punch",
+    damage: 4,
+  },
+  handaxe: {
+    name: "Handaxe",
+    damage: 6,
+  },
+  dagger: {
+    name: "Dagger",
+    damage: 4,
+  },
+  longsword: {
+    name: "Longsword",
+    damage: 8,
+  },
+  players: {
+    theStone: {
+      name: "The Stone",
+      hp: 30,
+      strengthMod: 5,
+      dexterityMod: 3,
+      wisdomMod: 0,
+      proficiencyBonus: 2,
+      athletics: true,
+      acrobatics: true,
+      weapon: {},
+      attack() {
+        let totalDamage = Math.floor(
+          Math.random() * this.weapon.damage +
+            1 +
+            Math.max(this.strengthMod, this.dexterityMod)
+        );
+        console.log(
+          `${this.name} attacks using ${this.weapon.name} and does ${totalDamage}`
+        );
+
+        return totalDamage;
+      },
+      equipWeapon(weapon) {
+        this.weapon = weapon;
+      },
+      setStrengthMod(newValue) {
+        this.strengthMod = newValue;
+      },
+      rollAthletics() {
+        if (this.athletics) {
+          return this.strengthMod + this.proficiencyBonus;
+        }
+
+        return this.strengthMod;
+      },
+      rollAcrobatics() {
+        if (this.acrobatics) {
+          return this.dexterityMod + this.proficiencyBonus;
+        }
+
+        return this.dexterityMod;
+      },
+      escapeGrapple() {
+        if (
+          Math.max(this.strengthMod, this.dexterityMod) === this.strengthMod ||
+          athletics
+        ) {
+          return this.rollAthletics();
+        }
+
+        return this.rollAcrobatics();
+      },
+      getStrengthMod() {
+        return this.strengthMod;
+      },
+      getWisdomMod() {
+        return this.wisdomMod;
+      },
+    },
+    splug: {
+      name: "Splug",
+      hp: 26,
+      strengthMod: 2,
+      dexterityMod: 3,
+      wisdomMod: 1,
+      athletics: false,
+      acrobatics: true,
+      weapon: {},
+      setStrengthMod(newValue) {
+        this.strengthMod = newValue;
+      },
+      rollAthletics() {
+        if (this.athletics) {
+          return this.strengthMod + this.proficiencyBonus;
+        }
+
+        return this.strengthMod;
+      },
+      rollAcrobatics() {
+        if (this.acrobatics) {
+          return this.dexterityMod + this.proficiencyBonus;
+        }
+
+        return this.dexterityMod;
+      },
+      escapeGrapple() {
+        if (
+          Math.max(this.strengthMod, this.dexterityMod) === this.strengthMod ||
+          athletics
+        ) {
+          return this.rollAthletics();
+        }
+
+        return this.rollAcrobatics();
+      },
+      getStrengthMod() {
+        return this.strengthMod;
+      },
+      getWisdomMod() {
+        return this.wisdomMod;
+      },
+    },
+  },
+  hostiles: {
+    taintedRoot: {
+      name: "Tainted Root",
+      hp: 15,
+      strengthMod: 2,
+      dexterityMod: 3,
+      wisdomMod: 1,
+      athletics: true,
+      acrobatics: false,
+      weapon: {
+        name: "Grasp",
+        damage: 4,
+      },
+      setStrengthMod(newValue) {
+        this.strengthMod = newValue;
+      },
+      rollAthletics() {
+        if (this.athletics) {
+          return this.strengthMod + this.proficiencyBonus;
+        }
+
+        return this.strengthMod;
+      },
+      rollAcrobatics() {
+        if (this.acrobatics) {
+          return this.dexterityMod + this.proficiencyBonus;
+        }
+
+        return this.dexterityMod;
+      },
+      escapeGrapple() {
+        if (
+          Math.max(this.strengthMod, this.dexterityMod) === this.strengthMod
+        ) {
+          return this.rollAthletics();
+        }
+
+        return this.rollAcrobatics();
+      },
+      getStrengthMod() {
+        return this.strengthMod;
+      },
+      getWisdomMod() {
+        return this.wisdomMod;
+      },
+    },
+  },
+  enemies: [],
 };
 
-const handaxe = {
-  name: "Handaxe",
-  damage: 6,
-};
+// Initializing after object creation
 
-const dagger = {
-  name: "Dagger",
-  damage: 4,
-};
+gameObject.players.theStone.weapon = gameObject.punch;
+gameObject.players.splug.weapon = gameObject.dagger;
 
-const longsword = {
-  name: "Longsword",
-  damage: 8,
-};
+console.log(gameObject);
 
-const grasp = {
-  name: "Grasp",
-  damage: 4,
-};
-
-const theStone = {
-  name: "The Stone",
-  hp: 30,
-  strengthMod: 5,
-  dexterityMod: 3,
-  wisdomMod: 0,
-  proficiencyBonus: 2,
-  athletics: true,
-  acrobatics: true,
-  weapon: punch,
-  attack() {
-    let totalDamage = Math.floor(
-      Math.random() * this.weapon.damage +
-        1 +
-        Math.max(this.strengthMod, this.dexterityMod)
-    );
-    console.log(
-      `${this.name} attacks using ${this.weapon.name} and does ${totalDamage}`
-    );
-  },
-  equipWeapon(weapon) {
-    this.weapon = weapon;
-  },
-  setStrengthMod(newValue) {
-    this.strengthMod = newValue;
-  },
-  rollAthletics() {
-    if (this.athletics) {
-      return this.strengthMod + this.proficiencyBonus;
-    }
-
-    return this.strengthMod;
-  },
-  rollAcrobatics() {
-    if (this.acrobatics) {
-      return this.dexterityMod + this.proficiencyBonus;
-    }
-
-    return this.dexterityMod;
-  },
-  escapeGrapple() {
-    if (
-      Math.max(this.strengthMod, this.dexterityMod) === this.strengthMod ||
-      athletics
-    ) {
-      return this.rollAthletics();
-    }
-
-    return this.rollAcrobatics();
-  },
-  getStrengthMod() {
-    return this.strengthMod;
-  },
-  getWisdomMod() {
-    return this.wisdomMod;
-  },
-};
-
-const splug = {
-  name: "Splug",
-  hp: 26,
-  strengthMod: 2,
-  dexterityMod: 3,
-  wisdomMod: 1,
-  athletics: false,
-  acrobatics: true,
-  setStrengthMod(newValue) {
-    this.strengthMod = newValue;
-  },
-  rollAthletics() {
-    if (this.athletics) {
-      return this.strengthMod + this.proficiencyBonus;
-    }
-
-    return this.strengthMod;
-  },
-  rollAcrobatics() {
-    if (this.acrobatics) {
-      return this.dexterityMod + this.proficiencyBonus;
-    }
-
-    return this.dexterityMod;
-  },
-  escapeGrapple() {
-    if (
-      Math.max(this.strengthMod, this.dexterityMod) === this.strengthMod ||
-      athletics
-    ) {
-      return this.rollAthletics();
-    }
-
-    return this.rollAcrobatics();
-  },
-  getStrengthMod() {
-    return this.strengthMod;
-  },
-  getWisdomMod() {
-    return this.wisdomMod;
-  },
-};
-
-const taintedRoot = {
-  name: "Tainted Root",
-  hp: 15,
-  strengthMod: 2,
-  dexterityMod: 3,
-  wisdomMod: 1,
-  athletics: true,
-  acrobatics: false,
-  setStrengthMod(newValue) {
-    this.strengthMod = newValue;
-  },
-  rollAthletics() {
-    if (this.athletics) {
-      return this.strengthMod + this.proficiencyBonus;
-    }
-
-    return this.strengthMod;
-  },
-  rollAcrobatics() {
-    if (this.acrobatics) {
-      return this.dexterityMod + this.proficiencyBonus;
-    }
-
-    return this.dexterityMod;
-  },
-  escapeGrapple() {
-    if (Math.max(this.strengthMod, this.dexterityMod) === this.strengthMod) {
-      return this.rollAthletics();
-    }
-
-    return this.rollAcrobatics();
-  },
-  getStrengthMod() {
-    return this.strengthMod;
-  },
-  getWisdomMod() {
-    return this.wisdomMod;
-  },
-};
-
-const enemies = [];
 let enemiesCount = 6;
 
 (function () {
   for (let i = 0; i < enemiesCount; i++) {
-    enemies.push(Object.create(taintedRoot));
+    gameObject.enemies.push(Object.create(gameObject.hostiles.taintedRoot));
   }
 })();
 
-enemies[0].hp = 300;
+gameObject.enemies[0].hp = 300;
 
 window.addEventListener("load", (e) => {
   saveObjectsAsJSONInLocalStorage();
@@ -216,7 +227,7 @@ function optionTwoWasClicked() {
     "/dark_awakenings/encounter1/2a_look/2a_look.html"
   );
   newScene.onload = function () {
-    this.enemies = enemies;
+    this.gameObject = gameObject;
   };
 }
 
@@ -235,13 +246,18 @@ function doSurvivalCheck(character, faces) {
 }
 
 function saveObjectsAsJSONInLocalStorage() {
-  localStorage.setItem("stoneJson", JSON.stringify(theStone));
-  localStorage.setItem("splugJson", JSON.stringify(splug));
-  localStorage.setItem("taintedRootJson", JSON.stringify(enemies[0]));
+  localStorage.setItem(
+    "stoneJson",
+    JSON.stringify(gameObject.players.theStone)
+  );
+  localStorage.setItem("splugJson", JSON.stringify(gameObject.players.splug));
+  localStorage.setItem(
+    "taintedRootJson",
+    JSON.stringify(gameObject.hostiles.taintedRoot)
+  );
 
-  localStorage.setItem("punchJson", JSON.stringify(punch));
-  localStorage.setItem("handaxeJson", JSON.stringify(handaxe));
-  localStorage.setItem("daggerJson", JSON.stringify(dagger));
-  localStorage.setItem("longswordJson", JSON.stringify(longsword));
-  localStorage.setItem("graspJson", JSON.stringify(grasp));
+  localStorage.setItem("punchJson", JSON.stringify(gameObject.punch));
+  localStorage.setItem("handaxeJson", JSON.stringify(gameObject.handaxe));
+  localStorage.setItem("daggerJson", JSON.stringify(gameObject.dagger));
+  localStorage.setItem("longswordJson", JSON.stringify(gameObject.longsword));
 }
