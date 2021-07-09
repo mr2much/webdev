@@ -1,0 +1,33 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+}
+
+.parent {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 0.35em;
+}
+
+.parent div {
+  padding: 1em;
+}
+
+.header {
+  background-color: lightblue;
+}
+
+.main {
+  background-color: lightsalmon;
+}
+
+.footer {
+  background-color: purple;
+}

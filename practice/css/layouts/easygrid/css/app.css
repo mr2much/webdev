@@ -1,0 +1,96 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  height: 40vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    center / cover no-repeat url("https://source.unsplash.com/daily");
+  filter: grayscale();
+  text-align: center;
+  padding: 0 1.25em;
+  position: relative;
+  overflow: hidden;
+}
+
+h1,
+h2 {
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  font-weight: 100;
+}
+
+header h1 {
+  color: #eee;
+  text-shadow: 0 0 5px rgb(50, 50, 50);
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 75%;
+  left: -100px;
+  right: -100px;
+  bottom: -70px;
+  background: white;
+  transform: rotate(-5deg);
+  z-index: -1;
+}
+
+.content {
+  max-height: 60vh;
+  height: 100%;
+  margin: 0 auto;
+  width: min(90%, 75rem);
+  display: grid;
+  grid-auto-flow: row;
+  gap: 2em;
+  place-items: center;
+  padding: 1em 0;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 0 1px white;
+}
+
+.content section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #e1e1e1;
+  height: 100%;
+  padding: 0 1.25em;
+  border-radius: 0.45em;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+}
+
+.content section h2 {
+  margin-bottom: 0.55em;
+  font-size: 1.75rem;
+  align-self: flex-start;
+}
+
+.content p {
+  text-align: justify;
+  font-size: 1.15em;
+}
+
+@media (min-width: 55em) {
+  header {
+    font-size: 2rem;
+  }
+
+  .content {
+    grid-auto-flow: column;
+  }
+}
