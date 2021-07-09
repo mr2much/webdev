@@ -1,13 +1,16 @@
-let group;
+let gameObj;
 window.addEventListener("load", (e) => {
-  localStorage = window.localStorage;
-  group = enemies;
+  gameObj = gameObject;
 });
+
+function optionOneWasClicked() {
+  console.log("Option One Was Clicked");
+}
 
 function optionTwoWasClicked() {
   let newScene = window.open("2a_hackvine/2a_hackvine.html");
   newScene.onload = function () {
-    this.enemies = group;
+    this.gameObject = gameObj;
   };
   console.log("Combat initiated");
 }

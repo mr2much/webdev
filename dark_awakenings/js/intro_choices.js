@@ -1,5 +1,3 @@
-const localStorage = window.localStorage;
-
 const weapons = {
   punch: {
     name: "Punch",
@@ -190,11 +188,7 @@ let enemiesCount = 6;
   }
 })();
 
-gameObject.enemies[0].hp = 300;
-
-window.addEventListener("load", (e) => {
-  saveObjectsAsJSONInLocalStorage();
-});
+gameObject.enemies[0].hp = 30;
 
 function optionOneWasClicked() {
   console.log("Option1 was clicked");
@@ -247,24 +241,4 @@ function optionThreeWasClicked() {
 
 function doSurvivalCheck(character, faces) {
   return rollDie(faces) + character.getWisdomMod();
-}
-
-function saveObjectsAsJSONInLocalStorage() {
-  localStorage.setItem(
-    "stoneJson",
-    JSON.stringify(gameObject.creatures.players.theStone)
-  );
-  localStorage.setItem(
-    "splugJson",
-    JSON.stringify(gameObject.creatures.players.splug)
-  );
-  localStorage.setItem(
-    "taintedRootJson",
-    JSON.stringify(gameObject.creatures.hostiles.taintedRoot)
-  );
-
-  localStorage.setItem("punchJson", JSON.stringify(gameObject.punch));
-  localStorage.setItem("handaxeJson", JSON.stringify(gameObject.handaxe));
-  localStorage.setItem("daggerJson", JSON.stringify(gameObject.dagger));
-  localStorage.setItem("longswordJson", JSON.stringify(gameObject.longsword));
 }

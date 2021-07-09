@@ -1,35 +1,26 @@
-let localStorage = {};
 let theStone = {};
-let group;
+let gameObj;
 
 window.addEventListener("load", (e) => {
-  localStorage = window.localStorage;
+  gameObj = gameObject;
 
-  if (localStorage.getItem("stoneJson") !== null) {
-    theStone = JSON.parse(localStorage.getItem("stoneJson"));
-    console.log(`${theStone.name} loaded`);
-  }
-
-  group = enemies;
+  theStone = gameObject.creatures.players.theStone;
+  console.log(`${theStone.name} loaded. HP:${theStone.hp}`);
 });
 
-function loadEnemies() {
-  enemies.forEach((el) => {
-    console.log(`${el.name} - HP:${el.hp}`);
-  });
-}
+// function loadEnemies() {
+//   enemies.forEach((el) => {
+//     console.log(`${el.name} - HP:${el.hp}`);
+//   });
+// }
 
 function optionOneWasClicked() {
-  let handaxe = {};
+  theStone.weapon = gameObj.weapons.handaxe;
 
-  if (localStorage.getItem("handaxeJson") !== null) {
-    handaxe = JSON.parse(localStorage.getItem("handaxeJson"));
-    console.log(`${handaxe.name} equipped!`);
-    theStone.weapon = handaxe;
-    localStorage.setItem("stoneJson", JSON.stringify(theStone));
-    let newScene = window.open("1a_handaxe/1a_handaxe.html");
-    newScene.onload = function () {
-      this.enemies = group;
-    };
-  }
+  console.log(`${theStone.name} equipped ${theStone.weapon.name}!`);
+
+  let newScene = window.open("1a_handaxe/1a_handaxe.html");
+  newScene.onload = function () {
+    this.gameObject = gameObj;
+  };
 }

@@ -1,41 +1,54 @@
 let theStone = {};
 let taintedRoot = {};
+let gameObj;
 let paragraph = document.getElementById("narration");
 
 window.addEventListener("load", (e) => {
-  localStorage = window.localStorage;
+  gameObj = gameObject;
 
-  if (localStorage.getItem("stoneJson") !== null) {
-    theStone = JSON.parse(localStorage.getItem("stoneJson"));
-    console.log(`${theStone.name} loaded`);
-    console.log(`${theStone.weapon.name} equipped`);
-  }
+  theStone = gameObj.creatures.players.theStone;
+  taintedRoot = gameObject.enemies.shift();
 
-  if (localStorage.getItem("taintedRootJson") !== null) {
-    taintedRoot = JSON.parse(localStorage.getItem("taintedRootJson"));
-    console.log(`${taintedRoot.name} loaded`);
-  }
+  // if (localStorage.getItem("stoneJson") !== null) {
+  //   theStone = JSON.parse(localStorage.getItem("stoneJson"));
+  //   console.log(`${theStone.name} loaded`);
+  //   console.log(`${theStone.weapon.name} equipped`);
+  // }
+
+  // if (localStorage.getItem("taintedRootJson") !== null) {
+  //   taintedRoot = JSON.parse(localStorage.getItem("taintedRootJson"));
+  //   console.log(`${taintedRoot.name} loaded`);
+  // }
 
   attack(theStone, taintedRoot);
 });
 
 function optionOneWasClicked() {
-  console.log(`${taintedRoot.hp}`);
-
   if (taintedRoot.hp > 0) {
     paragraph.innerHTML =
-      "Despite your best efforst, the vine is still alive.<br><br>You hear Gungurk screaming behind you:<br><br>'Hurry up, precious! Hurry!'";
+      "Despite your best efforts, the vine is still alive.<br><br>You hear Gungurk screaming behind you:<br><br>'Hurry up, precious! Hurry!'";
+
     attack(theStone, taintedRoot);
-  } else {
-    window.open("/dark_awakenings/encounter1/1a_break/1a_break_success.html");
+
+    if (taintedRoot.hp <= 0) {
+      console.log(`Enemy ${taintedRoot.name} was slain!`);
+      let newScene = window.open(
+        "/dark_awakenings/encounter1/1a_break/1a_break_success.html"
+      );
+
+      newScene.onload = function () {
+        this.gameObject = gameObj;
+      };
+    }
   }
 }
 
 function attack(attacker, target) {
   console.log(`${attacker.name} is attacking with ${attacker.weapon.name}`);
   let damage = getTotalDamage(attacker);
-  console.log(`Damage: ${damage}`);
-  taintedRoot.hp = taintedRoot.hp - damage;
+  target.hp = target.hp - damage;
+  console.log(`Enemy: ${target.name} received ${damage} points of damage!`);
+  console.log(`${target.hp}`);
 }
 
 function getTotalDamage(attacker) {
