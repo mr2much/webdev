@@ -9,17 +9,6 @@ window.addEventListener("load", (e) => {
   theStone = gameObj.creatures.players.theStone;
   taintedRoot = gameObject.enemies.shift();
 
-  // if (localStorage.getItem("stoneJson") !== null) {
-  //   theStone = JSON.parse(localStorage.getItem("stoneJson"));
-  //   console.log(`${theStone.name} loaded`);
-  //   console.log(`${theStone.weapon.name} equipped`);
-  // }
-
-  // if (localStorage.getItem("taintedRootJson") !== null) {
-  //   taintedRoot = JSON.parse(localStorage.getItem("taintedRootJson"));
-  //   console.log(`${taintedRoot.name} loaded`);
-  // }
-
   attack(theStone, taintedRoot);
 });
 
