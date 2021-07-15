@@ -15,6 +15,14 @@ const weapons = {
     name: "Longsword",
     damage: 8,
   },
+  grasp: {
+    name: "Grasp",
+    damage: 4,
+  },
+  drag: {
+    name: "Drag",
+    damage: 2,
+  },
 };
 
 const players = {
@@ -28,14 +36,14 @@ const players = {
     athletics: true,
     acrobatics: true,
     weapon: weapons.punch,
-    attack() {
+    attack(target) {
       let totalDamage = Math.floor(
         Math.random() * this.weapon.damage +
           1 +
           Math.max(this.strengthMod, this.dexterityMod)
       );
       console.log(
-        `${this.name} attacks using ${this.weapon.name} and does ${totalDamage}`
+        `${this.name} attacks ${target.name} using ${this.weapon.name} and does ${totalDamage}`
       );
 
       return totalDamage;
@@ -77,8 +85,8 @@ const players = {
       return this.wisdomMod;
     },
   },
-  splug: {
-    name: "Splug",
+  gungurk: {
+    name: "Gungurk",
     hp: 26,
     strengthMod: 2,
     dexterityMod: 3,
@@ -86,6 +94,18 @@ const players = {
     athletics: false,
     acrobatics: true,
     weapon: weapons.dagger,
+    attack(target) {
+      let totalDamage = Math.floor(
+        Math.random() * this.weapon.damage +
+          1 +
+          Math.max(this.strengthMod, this.dexterityMod)
+      );
+      console.log(
+        `${this.name} attacks ${target.name} using ${this.weapon.name} and does ${totalDamage}`
+      );
+
+      return totalDamage;
+    },
     setStrengthMod(newValue) {
       this.strengthMod = newValue;
     },
@@ -125,15 +145,32 @@ const players = {
 const hostiles = {
   taintedRoot: {
     name: "Tainted Root",
-    hp: 15,
+    hp: 30,
     strengthMod: 2,
     dexterityMod: 3,
     wisdomMod: 1,
     athletics: true,
     acrobatics: false,
-    weapon: {
-      name: "Grasp",
-      damage: 4,
+    weapon: weapons.grasp,
+    targetGrappled: false,
+    target: {},
+    hasTargetGrappled() {
+      return this.targetGrappled;
+    },
+    grabTarget(target) {
+      this.target = target;
+    },
+    attack(target) {
+      let totalDamage = Math.floor(
+        Math.random() * this.weapon.damage +
+          1 +
+          Math.max(this.strengthMod, this.dexterityMod)
+      );
+      console.log(
+        `${this.name} attacks ${target.name} using ${this.weapon.name} and does ${totalDamage}`
+      );
+
+      return totalDamage;
     },
     setStrengthMod(newValue) {
       this.strengthMod = newValue;
@@ -187,8 +224,6 @@ let enemiesCount = 6;
     );
   }
 })();
-
-gameObject.enemies[0].hp = 30;
 
 function optionOneWasClicked() {
   console.log("Option1 was clicked");
