@@ -34,7 +34,8 @@ function optionOneWasClicked() {
 
 function attack(attacker, target) {
   console.log(`${attacker.name} is attacking with ${attacker.weapon.name}`);
-  let damage = getTotalDamage(attacker);
+  let damage = attacker.attack(target);
+  // let damage = getTotalDamage(attacker);
   target.hp = target.hp - damage;
   console.log(`Enemy: ${target.name} received ${damage} points of damage!`);
   console.log(`${target.hp}`);
