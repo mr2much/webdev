@@ -25,6 +25,9 @@ const weapons = {
   },
 };
 
+//TODO: If I implement a level up system. Proficiency Bonus is calculated as:
+// pb = (Level / 4) + 1; rounded up
+
 const players = {
   theStone: {
     name: "The Stone",
@@ -66,7 +69,7 @@ const players = {
     rollAttack() {
       let attackRoll =
         Math.floor(
-          Math.random() * Math.max(this.strengthMod, this.dexterityMod)
+          Math.random() * 20 + 1 + Math.max(this.strengthMod, this.dexterityMod)
         ) + 2;
 
       return attackRoll;
@@ -150,7 +153,7 @@ const players = {
     rollAttack() {
       let attackRoll =
         Math.floor(
-          Math.random() * Math.max(this.strengthMod, this.dexterityMod)
+          Math.random() * 20 + 1 + Math.max(this.strengthMod, this.dexterityMod)
         ) + 2;
 
       return attackRoll;
@@ -221,7 +224,7 @@ const hostiles = {
     setCurrentHP(hp) {
       this.hp = hp;
     },
-    receiveDamage(daamge) {
+    receiveDamage(damage) {
       this.hp -= damage;
     },
     receiveHealing(healing) {
@@ -242,7 +245,7 @@ const hostiles = {
     rollAttack() {
       let attackRoll =
         Math.floor(
-          Math.random() * Math.max(this.strengthMod, this.dexterityMod)
+          Math.random() * 20 + 1 + Math.max(this.strengthMod, this.dexterityMod)
         ) + 2;
 
       return attackRoll;
@@ -293,7 +296,7 @@ const gameObject = {
     console.log(
       `${attacker.name} is attacking ${target.name} with ${attacker.weapon.name}`
     );
-    if (attackHits(attacker, target)) {
+    if (this.attackHits(attacker, target)) {
       let damage = attacker.attack(target);
       target.receiveDamage(damage);
       console.log(`${target.name} received ${damage} points of damage!`);

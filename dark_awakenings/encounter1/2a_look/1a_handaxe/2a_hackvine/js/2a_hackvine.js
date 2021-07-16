@@ -3,6 +3,7 @@ let taintedRoot = {};
 let gameObj;
 let paragraph = document.getElementById("narration");
 let display = document.getElementById("feedback");
+let paragraphTheStoneActions = document.createElement("p");
 
 window.addEventListener("load", (e) => {
   gameObj = gameObject;
@@ -10,7 +11,15 @@ window.addEventListener("load", (e) => {
   theStone = gameObj.creatures.players.theStone;
   taintedRoot = gameObject.enemies.shift();
 
-  attack(theStone, taintedRoot);
+  let damageDealt = gameObj.attack(theStone, taintedRoot);
+  // let damageDealt = attack(theStone, taintedRoot);
+  if (damageDealt === 0) {
+    paragraphTheStoneActions.innerHTML = `${theStone.name}'s attack failed to hit target ${taintedRoot.name}`;
+  } else {
+    paragraphTheStoneActions.innerHTML = `${theStone.name} dealt ${damageDealt} to ${taintedRoot.name}`;
+  }
+
+  display.insertBefore(paragraphTheStoneActions, display.lastChild.nextSibling);
 });
 
 function optionOneWasClicked() {
@@ -18,7 +27,13 @@ function optionOneWasClicked() {
     paragraph.innerHTML =
       "Despite your best efforts, the vine is still alive.<br><br>You hear Gungurk screaming behind you:<br><br>'Hurry up, precious! Hurry!'";
 
-    attack(theStone, taintedRoot);
+    let damageDealt = gameObj.attack(theStone, taintedRoot);
+    // let damageDealt = attack(theStone, taintedRoot);
+    if (damageDealt === 0) {
+      paragraphTheStoneActions.innerHTML = `${theStone.name}'s attack failed to hit target ${taintedRoot.name}`;
+    } else {
+      paragraphTheStoneActions.innerHTML = `${theStone.name} dealt ${damageDealt} to ${taintedRoot.name}`;
+    }
 
     if (taintedRoot.hp <= 0) {
       console.log(`Enemy ${taintedRoot.name} was slain!`);
