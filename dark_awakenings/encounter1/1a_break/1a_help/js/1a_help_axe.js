@@ -24,6 +24,7 @@ function combat() {
     paragraphTheStoneActions.innerHTML = `${theStone.name} dealt ${damageDealt} to ${taintedRoot.name}`;
   }
 }
+
 function optionOneWasClicked() {
   if (taintedRoot.hp > 0) {
     paragraph.innerHTML =

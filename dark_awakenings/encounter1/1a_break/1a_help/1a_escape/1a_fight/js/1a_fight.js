@@ -7,10 +7,13 @@ let dragWeapon = {};
 let enemies = [];
 let btnAttack = document.getElementById("btnAttack");
 let paragraph = document.getElementById("narration");
-let newParagraph = document.createElement("p");
 let flavorText = document.getElementsByClassName("flavor")[0];
 let distanceFromChasm = 15;
 let allies = [];
+let display = document.getElementById("feedback");
+let paragraphTaintedRootActions = document.createElement("p");
+let paragraphTheStoneActions = document.createElement("p");
+let paragraphGungurkActions = document.createElement("p");
 
 window.addEventListener("load", (e) => {
   gameObj = gameObject;
@@ -33,7 +36,9 @@ window.addEventListener("load", (e) => {
 
 function optionOneWasClicked() {
   console.log("Combat started!");
-  newParagraph.innerHTML = "";
+
+  paragraphTaintedRootActions.innerHTML = "";
+
   if (enemies.length > 0) {
     if (taintedRoot.hp <= 0) {
       let amounOfEnemies = enemies.length;
@@ -56,20 +61,22 @@ function optionOneWasClicked() {
         taintedRoot.weapon = dragWeapon;
       }
 
-      let damage = attack(taintedRoot, target);
+      let damage = gameObj.attack(taintedRoot, target);
+
+      //   let damage = attack(taintedRoot, target);
 
       if (taintedRoot.weapon === dragWeapon) {
         distanceFromChasm -= 5;
 
         if (distanceFromChasm <= 0) {
-          newParagraph.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm.`;
+          paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm.`;
 
           if (target === theStone) {
             console.log(`${target.name} fell`);
             //   Must make a pause
             //   and then load the second encounter
           } else {
-            newParagraph.innerHTML += ` ${target.name} squeals like a terrified pig, and he disappears into the chasm. He splashes down, following by disconcerting silence. At least the root that dragged him into the chasm apparently died from the fall.`;
+            paragraphTaintedRootActions.innerHTML += ` ${target.name} squeals like a terrified pig, and he disappears into the chasm. He splashes down, following by disconcerting silence. At least the root that dragged him into the chasm apparently died from the fall.`;
 
             gungurk.hp -= Math.floor(Math.random() * 10 + 1);
             taintedRoot.hp = 0;
@@ -78,20 +85,24 @@ function optionOneWasClicked() {
             allies.splice(index, 1);
           }
         } else {
-          newParagraph.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet closer to the Chasm. ${target.name} is now ${distanceFromChasm} away from the edge!`;
+          paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet closer to the Chasm. ${target.name} is now ${distanceFromChasm} away from the edge!`;
         }
 
         // must contemplate a scenario where both allies die. If the number of allies reaches zero, must open the Game Over screen
 
-        flavorText.insertBefore(newParagraph, flavorText.lastChild.nextSibling);
+        display.insertBefore(
+          paragraphTaintedRootActions,
+          display.lastChild.nextSibling
+        );
       }
 
       allies.forEach((attacker) => {
         attack(attacker, taintedRoot);
       });
-    } else {
-      flavorText.removeChild(newParagraph);
     }
+    //  else {
+    //   flavorText.removeChild(paragraphTaintedRootActions);
+    // }
   }
   //   if (taintedRoot.hp <= 0) {
   //     let enemies = gameObj.enemies;

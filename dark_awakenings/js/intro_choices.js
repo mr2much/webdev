@@ -48,7 +48,7 @@ const players = {
     setCurrentHP(hp) {
       this.hp = hp;
     },
-    receiveDamage(daamge) {
+    receiveDamage(damage) {
       this.hp -= damage;
     },
     receiveHealing(healing) {
@@ -132,7 +132,7 @@ const players = {
     setCurrentHP(hp) {
       this.hp = hp;
     },
-    receiveDamage(daamge) {
+    receiveDamage(damage) {
       this.hp -= damage;
     },
     receiveHealing(healing) {
