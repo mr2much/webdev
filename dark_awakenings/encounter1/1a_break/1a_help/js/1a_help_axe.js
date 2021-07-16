@@ -2,39 +2,34 @@ let theStone = {};
 let taintedRoot = {};
 let paragraph = document.getElementById("narration");
 let gameObj;
+let display = document.getElementById("feedback");
+let paragraphTheStoneActions = document.createElement("p");
 
 window.addEventListener("load", (e) => {
   gameObj = gameObject;
   theStone = gameObj.creatures.players.theStone;
   taintedRoot = gameObj.enemies.shift();
 
-  attack(theStone, taintedRoot);
+  combat();
+
+  display.insertBefore(paragraphTheStoneActions, display.lastChild.nextSibling);
 });
 
-function attack(attacker, target) {
-  console.log(`${attacker.name} is attacking with ${attacker.weapon.name}`);
-  let damage = getTotalDamage(attacker);
-  target.hp = target.hp - damage;
-  console.log(`Enemy: ${target.name} received ${damage} points of damage`);
-  console.log(`${target.hp}`);
+function combat() {
+  let damageDealt = gameObj.attack(theStone, taintedRoot);
+
+  if (damageDealt === 0) {
+    paragraphTheStoneActions.innerHTML = `${theStone.name}'s attack failed to hit target ${taintedRoot.name}`;
+  } else {
+    paragraphTheStoneActions.innerHTML = `${theStone.name} dealt ${damageDealt} to ${taintedRoot.name}`;
+  }
 }
-
-function getTotalDamage(attacker) {
-  let totalDamage = Math.floor(
-    Math.random() * attacker.weapon.damage +
-      1 +
-      Math.max(attacker.strengthMod, attacker.dexterityMod)
-  );
-
-  return totalDamage;
-}
-
 function optionOneWasClicked() {
   if (taintedRoot.hp > 0) {
     paragraph.innerHTML =
       "Despite your best efforts, the vine is still alive.<br><br>You hear Gungurk screaming behind you:<br><br>'Keep going, precious! We believes in you!'";
 
-    attack(theStone, taintedRoot);
+    combat();
 
     if (taintedRoot.hp <= 0) {
       console.log(`Enemy ${taintedRoot.name} was slain!`);
