@@ -32,6 +32,13 @@ window.addEventListener("load", (e) => {
   allies.unshift(gungurk);
   allies.unshift(theStone);
   taintedRoot.hp = 0;
+
+  display.insertBefore(
+    paragraphTaintedRootActions,
+    display.lastChild.nextSibling
+  );
+  display.insertBefore(paragraphTheStoneActions, display.lastChild.nextSibling);
+  display.insertBefore(paragraphGungurkActions, display.lastChild.nextSibling);
 });
 
 function optionOneWasClicked() {
@@ -69,7 +76,7 @@ function optionOneWasClicked() {
         distanceFromChasm -= 5;
 
         if (distanceFromChasm <= 0) {
-          paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm.`;
+          paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${damage} points of damage.`;
 
           if (target === theStone) {
             console.log(`${target.name} fell`);
@@ -78,8 +85,17 @@ function optionOneWasClicked() {
           } else {
             paragraphTaintedRootActions.innerHTML += ` ${target.name} squeals like a terrified pig, and he disappears into the chasm. He splashes down, following by disconcerting silence. At least the root that dragged him into the chasm apparently died from the fall.`;
 
-            gungurk.hp -= Math.floor(Math.random() * 10 + 1);
-            taintedRoot.hp = 0;
+            let fallDamage = Math.floor(Math.random() * 10 + 1);
+
+            paragraphGungurkActions.innerHTML = `${target.name} received ${fallDamage} of damage from the fall.`;
+            target.receiveDamage(fallDamage);
+
+            console.log(`${target.name}: ${target.getCurrentHP()} HP`);
+            console.log(`${gungurk.name}: ${gungurk.getCurrentHP()} HP`);
+
+            // gungurk.hp -= Math.floor(Math.random() * 10 + 1);
+
+            taintedRoot.hp = 0; // The fall kills the taintedRoot
 
             let index = allies.indexOf(target);
             allies.splice(index, 1);
@@ -90,10 +106,10 @@ function optionOneWasClicked() {
 
         // must contemplate a scenario where both allies die. If the number of allies reaches zero, must open the Game Over screen
 
-        display.insertBefore(
-          paragraphTaintedRootActions,
-          display.lastChild.nextSibling
-        );
+        // display.insertBefore(
+        //   paragraphTaintedRootActions,
+        //   display.lastChild.nextSibling
+        // );
       }
 
       allies.forEach((attacker) => {
