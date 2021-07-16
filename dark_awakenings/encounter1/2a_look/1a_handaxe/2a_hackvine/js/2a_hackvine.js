@@ -11,29 +11,27 @@ window.addEventListener("load", (e) => {
   theStone = gameObj.creatures.players.theStone;
   taintedRoot = gameObject.enemies.shift();
 
+  combat();
+
+  display.insertBefore(paragraphTheStoneActions, display.lastChild.nextSibling);
+});
+
+function combat() {
   let damageDealt = gameObj.attack(theStone, taintedRoot);
-  // let damageDealt = attack(theStone, taintedRoot);
+
   if (damageDealt === 0) {
     paragraphTheStoneActions.innerHTML = `${theStone.name}'s attack failed to hit target ${taintedRoot.name}`;
   } else {
     paragraphTheStoneActions.innerHTML = `${theStone.name} dealt ${damageDealt} to ${taintedRoot.name}`;
   }
-
-  display.insertBefore(paragraphTheStoneActions, display.lastChild.nextSibling);
-});
+}
 
 function optionOneWasClicked() {
   if (taintedRoot.hp > 0) {
     paragraph.innerHTML =
       "Despite your best efforts, the vine is still alive.<br><br>You hear Gungurk screaming behind you:<br><br>'Hurry up, precious! Hurry!'";
 
-    let damageDealt = gameObj.attack(theStone, taintedRoot);
-    // let damageDealt = attack(theStone, taintedRoot);
-    if (damageDealt === 0) {
-      paragraphTheStoneActions.innerHTML = `${theStone.name}'s attack failed to hit target ${taintedRoot.name}`;
-    } else {
-      paragraphTheStoneActions.innerHTML = `${theStone.name} dealt ${damageDealt} to ${taintedRoot.name}`;
-    }
+    combat();
 
     if (taintedRoot.hp <= 0) {
       console.log(`Enemy ${taintedRoot.name} was slain!`);
@@ -46,25 +44,4 @@ function optionOneWasClicked() {
       };
     }
   }
-}
-
-function attack(attacker, target) {
-  console.log(`${attacker.name} is attacking with ${attacker.weapon.name}`);
-  let damage = attacker.attack(target);
-  // let damage = getTotalDamage(attacker);
-  target.hp = target.hp - damage;
-  console.log(`Enemy: ${target.name} received ${damage} points of damage!`);
-  console.log(`${target.hp}`);
-
-  return damage;
-}
-
-function getTotalDamage(attacker) {
-  let totalDamage = Math.floor(
-    Math.random() * attacker.weapon.damage +
-      1 +
-      Math.max(attacker.strengthMod, attacker.dexterityMod)
-  );
-
-  return totalDamage;
 }
