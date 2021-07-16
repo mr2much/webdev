@@ -2,6 +2,7 @@ let theStone = {};
 let taintedRoot = {};
 let gameObj;
 let paragraph = document.getElementById("narration");
+let display = document.getElementById("feedback");
 
 window.addEventListener("load", (e) => {
   gameObj = gameObject;
@@ -39,6 +40,8 @@ function attack(attacker, target) {
   target.hp = target.hp - damage;
   console.log(`Enemy: ${target.name} received ${damage} points of damage!`);
   console.log(`${target.hp}`);
+
+  return damage;
 }
 
 function getTotalDamage(attacker) {

@@ -5,6 +5,7 @@ let taintedRoot = {};
 let graspWeapon = {};
 let dragWeapon = {};
 let enemies = [];
+let btnAttack = document.getElementById("btnAttack");
 let paragraph = document.getElementById("narration");
 let newParagraph = document.createElement("p");
 let flavorText = document.getElementsByClassName("flavor")[0];
@@ -40,9 +41,9 @@ function optionOneWasClicked() {
       target = pickRandomTarget();
 
       if (amounOfEnemies > 1) {
-        paragraph.innerHTML = `There are still ${amounOfEnemies} enemies left. One of the ${taintedRoot.name}s lashes at ${target.name}!`;
+        paragraph.innerHTML = `There are still ${amounOfEnemies} enemies left. You both tighten the grip on your weapons and attack them. One of the ${taintedRoot.name}s lashes at ${target.name}!`;
       } else {
-        paragraph.innerHTML = `The remaining ${taintedRoot.name} lashes at ${target.name}!`;
+        paragraph.innerHTML = `Weapons drawn, you both engage the remaining ${taintedRoot.name} as it lashes at ${target.name}!`;
       }
     }
 
@@ -55,7 +56,7 @@ function optionOneWasClicked() {
         taintedRoot.weapon = dragWeapon;
       }
 
-      attack(taintedRoot, target);
+      let damage = attack(taintedRoot, target);
 
       if (taintedRoot.weapon === dragWeapon) {
         distanceFromChasm -= 5;
@@ -150,6 +151,8 @@ function attack(attacker, target) {
   target.hp = target.hp - damage;
   console.log(`${target.name} received ${damage} points of damage`);
   console.log(`${target.hp}`);
+
+  return damage;
 }
 
 function getTotalDamage(attacker) {

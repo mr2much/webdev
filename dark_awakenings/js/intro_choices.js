@@ -28,7 +28,10 @@ const weapons = {
 const players = {
   theStone: {
     name: "The Stone",
+    maxHP: 30,
     hp: 30,
+    armor: 19,
+    proficiencyBonus: 2,
     strengthMod: 5,
     dexterityMod: 3,
     wisdomMod: 0,
@@ -36,6 +39,18 @@ const players = {
     athletics: true,
     acrobatics: true,
     weapon: weapons.punch,
+    getCurrentHP() {
+      return this.hp;
+    },
+    setCurrentHP(hp) {
+      this.hp = hp;
+    },
+    receiveDamage(daamge) {
+      this.hp -= damage;
+    },
+    receiveHealing(healing) {
+      this.hp += healing;
+    },
     attack(target) {
       let totalDamage = Math.floor(
         Math.random() * this.weapon.damage +
@@ -47,6 +62,17 @@ const players = {
       );
 
       return totalDamage;
+    },
+    rollAttack() {
+      let attackRoll =
+        Math.floor(
+          Math.random() * Math.max(this.strengthMod, this.dexterityMod)
+        ) + 2;
+
+      return attackRoll;
+    },
+    attackHits(roll) {
+      return roll >= this.armor;
     },
     equipWeapon(weapon) {
       this.weapon = weapon;
@@ -87,13 +113,28 @@ const players = {
   },
   gungurk: {
     name: "Gungurk",
+    maxHP: 26,
     hp: 26,
+    armor: 16,
+    proficiencyBonus: 2,
     strengthMod: 2,
     dexterityMod: 3,
     wisdomMod: 1,
     athletics: false,
     acrobatics: true,
     weapon: weapons.dagger,
+    getCurrentHP() {
+      return this.hp;
+    },
+    setCurrentHP(hp) {
+      this.hp = hp;
+    },
+    receiveDamage(daamge) {
+      this.hp -= damage;
+    },
+    receiveHealing(healing) {
+      this.hp += healing;
+    },
     attack(target) {
       let totalDamage = Math.floor(
         Math.random() * this.weapon.damage +
@@ -105,6 +146,17 @@ const players = {
       );
 
       return totalDamage;
+    },
+    rollAttack() {
+      let attackRoll =
+        Math.floor(
+          Math.random() * Math.max(this.strengthMod, this.dexterityMod)
+        ) + 2;
+
+      return attackRoll;
+    },
+    attackHits(roll) {
+      return roll >= this.armor;
     },
     setStrengthMod(newValue) {
       this.strengthMod = newValue;
@@ -145,7 +197,10 @@ const players = {
 const hostiles = {
   taintedRoot: {
     name: "Tainted Root",
+    maxHP: 30,
     hp: 30,
+    armor: 15,
+    proficiencyBonus: 2,
     strengthMod: 2,
     dexterityMod: 3,
     wisdomMod: 1,
@@ -160,6 +215,18 @@ const hostiles = {
     grabTarget(target) {
       this.target = target;
     },
+    getCurrentHP() {
+      return this.hp;
+    },
+    setCurrentHP(hp) {
+      this.hp = hp;
+    },
+    receiveDamage(daamge) {
+      this.hp -= damage;
+    },
+    receiveHealing(healing) {
+      this.hp += healing;
+    },
     attack(target) {
       let totalDamage = Math.floor(
         Math.random() * this.weapon.damage +
@@ -171,6 +238,17 @@ const hostiles = {
       );
 
       return totalDamage;
+    },
+    rollAttack() {
+      let attackRoll =
+        Math.floor(
+          Math.random() * Math.max(this.strengthMod, this.dexterityMod)
+        ) + 2;
+
+      return attackRoll;
+    },
+    attackHits(roll) {
+      return roll >= this.armor;
     },
     setStrengthMod(newValue) {
       this.strengthMod = newValue;
@@ -211,6 +289,37 @@ const gameObject = {
   weapons: weapons,
   creatures: creatures,
   enemies: [],
+  attack(attacker, target) {
+    console.log(
+      `${attacker.name} is attacking ${target.name} with ${attacker.weapon.name}`
+    );
+    if (attackHits(attacker, target)) {
+      let damage = attacker.attack(target);
+      target.receiveDamage(damage);
+      console.log(`${target.name} received ${damage} points of damage!`);
+      console.log(`${target.hp}`);
+
+      return damage;
+    }
+
+    return 0;
+  },
+
+  attackHits(attacker, target) {
+    let attackRoll = attacker.rollAttack();
+
+    return target.attackHits(attackRoll);
+  },
+
+  getTotalDamage(attacker) {
+    let totalDamage = Math.floor(
+      Math.random() * attacker.weapon.damage +
+        1 +
+        Math.max(attacker.strengthMod, attacker.dexterityMod)
+    );
+
+    return totalDamage;
+  },
 };
 
 console.log(gameObject);
