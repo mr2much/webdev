@@ -137,9 +137,16 @@ function optionOneWasClicked() {
             paragraphGungurkActions.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${taintedRoot.name}`;
           }
         }
+
+        if (taintedRoot.hp <= 0) {
+          paragraphTaintedRootActions.innerHTML = `Enemy ${taintedRoot.name} was slain!`;
+        }
       });
     }
   }
+
+  // implement code for when all the enemies are slain, which might imply loading a new screen. Probably enemies_defeated.html or something
+  console.log("All enemies were slain!");
 }
 
 function pickRandomTarget() {
