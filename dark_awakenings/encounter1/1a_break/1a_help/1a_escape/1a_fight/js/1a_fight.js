@@ -45,6 +45,8 @@ function optionOneWasClicked() {
   console.log("Combat started!");
 
   paragraphTaintedRootActions.innerHTML = "";
+  paragraphTheStoneActions.innerHTML = "";
+  paragraphGungurkActions.innerHTML = "";
 
   if (enemies.length > 0) {
     if (taintedRoot.hp <= 0) {
@@ -60,23 +62,21 @@ function optionOneWasClicked() {
     }
 
     if (taintedRoot.hp > 0) {
-      if (!taintedRoot.hasTargetGrappled()) {
-        taintedRoot.weapon = graspWeapon;
-        taintedRoot.target = target;
-        taintedRoot.targetGrappled = true;
-      } else {
-        taintedRoot.weapon = dragWeapon;
-      }
+      //   if (!taintedRoot.hasTargetGrappled()) {
+      //     taintedRoot.weapon = graspWeapon;
+      //     taintedRoot.target = target;
+      //     taintedRoot.targetGrappled = true;
+      //   } else {
+      //     taintedRoot.weapon = dragWeapon;
+      //   }
 
-      let damage = gameObj.attack(taintedRoot, target);
-
-      //   let damage = attack(taintedRoot, target);
+      let taintedRootDamage = gameObj.attack(taintedRoot, target);
 
       if (taintedRoot.weapon === dragWeapon) {
         distanceFromChasm -= 5;
 
         if (distanceFromChasm <= 0) {
-          paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${damage} points of damage.`;
+          paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
 
           if (target === theStone) {
             console.log(`${target.name} fell`);
@@ -87,13 +87,12 @@ function optionOneWasClicked() {
 
             let fallDamage = Math.floor(Math.random() * 10 + 1);
 
-            paragraphGungurkActions.innerHTML = `${target.name} received ${fallDamage} of damage from the fall.`;
+            paragraphGungurkActions.innerHTML = `${target.name} received ${fallDamage} points of damage from the fall.`;
             target.receiveDamage(fallDamage);
 
-            console.log(`${target.name}: ${target.getCurrentHP()} HP`);
-            console.log(`${gungurk.name}: ${gungurk.getCurrentHP()} HP`);
-
-            // gungurk.hp -= Math.floor(Math.random() * 10 + 1);
+            // Confirming that both target and gungurk are pointing to the same Object
+            // console.log(`${target.name}: ${target.getCurrentHP()} HP`);
+            // console.log(`${gungurk.name}: ${gungurk.getCurrentHP()} HP`);
 
             taintedRoot.hp = 0; // The fall kills the taintedRoot
 
@@ -101,63 +100,46 @@ function optionOneWasClicked() {
             allies.splice(index, 1);
           }
         } else {
-          paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet closer to the Chasm. ${target.name} is now ${distanceFromChasm} away from the edge!`;
+          paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet closer to the Chasm, dealing ${taintedRootDamage} points of damage. ${target.name} is now ${distanceFromChasm} away from the edge!`;
         }
 
         // must contemplate a scenario where both allies die. If the number of allies reaches zero, must open the Game Over screen
+      } else {
+        // if we got here, then the Tainted Root is attacking with its grasp attack and not its drag attack
+        if (taintedRootDamage === 0) {
+          // if the grasping attack doesn't connect, then the target is not grabbed
+          paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name}'s attack failed to hit target ${target.name}`;
+        } else {
+          paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} grabs ${target.name}, dealing ${taintedRootDamage} points of damage with its vines!`;
 
-        // display.insertBefore(
-        //   paragraphTaintedRootActions,
-        //   display.lastChild.nextSibling
-        // );
+          // if the attack connects, then the target is grabbed, and the tainted root will start dragging it towards the chasm
+          if (!taintedRoot.hasTargetGrappled()) {
+            taintedRoot.weapon = dragWeapon;
+            taintedRoot.target = target;
+            taintedRoot.targetGrappled = true;
+          }
+        }
       }
 
       allies.forEach((attacker) => {
-        attack(attacker, taintedRoot);
+        let damageDealt = gameObj.attack(attacker, taintedRoot);
+
+        if (attacker === theStone) {
+          if (damageDealt === 0) {
+            paragraphTheStoneActions.innerHTML = `${attacker.name}'s attack failed to hit target ${taintedRoot.name}`;
+          } else {
+            paragraphTheStoneActions.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${taintedRoot.name}`;
+          }
+        } else {
+          if (damageDealt === 0) {
+            paragraphGungurkActions.innerHTML = `${attacker.name}'s attack failed to hit target ${taintedRoot.name}`;
+          } else {
+            paragraphGungurkActions.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${taintedRoot.name}`;
+          }
+        }
       });
     }
-    //  else {
-    //   flavorText.removeChild(paragraphTaintedRootActions);
-    // }
   }
-  //   if (taintedRoot.hp <= 0) {
-  //     let enemies = gameObj.enemies;
-  //     if (enemies.length > 1) {
-  //       paragraph.innerHTML = `One of the ${taintedRoot.name}s lashes at you, and you immediately attack it!`;
-  //     } else {
-  //       paragraph.innerHTML = `The remaining ${taintedRoot.name} lashes at you, and you immediately attack it!`;
-  //     }
-
-  //     if (enemies.length > 0) {
-  //       taintedRoot = enemies.shift();
-  //       target = pickRandomTarget();
-
-  //       if (!taintedRoot.hasTargetGrappled()) {
-  //         taintedRoot.weapon = graspWeapon;
-  //         taintedRoot.target = target;
-  //         taintedRoot.targetGrappled = true;
-  //       } else {
-  //         taintedRoot.weapon = dragWeapon;
-  //       }
-
-  //       console.log(
-  //         `Enemy ${taintedRoot.name} attacks ${target.name} with ${taintedRoot.weapon.name}`
-  //       );
-
-  //       taintedRoot.attack(target);
-  //     }
-  //   } else {
-  //     if (taintedRoot !== null && taintedRoot.hp > 0) {
-  //       paragraph.innerHTML =
-  //         "Despite your best efforts, the vine is still alive.<br><br>You hear Gungurk screaming behind you:<br><br>'Hurry up, precious! Hurry!'";
-
-  //       attack(theStone, taintedRoot);
-
-  //       if (taintedRoot.hp <= 0) {
-  //         console.log(`Enemy ${taintedRoot.name} was slain!`);
-  //       }
-  //     }
-  //   }
 }
 
 function pickRandomTarget() {
@@ -169,28 +151,28 @@ function pickRandomTarget() {
   return allies[randomIndex];
 }
 
-function attack(attacker, target) {
-  console.log(
-    `${attacker.name} is attacking ${target.name} with ${attacker.weapon.name}`
-  );
-  let damage = attacker.attack(target);
-  //   let damage = getTotalDamage(attacker);
-  target.hp = target.hp - damage;
-  console.log(`${target.name} received ${damage} points of damage`);
-  console.log(`${target.hp}`);
+// function attack(attacker, target) {
+//   console.log(
+//     `${attacker.name} is attacking ${target.name} with ${attacker.weapon.name}`
+//   );
+//   let damage = attacker.attack(target);
+//   //   let damage = getTotalDamage(attacker);
+//   target.hp = target.hp - damage;
+//   console.log(`${target.name} received ${damage} points of damage`);
+//   console.log(`${target.hp}`);
 
-  return damage;
-}
+//   return damage;
+// }
 
-function getTotalDamage(attacker) {
-  let totalDamage = Math.floor(
-    Math.random() * attacker.weapon.damage +
-      1 +
-      Math.max(attacker.strengthMod, attacker.dexterityMod)
-  );
+// function getTotalDamage(attacker) {
+//   let totalDamage = Math.floor(
+//     Math.random() * attacker.weapon.damage +
+//       1 +
+//       Math.max(attacker.strengthMod, attacker.dexterityMod)
+//   );
 
-  return totalDamage;
-}
+//   return totalDamage;
+// }
 
 function optionTwoWasClicked() {
   console.log("You ran away!");
