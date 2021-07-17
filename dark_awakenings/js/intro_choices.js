@@ -2,26 +2,32 @@ const weapons = {
   punch: {
     name: "Punch",
     damage: 4,
+    alwaysHit: false,
   },
   handaxe: {
     name: "Handaxe",
     damage: 6,
+    alwaysHit: false,
   },
   dagger: {
     name: "Dagger",
     damage: 4,
+    alwaysHit: false,
   },
   longsword: {
     name: "Longsword",
     damage: 8,
+    alwaysHit: false,
   },
   grasp: {
     name: "Grasp",
     damage: 4,
+    alwaysHit: false,
   },
   drag: {
     name: "Drag",
     damage: 2,
+    alwaysHit: true,
   },
 };
 
@@ -48,7 +54,7 @@ const players = {
     setCurrentHP(hp) {
       this.hp = hp;
     },
-    receiveDamage(daamge) {
+    receiveDamage(damage) {
       this.hp -= damage;
     },
     receiveHealing(healing) {
@@ -132,7 +138,7 @@ const players = {
     setCurrentHP(hp) {
       this.hp = hp;
     },
-    receiveDamage(daamge) {
+    receiveDamage(damage) {
       this.hp -= damage;
     },
     receiveHealing(healing) {
@@ -309,6 +315,10 @@ const gameObject = {
   },
 
   attackHits(attacker, target) {
+    if (attacker.weapon.alwaysHit) {
+      return true;
+    }
+
     let attackRoll = attacker.rollAttack();
 
     return target.attackHits(attackRoll);
