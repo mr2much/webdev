@@ -1,4 +1,5 @@
 let gameObj;
+let amountOfEnemies = 0;
 let gungurk = {};
 let theStone = {};
 let taintedRoot = {};
@@ -19,6 +20,7 @@ window.addEventListener("load", (e) => {
   gameObj = gameObject;
 
   enemies = gameObj.enemies;
+  amountOfEnemies = enemies.length;
 
   graspWeapon = gameObj.weapons.grasp;
   dragWeapon = gameObj.weapons.drag;
@@ -48,14 +50,14 @@ function optionOneWasClicked() {
   paragraphTheStoneActions.innerHTML = "";
   paragraphGungurkActions.innerHTML = "";
 
-  if (enemies.length > 0) {
+  if (amountOfEnemies > 0) {
     if (taintedRoot.hp <= 0) {
-      let amounOfEnemies = enemies.length;
+      // let amountOfEnemies = enemies.length;
       taintedRoot = enemies.shift();
       target = pickRandomTarget();
 
-      if (amounOfEnemies > 1) {
-        paragraph.innerHTML = `There are still ${amounOfEnemies} enemies left. You both tighten the grip on your weapons and attack them. One of the ${taintedRoot.name}s lashes at ${target.name}!`;
+      if (amountOfEnemies > 1) {
+        paragraph.innerHTML = `There are still ${amountOfEnemies} enemies left. You both tighten the grip on your weapons and attack them. One of the ${taintedRoot.name}s lashes at ${target.name}!`;
       } else {
         paragraph.innerHTML = `Weapons drawn, you both engage the remaining ${taintedRoot.name} as it lashes at ${target.name}!`;
       }
@@ -109,6 +111,12 @@ function optionOneWasClicked() {
         if (taintedRootDamage === 0) {
           // if the grasping attack doesn't connect, then the target is not grabbed
           paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name}'s attack failed to hit target ${target.name}`;
+
+          // if you are more than 5 feet away from the chasm, and are not more than 15ft away from it
+          if (distanceFromChasm < 10 && distanceFromChasm !== 15) {
+            distanceFromChasm += 5;
+            paragraphTaintedRootActions.innerHTML += ` and he immediately walks 5 feet away from the threatening Chasm up ahead.`;
+          }
         } else {
           paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} grabs ${target.name}, dealing ${taintedRootDamage} points of damage with its vines!`;
 
@@ -139,14 +147,26 @@ function optionOneWasClicked() {
         }
 
         if (taintedRoot.hp <= 0) {
-          paragraphTaintedRootActions.innerHTML = `Enemy ${taintedRoot.name} was slain!`;
+          paragraphTaintedRootActions.innerHTML = `Enemy ${taintedRoot.name} was slain`;
+          amountOfEnemies--;
+          // if the Tainted Root was grabbing someone
+          if (taintedRoot.hasTargetGrappled()) {
+            paragraphTaintedRootActions.innerHTML += `, freeing ${target.name}. He immediately steps 5 feet away to safety!`;
+            distanceFromChasm += 5;
+          } else {
+            paragraphTaintedRootActions.innerHTML += `!`;
+          }
         }
       });
     }
   }
 
   // implement code for when all the enemies are slain, which might imply loading a new screen. Probably enemies_defeated.html or something
-  console.log("All enemies were slain!");
+  if (amountOfEnemies === 0) {
+    console.log("All enemies were slain!");
+  }
+
+  console.log(`Distance from the Chasm: ${distanceFromChasm}`);
 }
 
 function pickRandomTarget() {
