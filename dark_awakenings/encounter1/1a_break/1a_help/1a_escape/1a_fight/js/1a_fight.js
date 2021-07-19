@@ -79,7 +79,7 @@ function optionOneWasClicked() {
 
           if (target === theStone) {
             console.log(`${target.name} fell`);
-            paragraphTheStoneActions.innerHTML = `${theStone.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the last 5ft into the Chasm.`;
+            paragraphTheStoneActions.innerHTML = `${theStone.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the the remaining 5 feet over the edge.`;
 
             let fallDamage = Math.floor(Math.random() * 10 + 1);
             target.receiveDamage(fallDamage);
@@ -107,7 +107,7 @@ function optionOneWasClicked() {
                     this.gameObject = gameObj;
                   };
                 }
-              }, 5000);
+              }, 10000);
               return;
             }
           } else {
