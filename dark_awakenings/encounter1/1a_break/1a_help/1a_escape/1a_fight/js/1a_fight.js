@@ -52,26 +52,23 @@ function optionOneWasClicked() {
 
   if (amountOfEnemies > 0) {
     if (taintedRoot.hp <= 0) {
-      // let amountOfEnemies = enemies.length;
       taintedRoot = enemies.shift();
       target = pickRandomTarget();
+
+      if (enemies.length === 0) {
+        console.log(
+          `Enemies: ${enemies.length}, amountOfEnemies: ${amountOfEnemies}`
+        );
+      }
 
       if (amountOfEnemies > 1) {
         paragraph.innerHTML = `There are still ${amountOfEnemies} enemies left. You both tighten the grip on your weapons and attack them. One of the ${taintedRoot.name}s lashes at ${target.name}!`;
       } else {
-        paragraph.innerHTML = `Weapons drawn, you both engage the remaining ${taintedRoot.name} as it lashes at ${target.name}!`;
+        paragraph.innerHTML = `Weapons drawn, you engage the remaining ${taintedRoot.name} as it lashes at ${target.name}!`;
       }
     }
 
     if (taintedRoot.hp > 0) {
-      //   if (!taintedRoot.hasTargetGrappled()) {
-      //     taintedRoot.weapon = graspWeapon;
-      //     taintedRoot.target = target;
-      //     taintedRoot.targetGrappled = true;
-      //   } else {
-      //     taintedRoot.weapon = dragWeapon;
-      //   }
-
       let taintedRootDamage = gameObj.attack(taintedRoot, target);
 
       if (taintedRoot.weapon === dragWeapon) {
@@ -82,14 +79,43 @@ function optionOneWasClicked() {
 
           if (target === theStone) {
             console.log(`${target.name} fell`);
-            //   Must make a pause
-            //   and then load the second encounter
+            paragraphTheStoneActions.innerHTML = `${theStone.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the the remaining 5 feet over the edge.`;
+
+            let fallDamage = Math.floor(Math.random() * 10 + 1);
+            target.receiveDamage(fallDamage);
+
+            paragraphTheStoneActions.innerHTML += `<br>${theStone.name} receives ${fallDamage} of damage from the fall.`;
+
+            if (target.hp === 0) {
+              // load dead scenario
+            } else {
+              //   Must make a pause
+              setTimeout(() => {
+                if (allies.indexOf(gungurk) < 0) {
+                  let newScene = window.open(
+                    "/dark_awakenings/encounter2/gungurk_fell_first.html"
+                  );
+                  newScene.onload = function () {
+                    this.gameObject = gameObj;
+                  };
+                } else {
+                  //   and then load the second encounter
+                  let newScene = window.open(
+                    "/dark_awakenings/encounter2/stone_fell.html"
+                  );
+                  newScene.onload = function () {
+                    this.gameObject = gameObj;
+                  };
+                }
+              }, 10000);
+              return;
+            }
           } else {
-            paragraphTaintedRootActions.innerHTML += ` ${target.name} squeals like a terrified pig, and he disappears into the chasm. He splashes down, following by disconcerting silence. At least the root that dragged him into the chasm apparently died from the fall.`;
+            paragraphGungurkActions.innerHTML += ` ${target.name} squeals like a terrified pig, and he disappears into the chasm. He splashes down, followed by disconcerting silence. At least the root that dragged him into the chasm apparently died from the fall.`;
 
             let fallDamage = Math.floor(Math.random() * 10 + 1);
 
-            paragraphGungurkActions.innerHTML = `${target.name} received ${fallDamage} points of damage from the fall.`;
+            paragraphGungurkActions.innerHTML += `<br>${target.name} received ${fallDamage} points of damage from the fall.`;
             target.receiveDamage(fallDamage);
 
             // Confirming that both target and gungurk are pointing to the same Object
@@ -113,7 +139,7 @@ function optionOneWasClicked() {
           paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name}'s attack failed to hit target ${target.name}`;
 
           // if you are more than 5 feet away from the chasm, and are not more than 15ft away from it
-          if (distanceFromChasm < 10 && distanceFromChasm !== 15) {
+          if (distanceFromChasm <= 10) {
             distanceFromChasm += 5;
             paragraphTaintedRootActions.innerHTML += ` and he immediately walks 5 feet away from the threatening Chasm up ahead.`;
           }
@@ -129,7 +155,9 @@ function optionOneWasClicked() {
         }
       }
 
-      allies.forEach((attacker) => {
+      for (var i = 0; i < allies.length; i++) {
+        let attacker = allies[i];
+
         let damageDealt = gameObj.attack(attacker, taintedRoot);
 
         if (attacker === theStone) {
@@ -146,18 +174,68 @@ function optionOneWasClicked() {
           }
         }
 
+        console.log(`HP: ${taintedRoot.hp}`);
+
         if (taintedRoot.hp <= 0) {
-          paragraphTaintedRootActions.innerHTML = `Enemy ${taintedRoot.name} was slain`;
+          paragraphTaintedRootActions.innerHTML = `Enemy ${taintedRoot.name} was slain!`;
           amountOfEnemies--;
-          // if the Tainted Root was grabbing someone
-          if (taintedRoot.hasTargetGrappled()) {
-            paragraphTaintedRootActions.innerHTML += `, freeing ${target.name}. He immediately steps 5 feet away to safety!`;
-            distanceFromChasm += 5;
-          } else {
-            paragraphTaintedRootActions.innerHTML += `!`;
+          // if the Tainted Root was grabbing someone, who has not already fallen down into the Chasm
+          if (taintedRoot.hasTargetGrappled() && distanceFromChasm > 0) {
+            paragraphTaintedRootActions.innerHTML += ` ${target.name} is no longer grappled.`;
           }
+
+          distanceFromChasm += 5;
+
+          if (allies.indexOf(gungurk) > 0) {
+            if (paragraphGungurkActions.innerHTML === "") {
+              paragraphGungurkActions.innerHTML = `${gungurk.name} steps 5 feet away from the Chasm!`;
+            } else {
+              paragraphGungurkActions.innerHTML += `<br>${gungurk.name} steps 5 feet away from the Chasm!`;
+            }
+          }
+
+          paragraphTheStoneActions.innerHTML += `<br>${theStone.name} steps 5 feet away from the Chasm!`;
+
+          break;
         }
-      });
+      }
+
+      // allies.forEach((attacker) => {
+      //   let damageDealt = gameObj.attack(attacker, taintedRoot);
+
+      //   if (attacker === theStone) {
+      //     if (damageDealt === 0) {
+      //       paragraphTheStoneActions.innerHTML = `${attacker.name}'s attack failed to hit target ${taintedRoot.name}`;
+      //     } else {
+      //       paragraphTheStoneActions.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${taintedRoot.name}`;
+      //     }
+      //   } else {
+      //     if (damageDealt === 0) {
+      //       paragraphGungurkActions.innerHTML = `${attacker.name}'s attack failed to hit target ${taintedRoot.name}`;
+      //     } else {
+      //       paragraphGungurkActions.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${taintedRoot.name}`;
+      //     }
+      //   }
+
+      //   if (taintedRoot.hp <= 0) {
+      //     paragraphTaintedRootActions.innerHTML = `Enemy ${taintedRoot.name} was slain!`;
+      //     amountOfEnemies--;
+      //     // if the Tainted Root was grabbing someone, who has not already fallen down into the Chasm
+      //     if (taintedRoot.hasTargetGrappled() && distanceFromChasm > 0) {
+      //       paragraphTaintedRootActions.innerHTML += ` ${target.name} is no longer grappled.`;
+      //     }
+
+      //     distanceFromChasm += 5;
+
+      //     if (allies.indexOf(gungurk) > 0) {
+      //       paragraphGungurkActions.innerHTML += `. ${gungurk.name} steps 5 feet away from the Chasm!`;
+      //     }
+
+      //     paragraphTheStoneActions.innerHTML += `. ${theStone.name} steps 5 feet away from the Chasm!`;
+
+      //     break;
+      //   }
+      // });
     }
   }
 
