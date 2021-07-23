@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dark Awakenings</title>
+    <link rel="stylesheet" href="/dark_awakenings/css/app.css" />
+    <script defer src="/dark_awakenings/js/intro_choices.js"></script>
+    <script defer src="/dark_awakenings/js/intro_choices.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <section>
+        <div class="flavor">
+          <p>
+            The chasm wall ends after about 10 feet, but it opens into a wider
+            area lit by a green light. The light shimmers on running water about
+            20 feet below.
+          </p>
+          <p>
+            On the far side of the chasm dangles a root that could allow easy
+            climbing. You would need to jump about 10 feet to reach that root.
+          </p>
+          <p>
+            Otherwise, the chasm sides look rough, and there's no reason to risk
+            a jump to the chasm's other side other than to make use of the root
+            there.
+          </p>
+        </div>
+        <div class="options">
+          <h2>What would you do?</h2>
+          <ol>
+            <li>
+              <!-- This button should change depending on if you are alone of if Gungurk is with you -->
+              <button class="btn" onclick="optionOneWasClicked()">
+                Go back to the campsite.
+              </button>
+            </li>
+            <li>
+              <a class="btn" onclick="optionTwoWasClicked()"
+                >Well, they lived long happy lives and shall be missed.</a
+              >
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section>
+        <div id="feedback"></div>
+      </section>
+    </div>
+  </body>
+</html>
