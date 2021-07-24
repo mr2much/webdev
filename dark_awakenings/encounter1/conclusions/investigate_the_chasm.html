@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dark Awakenings</title>
     <link rel="stylesheet" href="/dark_awakenings/css/app.css" />
-    <script defer src="/dark_awakenings/js/intro_choices.js"></script>
-    <script defer src="/dark_awakenings/js/intro_choices.js"></script>
+    <script defer src="js/investigate_the_chasm.js"></script>
   </head>
   <body>
     <div class="container">
@@ -32,15 +31,30 @@
           <h2>What would you do?</h2>
           <ol>
             <li>
-              <!-- This button should change depending on if you are alone of if Gungurk is with you -->
               <button class="btn" onclick="optionOneWasClicked()">
-                Go back to the campsite.
+                Jump into the chasm.
               </button>
             </li>
             <li>
-              <a class="btn" onclick="optionTwoWasClicked()"
-                >Well, they lived long happy lives and shall be missed.</a
-              >
+              <button class="btn" onclick="optionTwoWasClicked()">
+                Jump to the root.
+              </button>
+            </li>
+            <li>
+              <button class="btn" onclick="optionThreeWasClicked()">
+                Climb down the side of the wall.
+              </button>
+            </li>
+            <li>
+              <!-- This option should only appear if you have a rope -->
+              <button class="btn" onclick="optionFourWasClicked()">
+                Use the rope to climb down.
+              </button>
+            </li>
+            <li>
+              <button class="btn" onclick="optionFiveWasClicked()">
+                Keep exploring the camp.
+              </button>
             </li>
           </ol>
         </div>
