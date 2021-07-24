@@ -224,29 +224,6 @@ function pickRandomTarget() {
   return allies[randomIndex];
 }
 
-// function attack(attacker, target) {
-//   console.log(
-//     `${attacker.name} is attacking ${target.name} with ${attacker.weapon.name}`
-//   );
-//   let damage = attacker.attack(target);
-//   //   let damage = getTotalDamage(attacker);
-//   target.hp = target.hp - damage;
-//   console.log(`${target.name} received ${damage} points of damage`);
-//   console.log(`${target.hp}`);
-
-//   return damage;
-// }
-
-// function getTotalDamage(attacker) {
-//   let totalDamage = Math.floor(
-//     Math.random() * attacker.weapon.damage +
-//       1 +
-//       Math.max(attacker.strengthMod, attacker.dexterityMod)
-//   );
-
-//   return totalDamage;
-// }
-
 function optionTwoWasClicked() {
   console.log("You ran away!");
 }
