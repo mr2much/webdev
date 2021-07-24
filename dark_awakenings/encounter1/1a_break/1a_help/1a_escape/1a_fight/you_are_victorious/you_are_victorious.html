@@ -6,36 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="/dark_awakenings/css/app.css" />
-    <script defer src="js/1a_fight.js"></script>
+    <script defer src="js/you_are_victorious.js"></script>
   </head>
   <body>
     <div class="container">
       <section>
         <div class="flavor">
-          <p id="narration">
-            Gungurk swallows dry saliva as he looks at the remaining enemies.
-            But then he looks up at your stoic face, and this seems to bolster
-            his fighting spirit. Taking a deep breath, he unsheathes his dagger
-            and holds it in a reverse grip.<br />
-            <br />
-            "Right behind you, precious!"
-          </p>
+          <p id="narration">You defeated all enemies.</p>
         </div>
         <div class="options">
           <h2>What would you do?</h2>
           <ol>
             <li>
-              <button
-                id="btnAttack"
-                class="btn"
-                onclick="optionOneWasClicked()"
-              >
-                Charge!
+              <button class="btn" onclick="optionOneWasClicked()">
+                Investigate the chasm
               </button>
             </li>
             <li>
               <button class="btn" onclick="optionTwoWasClicked()">
-                You know what?, let's run away from this blasted place!
+                Run away
+              </button>
+            </li>
+            <li>
+              <button class="btn" onclick="optionThreeWasClicked()">
+                Search the Campsite
               </button>
             </li>
           </ol>
