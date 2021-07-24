@@ -46,6 +46,11 @@ window.addEventListener("load", (e) => {
 function optionOneWasClicked() {
   console.log("Combat started!");
 
+  if (btnAttack !== null) {
+    btnAttack.textContent = "Keep attacking!";
+    btnAttack = null;
+  }
+
   paragraphTaintedRootActions.innerHTML = "";
   paragraphTheStoneActions.innerHTML = "";
   paragraphGungurkActions.innerHTML = "";
