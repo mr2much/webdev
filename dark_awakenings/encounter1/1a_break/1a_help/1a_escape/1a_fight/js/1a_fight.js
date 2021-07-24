@@ -204,43 +204,6 @@ function optionOneWasClicked() {
           break;
         }
       }
-
-      // allies.forEach((attacker) => {
-      //   let damageDealt = gameObj.attack(attacker, taintedRoot);
-
-      //   if (attacker === theStone) {
-      //     if (damageDealt === 0) {
-      //       paragraphTheStoneActions.innerHTML = `${attacker.name}'s attack failed to hit target ${taintedRoot.name}`;
-      //     } else {
-      //       paragraphTheStoneActions.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${taintedRoot.name}`;
-      //     }
-      //   } else {
-      //     if (damageDealt === 0) {
-      //       paragraphGungurkActions.innerHTML = `${attacker.name}'s attack failed to hit target ${taintedRoot.name}`;
-      //     } else {
-      //       paragraphGungurkActions.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${taintedRoot.name}`;
-      //     }
-      //   }
-
-      //   if (taintedRoot.hp <= 0) {
-      //     paragraphTaintedRootActions.innerHTML = `Enemy ${taintedRoot.name} was slain!`;
-      //     amountOfEnemies--;
-      //     // if the Tainted Root was grabbing someone, who has not already fallen down into the Chasm
-      //     if (taintedRoot.hasTargetGrappled() && distanceFromChasm > 0) {
-      //       paragraphTaintedRootActions.innerHTML += ` ${target.name} is no longer grappled.`;
-      //     }
-
-      //     distanceFromChasm += 5;
-
-      //     if (allies.indexOf(gungurk) > 0) {
-      //       paragraphGungurkActions.innerHTML += `. ${gungurk.name} steps 5 feet away from the Chasm!`;
-      //     }
-
-      //     paragraphTheStoneActions.innerHTML += `. ${theStone.name} steps 5 feet away from the Chasm!`;
-
-      //     break;
-      //   }
-      // });
     }
   }
 
