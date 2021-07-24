@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dark Awakenings</title>
+    <link rel="stylesheet" href="/dark_awakenings/css/app.css" />
+    <script defer src="js/investigate_the_chasm.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <section>
+        <div class="flavor">
+          <p>
+            The chasm wall ends after about 10 feet, but it opens into a wider
+            area lit by a green light. The light shimmers on running water about
+            20 feet below.
+          </p>
+          <p>
+            On the far side of the chasm dangles a root that could allow easy
+            climbing. You would need to jump about 10 feet to reach that root.
+          </p>
+          <p>
+            Otherwise, the chasm sides look rough, and there's no reason to risk
+            a jump to the chasm's other side other than to make use of the root
+            there.
+          </p>
+        </div>
+        <div class="options">
+          <h2>What would you do?</h2>
+          <ol>
+            <li>
+              <button class="btn" onclick="optionOneWasClicked()">
+                Jump into the chasm.
+              </button>
+            </li>
+            <li>
+              <button class="btn" onclick="optionTwoWasClicked()">
+                Jump to the root.
+              </button>
+            </li>
+            <li>
+              <button class="btn" onclick="optionThreeWasClicked()">
+                Climb down the side of the wall.
+              </button>
+            </li>
+            <li>
+              <!-- This option should only appear if you have a rope -->
+              <button class="btn" onclick="optionFourWasClicked()">
+                Use the rope to climb down.
+              </button>
+            </li>
+            <li>
+              <button class="btn" onclick="optionFiveWasClicked()">
+                Keep exploring the camp.
+              </button>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section>
+        <div id="feedback"></div>
+      </section>
+    </div>
+  </body>
+</html>

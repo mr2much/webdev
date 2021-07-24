@@ -46,6 +46,11 @@ window.addEventListener("load", (e) => {
 function optionOneWasClicked() {
   console.log("Combat started!");
 
+  if (btnAttack !== null) {
+    btnAttack.textContent = "Keep attacking!";
+    btnAttack = null;
+  }
+
   paragraphTaintedRootActions.innerHTML = "";
   paragraphTheStoneActions.innerHTML = "";
   paragraphGungurkActions.innerHTML = "";
@@ -199,49 +204,14 @@ function optionOneWasClicked() {
           break;
         }
       }
-
-      // allies.forEach((attacker) => {
-      //   let damageDealt = gameObj.attack(attacker, taintedRoot);
-
-      //   if (attacker === theStone) {
-      //     if (damageDealt === 0) {
-      //       paragraphTheStoneActions.innerHTML = `${attacker.name}'s attack failed to hit target ${taintedRoot.name}`;
-      //     } else {
-      //       paragraphTheStoneActions.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${taintedRoot.name}`;
-      //     }
-      //   } else {
-      //     if (damageDealt === 0) {
-      //       paragraphGungurkActions.innerHTML = `${attacker.name}'s attack failed to hit target ${taintedRoot.name}`;
-      //     } else {
-      //       paragraphGungurkActions.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${taintedRoot.name}`;
-      //     }
-      //   }
-
-      //   if (taintedRoot.hp <= 0) {
-      //     paragraphTaintedRootActions.innerHTML = `Enemy ${taintedRoot.name} was slain!`;
-      //     amountOfEnemies--;
-      //     // if the Tainted Root was grabbing someone, who has not already fallen down into the Chasm
-      //     if (taintedRoot.hasTargetGrappled() && distanceFromChasm > 0) {
-      //       paragraphTaintedRootActions.innerHTML += ` ${target.name} is no longer grappled.`;
-      //     }
-
-      //     distanceFromChasm += 5;
-
-      //     if (allies.indexOf(gungurk) > 0) {
-      //       paragraphGungurkActions.innerHTML += `. ${gungurk.name} steps 5 feet away from the Chasm!`;
-      //     }
-
-      //     paragraphTheStoneActions.innerHTML += `. ${theStone.name} steps 5 feet away from the Chasm!`;
-
-      //     break;
-      //   }
-      // });
     }
   }
 
   // implement code for when all the enemies are slain, which might imply loading a new screen. Probably enemies_defeated.html or something
   if (amountOfEnemies === 0) {
-    console.log("All enemies were slain!");
+    let newScene = window.open(
+      "/dark_awakenings/encounter1/1a_break/1a_help/1a_escape/1a_fight/you_are_victorious/you_are_victorious.html"
+    );
   }
 
   console.log(`Distance from the Chasm: ${distanceFromChasm}`);
@@ -255,29 +225,6 @@ function pickRandomTarget() {
 
   return allies[randomIndex];
 }
-
-// function attack(attacker, target) {
-//   console.log(
-//     `${attacker.name} is attacking ${target.name} with ${attacker.weapon.name}`
-//   );
-//   let damage = attacker.attack(target);
-//   //   let damage = getTotalDamage(attacker);
-//   target.hp = target.hp - damage;
-//   console.log(`${target.name} received ${damage} points of damage`);
-//   console.log(`${target.hp}`);
-
-//   return damage;
-// }
-
-// function getTotalDamage(attacker) {
-//   let totalDamage = Math.floor(
-//     Math.random() * attacker.weapon.damage +
-//       1 +
-//       Math.max(attacker.strengthMod, attacker.dexterityMod)
-//   );
-
-//   return totalDamage;
-// }
 
 function optionTwoWasClicked() {
   console.log("You ran away!");
