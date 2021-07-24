@@ -297,7 +297,7 @@ const creatures = { players: players, hostiles: hostiles };
 const gameObject = {
   weapons: weapons,
   creatures: creatures,
-  allies: [],
+  party: [],
   enemies: [],
   attack(attacker, target) {
     console.log(
@@ -341,8 +341,8 @@ console.log(gameObject);
 let enemiesCount = 6;
 
 (function () {
-  gameObject.allies.push(Object.create(gameObject.creatures.players.theStone));
-  gameObject.allies.push(Object.create(gameObject.creatures.players.gungurk));
+  gameObject.party.push(Object.create(gameObject.creatures.players.theStone));
+  gameObject.party.push(Object.create(gameObject.creatures.players.gungurk));
 })();
 
 (function () {

@@ -1,11 +1,14 @@
+// we have to use a party variable, if Gungurk falls first, he has to be removed from the party variable, yet, if his HP has not reached zero when we
+// open the next scenario he has to be added back into the party
+
 function optionOneWasClicked() {
   console.log("Jumped into the chasm");
 
-  //   the character has to roll an athletics check
+  //   check if Gungurk still appears as an ally of if he fell first.
 
-  //   if you pass go here
+  //   if he did go here
 
-  //   if you fail go here
+  //   if he is still with you go here
 }
 
 function optionTwoWasClicked() {
