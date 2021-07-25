@@ -1,295 +1,26 @@
+import { punch, handaxe, dagger, longsword, grasp, drag } from "./weapons.js";
+import { theStone, gungurk } from "./characters.js";
+import { taintedRoot } from "./enemies.js";
+
 const weapons = {
-  punch: {
-    name: "Punch",
-    damage: 4,
-    alwaysHit: false,
-  },
-  handaxe: {
-    name: "Handaxe",
-    damage: 6,
-    alwaysHit: false,
-  },
-  dagger: {
-    name: "Dagger",
-    damage: 4,
-    alwaysHit: false,
-  },
-  longsword: {
-    name: "Longsword",
-    damage: 8,
-    alwaysHit: false,
-  },
-  grasp: {
-    name: "Grasp",
-    damage: 4,
-    alwaysHit: false,
-  },
-  drag: {
-    name: "Drag",
-    damage: 2,
-    alwaysHit: true,
-  },
+  punch: punch,
+  handaxe: handaxe,
+  dagger: dagger,
+  longsword: longsword,
+  grasp: grasp,
+  drag: drag,
 };
 
 //TODO: If I implement a level up system. Proficiency Bonus is calculated as:
 // pb = (Level / 4) + 1; rounded up
 
 const players = {
-  theStone: {
-    name: "The Stone",
-    maxHP: 30,
-    hp: 30,
-    armor: 19,
-    proficiencyBonus: 2,
-    strengthMod: 5,
-    dexterityMod: 3,
-    wisdomMod: 0,
-    proficiencyBonus: 2,
-    athletics: true,
-    acrobatics: true,
-    weapon: weapons.punch,
-    getCurrentHP() {
-      return this.hp;
-    },
-    setCurrentHP(hp) {
-      this.hp = hp;
-    },
-    receiveDamage(damage) {
-      this.hp -= damage;
-    },
-    receiveHealing(healing) {
-      this.hp += healing;
-    },
-    attack(target) {
-      let totalDamage = Math.floor(
-        Math.random() * this.weapon.damage +
-          1 +
-          Math.max(this.strengthMod, this.dexterityMod)
-      );
-      console.log(
-        `${this.name} attacks ${target.name} using ${this.weapon.name} and does ${totalDamage}`
-      );
-
-      return totalDamage;
-    },
-    rollAttack() {
-      let attackRoll =
-        Math.floor(
-          Math.random() * 20 + 1 + Math.max(this.strengthMod, this.dexterityMod)
-        ) + 2;
-
-      return attackRoll;
-    },
-    attackHits(roll) {
-      return roll >= this.armor;
-    },
-    equipWeapon(weapon) {
-      this.weapon = weapon;
-    },
-    setStrengthMod(newValue) {
-      this.strengthMod = newValue;
-    },
-    rollAthletics() {
-      if (this.athletics) {
-        return this.strengthMod + this.proficiencyBonus;
-      }
-
-      return this.strengthMod;
-    },
-    rollAcrobatics() {
-      if (this.acrobatics) {
-        return this.dexterityMod + this.proficiencyBonus;
-      }
-
-      return this.dexterityMod;
-    },
-    escapeGrapple() {
-      if (
-        Math.max(this.strengthMod, this.dexterityMod) === this.strengthMod ||
-        athletics
-      ) {
-        return this.rollAthletics();
-      }
-
-      return this.rollAcrobatics();
-    },
-    getStrengthMod() {
-      return this.strengthMod;
-    },
-    getWisdomMod() {
-      return this.wisdomMod;
-    },
-  },
-  gungurk: {
-    name: "Gungurk",
-    maxHP: 26,
-    hp: 26,
-    armor: 16,
-    proficiencyBonus: 2,
-    strengthMod: 2,
-    dexterityMod: 3,
-    wisdomMod: 1,
-    athletics: false,
-    acrobatics: true,
-    weapon: weapons.dagger,
-    getCurrentHP() {
-      return this.hp;
-    },
-    setCurrentHP(hp) {
-      this.hp = hp;
-    },
-    receiveDamage(damage) {
-      this.hp -= damage;
-    },
-    receiveHealing(healing) {
-      this.hp += healing;
-    },
-    attack(target) {
-      let totalDamage = Math.floor(
-        Math.random() * this.weapon.damage +
-          1 +
-          Math.max(this.strengthMod, this.dexterityMod)
-      );
-      console.log(
-        `${this.name} attacks ${target.name} using ${this.weapon.name} and does ${totalDamage}`
-      );
-
-      return totalDamage;
-    },
-    rollAttack() {
-      let attackRoll =
-        Math.floor(
-          Math.random() * 20 + 1 + Math.max(this.strengthMod, this.dexterityMod)
-        ) + 2;
-
-      return attackRoll;
-    },
-    attackHits(roll) {
-      return roll >= this.armor;
-    },
-    setStrengthMod(newValue) {
-      this.strengthMod = newValue;
-    },
-    rollAthletics() {
-      if (this.athletics) {
-        return this.strengthMod + this.proficiencyBonus;
-      }
-
-      return this.strengthMod;
-    },
-    rollAcrobatics() {
-      if (this.acrobatics) {
-        return this.dexterityMod + this.proficiencyBonus;
-      }
-
-      return this.dexterityMod;
-    },
-    escapeGrapple() {
-      if (
-        Math.max(this.strengthMod, this.dexterityMod) === this.strengthMod ||
-        athletics
-      ) {
-        return this.rollAthletics();
-      }
-
-      return this.rollAcrobatics();
-    },
-    getStrengthMod() {
-      return this.strengthMod;
-    },
-    getWisdomMod() {
-      return this.wisdomMod;
-    },
-  },
+  theStone: theStone,
+  gungurk: gungurk,
 };
 
 const hostiles = {
-  taintedRoot: {
-    name: "Tainted Root",
-    maxHP: 30,
-    hp: 30,
-    armor: 15,
-    proficiencyBonus: 2,
-    strengthMod: 2,
-    dexterityMod: 3,
-    wisdomMod: 1,
-    athletics: true,
-    acrobatics: false,
-    weapon: weapons.grasp,
-    targetGrappled: false,
-    target: {},
-    hasTargetGrappled() {
-      return this.targetGrappled;
-    },
-    grabTarget(target) {
-      this.target = target;
-    },
-    getCurrentHP() {
-      return this.hp;
-    },
-    setCurrentHP(hp) {
-      this.hp = hp;
-    },
-    receiveDamage(damage) {
-      this.hp -= damage;
-    },
-    receiveHealing(healing) {
-      this.hp += healing;
-    },
-    attack(target) {
-      let totalDamage = Math.floor(
-        Math.random() * this.weapon.damage +
-          1 +
-          Math.max(this.strengthMod, this.dexterityMod)
-      );
-      console.log(
-        `${this.name} attacks ${target.name} using ${this.weapon.name} and does ${totalDamage}`
-      );
-
-      return totalDamage;
-    },
-    rollAttack() {
-      let attackRoll =
-        Math.floor(
-          Math.random() * 20 + 1 + Math.max(this.strengthMod, this.dexterityMod)
-        ) + 2;
-
-      return attackRoll;
-    },
-    attackHits(roll) {
-      return roll >= this.armor;
-    },
-    setStrengthMod(newValue) {
-      this.strengthMod = newValue;
-    },
-    rollAthletics() {
-      if (this.athletics) {
-        return this.strengthMod + this.proficiencyBonus;
-      }
-
-      return this.strengthMod;
-    },
-    rollAcrobatics() {
-      if (this.acrobatics) {
-        return this.dexterityMod + this.proficiencyBonus;
-      }
-
-      return this.dexterityMod;
-    },
-    escapeGrapple() {
-      if (Math.max(this.strengthMod, this.dexterityMod) === this.strengthMod) {
-        return this.rollAthletics();
-      }
-
-      return this.rollAcrobatics();
-    },
-    getStrengthMod() {
-      return this.strengthMod;
-    },
-    getWisdomMod() {
-      return this.wisdomMod;
-    },
-  },
+  taintedRoot: taintedRoot,
 };
 
 const creatures = { players: players, hostiles: hostiles };
@@ -352,6 +83,10 @@ let enemiesCount = 6;
     );
   }
 })();
+
+window.optionOneWasClicked = optionOneWasClicked;
+window.optionTwoWasClicked = optionTwoWasClicked;
+window.optionThreeWasClicked = optionThreeWasClicked;
 
 function optionOneWasClicked() {
   console.log("Option1 was clicked");
