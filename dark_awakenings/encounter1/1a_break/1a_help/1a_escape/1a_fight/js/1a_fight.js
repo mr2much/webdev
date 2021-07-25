@@ -33,7 +33,9 @@ window.addEventListener("load", (e) => {
 
   allies.unshift(gungurk);
   allies.unshift(theStone);
-  taintedRoot.hp = 0;
+  taintedRoot = enemies.shift();
+  target = pickRandomTarget();
+  // taintedRoot.hp = 0;
 
   display.insertBefore(
     paragraphTaintedRootActions,
@@ -56,7 +58,7 @@ function optionOneWasClicked() {
   paragraphGungurkActions.innerHTML = "";
 
   if (amountOfEnemies > 0) {
-    if (taintedRoot.hp <= 0) {
+    if (taintedRoot.isDead()) {
       taintedRoot = enemies.shift();
       target = pickRandomTarget();
 
@@ -82,6 +84,8 @@ function optionOneWasClicked() {
         if (distanceFromChasm <= 0) {
           paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
 
+          // if The Stone falls, I have to disable all buttons for the options
+
           if (target === theStone) {
             console.log(`${target.name} fell`);
             paragraphTheStoneActions.innerHTML = `${theStone.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the the remaining 5 feet over the edge.`;
@@ -91,7 +95,7 @@ function optionOneWasClicked() {
 
             paragraphTheStoneActions.innerHTML += `<br>${theStone.name} receives ${fallDamage} of damage from the fall.`;
 
-            if (target.hp === 0) {
+            if (target.hp <= 0) {
               // load dead scenario
             } else {
               //   Must make a pause
@@ -112,7 +116,7 @@ function optionOneWasClicked() {
                     this.gameObject = gameObj;
                   };
                 }
-              }, 10000);
+              }, 6000);
               return;
             }
           } else {
@@ -181,7 +185,7 @@ function optionOneWasClicked() {
 
         console.log(`HP: ${taintedRoot.hp}`);
 
-        if (taintedRoot.hp <= 0) {
+        if (taintedRoot.isDead()) {
           paragraphTaintedRootActions.innerHTML = `Enemy ${taintedRoot.name} was slain!`;
           amountOfEnemies--;
           // if the Tainted Root was grabbing someone, who has not already fallen down into the Chasm
@@ -212,6 +216,10 @@ function optionOneWasClicked() {
     let newScene = window.open(
       "/dark_awakenings/encounter1/1a_break/1a_help/1a_escape/1a_fight/you_are_victorious/you_are_victorious.html"
     );
+
+    newScene.onload = function () {
+      this.gameObject = gameObj;
+    };
   }
 
   console.log(`Distance from the Chasm: ${distanceFromChasm}`);

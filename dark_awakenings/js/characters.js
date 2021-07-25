@@ -1,0 +1,171 @@
+import { punch, handaxe, dagger, longsword, grasp, drag } from "./weapons.js";
+
+const theStone = {
+  name: "The Stone",
+  maxHP: 30,
+  hp: 30,
+  armor: 19,
+  proficiencyBonus: 2,
+  strengthMod: 5,
+  dexterityMod: 3,
+  wisdomMod: 0,
+  proficiencyBonus: 2,
+  athletics: true,
+  acrobatics: true,
+  weapon: punch,
+  getCurrentHP() {
+    return this.hp;
+  },
+  setCurrentHP(hp) {
+    this.hp = hp;
+  },
+  receiveDamage(damage) {
+    this.hp -= damage;
+  },
+  receiveHealing(healing) {
+    this.hp += healing;
+  },
+  attack(target) {
+    let totalDamage = Math.floor(
+      Math.random() * this.weapon.damage +
+        1 +
+        Math.max(this.strengthMod, this.dexterityMod)
+    );
+    console.log(
+      `${this.name} attacks ${target.name} using ${this.weapon.name} and does ${totalDamage}`
+    );
+
+    return totalDamage;
+  },
+  rollAttack() {
+    let attackRoll =
+      Math.floor(
+        Math.random() * 20 + 1 + Math.max(this.strengthMod, this.dexterityMod)
+      ) + 2;
+
+    return attackRoll;
+  },
+  attackHits(roll) {
+    return roll >= this.armor;
+  },
+  equipWeapon(weapon) {
+    this.weapon = weapon;
+  },
+  setStrengthMod(newValue) {
+    this.strengthMod = newValue;
+  },
+  rollAthletics() {
+    if (this.athletics) {
+      return this.strengthMod + this.proficiencyBonus;
+    }
+
+    return this.strengthMod;
+  },
+  rollAcrobatics() {
+    if (this.acrobatics) {
+      return this.dexterityMod + this.proficiencyBonus;
+    }
+
+    return this.dexterityMod;
+  },
+  escapeGrapple() {
+    if (
+      Math.max(this.strengthMod, this.dexterityMod) === this.strengthMod ||
+      athletics
+    ) {
+      return this.rollAthletics();
+    }
+
+    return this.rollAcrobatics();
+  },
+  getStrengthMod() {
+    return this.strengthMod;
+  },
+  getWisdomMod() {
+    return this.wisdomMod;
+  },
+};
+
+const gungurk = {
+  name: "Gungurk",
+  maxHP: 26,
+  hp: 26,
+  armor: 16,
+  proficiencyBonus: 2,
+  strengthMod: 2,
+  dexterityMod: 3,
+  wisdomMod: 1,
+  athletics: false,
+  acrobatics: true,
+  weapon: dagger,
+  getCurrentHP() {
+    return this.hp;
+  },
+  setCurrentHP(hp) {
+    this.hp = hp;
+  },
+  receiveDamage(damage) {
+    this.hp -= damage;
+  },
+  receiveHealing(healing) {
+    this.hp += healing;
+  },
+  attack(target) {
+    let totalDamage = Math.floor(
+      Math.random() * this.weapon.damage +
+        1 +
+        Math.max(this.strengthMod, this.dexterityMod)
+    );
+    console.log(
+      `${this.name} attacks ${target.name} using ${this.weapon.name} and does ${totalDamage}`
+    );
+
+    return totalDamage;
+  },
+  rollAttack() {
+    let attackRoll =
+      Math.floor(
+        Math.random() * 20 + 1 + Math.max(this.strengthMod, this.dexterityMod)
+      ) + 2;
+
+    return attackRoll;
+  },
+  attackHits(roll) {
+    return roll >= this.armor;
+  },
+  setStrengthMod(newValue) {
+    this.strengthMod = newValue;
+  },
+  rollAthletics() {
+    if (this.athletics) {
+      return this.strengthMod + this.proficiencyBonus;
+    }
+
+    return this.strengthMod;
+  },
+  rollAcrobatics() {
+    if (this.acrobatics) {
+      return this.dexterityMod + this.proficiencyBonus;
+    }
+
+    return this.dexterityMod;
+  },
+  escapeGrapple() {
+    if (
+      Math.max(this.strengthMod, this.dexterityMod) === this.strengthMod ||
+      athletics
+    ) {
+      return this.rollAthletics();
+    }
+
+    return this.rollAcrobatics();
+  },
+  getStrengthMod() {
+    return this.strengthMod;
+  },
+  getWisdomMod() {
+    return this.wisdomMod;
+  },
+};
+
+export { theStone, gungurk };

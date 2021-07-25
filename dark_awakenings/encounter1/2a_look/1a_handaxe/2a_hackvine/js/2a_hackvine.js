@@ -32,8 +32,8 @@ function optionOneWasClicked() {
       "Despite your best efforts, the vine is still alive.<br><br>You hear Gungurk screaming behind you:<br><br>'Hurry up, precious! Hurry!'";
 
     combat();
-
-    if (taintedRoot.hp <= 0) {
+    if (taintedRoot.isDead()) {
+      // if (taintedRoot.hp <= 0) {
       console.log(`Enemy ${taintedRoot.name} was slain!`);
       let newScene = window.open(
         "/dark_awakenings/encounter1/1a_break/1a_break_success.html"
