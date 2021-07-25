@@ -237,3 +237,11 @@ function pickRandomTarget() {
 function optionTwoWasClicked() {
   console.log("You ran away!");
 }
+
+function optionThreeWasClicked() {
+  console.log("You attempt to break free from the vine");
+}
+
+function optionFourWasClicked() {
+  console.log("You step 5 feet away from the chasm.");
+}
