@@ -32,7 +32,7 @@ function optionOneWasClicked() {
 
     combat();
 
-    if (taintedRoot.hp <= 0) {
+    if (taintedRoot.isDead()) {
       console.log(`Enemy ${taintedRoot.name} was slain!`);
       let newScene = window.open(
         "/dark_awakenings/encounter1/1a_break/1a_help/1a_escape/1a_escape_success.html"

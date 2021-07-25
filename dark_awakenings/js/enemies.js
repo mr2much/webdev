@@ -14,6 +14,9 @@ const taintedRoot = {
   weapon: grasp,
   targetGrappled: false,
   target: {},
+  isDead() {
+    return this.hp <= 0;
+  },
   hasTargetGrappled() {
     return this.targetGrappled;
   },

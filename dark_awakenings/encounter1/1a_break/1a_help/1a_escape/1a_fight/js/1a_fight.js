@@ -33,7 +33,9 @@ window.addEventListener("load", (e) => {
 
   allies.unshift(gungurk);
   allies.unshift(theStone);
-  taintedRoot.hp = 0;
+  taintedRoot = enemies.shift();
+  target = pickRandomTarget();
+  // taintedRoot.hp = 0;
 
   display.insertBefore(
     paragraphTaintedRootActions,
@@ -56,7 +58,7 @@ function optionOneWasClicked() {
   paragraphGungurkActions.innerHTML = "";
 
   if (amountOfEnemies > 0) {
-    if (taintedRoot.hp <= 0) {
+    if (taintedRoot.isDead()) {
       taintedRoot = enemies.shift();
       target = pickRandomTarget();
 
@@ -93,7 +95,7 @@ function optionOneWasClicked() {
 
             paragraphTheStoneActions.innerHTML += `<br>${theStone.name} receives ${fallDamage} of damage from the fall.`;
 
-            if (target.hp === 0) {
+            if (target.hp <= 0) {
               // load dead scenario
             } else {
               //   Must make a pause
@@ -183,7 +185,7 @@ function optionOneWasClicked() {
 
         console.log(`HP: ${taintedRoot.hp}`);
 
-        if (taintedRoot.hp <= 0) {
+        if (taintedRoot.isDead()) {
           paragraphTaintedRootActions.innerHTML = `Enemy ${taintedRoot.name} was slain!`;
           amountOfEnemies--;
           // if the Tainted Root was grabbing someone, who has not already fallen down into the Chasm
