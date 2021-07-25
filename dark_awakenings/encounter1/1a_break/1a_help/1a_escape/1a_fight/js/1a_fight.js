@@ -82,6 +82,8 @@ function optionOneWasClicked() {
         if (distanceFromChasm <= 0) {
           paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
 
+          // if The Stone falls, I have to disable all buttons for the options
+
           if (target === theStone) {
             console.log(`${target.name} fell`);
             paragraphTheStoneActions.innerHTML = `${theStone.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the the remaining 5 feet over the edge.`;
@@ -112,7 +114,7 @@ function optionOneWasClicked() {
                     this.gameObject = gameObj;
                   };
                 }
-              }, 10000);
+              }, 6000);
               return;
             }
           } else {
@@ -212,6 +214,10 @@ function optionOneWasClicked() {
     let newScene = window.open(
       "/dark_awakenings/encounter1/1a_break/1a_help/1a_escape/1a_fight/you_are_victorious/you_are_victorious.html"
     );
+
+    newScene.onload = function () {
+      this.gameObject = gameObj;
+    };
   }
 
   console.log(`Distance from the Chasm: ${distanceFromChasm}`);
