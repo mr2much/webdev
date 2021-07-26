@@ -2,6 +2,7 @@ import { punch, handaxe, dagger, longsword, grasp, drag } from "./weapons.js";
 import { theStone, gungurk } from "./characters.js";
 import { taintedRoot } from "./enemies.js";
 
+//TODO: move this to weapons.js
 const weapons = {
   punch: punch,
   handaxe: handaxe,
@@ -14,17 +15,20 @@ const weapons = {
 //TODO: If I implement a level up system. Proficiency Bonus is calculated as:
 // pb = (Level / 4) + 1; rounded up
 
+//TODO: move this to characters.js
 const players = {
   theStone: theStone,
   gungurk: gungurk,
 };
 
+//TODO: move this to enemies.js
 const hostiles = {
   taintedRoot: taintedRoot,
 };
 
 const creatures = { players: players, hostiles: hostiles };
 
+//TODO: move this to its own separate file, possibly game.js
 const gameObject = {
   weapons: weapons,
   creatures: creatures,
@@ -84,30 +88,38 @@ let enemiesCount = 6;
   }
 })();
 
+let olChoices = document.getElementById("choices");
+let liOneTimeChoice = document.getElementById("one-time-choice");
+let divFlavor = document.getElementsByClassName("flavor")[0];
+let newParagraph = document.createElement("p");
+
 window.optionOneWasClicked = optionOneWasClicked;
 window.optionTwoWasClicked = optionTwoWasClicked;
 window.optionThreeWasClicked = optionThreeWasClicked;
 
 function optionOneWasClicked() {
   console.log("Option1 was clicked");
+  let taintedRoot = gameObject.enemies.shift();
   let dice = 20;
   let stoneCheck = doStrengthCheck(theStone, dice);
-  let rootCheck = doStrengthCheck(enemies[0], dice);
+  let rootCheck = doStrengthCheck(taintedRoot, dice);
 
   console.log("The Stone: " + stoneCheck);
   console.log("Root: " + rootCheck);
 
   if (true) {
-    var newScene = window.open("encounter1/1a_break/1a_break_success.html");
-  } else {
-    window.open("encounter1/1a_break/1a_break_fail.html");
-  }
+    let newScene = window.open("encounter1/1a_break/1a_break_success.html");
 
-  //   if (stoneCheck >= rootCheck) {
-  //     window.open("chapter1/encounter1 - choice1a.html");
-  //   } else {
-  //     window.open("chapter1/encounter1 - choice1b.html");
-  //   }
+    newScene.onload = function () {
+      this.gameObject = gameObject;
+    };
+  } else {
+    let newScene = window.open("encounter1/1a_break/1a_break_fail.html");
+
+    newScene.onload = function () {
+      this.gameObject = gameObject;
+    };
+  }
 }
 
 function doStrengthCheck(character, faces) {
@@ -133,7 +145,14 @@ function optionThreeWasClicked() {
   if (survivalCheck >= 15) {
     console.log("YOU PASS WISDOM CHECK");
   } else {
-    console.log("YOU FAIL WISDOM CHECK");
+    // clear all the flavor text
+    divFlavor.innerHTML = "";
+    // you learn nothing useful and this option disappears
+    newParagraph.innerHTML =
+      "You are too confused by these events to think straight. The only thing you know for sure is that this vine is pulling you towards the chasm, and that you have to do something, and do it now!";
+    divFlavor.insertBefore(newParagraph, divFlavor.lastChild);
+    console.log("You learn nothing useful");
+    olChoices.removeChild(liOneTimeChoice);
   }
 }
 

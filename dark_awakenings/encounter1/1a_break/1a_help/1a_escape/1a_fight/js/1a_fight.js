@@ -6,7 +6,6 @@ let taintedRoot = {};
 let graspWeapon = {};
 let dragWeapon = {};
 let enemies = [];
-let btnAttack = document.getElementById("btnAttack");
 let paragraph = document.getElementById("narration");
 let flavorText = document.getElementsByClassName("flavor")[0];
 let distanceFromChasm = 15;
@@ -16,8 +15,16 @@ let paragraphTaintedRootActions = document.createElement("p");
 let paragraphTheStoneActions = document.createElement("p");
 let paragraphGungurkActions = document.createElement("p");
 
+let btnAttack = document.getElementById("btnAttack");
+let btnBreak = document.getElementById("break");
+let btnSideStep = document.getElementById("side-step");
+
 window.addEventListener("load", (e) => {
   gameObj = gameObject;
+
+  disableBreakButton();
+  // btnBreak.disabled = true;
+  // btnBreak.classList.add("noHover");
 
   enemies = gameObj.enemies;
   amountOfEnemies = enemies.length;
@@ -33,17 +40,31 @@ window.addEventListener("load", (e) => {
 
   allies.unshift(gungurk);
   allies.unshift(theStone);
+
   taintedRoot = enemies.shift();
   target = pickRandomTarget();
+
+  paragraph.innerHTML += `<br><br>There are still ${amountOfEnemies} enemies left. You both tighten the grip on your weapons and attack them. One of the ${taintedRoot.name}s lashes at ${target.name}!`;
   // taintedRoot.hp = 0;
 
   display.insertBefore(
     paragraphTaintedRootActions,
     display.lastChild.nextSibling
   );
+
   display.insertBefore(paragraphTheStoneActions, display.lastChild.nextSibling);
   display.insertBefore(paragraphGungurkActions, display.lastChild.nextSibling);
 });
+
+function disableBreakButton() {
+  if (!btnBreak.disabled) {
+    btnBreak.disabled = true;
+  }
+
+  if (!btnBreak.classList.contains("noHover")) {
+    btnBreak.classList.add("noHover");
+  }
+}
 
 function optionOneWasClicked() {
   console.log("Combat started!");
@@ -153,13 +174,17 @@ function optionOneWasClicked() {
             paragraphTaintedRootActions.innerHTML += ` and he immediately walks 5 feet away from the threatening Chasm up ahead.`;
           }
         } else {
-          paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} grabs ${target.name}, dealing ${taintedRootDamage} points of damage with its vines!`;
+          paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} grabs ${target.name}, dealing ${taintedRootDamage} points of damage with its vines! ${target.name} is now grabbed!`;
 
           // if the attack connects, then the target is grabbed, and the tainted root will start dragging it towards the chasm
           if (!taintedRoot.hasTargetGrappled()) {
             taintedRoot.weapon = dragWeapon;
             taintedRoot.target = target;
             taintedRoot.targetGrappled = true;
+
+            enableBreakButton();
+            // btnBreak.disabled = false;
+            // btnBreak.classList.remove("noHover");
           }
         }
       }
@@ -223,6 +248,16 @@ function optionOneWasClicked() {
   }
 
   console.log(`Distance from the Chasm: ${distanceFromChasm}`);
+}
+
+function enableBreakButton() {
+  if (btnBreak.disabled) {
+    btnBreak.disabled = false;
+  }
+
+  if (btnBreak.classList.contains("noHover")) {
+    btnBreak.classList.remove("noHover");
+  }
 }
 
 function pickRandomTarget() {
