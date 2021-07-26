@@ -141,19 +141,24 @@ function optionTwoWasClicked() {
 
 function optionThreeWasClicked() {
   let dice = 20;
+  // clear all the flavor text
+  divFlavor.innerHTML = "";
+
   let survivalCheck = doSurvivalCheck(theStone, dice);
+
   if (survivalCheck >= 15) {
-    console.log("YOU PASS WISDOM CHECK");
+    newParagraph.innerHTML =
+      "These black roots are natural roots tainted by some foul magic, and they're mindless. They likely have a central control in some larger plantlike entity. Killing that creature is likely to render these roots harmless again.";
+    console.log("YOU PASS YOUR WISDOM CHECK");
   } else {
-    // clear all the flavor text
-    divFlavor.innerHTML = "";
     // you learn nothing useful and this option disappears
     newParagraph.innerHTML =
       "You are too confused by these events to think straight. The only thing you know for sure is that this vine is pulling you towards the chasm, and that you have to do something, and do it now!";
-    divFlavor.insertBefore(newParagraph, divFlavor.lastChild);
-    console.log("You learn nothing useful");
-    olChoices.removeChild(liOneTimeChoice);
+    console.log("YOU FAIL YOUR WISDOM CHECK");
   }
+
+  divFlavor.insertBefore(newParagraph, divFlavor.lastChild);
+  olChoices.removeChild(liOneTimeChoice);
 }
 
 function doSurvivalCheck(character, faces) {
