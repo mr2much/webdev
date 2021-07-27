@@ -13,6 +13,9 @@ const theStone = {
   athletics: true,
   acrobatics: true,
   weapon: punch,
+  isDead() {
+    return this.getCurrentHP() <= 0;
+  },
   getCurrentHP() {
     return this.hp;
   },

@@ -50,7 +50,7 @@
         </div>
         <div class="options">
           <h2>What would you do?</h2>
-          <ol>
+          <ol id="choices">
             <li>
               <button class="btn" onclick="optionOneWasClicked()">
                 Try to break free from the vines
@@ -66,16 +66,16 @@
                 >Look around</a
               > -->
             </li>
-            <li>
+            <li id="one-time-choice">
               <button class="btn" onclick="optionThreeWasClicked()">
-                Ask Gungurk for help!
+                Assess your current situation
               </button>
             </li>
           </ol>
         </div>
       </section>
       <section>
-        <div id="feedback"></div>
+        <div id="feedback"><h2>Output</h2></div>
       </section>
     </div>
   </body>
