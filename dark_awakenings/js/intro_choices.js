@@ -91,7 +91,10 @@ let enemiesCount = 6;
 let olChoices = document.getElementById("choices");
 let liOneTimeChoice = document.getElementById("one-time-choice");
 let divFlavor = document.getElementsByClassName("flavor")[0];
+let divFeedback = document.getElementById("feedback");
 let newParagraph = document.createElement("p");
+let displayParagraph = document.createElement("p");
+let distanceFromChasm = 20;
 
 window.optionOneWasClicked = optionOneWasClicked;
 window.optionTwoWasClicked = optionTwoWasClicked;
@@ -103,22 +106,57 @@ function optionOneWasClicked() {
   let dice = 20;
   let stoneCheck = doStrengthCheck(theStone, dice);
   let rootCheck = doStrengthCheck(taintedRoot, dice);
+  rootCheck = 40;
 
   console.log("The Stone: " + stoneCheck);
   console.log("Root: " + rootCheck);
 
-  if (true) {
+  if (stoneCheck >= rootCheck) {
     let newScene = window.open("encounter1/1a_break/1a_break_success.html");
 
     newScene.onload = function () {
       this.gameObject = gameObject;
     };
   } else {
-    let newScene = window.open("encounter1/1a_break/1a_break_fail.html");
+    distanceFromChasm -= 5;
+    divFlavor.innerHTML = "";
+    newParagraph.innerHTML = `You trash and struggle, trying to break free from the vines's grasp, but as you do so, the vine tightens around you and pulls you 5 feet closer towards the chasm!`;
+    divFlavor.insertBefore(newParagraph, divFlavor.lastChild);
 
-    newScene.onload = function () {
-      this.gameObject = gameObject;
-    };
+    if (distanceFromChasm < 5) {
+      console.log(`${theStone.name} fell`);
+
+      // display message showing that you fell down
+      displayParagraph.innerHTML = `${theStone.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the the remaining 5 feet over the edge.`;
+
+      let fallDamage = Math.floor(Math.random() * 10 + 1);
+      theStone.receiveDamage(fallDamage);
+
+      displayParagraph.innerHTML += `<br>${theStone.name} receives ${fallDamage} of damage from the fall.`;
+
+      if (theStone.isDead()) {
+        // load dead scenario
+      } else {
+        // wait a couple of seconds
+        setTimeout(() => {
+          // load new scene
+          let newScene = window.open(
+            "/dark_awakenings/encounter2/stone_fell.html"
+          );
+          newScene.onload = function () {
+            this.gameObject = gameObject;
+          };
+        }, 6000);
+        return;
+      }
+    } else {
+      displayParagraph.textContent = `You are now ${distanceFromChasm} away from the edge of the chasm`;
+    }
+
+    divFeedback.insertBefore(
+      displayParagraph,
+      divFeedback.lastChild.nextSibling
+    );
   }
 }
 
