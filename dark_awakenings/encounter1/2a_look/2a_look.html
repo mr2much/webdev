@@ -36,7 +36,7 @@
         </div>
         <div class="options">
           <h2>What would you do?</h2>
-          <ol>
+          <ol id="choices">
             <li>
               <button class="btn" onclick="optionOneWasClicked()">
                 Grab the hand axe
@@ -47,13 +47,16 @@
                 Try to break free from the vines
               </button>
             </li>
-            <li>
-              <a class="btn" target="_blank" href=""
-                >Allow the vine to drag you closer, and grab on to the tent</a
-              >
+            <li id="one-time-choice">
+              <button class="btn" onclick="optionThreeWasClicked()">
+                Allow the vine to drag you closer, and grab on to the tent
+              </button>
             </li>
           </ol>
         </div>
+      </section>
+      <section>
+        <div id="feedback"><h2>Output</h2></div>
       </section>
     </div>
   </body>

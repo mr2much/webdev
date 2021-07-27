@@ -106,7 +106,6 @@ function optionOneWasClicked() {
   let dice = 20;
   let stoneCheck = doStrengthCheck(theStone, dice);
   let rootCheck = doStrengthCheck(taintedRoot, dice);
-  rootCheck = 40;
 
   console.log("The Stone: " + stoneCheck);
   console.log("Root: " + rootCheck);
