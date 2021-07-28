@@ -13,3 +13,11 @@ function optionOneWasClicked() {
     this.gameObject = gameObj;
   };
 }
+
+function optionTwoWasClicked() {
+  console.log("You ran away with Gungurk");
+}
+
+function optionThreeWasClicked() {
+  console.log("You assess the situation");
+}

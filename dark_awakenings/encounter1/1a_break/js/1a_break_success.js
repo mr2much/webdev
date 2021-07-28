@@ -23,13 +23,14 @@ window.addEventListener("load", (e) => {
 function optionOneWasClicked() {
   console.log("You help Gungurk");
 
+  taintedRoot.targetGrappled = false;
   let newScene;
 
   if (hasAxe(theStone)) {
     console.log(`${theStone.name} has ${theStone.weapon.name}`);
     newScene = window.open("1a_help/1a_help_axe.html");
   } else {
-    newScene = window.open("1a_help_unarmed.html");
+    newScene = window.open("1a_help/1a_help_unarmed.html");
   }
 
   newScene.onload = function () {
