@@ -21,6 +21,7 @@ const taintedRoot = {
     return this.targetGrappled;
   },
   grabTarget(target) {
+    this.targetGrappled = true;
     this.target = target;
   },
   getCurrentHP() {

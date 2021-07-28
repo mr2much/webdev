@@ -94,7 +94,7 @@ let divFlavor = document.getElementsByClassName("flavor")[0];
 let divFeedback = document.getElementById("feedback");
 let newParagraph = document.createElement("p");
 let displayParagraph = document.createElement("p");
-let distanceFromChasm = 20;
+let distanceFromChasm = 20; // distance should be part of the game object
 
 window.optionOneWasClicked = optionOneWasClicked;
 window.optionTwoWasClicked = optionTwoWasClicked;
@@ -106,7 +106,6 @@ function optionOneWasClicked() {
   let dice = 20;
   let stoneCheck = doStrengthCheck(theStone, dice);
   let rootCheck = doStrengthCheck(taintedRoot, dice);
-  rootCheck = 40;
 
   console.log("The Stone: " + stoneCheck);
   console.log("Root: " + rootCheck);
