@@ -11,9 +11,7 @@ function optionTwoWasClicked() {
 function optionThreeWasClicked() {
   console.log("You search the campsite");
 
-  let newScene = window.open(
-    "/dark_awakenings/encounter1/conclusions/you_search_the_camp.html"
-  );
+  let newScene = window.open("encounter1/conclusions/you_search_the_camp.html");
 
   newScene.onload = function () {
     this.gameObject = gameObj;

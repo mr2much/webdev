@@ -168,9 +168,7 @@ function rollDie(faces) {
 }
 
 function optionTwoWasClicked() {
-  let newScene = window.open(
-    "/dark_awakenings/encounter1/2a_look/2a_look.html"
-  );
+  let newScene = window.open("encounter1/2a_look/2a_look.html");
   newScene.onload = function () {
     this.gameObject = gameObject;
   };
