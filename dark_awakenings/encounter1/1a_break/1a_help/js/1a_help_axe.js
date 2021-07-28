@@ -34,9 +34,7 @@ function optionOneWasClicked() {
 
     if (taintedRoot.isDead()) {
       console.log(`Enemy ${taintedRoot.name} was slain!`);
-      let newScene = window.open(
-        "/dark_awakenings/encounter1/1a_break/1a_help/1a_escape/1a_escape_success.html"
-      );
+      let newScene = window.open("1a_escape/1a_escape_success.html");
 
       newScene.onload = function () {
         this.gameObject = gameObj;
