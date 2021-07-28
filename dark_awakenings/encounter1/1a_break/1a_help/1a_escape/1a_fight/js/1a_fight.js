@@ -238,9 +238,7 @@ function optionOneWasClicked() {
 
   // implement code for when all the enemies are slain, which might imply loading a new screen. Probably enemies_defeated.html or something
   if (amountOfEnemies === 0) {
-    let newScene = window.open(
-      "/dark_awakenings/encounter1/1a_break/1a_help/1a_escape/1a_fight/you_are_victorious/you_are_victorious.html"
-    );
+    let newScene = window.open("you_are_victorious/you_are_victorious.html");
 
     newScene.onload = function () {
       this.gameObject = gameObj;
