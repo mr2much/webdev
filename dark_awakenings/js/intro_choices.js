@@ -94,7 +94,7 @@ let divFlavor = document.getElementsByClassName("flavor")[0];
 let divFeedback = document.getElementById("feedback");
 let newParagraph = document.createElement("p");
 let displayParagraph = document.createElement("p");
-let distanceFromChasm = 20;
+let distanceFromChasm = 20; // distance should be part of the game object
 
 window.optionOneWasClicked = optionOneWasClicked;
 window.optionTwoWasClicked = optionTwoWasClicked;
