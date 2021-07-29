@@ -57,7 +57,7 @@ function optionTwoWasClicked() {
 
     console.log("You escaped alone");
     let newScene = window.open(
-      "/dark_awakenings/encounter1/conclusions/the_stone_escaped_alone.html"
+      "../../conclusions/the_stone_escaped_alone.html"
     );
 
     newScene.onload = function () {
