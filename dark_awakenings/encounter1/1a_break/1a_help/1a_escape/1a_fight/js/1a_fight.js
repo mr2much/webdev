@@ -100,13 +100,18 @@ function optionOneWasClicked() {
       let taintedRootDamage = gameObj.attack(taintedRoot, target);
 
       if (taintedRoot.weapon === dragWeapon) {
-        distanceFromChasm -= 5;
+        // when the weapon is dragWeapon, the attack always hits, so the Tainted Root always deals damage with it
+        // TODO: We are passing the taintedRootDamage temporarily, since the damage is being dealt when we call gameObj.attack(), to avoid dealing damage to the target twice
+        // have to remove the call to the attack function from outside this if, and call it in pullTargetCloserToTheChasm() instead
+        // distanceFromChasm -= 5;
+        pullTargetCloserToTheChasm(taintedRoot, target, taintedRootDamage);
 
         if (distanceFromChasm <= 0) {
           paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
 
           // if The Stone falls, I have to disable all buttons for the options
 
+          console.log(`Target: ${target.name} fell`);
           if (target === theStone) {
             console.log(`${target.name} fell`);
             paragraphTheStoneActions.innerHTML = `${theStone.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the the remaining 5 feet over the edge.`;
@@ -158,9 +163,10 @@ function optionOneWasClicked() {
             let index = allies.indexOf(target);
             allies.splice(index, 1);
           }
-        } else {
-          paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet closer to the Chasm, dealing ${taintedRootDamage} points of damage. ${target.name} is now ${distanceFromChasm} away from the edge!`;
         }
+        //  else {
+        //   paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet closer to the Chasm, dealing ${taintedRootDamage} points of damage. ${target.name} is now ${distanceFromChasm} away from the edge!`;
+        // }
 
         // must contemplate a scenario where both allies die. If the number of allies reaches zero, must open the Game Over screen
       } else {
@@ -249,6 +255,18 @@ function optionOneWasClicked() {
   console.log(`Distance from the Chasm: ${distanceFromChasm}`);
 }
 
+function pullTargetCloserToTheChasm(attacker, target, damage) {
+  // TODO: roll the drag damage in here instead
+  // let taintedRootDamage = gameObj.attack(attacker, target);
+
+  distanceFromChasm -= 5;
+  paragraphTaintedRootActions.innerHTML = `The enemy ${attacker.name} drags ${target.name} 5 feet closer to the Chasm, dealing ${damage} points of damage. ${target.name} is now ${distanceFromChasm} away from the edge!`;
+
+  console.log(
+    `Enemy ${attacker.name} pulls ${attacker.target.name} closer to the chasm`
+  );
+}
+
 function enableBreakButton() {
   if (btnBreak.disabled) {
     btnBreak.disabled = false;
@@ -274,6 +292,71 @@ function optionTwoWasClicked() {
 
 function optionThreeWasClicked() {
   console.log("You attempt to break free from the vine");
+  attemptToEscapeGrapple(taintedRoot.target);
+}
+
+function attemptToEscapeGrapple(target) {
+  console.log(
+    `${target.name} is attempting to break free from the ${taintedRoot.name}'s grasp!`
+  );
+
+  const escapeCheck = grappleContest(target);
+  const contestedCheck = grappleContest(taintedRoot);
+
+  console.log(`${target.name}'s attempt is: ${escapeCheck}`);
+  console.log(`${taintedRoot.name}'s attempt is: ${contestedCheck}`);
+
+  if (escapeCheck >= contestedCheck) {
+    console.log(`${target.name} broke free!`);
+    if (target === theStone) {
+      console.log(`Killing the vine!`);
+    } else {
+      console.log(`Immediately stepping 5ft away from the chasm!`);
+    }
+    disableBreakButton();
+  } else {
+    console.log(`${target.name} failed to break free from the vine`);
+    // TODO: Another reason to roll the drag damage in the function
+    pullTargetCloserToTheChasm(taintedRoot, target, 10);
+  }
+}
+
+function grappleContest(contestant) {
+  // check contestant's higher stat between Dexterity or Strength, or if it has proficiency in athletics
+  let abilityCheck = 0;
+  if (isStrengthHigherThanDexterity(contestant) || contestant.athletics) {
+    abilityCheck = getAthletics(contestant);
+  } else {
+    abilityCheck = getAcrobatics(contestant);
+  }
+
+  // rolls a d20 and adds the ability check
+  return Math.floor(Math.random() * 20 + 1) + abilityCheck;
+}
+
+function isStrengthHigherThanDexterity(character) {
+  return (
+    Math.max(character.strengthMod, character.dexterityMod) ===
+    character.strengthMod
+  );
+}
+
+function getAthletics(character) {
+  // if character has proficiency in athletics
+  if (character.athletics) {
+    return character.strengthMod + character.proficiencyBonus;
+  }
+
+  return character.strengthMod;
+}
+
+function getAcrobatics(character) {
+  // if character has proficiency in acrobatics
+  if (character.acrobatics) {
+    return character.dexterityMod + character.proficiencyBonus;
+  }
+
+  return character.proficiencyBonus;
 }
 
 function optionFourWasClicked() {
