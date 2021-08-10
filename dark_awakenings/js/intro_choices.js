@@ -1,6 +1,7 @@
 import { punch, handaxe, dagger, longsword, grasp, drag } from "./weapons.js";
 import { theStone, gungurk } from "./characters.js";
 import { taintedRoot } from "./enemies.js";
+import { distanceFromChasm } from "./gameProperties.js";
 
 //TODO: move this to weapons.js
 const weapons = {
