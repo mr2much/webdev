@@ -56,9 +56,7 @@ function optionTwoWasClicked() {
     }
 
     console.log("You escaped alone");
-    let newScene = window.open(
-      "../../../../conclusions/the_stone_escaped_alone.html"
-    );
+    let newScene = window.open("../conclusions/the_stone_escaped_alone.html");
 
     newScene.onload = function () {
       this.gameObject = gameObj;
