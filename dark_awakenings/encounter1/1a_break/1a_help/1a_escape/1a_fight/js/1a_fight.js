@@ -100,14 +100,18 @@ function optionOneWasClicked() {
       let taintedRootDamage = gameObj.attack(taintedRoot, target);
 
       if (taintedRoot.weapon === dragWeapon) {
-        pullTargetCloserToTheChasm(taintedRoot);
-        distanceFromChasm -= 5;
+        // when the weapon is dragWeapon, the attack always hits, so the Tainted Root always deals damage with it
+        // TODO: We are passing the taintedRootDamage temporarily, since the damage is being dealt when we call gameObj.attack(), to avoid dealing damage to the target twice
+        // have to remove the call to the attack function from outside this if, and call it in pullTargetCloserToTheChasm() instead
+        // distanceFromChasm -= 5;
+        pullTargetCloserToTheChasm(taintedRoot, target, taintedRootDamage);
 
         if (distanceFromChasm <= 0) {
           paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
 
           // if The Stone falls, I have to disable all buttons for the options
 
+          console.log(`Target: ${target.name} fell`);
           if (target === theStone) {
             console.log(`${target.name} fell`);
             paragraphTheStoneActions.innerHTML = `${theStone.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the the remaining 5 feet over the edge.`;
@@ -159,9 +163,10 @@ function optionOneWasClicked() {
             let index = allies.indexOf(target);
             allies.splice(index, 1);
           }
-        } else {
-          paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet closer to the Chasm, dealing ${taintedRootDamage} points of damage. ${target.name} is now ${distanceFromChasm} away from the edge!`;
         }
+        //  else {
+        //   paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet closer to the Chasm, dealing ${taintedRootDamage} points of damage. ${target.name} is now ${distanceFromChasm} away from the edge!`;
+        // }
 
         // must contemplate a scenario where both allies die. If the number of allies reaches zero, must open the Game Over screen
       } else {
@@ -250,7 +255,13 @@ function optionOneWasClicked() {
   console.log(`Distance from the Chasm: ${distanceFromChasm}`);
 }
 
-function pullTargetCloserToTheChasm(attacker) {
+function pullTargetCloserToTheChasm(attacker, target, damage) {
+  // TODO: roll the drag damage in here instead
+  // let taintedRootDamage = gameObj.attack(attacker, target);
+
+  distanceFromChasm -= 5;
+  paragraphTaintedRootActions.innerHTML = `The enemy ${attacker.name} drags ${target.name} 5 feet closer to the Chasm, dealing ${damage} points of damage. ${target.name} is now ${distanceFromChasm} away from the edge!`;
+
   console.log(
     `Enemy ${attacker.name} pulls ${attacker.target.name} closer to the chasm`
   );
@@ -305,7 +316,8 @@ function attemptToEscapeGrapple(target) {
     disableBreakButton();
   } else {
     console.log(`${target.name} failed to break free from the vine`);
-    pullTargetCloserToTheChasm(taintedRoot);
+    // TODO: Another reason to roll the drag damage in the function
+    pullTargetCloserToTheChasm(taintedRoot, target, 10);
   }
 }
 
