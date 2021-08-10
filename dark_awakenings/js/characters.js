@@ -11,7 +11,7 @@ const theStone = {
   wisdomMod: 0,
   proficiencyBonus: 2,
   athletics: true,
-  acrobatics: true,
+  acrobatics: false,
   weapon: punch,
   isDead() {
     return this.getCurrentHP() <= 0;

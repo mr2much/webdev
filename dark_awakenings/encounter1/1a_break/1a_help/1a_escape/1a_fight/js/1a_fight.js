@@ -100,6 +100,7 @@ function optionOneWasClicked() {
       let taintedRootDamage = gameObj.attack(taintedRoot, target);
 
       if (taintedRoot.weapon === dragWeapon) {
+        pullTargetCloserToTheChasm(taintedRoot);
         distanceFromChasm -= 5;
 
         if (distanceFromChasm <= 0) {
@@ -249,6 +250,12 @@ function optionOneWasClicked() {
   console.log(`Distance from the Chasm: ${distanceFromChasm}`);
 }
 
+function pullTargetCloserToTheChasm(attacker) {
+  console.log(
+    `Enemy ${attacker.name} pulls ${attacker.target.name} closer to the chasm`
+  );
+}
+
 function enableBreakButton() {
   if (btnBreak.disabled) {
     btnBreak.disabled = false;
@@ -274,6 +281,70 @@ function optionTwoWasClicked() {
 
 function optionThreeWasClicked() {
   console.log("You attempt to break free from the vine");
+  attemptToEscapeGrapple(taintedRoot.target);
+}
+
+function attemptToEscapeGrapple(target) {
+  console.log(
+    `${target.name} is attempting to break free from the ${taintedRoot.name}'s grasp!`
+  );
+
+  const escapeCheck = grappleContest(target);
+  const contestedCheck = grappleContest(taintedRoot);
+
+  console.log(`${target.name}'s attempt is: ${escapeCheck}`);
+  console.log(`${taintedRoot.name}'s attempt is: ${contestedCheck}`);
+
+  if (escapeCheck >= contestedCheck) {
+    console.log(`${target.name} broke free!`);
+    if (target === theStone) {
+      console.log(`Killing the vine!`);
+    } else {
+      console.log(`Immediately stepping 5ft away from the chasm!`);
+    }
+    disableBreakButton();
+  } else {
+    console.log(`${target.name} failed to break free from the vine`);
+    pullTargetCloserToTheChasm(taintedRoot);
+  }
+}
+
+function grappleContest(contestant) {
+  // check contestant's higher stat between Dexterity or Strength, or if it has proficiency in athletics
+  let abilityCheck = 0;
+  if (isStrengthHigherThanDexterity(contestant) || contestant.athletics) {
+    abilityCheck = getAthletics(contestant);
+  } else {
+    abilityCheck = getAcrobatics(contestant);
+  }
+
+  // rolls a d20 and adds the ability check
+  return Math.floor(Math.random() * 20 + 1) + abilityCheck;
+}
+
+function isStrengthHigherThanDexterity(character) {
+  return (
+    Math.max(character.strengthMod, character.dexterityMod) ===
+    character.strengthMod
+  );
+}
+
+function getAthletics(character) {
+  // if character has proficiency in athletics
+  if (character.athletics) {
+    return character.strengthMod + character.proficiencyBonus;
+  }
+
+  return character.strengthMod;
+}
+
+function getAcrobatics(character) {
+  // if character has proficiency in acrobatics
+  if (character.acrobatics) {
+    return character.dexterityMod + character.proficiencyBonus;
+  }
+
+  return character.proficiencyBonus;
 }
 
 function optionFourWasClicked() {
