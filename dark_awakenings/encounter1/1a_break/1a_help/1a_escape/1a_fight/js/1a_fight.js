@@ -123,7 +123,7 @@ function optionOneWasClicked() {
               setTimeout(() => {
                 if (allies.indexOf(gungurk) < 0) {
                   let newScene = window.open(
-                    "../../../../../../encounter2/gungurk_fell_first.html"
+                    "../../../../../encounter2/gungurk_fell_first.html"
                   );
                   newScene.onload = function () {
                     this.gameObject = gameObj;
@@ -131,7 +131,7 @@ function optionOneWasClicked() {
                 } else {
                   //   and then load the second encounter
                   let newScene = window.open(
-                    "../../../../../../encounter2/stone_fell.html"
+                    "../../../../../encounter2/stone_fell.html"
                   );
 
                   newScene.onload = function () {
