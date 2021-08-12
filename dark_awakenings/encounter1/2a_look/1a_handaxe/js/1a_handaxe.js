@@ -1,6 +1,7 @@
 let gameObj;
 window.addEventListener("load", (e) => {
   gameObj = gameObject;
+  console.log(`Number of Enemies: ${gameObj.enemies.length}`);
 });
 
 function optionOneWasClicked() {

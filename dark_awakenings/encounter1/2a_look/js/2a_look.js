@@ -10,6 +10,7 @@ window.addEventListener("load", (e) => {
 
   theStone = gameObject.creatures.players.theStone;
   console.log(`${theStone.name} loaded. HP:${theStone.hp}`);
+  console.log(`Number of Enemies: ${gameObj.enemies.length}`);
 });
 
 function optionOneWasClicked() {

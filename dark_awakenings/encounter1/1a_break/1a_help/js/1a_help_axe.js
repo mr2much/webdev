@@ -13,6 +13,7 @@ window.addEventListener("load", (e) => {
   combat();
 
   display.insertBefore(paragraphTheStoneActions, display.lastChild.nextSibling);
+  console.log(`Number of enemies: ${gameObj.enemies.length}`);
 });
 
 function combat() {

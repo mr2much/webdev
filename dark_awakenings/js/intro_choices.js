@@ -110,7 +110,7 @@ let enemiesCount = 6;
 let enemy = {};
 
 function initGame() {
-  enemy = gameObject.enemies.shift();
+  enemy = gameObject.creatures.hostiles.taintedRoot;
 }
 
 initGame();

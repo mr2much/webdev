@@ -9,7 +9,8 @@ window.addEventListener("load", (e) => {
   gameObj = gameObject;
 
   theStone = gameObj.creatures.players.theStone;
-  taintedRoot = gameObject.enemies.shift();
+  console.log(`Number of Enemies: ${gameObj.enemies.length}`);
+  taintedRoot = gameObj.enemies.shift();
 
   combat();
 
