@@ -1,6 +1,7 @@
 import { punch, handaxe, dagger, longsword, grasp, drag } from "./weapons.js";
 
 const theStone = {
+  id: "theStone",
   name: "The Stone",
   maxHP: 30,
   hp: 30,
@@ -90,6 +91,7 @@ const theStone = {
 };
 
 const gungurk = {
+  id: "gungurk",
   name: "Gungurk",
   maxHP: 26,
   hp: 26,

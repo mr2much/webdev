@@ -11,9 +11,6 @@ let paragraph = document.getElementById("narration");
 let flavorText = document.getElementsByClassName("flavor")[0];
 let allies = [];
 let display = document.getElementById("feedback");
-let paragraphTaintedRootActions = document.createElement("p");
-let paragraphTheStoneActions = document.createElement("p");
-let paragraphGungurkActions = document.createElement("p");
 
 let btnAttack = document.getElementById("btnAttack");
 let btnBreak = document.getElementById("break");
@@ -47,15 +44,10 @@ window.addEventListener("load", (e) => {
   distance = gameObj.getDistanceForCharacter(target);
 
   paragraph.innerHTML += `<br><br>There are still ${amountOfEnemies} enemies left. You both tighten the grip on your weapons and attack them. One of the ${taintedRoot.name}s lashes at ${target.name}!`;
-  // taintedRoot.hp = 0;
 
-  display.insertBefore(
-    paragraphTaintedRootActions,
-    display.lastChild.nextSibling
-  );
-
-  display.insertBefore(paragraphTheStoneActions, display.lastChild.nextSibling);
-  display.insertBefore(paragraphGungurkActions, display.lastChild.nextSibling);
+  display.insertAdjacentHTML("beforeend", `<p id="${taintedRoot.id}"></p>`);
+  display.insertAdjacentHTML("beforeend", `<p id="${theStone.id}"></p>`);
+  display.insertAdjacentHTML("beforeend", `<p id="${gungurk.id}"></p>`);
 });
 
 function disableBreakButton() {
@@ -75,10 +67,6 @@ function optionOneWasClicked() {
     btnAttack.textContent = "Keep attacking!";
     btnAttack = null;
   }
-
-  paragraphTaintedRootActions.innerHTML = "";
-  paragraphTheStoneActions.innerHTML = "";
-  paragraphGungurkActions.innerHTML = "";
 
   if (amountOfEnemies > 0) {
     if (taintedRoot.isDead()) {
@@ -106,10 +94,13 @@ function optionOneWasClicked() {
         // when the weapon is dragWeapon, the attack always hits, so the Tainted Root always deals damage with it
         // TODO: We are passing the taintedRootDamage temporarily, since the damage is being dealt when we call gameObj.attack(), to avoid dealing damage to the target twice
         // have to remove the call to the attack function from outside this if, and call it in pullTargetCloserToTheChasm() instead
-        // distanceFromChasm -= 5;
+
         pullTargetCloserToTheChasm(taintedRoot, target, taintedRootDamage);
 
         if (distance.feet <= 0) {
+          let paragraphTaintedRootActions = document.querySelector(
+            `#${taintedRoot.id}`
+          );
           paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
 
           // if The Stone falls, I have to disable all buttons for the options
@@ -118,6 +109,9 @@ function optionOneWasClicked() {
 
           if (target === theStone) {
             console.log(`${target.name} fell`);
+            let paragraphTheStoneActions = document.querySelector(
+              `#${target.id}`
+            );
             paragraphTheStoneActions.innerHTML = `${target.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the the remaining 5 feet over the edge.`;
 
             let fallDamage = Math.floor(Math.random() * 10 + 1);
@@ -155,6 +149,9 @@ function optionOneWasClicked() {
               return;
             }
           } else {
+            let paragraphGungurkActions = document.querySelector(
+              `#${target.id}`
+            );
             paragraphGungurkActions.innerHTML += ` ${target.name} squeals like a terrified pig, and he disappears into the chasm. He splashes down, followed by disconcerting silence. At least the root that dragged him into the chasm apparently died from the fall.`;
 
             let fallDamage = Math.floor(Math.random() * 10 + 1);
@@ -176,13 +173,20 @@ function optionOneWasClicked() {
         // must contemplate a scenario where both allies die. If the number of allies reaches zero, must open the Game Over screen
       } else {
         // if we got here, then the Tainted Root is attacking with its grasp attack and not its drag attack
+        let paragraphTaintedRootActions = document.querySelector(
+          `#${taintedRoot.id}`
+        );
+
         if (taintedRootDamage === 0) {
           // if the grasping attack doesn't connect, then the target is not grabbed
+
           paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name}'s attack failed to hit target ${target.name}`;
 
           // if you are more than 5 feet away from the chasm, and are not more than 15ft away from it
           if (distance.feet <= 10) {
             distance.feet += 5;
+            console.log(`${distance.name} is now ${distance.feet}`);
+            console.log(`${gameObj.distanceFromChasm[`${target.name}`]}`);
             paragraphTaintedRootActions.innerHTML += ` and he immediately walks 5 feet away from the threatening Chasm up ahead.`;
           }
         } else {
@@ -201,28 +205,27 @@ function optionOneWasClicked() {
         }
       }
 
+      let actionParagraph;
+
       for (var i = 0; i < allies.length; i++) {
         let attacker = allies[i];
 
         let damageDealt = gameObj.attack(attacker, taintedRoot);
 
-        if (attacker === theStone) {
-          if (damageDealt === 0) {
-            paragraphTheStoneActions.innerHTML = `${attacker.name}'s attack failed to hit target ${taintedRoot.name}`;
-          } else {
-            paragraphTheStoneActions.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${taintedRoot.name}`;
-          }
+        actionParagraph = document.querySelector(`#${attacker.id}`);
+
+        if (damageDealt === 0) {
+          actionParagraph.innerHTML = `${attacker.name}'s attack failed to hit target ${taintedRoot.name}.`;
         } else {
-          if (damageDealt === 0) {
-            paragraphGungurkActions.innerHTML = `${attacker.name}'s attack failed to hit target ${taintedRoot.name}`;
-          } else {
-            paragraphGungurkActions.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${taintedRoot.name}`;
-          }
+          actionParagraph.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${taintedRoot.name}.`;
         }
 
         console.log(`HP: ${taintedRoot.hp}`);
 
         if (taintedRoot.isDead()) {
+          let paragraphTaintedRootActions = document.querySelector(
+            `#${taintedRoot.id}`
+          );
           paragraphTaintedRootActions.innerHTML = `Enemy ${taintedRoot.name} was slain!`;
           amountOfEnemies--;
 
@@ -231,17 +234,13 @@ function optionOneWasClicked() {
             paragraphTaintedRootActions.innerHTML += ` ${target.name} is no longer grappled.`;
           }
 
-          distance.feet += 5;
-
-          if (allies.indexOf(gungurk) > 0) {
-            if (paragraphGungurkActions.innerHTML === "") {
-              paragraphGungurkActions.innerHTML = `${gungurk.name} steps 5 feet away from the Chasm!`;
-            } else {
-              paragraphGungurkActions.innerHTML += `<br>${gungurk.name} steps 5 feet away from the Chasm!`;
-            }
+          // if target has not fallen yet
+          if (gameObj.getDistanceForCharacter(target).feet >= 5) {
+            distance.feet += 5;
+            actionParagraph = document.querySelector(`#${target.id}`);
+            actionParagraph.innerHTML += `<br>${target.name} steps 5 feet away from the Chasm!`;
+            console.log(`${distance.name} is now ${distance.feet}`);
           }
-
-          paragraphTheStoneActions.innerHTML += `<br>${theStone.name} steps 5 feet away from the Chasm!`;
 
           break;
         }
@@ -265,6 +264,9 @@ function pullTargetCloserToTheChasm(attacker, target, damage) {
   // TODO: roll the drag damage in here instead
   // let taintedRootDamage = gameObj.attack(attacker, target);
   distance.feet -= 5;
+  let paragraphTaintedRootActions = document.querySelector(
+    `#${taintedRoot.id}`
+  );
   paragraphTaintedRootActions.innerHTML = `The enemy ${attacker.name} drags ${target.name} 5 feet closer to the Chasm, dealing ${damage} points of damage. ${target.name} is now ${distance.feet} away from the edge!`;
 
   console.log(

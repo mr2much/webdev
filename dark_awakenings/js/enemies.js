@@ -1,6 +1,7 @@
 import { punch, handaxe, dagger, longsword, grasp, drag } from "./weapons.js";
 
 const taintedRoot = {
+  id: "taintedRoot",
   name: "Tainted Root",
   maxHP: 30,
   hp: 30,
