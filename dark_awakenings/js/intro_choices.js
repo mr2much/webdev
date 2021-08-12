@@ -33,6 +33,7 @@ const creatures = { players: players, hostiles: hostiles };
 const gameObject = {
   weapons: weapons,
   creatures: creatures,
+  distanceFromChasm,
   party: [],
   enemies: [],
   attack(attacker, target) {
@@ -70,6 +71,9 @@ const gameObject = {
 
     return totalDamage;
   },
+  getDistanceForCharacter({ name }) {
+    return gameObject.distanceFromChasm.find((char) => char.name === name);
+  },
 };
 
 let distances = [];
@@ -85,10 +89,6 @@ function setInitialDistancesForTheCharacters() {
 }
 
 setInitialDistancesForTheCharacters();
-
-function getDistanceForCharacter({ name }) {
-  return gameObject.distanceFromChasm.find((char) => char.name === name);
-}
 
 console.log(gameObject);
 
@@ -108,6 +108,7 @@ let enemiesCount = 6;
 })();
 
 let enemy = {};
+
 function initGame() {
   enemy = gameObject.enemies.shift();
 }
@@ -144,7 +145,7 @@ function optionOneWasClicked() {
     };
   } else {
     // get distanceFromChasm for The Stone
-    let theStoneDistance = getDistanceForCharacter(theStone);
+    let theStoneDistance = gameObject.getDistanceForCharacter(theStone);
     theStoneDistance.feet -= 5;
 
     console.log(gameObject.distanceFromChasm);
