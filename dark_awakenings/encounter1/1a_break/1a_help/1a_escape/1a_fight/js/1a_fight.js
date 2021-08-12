@@ -6,9 +6,9 @@ let taintedRoot = {};
 let graspWeapon = {};
 let dragWeapon = {};
 let enemies = [];
+let distance = {};
 let paragraph = document.getElementById("narration");
 let flavorText = document.getElementsByClassName("flavor")[0];
-let distanceFromChasm = 15;
 let allies = [];
 let display = document.getElementById("feedback");
 let paragraphTaintedRootActions = document.createElement("p");
@@ -43,6 +43,8 @@ window.addEventListener("load", (e) => {
 
   taintedRoot = enemies.shift();
   target = pickRandomTarget();
+
+  distance = gameObj.getDistanceForCharacter(target);
 
   paragraph.innerHTML += `<br><br>There are still ${amountOfEnemies} enemies left. You both tighten the grip on your weapons and attack them. One of the ${taintedRoot.name}s lashes at ${target.name}!`;
   // taintedRoot.hp = 0;
@@ -82,6 +84,7 @@ function optionOneWasClicked() {
     if (taintedRoot.isDead()) {
       taintedRoot = enemies.shift();
       target = pickRandomTarget();
+      distance = gameObj.getDistanceForCharacter(target);
 
       if (enemies.length === 0) {
         console.log(
@@ -106,26 +109,31 @@ function optionOneWasClicked() {
         // distanceFromChasm -= 5;
         pullTargetCloserToTheChasm(taintedRoot, target, taintedRootDamage);
 
-        if (distanceFromChasm <= 0) {
+        if (distance.feet <= 0) {
           paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
 
           // if The Stone falls, I have to disable all buttons for the options
 
           console.log(`Target: ${target.name} fell`);
+
           if (target === theStone) {
             console.log(`${target.name} fell`);
-            paragraphTheStoneActions.innerHTML = `${theStone.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the the remaining 5 feet over the edge.`;
+            paragraphTheStoneActions.innerHTML = `${target.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the the remaining 5 feet over the edge.`;
 
             let fallDamage = Math.floor(Math.random() * 10 + 1);
             target.receiveDamage(fallDamage);
 
-            paragraphTheStoneActions.innerHTML += `<br>${theStone.name} receives ${fallDamage} of damage from the fall.`;
+            paragraphTheStoneActions.innerHTML += `<br>${target.name} receives ${fallDamage} of damage from the fall.`;
+
+            console.log(target);
 
             if (target.hp <= 0) {
               // load dead scenario
+              console.log(`${target.name} died!`);
             } else {
               //   Must make a pause
               setTimeout(() => {
+                console.log("Executing timeout function");
                 if (allies.indexOf(gungurk) < 0) {
                   let newScene = window.open(
                     "../../../../../encounter2/gungurk_fell_first.html"
@@ -164,9 +172,6 @@ function optionOneWasClicked() {
             allies.splice(index, 1);
           }
         }
-        //  else {
-        //   paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet closer to the Chasm, dealing ${taintedRootDamage} points of damage. ${target.name} is now ${distanceFromChasm} away from the edge!`;
-        // }
 
         // must contemplate a scenario where both allies die. If the number of allies reaches zero, must open the Game Over screen
       } else {
@@ -176,8 +181,8 @@ function optionOneWasClicked() {
           paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name}'s attack failed to hit target ${target.name}`;
 
           // if you are more than 5 feet away from the chasm, and are not more than 15ft away from it
-          if (distanceFromChasm <= 10) {
-            distanceFromChasm += 5;
+          if (distance.feet <= 10) {
+            distance.feet += 5;
             paragraphTaintedRootActions.innerHTML += ` and he immediately walks 5 feet away from the threatening Chasm up ahead.`;
           }
         } else {
@@ -220,12 +225,13 @@ function optionOneWasClicked() {
         if (taintedRoot.isDead()) {
           paragraphTaintedRootActions.innerHTML = `Enemy ${taintedRoot.name} was slain!`;
           amountOfEnemies--;
+
           // if the Tainted Root was grabbing someone, who has not already fallen down into the Chasm
-          if (taintedRoot.hasTargetGrappled() && distanceFromChasm > 0) {
+          if (taintedRoot.hasTargetGrappled() && distance.feet > 0) {
             paragraphTaintedRootActions.innerHTML += ` ${target.name} is no longer grappled.`;
           }
 
-          distanceFromChasm += 5;
+          distance.feet += 5;
 
           if (allies.indexOf(gungurk) > 0) {
             if (paragraphGungurkActions.innerHTML === "") {
@@ -240,6 +246,8 @@ function optionOneWasClicked() {
           break;
         }
       }
+
+      console.log(...gameObj.distanceFromChasm, theStone, gungurk);
     }
   }
 
@@ -251,16 +259,13 @@ function optionOneWasClicked() {
       this.gameObject = gameObj;
     };
   }
-
-  console.log(`Distance from the Chasm: ${distanceFromChasm}`);
 }
 
 function pullTargetCloserToTheChasm(attacker, target, damage) {
   // TODO: roll the drag damage in here instead
   // let taintedRootDamage = gameObj.attack(attacker, target);
-
-  distanceFromChasm -= 5;
-  paragraphTaintedRootActions.innerHTML = `The enemy ${attacker.name} drags ${target.name} 5 feet closer to the Chasm, dealing ${damage} points of damage. ${target.name} is now ${distanceFromChasm} away from the edge!`;
+  distance.feet -= 5;
+  paragraphTaintedRootActions.innerHTML = `The enemy ${attacker.name} drags ${target.name} 5 feet closer to the Chasm, dealing ${damage} points of damage. ${target.name} is now ${distance.feet} away from the edge!`;
 
   console.log(
     `Enemy ${attacker.name} pulls ${attacker.target.name} closer to the chasm`
