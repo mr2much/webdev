@@ -9,10 +9,11 @@ window.addEventListener("load", (e) => {
 
   theStone = gameObj.creatures.players.theStone;
   gungurk = gameObj.creatures.players.gungurk;
-  taintedRoot = gameObj.creatures.hostiles.taintedRoot;
+  taintedRoot = gameObj.enemies[0];
 
   // in this scenario, we start with Gungurk grappled by the vine
   taintedRoot.grabTarget(gungurk);
+  console.log(`Number of Enemies: ${gameObj.enemies.length}`);
 
   if (hasAxe(theStone)) {
     paragraph.innerHTML =
@@ -38,8 +39,8 @@ function optionOneWasClicked() {
   };
 }
 
-function hasAxe(character) {
-  return character.weapon.name === "Handaxe";
+function hasAxe({ weapon }) {
+  return weapon.name === "Handaxe";
 }
 
 function optionTwoWasClicked() {

@@ -72,6 +72,24 @@ const gameObject = {
   },
 };
 
+let distances = [];
+
+function setDistance({ name }, feet) {
+  return { name, feet };
+}
+
+function setInitialDistancesForTheCharacters() {
+  distances.push(setDistance(theStone, 20));
+  distances.push(setDistance(gungurk, 15));
+  gameObject["distanceFromChasm"] = distances;
+}
+
+setInitialDistancesForTheCharacters();
+
+function getDistanceForCharacter({ name }) {
+  return gameObject.distanceFromChasm.find((char) => char.name === name);
+}
+
 console.log(gameObject);
 
 let enemiesCount = 6;
@@ -89,13 +107,19 @@ let enemiesCount = 6;
   }
 })();
 
+let enemy = {};
+function initGame() {
+  enemy = gameObject.enemies.shift();
+}
+
+initGame();
+
 let olChoices = document.getElementById("choices");
 let liOneTimeChoice = document.getElementById("one-time-choice");
 let divFlavor = document.getElementsByClassName("flavor")[0];
 let divFeedback = document.getElementById("feedback");
 let newParagraph = document.createElement("p");
 let displayParagraph = document.createElement("p");
-let distanceFromChasm = 20; // distance should be part of the game object
 
 window.optionOneWasClicked = optionOneWasClicked;
 window.optionTwoWasClicked = optionTwoWasClicked;
@@ -103,31 +127,37 @@ window.optionThreeWasClicked = optionThreeWasClicked;
 
 function optionOneWasClicked() {
   console.log("Option1 was clicked");
-  let taintedRoot = gameObject.enemies.shift();
+
   let dice = 20;
   let stoneCheck = doStrengthCheck(theStone, dice);
-  let rootCheck = doStrengthCheck(taintedRoot, dice);
+  let rootCheck = doStrengthCheck(enemy, dice);
 
   console.log("The Stone: " + stoneCheck);
   console.log("Root: " + rootCheck);
 
   if (stoneCheck >= rootCheck) {
-    let newScene = window.open("encounter1/1a_break/1a_break_success.html");
+    // when The Stone escapes the grapple, the Tainted Root should die. Even thought the enemy is discarded immediately anyways as the scene changes
 
+    let newScene = window.open("encounter1/1a_break/1a_break_success.html");
     newScene.onload = function () {
       this.gameObject = gameObject;
     };
   } else {
-    distanceFromChasm -= 5;
+    // get distanceFromChasm for The Stone
+    let theStoneDistance = getDistanceForCharacter(theStone);
+    theStoneDistance.feet -= 5;
+
+    console.log(gameObject.distanceFromChasm);
+
     divFlavor.innerHTML = "";
-    newParagraph.innerHTML = `You trash and struggle, trying to break free from the vines's grasp, but as you do so, the vine tightens around you and pulls you 5 feet closer towards the chasm!`;
+    newParagraph.innerHTML = `${theStone.name} trashes and struggles, trying to break free from the vines's grasp, but as he does so, the vine tightens around him and pulls him 5 feet closer towards the chasm!`;
     divFlavor.insertBefore(newParagraph, divFlavor.lastChild);
 
-    if (distanceFromChasm < 5) {
+    if (theStoneDistance.feet < 5) {
       console.log(`${theStone.name} fell`);
 
       // display message showing that you fell down
-      displayParagraph.innerHTML = `${theStone.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the the remaining 5 feet over the edge.`;
+      displayParagraph.innerHTML = `${theStone.name} plummets into the chasm, falling into water as the ${enemy.name} drags him the remaining 5 feet over the edge.`;
 
       let fallDamage = Math.floor(Math.random() * 10 + 1);
       theStone.receiveDamage(fallDamage);
@@ -140,9 +170,7 @@ function optionOneWasClicked() {
         // wait a couple of seconds
         setTimeout(() => {
           // load new scene
-          let newScene = window.open(
-            "/dark_awakenings/encounter2/stone_fell.html"
-          );
+          let newScene = window.open("encounter2/stone_fell.html");
           newScene.onload = function () {
             this.gameObject = gameObject;
           };
@@ -150,7 +178,7 @@ function optionOneWasClicked() {
         return;
       }
     } else {
-      displayParagraph.textContent = `You are now ${distanceFromChasm} away from the edge of the chasm`;
+      displayParagraph.textContent = `${theStone.name} is now ${theStoneDistance.feet} away from the edge of the chasm`;
     }
 
     divFeedback.insertBefore(
