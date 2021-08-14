@@ -101,6 +101,7 @@ function optionOneWasClicked() {
           let paragraphTaintedRootActions = document.querySelector(
             `#${taintedRoot.id}`
           );
+
           paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
 
           // if The Stone falls, I have to disable all buttons for the options
@@ -166,7 +167,7 @@ function optionOneWasClicked() {
             taintedRoot.hp = 0; // The fall kills the taintedRoot
 
             let index = allies.indexOf(target);
-            allies.splice(index, 1);
+            allies.splice(index, 1); // should change targets
           }
         }
 
@@ -213,12 +214,31 @@ function optionOneWasClicked() {
           console.log("The Stone died");
           return;
         } else {
+          // if the taintedRoot was grappling Gungurk, it should have no one grappled now
+          if (taintedRoot.hasTargetGrappled() && target !== theStone) {
+            taintedRoot.targetGrappled = false;
+          }
+
+          // change targets when Gungurk dies
+          target = pickRandomTarget();
+
           // check how Gungurk died and show a message describing it
+          let paragraph = document.querySelector(`#${taintedRoot.id}`);
+
+          console.assert(
+            paragraph,
+            `Paragraph not found for ID: ${taintedRoot.id}`
+          );
+
+          paragraph.innerHTML += `<br>After getting rid of ${gungurk.name}, the enemy ${taintedRoot.name} shifts his focus to ${target.name}.`;
 
           // should set a timer and remove gungurk's paragraph from the page
 
           // remove Gungurk from the party
-          console.log("Gungurk died!");
+
+          // remove Gungurk's reference from gameObject
+
+          console.assert(gungurk.hp > 0, "Gungurk died!");
         }
       } else {
         let actionParagraph;
