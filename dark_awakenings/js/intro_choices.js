@@ -74,6 +74,13 @@ const gameObject = {
   getDistanceForCharacter({ name }) {
     return gameObject.distanceFromChasm.find((char) => char.name === name);
   },
+  removeFromParty(party, member) {
+    let index = party.indexOf(member);
+
+    if (index > 0) {
+      party.splice(index, 1);
+    }
+  },
 };
 
 let distances = [];

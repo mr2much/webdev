@@ -166,8 +166,10 @@ function optionOneWasClicked() {
 
             taintedRoot.hp = 0; // The fall kills the taintedRoot
 
-            let index = allies.indexOf(target);
-            allies.splice(index, 1); // should change targets
+            gameObj.removeFromParty(allies, target); // should change targets
+
+            // let index = allies.indexOf(target);
+            // allies.splice(index, 1);
           }
         }
 
@@ -219,9 +221,6 @@ function optionOneWasClicked() {
             taintedRoot.targetGrappled = false;
           }
 
-          // change targets when Gungurk dies
-          target = pickRandomTarget();
-
           // check how Gungurk died and show a message describing it
           let paragraph = document.querySelector(`#${taintedRoot.id}`);
 
@@ -230,11 +229,24 @@ function optionOneWasClicked() {
             `Paragraph not found for ID: ${taintedRoot.id}`
           );
 
-          paragraph.innerHTML += `<br>After getting rid of ${gungurk.name}, the enemy ${taintedRoot.name} shifts his focus to ${target.name}.`;
+          // change targets when Gungurk dies
+          target = pickRandomTarget();
+
+          paragraph.innerHTML += `<br>The vine's last attack killed ${gungurk.name}. <br>After getting rid of him, the enemy ${taintedRoot.name} shifts its focus to ${target.name}.`;
 
           // should set a timer and remove gungurk's paragraph from the page
+          setInterval(() => {
+            let paragraphGungurkActions = document.querySelector(
+              `#${gungurk.id}`
+            );
+            if (paragraphGungurkActions) {
+              display.removeChild(paragraphGungurkActions);
+            }
+          }, 4000);
 
           // remove Gungurk from the party
+          gameObj.removeFromParty(allies, target);
+          console.table(allies);
 
           // remove Gungurk's reference from gameObject
 
