@@ -1,25 +1,18 @@
-<!-- This takes an image icon and a text string, and embeds the icon into the page. When the icon is focused, it displays the text in a pop up information box to provide further in-context information. -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="visibility: hidden">
   <head>
-    <style>
-      html {
-        visibility: hidden;
-        opacity: 0;
-      }
-    </style>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pop-up info widget - web component</title>
+    <title>Popup Info Component with External Style Sheet</title>
   </head>
   <body>
-    <h1>Pop-up info widget - web component</h1>
+    <h1>Pop-up info box - web component with external style sheet</h1>
 
     <form>
       <div>
         <label for="cvc"
-          >Enter your cvc
+          >Enter your CVC
           <popup-info
             img="./img/alt.png"
             data-text="Your card validation code (CVC) is an extra security feature - it is the last 3 or 4 numbers on the back of your card."
@@ -28,11 +21,11 @@
         <input type="text" id="cvc" />
       </div>
     </form>
-    <script src="./js/app.js"></script>
+
+    <script src="./js/main.js"></script>
     <style>
       html {
         visibility: visible !important;
-        opacity: 1 !important;
       }
     </style>
   </body>
