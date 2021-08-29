@@ -1,0 +1,62 @@
+:root {
+  --dark-color: #999;
+  --secondary-color: #bbb;
+  --light-color: #e1e1e1;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dark-color);
+}
+
+section {
+  font-size: 1.12em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-color);
+  width: 25vw;
+  height: 30vh;
+  margin: 2em;
+  border-radius: 0.25em;
+  box-shadow: 0 0 0.75em #000;
+}
+
+a,
+button {
+  font-size: inherit;
+  padding: 0.5em 1.25em;
+  border: 0;
+  background-color: var(--secondary-color);
+  color: #333;
+  border-radius: 0.25em;
+  cursor: pointer;
+}
+
+a:hover,
+button:hover {
+  background-color: var(--dark-color);
+}
+
+a:focus,
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.35em lightblue;
+}
+
+a:active,
+button:active {
+  background-color: #333;
+  color: #fff;
+}

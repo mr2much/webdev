@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body>
+    <section>
+      <button>Simple Button</button>
+    </section>
+
+    <section>
+      <a href="#">I'm a Link</a>
+    </section>
+
+    <!-- This script ensures that the :focus state is added to buttons on the cases where it doesn't trigger it. This mostly happens on Mac OS on Safari and Firefox -->
+    <script>
+      document.addEventListener("click", (e) => {
+        if (e.target.matches("button")) {
+          e.target.focus();
+        }
+      });
+    </script>
+  </body>
+</html>

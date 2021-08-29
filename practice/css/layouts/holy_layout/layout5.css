@@ -1,0 +1,59 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.parent {
+  display: grid;
+  grid-template: auto 1fr auto / auto 1fr auto;
+  height: 80%;
+  width: 70%;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 0.55em;
+  overflow: hidden;
+}
+
+.parent div {
+  padding: 1.35em;
+  outline: 0;
+  border: 0;
+}
+
+.header {
+  background-color: pink;
+  grid-column: 1 / 4;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  grid-column: 1 / 4;
+}
+
+.content .left {
+  background-color: lightskyblue;
+  flex: 1 1 150px;
+}
+
+.content .main {
+  background-color: palevioletred;
+  flex: 1 1 150px;
+}
+
+.content .right {
+  background-color: yellow;
+  flex: 1 1 150px;
+}
+
+.footer {
+  background-color: lightgreen;
+  grid-column: 1 / 4;
+}
