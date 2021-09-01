@@ -101,8 +101,10 @@ function optionOneWasClicked() {
           let paragraphTaintedRootActions = document.querySelector(
             `#${taintedRoot.id}`
           );
+          let actionParagraph = document.querySelector(`#${target.id}`);
+          actionParagraph.innerHTML += `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
 
-          paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
+          // paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
 
           // if The Stone falls, I have to disable all buttons for the options
 
@@ -168,8 +170,24 @@ function optionOneWasClicked() {
 
             gameObj.removeFromParty(allies, target); // should change targets
 
-            // let index = allies.indexOf(target);
-            // allies.splice(index, 1);
+            // TODO: try to look for a way to avoid repeatedly checking the target's hp
+            if (target.hp <= 0) {
+              console.log("The fall killed Gungurk");
+
+              paragraphGungurkActions.innerHTML += `<br>${gungurk.name} seems to have gone awfully quiet. You fear for the worse.`;
+
+              // should set a timer and remove gungurk's paragraph from the page
+              setInterval(() => {
+                let paragraphGungurkActions = document.querySelector(
+                  `#${gungurk.id}`
+                );
+                if (paragraphGungurkActions) {
+                  display.removeChild(paragraphGungurkActions);
+                }
+              }, 6000);
+
+              target = pickRandomTarget();
+            }
           }
         }
 
@@ -229,6 +247,10 @@ function optionOneWasClicked() {
             `Paragraph not found for ID: ${taintedRoot.id}`
           );
 
+          // remove Gungurk from the party
+          gameObj.removeFromParty(allies, target);
+          console.table(allies);
+
           // change targets when Gungurk dies
           target = pickRandomTarget();
 
@@ -242,11 +264,7 @@ function optionOneWasClicked() {
             if (paragraphGungurkActions) {
               display.removeChild(paragraphGungurkActions);
             }
-          }, 4000);
-
-          // remove Gungurk from the party
-          gameObj.removeFromParty(allies, target);
-          console.table(allies);
+          }, 6000);
 
           // remove Gungurk's reference from gameObject
 
