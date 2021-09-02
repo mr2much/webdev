@@ -1,17 +1,16 @@
-const hpBarTemplate = (char) => `
-    <style>
-        .hp_bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;            
-        }
-      
-        .hp_bar img {
-            height: 50px;
-        }
-    </style>
-
+const styleTemplate = `
+    .hp_bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;            
+    }
     
+    .hp_bar img {
+        height: 50px;
+    }
+`;
+
+const hpBarTemplate = (char) => `    
     <img
     src="./res/img/heart.jpeg"
     alt="Heart representing the life of the character"
@@ -31,7 +30,10 @@ class HPBar extends HTMLElement {
     const hpBar = document.createElement("div");
     hpBar.classList.add("hp_bar");
 
-    hpBar.innerHTML = hpBarTemplate(char);
+    let style = document.createElement("style");
+    style.textContent = styleTemplate;
+
+    hpBar.innerHTML = this.updateView(char);
 
     const shadow = this.attachShadow({ mode: "open" });
 
@@ -45,6 +47,7 @@ class HPBar extends HTMLElement {
       },
     });
 
+    shadow.appendChild(style);
     shadow.appendChild(hpBar);
   }
 
