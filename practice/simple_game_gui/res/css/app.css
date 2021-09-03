@@ -6,10 +6,6 @@
   box-sizing: border-box;
 }
 
-div {
-  user-select: none;
-}
-
 section {
   width: 50%;
   margin: 0 auto;
