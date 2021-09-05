@@ -50,13 +50,6 @@ class CharAvatar extends HTMLElement {
     // detect changes in the values of the char
     this._char = new Proxy(char, {
       set(target, property, value) {
-        console.log("Changing", property, "to", value);
-        if (value < 0) {
-          value = 0;
-        }
-
-        target[property] = value;
-
         imgHolder.classList.remove("shake");
 
         void imgHolder.offsetWidth;

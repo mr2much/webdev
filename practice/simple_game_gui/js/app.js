@@ -3,14 +3,21 @@
 const hpObservers = [];
 
 let div = document.createElement("div");
-let barraVida = new HPBar(knight);
-let charAvatar = new CharAvatar(knight);
+// let barraVida = new HPBar(knight);
+// let charAvatar = new CharAvatar(knight);
 
-hpObservers.push(barraVida);
-hpObservers.push(charAvatar);
+// hpObservers.push(barraVida);
+// hpObservers.push(charAvatar);
 
-div.appendChild(charAvatar);
-div.appendChild(barraVida);
+// div.appendChild(charAvatar);
+// div.appendChild(barraVida);
+
+const charGUI = new CharGUI(knight);
+
+hpObservers.push(charGUI);
+
+div.appendChild(charGUI);
+
 document.body.appendChild(div);
 
 div.addEventListener("click", () => {

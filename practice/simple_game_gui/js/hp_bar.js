@@ -25,7 +25,7 @@ class HPBar extends HTMLElement {
   constructor(char) {
     super();
 
-    this.id = `${char.name}`;
+    // this.id = `${char.name}`;
 
     // set styling
     let style = document.createElement("style");
