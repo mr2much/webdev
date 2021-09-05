@@ -4,9 +4,12 @@ const hpObservers = [];
 
 let div = document.createElement("div");
 let barraVida = new HPBar(knight);
+let charAvatar = new CharAvatar(knight);
 
 hpObservers.push(barraVida);
+hpObservers.push(charAvatar);
 
+div.appendChild(charAvatar);
 div.appendChild(barraVida);
 document.body.appendChild(div);
 
