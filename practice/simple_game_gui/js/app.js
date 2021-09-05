@@ -20,15 +20,25 @@ div.appendChild(charGUI);
 
 document.body.appendChild(div);
 
-div.addEventListener("click", () => {
-  knight.hp--;
-
+div.addEventListener("mouseup", (e) => {
+  switch (e.button) {
+    case 0:
+      knight.hp--;
+      notifyObservers();
+      break;
+    case 2:
+      console.log("Right button pressed");
+      break;
+  }
   // this technically notifies the observer, which is barraVida
   // TODO: find a better way of doing this
-  notifyObservers();
 
   console.log(knight.hp);
 });
+
+// div.addEventListener("mouseup", (e) => {
+//   console.log(e.button);
+// });
 
 function notifyObservers() {
   for (let i = 0; i < hpObservers.length; i++) {
