@@ -47,14 +47,25 @@ class CharAvatar extends HTMLElement {
 
     imgHolder.innerHTML = avatarTemplate(char);
 
+    let previousValue = char.hp;
+
     // detect changes in the values of the char
     this._char = new Proxy(char, {
       set(target, property, value) {
-        imgHolder.classList.remove("shake");
+        if (value < previousValue) {
+          imgHolder.classList.remove("shake");
 
-        void imgHolder.offsetWidth;
+          void imgHolder.offsetWidth;
 
-        imgHolder.classList.add("shake");
+          imgHolder.classList.add("shake");
+        } else {
+          console.log("HP increased");
+          if (value > char.maxHP) {
+            value = char.maxHP;
+          }
+        }
+
+        previousValue = value;
 
         return true;
       },

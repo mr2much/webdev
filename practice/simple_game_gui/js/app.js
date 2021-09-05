@@ -3,6 +3,7 @@
 const hpObservers = [];
 
 let div = document.createElement("div");
+div.setAttribute("oncontextmenu", "return false;");
 // let barraVida = new HPBar(knight);
 // let charAvatar = new CharAvatar(knight);
 
@@ -27,7 +28,8 @@ div.addEventListener("mouseup", (e) => {
       notifyObservers();
       break;
     case 2:
-      console.log("Right button pressed");
+      knight.hp++;
+      notifyObservers();
       break;
   }
   // this technically notifies the observer, which is barraVida

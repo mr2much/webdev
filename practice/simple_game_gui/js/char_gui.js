@@ -147,8 +147,6 @@ class CharGUI extends HTMLElement {
     // detect changes in the values of the char
     this._char = new Proxy(char, {
       set(target, property, value) {
-        console.log("Changing", property, "to", value);
-
         hpBar._char.hp = value;
         charAvatar._char.hp = value;
 
