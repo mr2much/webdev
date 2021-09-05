@@ -25,22 +25,28 @@ class HPBar extends HTMLElement {
   constructor(char) {
     super();
 
-    this.id = `${char.name}`;
+    // this.id = `${char.name}`;
 
-    const hpBar = document.createElement("div");
-    hpBar.classList.add("hp_bar");
-
+    // set styling
     let style = document.createElement("style");
     style.textContent = styleTemplate;
 
+    // set hpBar
+    const hpBar = document.createElement("div");
+    hpBar.classList.add("hp_bar");
     hpBar.innerHTML = this.updateView(char);
 
     const shadow = this.attachShadow({ mode: "open" });
 
+    // detect changes in the values of the char
     const self = this;
     this._char = new Proxy(char, {
       set(target, property, value) {
         console.log("Changing", property, "to", value);
+        if (value < 0) {
+          value = 0;
+        }
+
         target[property] = value;
         hpBar.innerHTML = self.updateView(char);
         return true;

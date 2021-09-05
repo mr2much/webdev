@@ -82,36 +82,88 @@ const charIdentity = (char) => `
 // </div>
 // `;
 
+const guiStylesTemplate = () => `  
+  section {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }  
+
+  #char_gui .details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+`;
+
 class CharGUI extends HTMLElement {
-  constructor() {
+  constructor(char) {
     super();
 
-    console.log("Hello");
+    const styles = document.createElement("style");
+    styles.textContent = guiStylesTemplate();
 
     const shadow = this.attachShadow({ mode: "open" });
+    const charName = document.createElement("h2");
+
+    charName.innerHTML = `${char.name}`;
+
     const section = document.createElement("section");
     section.id = "char_gui";
-
-    const charDetails = document.createElement("div");
-    charDetails.classList.add("details");
+    const details = document.createElement("div");
+    details.classList.add("details");
 
     const charInfo = document.createElement("div");
     charInfo.id = "char_info";
 
-    const innerDiv = document.createElement("div");
-    innerDiv.innerHTML = showHPBar(knight);
+    const hpBar = new HPBar(char);
+    const charAvatar = new CharAvatar(char);
 
-    charInfo.appendChild(innerDiv);
+    // console.log("Hello");
 
-    const link = document.createElement("link");
-    link.setAttribute("rel", "stylesheet");
-    link.setAttribute("href", "./res/css/app.css");
+    // const shadow = this.attachShadow({ mode: "open" });
+    // const section = document.createElement("section");
+    // section.id = "char_gui";
 
-    section.innerHTML = charIdentity(knight);
-    section.appendChild(charInfo);
+    // const charDetails = document.createElement("div");
+    // charDetails.classList.add("details");
 
+    // const charInfo = document.createElement("div");
+    // charInfo.id = "char_info";
+
+    // const innerDiv = document.createElement("div");
+    // innerDiv.innerHTML = showHPBar(knight);
+
+    // charInfo.appendChild(innerDiv);
+
+    // const link = document.createElement("link");
+    // link.setAttribute("rel", "stylesheet");
+    // link.setAttribute("href", "./res/css/app.css");
+
+    // section.innerHTML = charIdentity(knight);
+    // section.appendChild(charInfo);
+
+    // detect changes in the values of the char
+    this._char = new Proxy(char, {
+      set(target, property, value) {
+        console.log("Changing", property, "to", value);
+
+        hpBar._char.hp = value;
+        charAvatar._char.hp = value;
+
+        return true;
+      },
+    });
+
+    charInfo.appendChild(hpBar);
+    details.appendChild(charAvatar);
+    details.appendChild(charInfo);
+    section.appendChild(charName);
+    section.appendChild(details);
     shadow.appendChild(section);
-    shadow.appendChild(link);
+    shadow.appendChild(styles);
+    // shadow.appendChild(link);
   }
 
   connectedCallback() {
