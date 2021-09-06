@@ -24,11 +24,17 @@ document.body.appendChild(div);
 div.addEventListener("mouseup", (e) => {
   switch (e.button) {
     case 0:
-      knight.hp--;
+      if (knight.hp > 0) {
+        knight.hp--;
+      }
+
       notifyObservers();
       break;
     case 2:
-      knight.hp++;
+      if (knight.hp < knight.maxHP) {
+        knight.hp++;
+      }
+
       notifyObservers();
       break;
   }
