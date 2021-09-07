@@ -9,4 +9,5 @@ div {
   margin: 0 auto;
   user-select: none;
   text-align: center;
+  cursor: pointer;
 }

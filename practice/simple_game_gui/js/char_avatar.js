@@ -1,8 +1,8 @@
 const avatarStyleTemplate = () => `
 
-  .portrait img {    
+  .portrait img {     
     height: 150px;
-    width: auto;  
+    width: auto;      
   }
   
   .shake {
@@ -25,6 +25,31 @@ const avatarStyleTemplate = () => `
     }
     40%, 60% {
       transform: translate3d(3px, 0, 0);
+    }
+  }
+
+  .glow {
+    position: relative;        
+  }
+
+  .glow::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 100%;
+    width: 100%;
+    height: 100%;
+    border-radius: 70%;
+    animation: glow 900ms ease-in-out;    
+  }
+
+  @keyframes glow {
+    0% {
+      background: rgba(0, 255, 0, 0.5);
+    }
+
+    100% {
+      background: rgba(0, 255, 0, 0)
     }
   }
 `;
@@ -60,8 +85,14 @@ class CharAvatar extends HTMLElement {
           imgHolder.classList.add("shake");
         } else {
           console.log("HP increased");
-          if (value > char.maxHP) {
+          if (previousValue >= char.maxHP) {
             value = char.maxHP;
+          } else {
+            imgHolder.classList.remove("glow");
+
+            void imgHolder.offsetWidth;
+
+            imgHolder.classList.add("glow");
           }
         }
 
