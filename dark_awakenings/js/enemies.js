@@ -3,6 +3,8 @@ import { punch, handaxe, dagger, longsword, grasp, drag } from "./weapons.js";
 const taintedRoot = {
   id: "taintedRoot",
   name: "Tainted Root",
+  src: "./res/img/TaintedRoot.png",
+  atl: "Tainted Root's character portrait",
   maxHP: 30,
   hp: 30,
   armor: 15,
