@@ -1,10 +1,12 @@
 import { punch, handaxe, dagger, longsword, grasp, drag } from "./weapons.js";
 
+let rootPath = window.location.href.match(/^.*\//)[0];
+
 const taintedRoot = {
   id: "taintedRoot",
   name: "Tainted Root",
-  src: "./res/img/TaintedRoot.png",
-  atl: "Tainted Root's character portrait",
+  src: `${rootPath}res/img/TaintedRoot.png`,
+  alt: "Tainted Root's character portrait",
   maxHP: 30,
   hp: 30,
   armor: 15,
