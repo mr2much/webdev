@@ -1,3 +1,6 @@
+import { CharAvatar } from "./char_avatar.js";
+import { HPBar } from "./hp_bar.js";
+
 const guiStylesTemplate = () => `  
   section {
     width: 100%;
@@ -13,7 +16,7 @@ const guiStylesTemplate = () => `
   }
 `;
 
-class CharGUI extends HTMLElement {
+export class CharGUI extends HTMLElement {
   constructor(char) {
     super();
 
@@ -57,7 +60,7 @@ class CharGUI extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log(knight.name);
+    console.log(this._char.name);
   }
 }
 

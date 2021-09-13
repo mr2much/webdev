@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../../../css/app.css" />
-    <script defer src="js/1a_help_axe.js"></script>
+    <script type="module" src="js/1a_help_axe.js"></script>
   </head>
   <body>
     <div class="container">
@@ -22,22 +22,17 @@
           <h2>What would you do?</h2>
           <ol>
             <li>
-              <button class="btn" onclick="optionOneWasClicked()">
-                Keep Attacking It
-              </button>
+              <button id="attack" class="btn">Keep Attacking It</button>
             </li>
             <li>
-              <button class="btn" onclick="optionTwoWasClicked()">
-                Run away
-              </button>
+              <button id="run_away" class="btn">Run away</button>
             </li>
           </ol>
         </div>
       </section>
       <section>
-        <div id="feedback">
-          <h2>Output</h2>
-        </div>
+        <h2>Output</h2>
+        <div id="feedback"></div>
       </section>
     </div>
   </body>

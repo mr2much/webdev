@@ -1,3 +1,5 @@
+import { CharGUI } from "../../../../../../js/components/char_gui.js";
+
 let gameObj;
 let amountOfEnemies = 0;
 let gungurk = {};
@@ -12,9 +14,18 @@ let flavorText = document.getElementsByClassName("flavor")[0];
 let allies = [];
 let display = document.getElementById("feedback");
 
-let btnAttack = document.getElementById("btnAttack");
+let btnAttack = document.getElementById("btn-attack");
+let btnRun = document.querySelector("#btn-run");
 let btnBreak = document.getElementById("break");
-let btnSideStep = document.getElementById("side-step");
+let btnStepAway = document.getElementById("step-away");
+
+let theStoneGUI;
+let gungurkGUI;
+let taintedRootGUI;
+
+let target;
+
+let hpObservers = [];
 
 window.addEventListener("load", (e) => {
   gameObj = gameObject;
@@ -43,12 +54,49 @@ window.addEventListener("load", (e) => {
 
   distance = gameObj.getDistanceForCharacter(target);
 
+  if (theStone) {
+    theStoneGUI = new CharGUI(theStone);
+  }
+
+  if (gungurk) {
+    gungurkGUI = new CharGUI(gungurk);
+  }
+
+  if (taintedRoot) {
+    taintedRootGUI = new CharGUI(taintedRoot);
+  }
+
+  hpObservers.push(theStoneGUI, gungurkGUI, taintedRootGUI);
+
   paragraph.innerHTML += `<br><br>There are still ${amountOfEnemies} enemies left. You both tighten the grip on your weapons and attack them. One of the ${taintedRoot.name}s lashes at ${target.name}!`;
 
   display.insertAdjacentHTML("beforeend", `<p id="${taintedRoot.id}"></p>`);
   display.insertAdjacentHTML("beforeend", `<p id="${theStone.id}"></p>`);
   display.insertAdjacentHTML("beforeend", `<p id="${gungurk.id}"></p>`);
+
+  let gui = document.createElement("div");
+  gui.id = "gui";
+
+  gui.appendChild(theStoneGUI);
+  gui.appendChild(gungurkGUI);
+  gui.appendChild(taintedRootGUI);
+
+  display.insertBefore(gui, display.lastChild.nextSibling);
+
+  btnAttack.addEventListener("click", executeAttack);
+  btnRun.addEventListener("click", optionTwoWasClicked);
+  btnBreak.addEventListener("click", optionThreeWasClicked);
+  btnStepAway.addEventListener("click", optionFourWasClicked);
 });
+
+function pickRandomTarget() {
+  let numberOfAllies = allies.length;
+  let randomIndex = Math.floor(Math.random() * numberOfAllies);
+
+  console.log(`Random Number: ${randomIndex}`);
+
+  return allies[randomIndex];
+}
 
 function disableBreakButton() {
   if (!btnBreak.disabled) {
@@ -60,7 +108,7 @@ function disableBreakButton() {
   }
 }
 
-function optionOneWasClicked() {
+function executeAttack() {
   console.log("Combat started!");
 
   if (btnAttack !== null) {
@@ -71,6 +119,7 @@ function optionOneWasClicked() {
   if (amountOfEnemies > 0) {
     if (taintedRoot.isDead()) {
       taintedRoot = enemies.shift();
+      taintedRootGUI = new CharGUI(taintedRoot);
       target = pickRandomTarget();
       distance = gameObj.getDistanceForCharacter(target);
 
@@ -96,6 +145,8 @@ function optionOneWasClicked() {
         // have to remove the call to the attack function from outside this if, and call it in pullTargetCloserToTheChasm() instead
 
         pullTargetCloserToTheChasm(taintedRoot, target, taintedRootDamage);
+
+        notifyObservers(target);
 
         if (distance.feet <= 0) {
           let paragraphTaintedRootActions = document.querySelector(
@@ -124,9 +175,12 @@ function optionOneWasClicked() {
 
             console.log(target);
 
+            notifyObservers(target);
+
             if (target.hp <= 0) {
               // load dead scenario
-              console.log(`${target.name} died!`);
+              console.log(`${target.name} died from the fall!`);
+              return;
             } else {
               //   Must make a pause
               setTimeout(() => {
@@ -171,6 +225,9 @@ function optionOneWasClicked() {
             gameObj.removeFromParty(allies, target); // should change targets
 
             // TODO: try to look for a way to avoid repeatedly checking the target's hp
+
+            notifyObservers(target);
+
             if (target.hp <= 0) {
               console.log("The fall killed Gungurk");
 
@@ -212,6 +269,8 @@ function optionOneWasClicked() {
           }
         } else {
           paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} grabs ${target.name}, dealing ${taintedRootDamage} points of damage with its vines! ${target.name} is now grabbed!`;
+
+          notifyObservers(target);
 
           // if the attack connects, then the target is grabbed, and the tainted root will start dragging it towards the chasm
           if (!taintedRoot.hasTargetGrappled()) {
@@ -273,30 +332,34 @@ function optionOneWasClicked() {
       } else {
         let actionParagraph;
 
+        let enemy = taintedRoot;
+
         for (var i = 0; i < allies.length; i++) {
           let attacker = allies[i];
 
-          let damageDealt = gameObj.attack(attacker, taintedRoot);
+          let damageDealt = gameObj.attack(attacker, enemy);
 
           actionParagraph = document.querySelector(`#${attacker.id}`);
 
           if (damageDealt === 0) {
-            actionParagraph.innerHTML = `${attacker.name}'s attack failed to hit target ${taintedRoot.name}.`;
+            actionParagraph.innerHTML = `${attacker.name}'s attack failed to hit target ${enemy.name}.`;
           } else {
-            actionParagraph.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${taintedRoot.name}.`;
+            actionParagraph.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${enemy.name}.`;
+
+            notifyObservers(enemy);
           }
 
-          console.log(`HP: ${taintedRoot.hp}`);
+          console.log(`HP: ${enemy.hp}`);
 
-          if (taintedRoot.isDead()) {
+          if (enemy.isDead()) {
             let paragraphTaintedRootActions = document.querySelector(
-              `#${taintedRoot.id}`
+              `#${enemy.id}`
             );
-            paragraphTaintedRootActions.innerHTML = `Enemy ${taintedRoot.name} was slain!`;
+            paragraphTaintedRootActions.innerHTML = `Enemy ${enemy.name} was slain!`;
             amountOfEnemies--;
 
             // if the Tainted Root was grabbing someone, who has not already fallen down into the Chasm
-            if (taintedRoot.hasTargetGrappled() && distance.feet > 0) {
+            if (enemy.hasTargetGrappled() && distance.feet > 0) {
               paragraphTaintedRootActions.innerHTML += ` ${target.name} is no longer grappled.`;
             }
 
@@ -327,6 +390,16 @@ function optionOneWasClicked() {
   }
 }
 
+function notifyObservers(target) {
+  for (let i = 0; i < hpObservers.length; i++) {
+    let character = hpObservers[i]._char;
+
+    if (character.id === target.id) {
+      character.hp = target.hp;
+    }
+  }
+}
+
 function pullTargetCloserToTheChasm(attacker, target, damage) {
   // TODO: roll the drag damage in here instead
   // let taintedRootDamage = gameObj.attack(attacker, target);
@@ -349,15 +422,6 @@ function enableBreakButton() {
   if (btnBreak.classList.contains("noHover")) {
     btnBreak.classList.remove("noHover");
   }
-}
-
-function pickRandomTarget() {
-  let numberOfAllies = allies.length;
-  let randomIndex = Math.floor(Math.random() * numberOfAllies);
-
-  console.log(`Random Number: ${randomIndex}`);
-
-  return allies[randomIndex];
 }
 
 function optionTwoWasClicked() {

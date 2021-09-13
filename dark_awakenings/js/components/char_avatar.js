@@ -58,7 +58,7 @@ const avatarTemplate = (char) => `
   <img src="${char.src}" alt="${char.alt}" />
 `;
 
-class CharAvatar extends HTMLElement {
+export class CharAvatar extends HTMLElement {
   constructor(char) {
     super();
 

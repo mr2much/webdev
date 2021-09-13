@@ -44,10 +44,6 @@ div.addEventListener("mouseup", (e) => {
   console.log(knight.hp);
 });
 
-// div.addEventListener("mouseup", (e) => {
-//   console.log(e.button);
-// });
-
 function notifyObservers() {
   for (let i = 0; i < hpObservers.length; i++) {
     hpObservers[i]._char.hp = knight.hp;

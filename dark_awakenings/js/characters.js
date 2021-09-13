@@ -1,8 +1,12 @@
 import { punch, handaxe, dagger, longsword, grasp, drag } from "./weapons.js";
 
+let rootPath = window.location.href.match(/^.*\//)[0];
+
 const theStone = {
   id: "theStone",
   name: "The Stone",
+  src: `${rootPath}res/img/TheStone.jpg`,
+  alt: "The Stone's character portrait",
   maxHP: 30,
   hp: 30,
   armor: 19,
@@ -93,6 +97,8 @@ const theStone = {
 const gungurk = {
   id: "gungurk",
   name: "Gungurk",
+  src: `${rootPath}res/img/Gungurk.jpg`,
+  alt: "Gungurk's character portrait",
   maxHP: 26,
   hp: 26,
   armor: 16,

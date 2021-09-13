@@ -97,7 +97,7 @@ function setInitialDistancesForTheCharacters() {
 
 setInitialDistancesForTheCharacters();
 
-console.log(gameObject);
+// console.log(gameObject);
 
 let enemiesCount = 6;
 
