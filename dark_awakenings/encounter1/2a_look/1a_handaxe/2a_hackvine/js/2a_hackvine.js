@@ -8,6 +8,7 @@ let display = document.getElementById("feedback");
 let theStoneGUI;
 let taintedRootGUI;
 let hpObservers = [];
+let btnFight = document.querySelector("#fight");
 
 window.addEventListener("load", (e) => {
   gameObj = gameObject;
@@ -34,10 +35,12 @@ window.addEventListener("load", (e) => {
   display.insertBefore(theStoneGUI, display.lastChild.nextSibling);
   display.insertBefore(taintedRootGUI, display.lastChild.nextSibling);
 
-  attack(theStone, taintedRoot);
+  btnFight.addEventListener("click", performAttack);
+
+  executeAttack(theStone, taintedRoot);
 });
 
-function attack(attacker, target) {
+function executeAttack(attacker, target) {
   let damageDealt = gameObj.attack(attacker, target);
 
   let actionParagraph = document.querySelector(`#${attacker.id}`);
@@ -51,15 +54,16 @@ function attack(attacker, target) {
   }
 }
 
-function optionOneWasClicked() {
+function performAttack() {
+  console.log("Clicked");
   if (taintedRoot.hp > 0) {
     paragraph.innerHTML =
       "Despite your best efforts, the vine is still alive.<br><br>You hear Gungurk screaming behind you:<br><br>'Hurry up, precious! Hurry!'";
 
-    attack();
+    // TODO: The TaintedRoot should also attack The Stone
+    executeAttack(theStone, taintedRoot);
 
     if (taintedRoot.isDead()) {
-      // if (taintedRoot.hp <= 0) {
       console.log(`Enemy ${taintedRoot.name} was slain!`);
       let newScene = window.open("../../../1a_break/1a_break_success.html");
 
@@ -72,6 +76,10 @@ function optionOneWasClicked() {
 
 function notifyObservers(target) {
   for (let i = 0; i < hpObservers.length; i++) {
-    hpObservers[i]._char.hp = target.hp;
+    let character = hpObservers[i]._char;
+
+    if (character.id === target.id) {
+      hpObservers[i]._char.hp = target.hp;
+    }
   }
 }

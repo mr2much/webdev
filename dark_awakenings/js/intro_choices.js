@@ -3,8 +3,6 @@ import { theStone, gungurk } from "./characters.js";
 import { taintedRoot } from "./enemies.js";
 import { distanceFromChasm } from "./gameProperties.js";
 
-const rootPath = window.location.href.match(/^.*\//)[0];
-
 //TODO: move this to weapons.js
 const weapons = {
   punch: punch,
