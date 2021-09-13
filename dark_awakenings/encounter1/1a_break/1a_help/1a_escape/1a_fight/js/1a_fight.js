@@ -66,9 +66,15 @@ window.addEventListener("load", (e) => {
   display.insertAdjacentHTML("beforeend", `<p id="${taintedRoot.id}"></p>`);
   display.insertAdjacentHTML("beforeend", `<p id="${theStone.id}"></p>`);
   display.insertAdjacentHTML("beforeend", `<p id="${gungurk.id}"></p>`);
-  display.insertBefore(theStoneGUI, display.lastChild.nextSibling);
-  display.insertBefore(gungurkGUI, display.lastChild.nextSibling);
-  display.insertBefore(taintedRootGUI, display.lastChild.nextSibling);
+
+  let gui = document.createElement("div");
+  gui.id = "gui";
+
+  gui.appendChild(theStoneGUI);
+  gui.appendChild(gungurkGUI);
+  gui.appendChild(taintedRootGUI);
+
+  display.insertBefore(gui, display.lastChild.nextSibling);
 });
 
 function pickRandomTarget() {

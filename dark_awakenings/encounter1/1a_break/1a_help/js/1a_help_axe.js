@@ -31,9 +31,16 @@ window.addEventListener("load", (e) => {
   let paragraphAction = document.createElement("p");
   paragraphAction.id = `${theStone.id}`;
 
-  display.insertBefore(paragraphAction, display.lastChild.nextSibling);
-  display.insertBefore(theStoneGUI, display.lastChild.nextSibling);
-  display.insertBefore(taintedRootGUI, display.lastChild.nextSibling);
+  display.insertBefore(paragraphAction, display.lastChild);
+
+  let gui = document.createElement("div");
+  gui.id = "gui";
+
+  gui.appendChild(theStoneGUI);
+  gui.appendChild(taintedRootGUI);
+
+  display.insertBefore(gui, display.lastChild.nextSibling);
+
   console.log(`Number of enemies: ${gameObj.enemies.length}`);
 
   btnAttack.addEventListener("click", keepAttacking);
