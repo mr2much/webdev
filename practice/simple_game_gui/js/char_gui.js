@@ -5,7 +5,7 @@ const guiStylesTemplate = () => `
     text-align: center;
   }  
 
-  #char_gui .details {
+  .char-gui .details {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,7 +26,8 @@ class CharGUI extends HTMLElement {
     charName.innerHTML = `${char.name}`;
 
     const section = document.createElement("section");
-    section.id = "char_gui";
+    section.id = `"${char.id}"`;
+    section.classList.add("char-gui");
     const details = document.createElement("div");
     details.classList.add("details");
 

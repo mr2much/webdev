@@ -1,4 +1,5 @@
 let knight = {
+  id: "young-knight",
   name: "Young Knight",
   maxHP: 15,
   hp: 15,

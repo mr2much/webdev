@@ -88,11 +88,13 @@ class CharAvatar extends HTMLElement {
           if (previousValue >= char.maxHP) {
             value = char.maxHP;
           } else {
-            imgHolder.classList.remove("glow");
+            if (value !== 0) {
+              imgHolder.classList.remove("glow");
 
-            void imgHolder.offsetWidth;
+              void imgHolder.offsetWidth;
 
-            imgHolder.classList.add("glow");
+              imgHolder.classList.add("glow");
+            }
           }
         }
 
