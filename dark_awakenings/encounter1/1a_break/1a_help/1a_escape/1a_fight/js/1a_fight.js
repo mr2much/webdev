@@ -1,3 +1,5 @@
+import { CharGUI } from "../../../../../../js/components/char_gui.js";
+
 let gameObj;
 let amountOfEnemies = 0;
 let gungurk = {};
@@ -12,9 +14,13 @@ let flavorText = document.getElementsByClassName("flavor")[0];
 let allies = [];
 let display = document.getElementById("feedback");
 
-let btnAttack = document.getElementById("btnAttack");
+let btnAttack = document.getElementById("btn-attack");
 let btnBreak = document.getElementById("break");
 let btnSideStep = document.getElementById("side-step");
+
+let theStoneGUI;
+let gungurkGUI;
+let taintedRootGUI;
 
 window.addEventListener("load", (e) => {
   gameObj = gameObject;
@@ -39,16 +45,40 @@ window.addEventListener("load", (e) => {
   allies.unshift(theStone);
 
   taintedRoot = enemies.shift();
-  target = pickRandomTarget();
+  let target = pickRandomTarget();
 
   distance = gameObj.getDistanceForCharacter(target);
+
+  if (theStone) {
+    theStoneGUI = new CharGUI(theStone);
+  }
+
+  if (gungurk) {
+    gungurkGUI = new CharGUI(gungurk);
+  }
+
+  if (taintedRoot) {
+    taintedRootGUI = new CharGUI(taintedRoot);
+  }
 
   paragraph.innerHTML += `<br><br>There are still ${amountOfEnemies} enemies left. You both tighten the grip on your weapons and attack them. One of the ${taintedRoot.name}s lashes at ${target.name}!`;
 
   display.insertAdjacentHTML("beforeend", `<p id="${taintedRoot.id}"></p>`);
   display.insertAdjacentHTML("beforeend", `<p id="${theStone.id}"></p>`);
   display.insertAdjacentHTML("beforeend", `<p id="${gungurk.id}"></p>`);
+  display.insertBefore(theStoneGUI, display.lastChild.nextSibling);
+  display.insertBefore(gungurkGUI, display.lastChild.nextSibling);
+  display.insertBefore(taintedRootGUI, display.lastChild.nextSibling);
 });
+
+function pickRandomTarget() {
+  let numberOfAllies = allies.length;
+  let randomIndex = Math.floor(Math.random() * numberOfAllies);
+
+  console.log(`Random Number: ${randomIndex}`);
+
+  return allies[randomIndex];
+}
 
 function disableBreakButton() {
   if (!btnBreak.disabled) {
@@ -349,15 +379,6 @@ function enableBreakButton() {
   if (btnBreak.classList.contains("noHover")) {
     btnBreak.classList.remove("noHover");
   }
-}
-
-function pickRandomTarget() {
-  let numberOfAllies = allies.length;
-  let randomIndex = Math.floor(Math.random() * numberOfAllies);
-
-  console.log(`Random Number: ${randomIndex}`);
-
-  return allies[randomIndex];
 }
 
 function optionTwoWasClicked() {

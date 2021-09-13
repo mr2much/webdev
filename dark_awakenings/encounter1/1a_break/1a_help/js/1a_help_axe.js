@@ -51,9 +51,9 @@ function combat(attacker, target) {
     actionParagraph.innerHTML = `${attacker.name}'s attack failed to hit target ${target.name}`;
   } else {
     actionParagraph.innerHTML = `${attacker.name} dealt ${damageDealt} to ${target.name}`;
-  }
 
-  notifyObservers(target);
+    notifyObservers(target);
+  }
 }
 
 function notifyObservers(target) {
