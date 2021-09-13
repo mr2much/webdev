@@ -1,37 +1,77 @@
+import { CharGUI } from "../../../../js/components/char_gui.js";
+
 let theStone = {};
 let taintedRoot = {};
 let paragraph = document.getElementById("narration");
 let gameObj;
 let display = document.getElementById("feedback");
 let paragraphTheStoneActions = document.createElement("p");
+let theStoneGUI;
+let taintedRootGUI;
+let hpObservers = [];
+
+let btnAttack = document.querySelector("#attack");
+let btnRun = document.querySelector("#run_away");
 
 window.addEventListener("load", (e) => {
   gameObj = gameObject;
   theStone = gameObj.creatures.players.theStone;
   taintedRoot = gameObj.enemies.shift();
 
-  combat();
+  if (theStone) {
+    theStoneGUI = new CharGUI(theStone);
+  }
 
-  display.insertBefore(paragraphTheStoneActions, display.lastChild.nextSibling);
+  if (taintedRoot) {
+    taintedRootGUI = new CharGUI(taintedRoot);
+  }
+
+  hpObservers.push(theStoneGUI, taintedRootGUI);
+
+  let paragraphAction = document.createElement("p");
+  paragraphAction.id = `${theStone.id}`;
+
+  display.insertBefore(paragraphAction, display.lastChild.nextSibling);
+  display.insertBefore(theStoneGUI, display.lastChild.nextSibling);
+  display.insertBefore(taintedRootGUI, display.lastChild.nextSibling);
   console.log(`Number of enemies: ${gameObj.enemies.length}`);
+
+  btnAttack.addEventListener("click", keepAttacking);
+  btnRun.addEventListener("click", abandonGungurk);
+
+  combat(theStone, taintedRoot);
 });
 
-function combat() {
-  let damageDealt = gameObj.attack(theStone, taintedRoot);
+function combat(attacker, target) {
+  let damageDealt = gameObj.attack(attacker, target);
+
+  let actionParagraph = document.querySelector(`#${attacker.id}`);
 
   if (damageDealt === 0) {
-    paragraphTheStoneActions.innerHTML = `${theStone.name}'s attack failed to hit target ${taintedRoot.name}`;
+    actionParagraph.innerHTML = `${attacker.name}'s attack failed to hit target ${target.name}`;
   } else {
-    paragraphTheStoneActions.innerHTML = `${theStone.name} dealt ${damageDealt} to ${taintedRoot.name}`;
+    actionParagraph.innerHTML = `${attacker.name} dealt ${damageDealt} to ${target.name}`;
+  }
+
+  notifyObservers(target);
+}
+
+function notifyObservers(target) {
+  for (let i = 0; i < hpObservers.length; i++) {
+    let character = hpObservers[i]._char;
+
+    if (character.id === target.id) {
+      character.hp = target.hp;
+    }
   }
 }
 
-function optionOneWasClicked() {
+function keepAttacking() {
   if (taintedRoot.hp > 0) {
     paragraph.innerHTML =
       "Despite your best efforts, the vine is still alive.<br><br>You hear Gungurk screaming behind you:<br><br>'Keep going, precious! We believes in you!'";
 
-    combat();
+    combat(theStone, taintedRoot);
 
     if (taintedRoot.isDead()) {
       console.log(`Enemy ${taintedRoot.name} was slain!`);
@@ -44,6 +84,6 @@ function optionOneWasClicked() {
   }
 }
 
-function optionTwoWasClicked() {
+function abandonGungurk() {
   console.log("You decided to run away!");
 }
