@@ -30,9 +30,7 @@ let hpObservers = [];
 window.addEventListener("load", (e) => {
   gameObj = gameObject;
 
-  disableBreakButton();
-  // btnBreak.disabled = true;
-  // btnBreak.classList.add("noHover");
+  toggleBreakButton();
 
   enemies = gameObj.enemies;
   amountOfEnemies = enemies.length;
@@ -98,14 +96,10 @@ function pickRandomTarget() {
   return allies[randomIndex];
 }
 
-function disableBreakButton() {
-  if (!btnBreak.disabled) {
-    btnBreak.disabled = true;
-  }
+function toggleBreakButton() {
+  btnBreak.disabled = !btnBreak.disabled;
 
-  if (!btnBreak.classList.contains("noHover")) {
-    btnBreak.classList.add("noHover");
-  }
+  btnBreak.classList.toggle("noHover");
 }
 
 function executeAttack() {
@@ -122,6 +116,10 @@ function executeAttack() {
       taintedRootGUI = new CharGUI(taintedRoot);
       target = pickRandomTarget();
       distance = gameObj.getDistanceForCharacter(target);
+
+      if (!btnBreak.disabled) {
+        toggleBreakButton();
+      }
 
       if (enemies.length === 0) {
         console.log(
@@ -149,13 +147,8 @@ function executeAttack() {
         notifyObservers(target);
 
         if (distance.feet <= 0) {
-          let paragraphTaintedRootActions = document.querySelector(
-            `#${taintedRoot.id}`
-          );
           let actionParagraph = document.querySelector(`#${target.id}`);
           actionParagraph.innerHTML += `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
-
-          // paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
 
           // if The Stone falls, I have to disable all buttons for the options
 
@@ -166,6 +159,7 @@ function executeAttack() {
             let paragraphTheStoneActions = document.querySelector(
               `#${target.id}`
             );
+
             paragraphTheStoneActions.innerHTML = `${target.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the the remaining 5 feet over the edge.`;
 
             let fallDamage = Math.floor(Math.random() * 10 + 1);
@@ -278,9 +272,7 @@ function executeAttack() {
             taintedRoot.target = target;
             taintedRoot.targetGrappled = true;
 
-            enableBreakButton();
-            // btnBreak.disabled = false;
-            // btnBreak.classList.remove("noHover");
+            toggleBreakButton();
           }
         }
       }
@@ -290,7 +282,7 @@ function executeAttack() {
         if (target === theStone) {
           // check if The Stone died from the fall or due to damage
 
-          console.log("The Stone died");
+          console.log("The Stone died from the damage!");
           return;
         } else {
           // if the taintedRoot was grappling Gungurk, it should have no one grappled now
@@ -337,17 +329,19 @@ function executeAttack() {
         for (var i = 0; i < allies.length; i++) {
           let attacker = allies[i];
 
-          let damageDealt = gameObj.attack(attacker, enemy);
+          attack(attacker, enemy);
 
-          actionParagraph = document.querySelector(`#${attacker.id}`);
+          // let damageDealt = gameObj.attack(attacker, enemy);
 
-          if (damageDealt === 0) {
-            actionParagraph.innerHTML = `${attacker.name}'s attack failed to hit target ${enemy.name}.`;
-          } else {
-            actionParagraph.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${enemy.name}.`;
+          // actionParagraph = document.querySelector(`#${attacker.id}`);
 
-            notifyObservers(enemy);
-          }
+          // if (damageDealt === 0) {
+          //   actionParagraph.innerHTML = `${attacker.name}'s attack failed to hit target ${enemy.name}.`;
+          // } else {
+          //   actionParagraph.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${enemy.name}.`;
+
+          //   notifyObservers(enemy);
+          // }
 
           console.log(`HP: ${enemy.hp}`);
 
@@ -390,6 +384,20 @@ function executeAttack() {
   }
 }
 
+function attack(attacker, enemy) {
+  let damageDealt = gameObj.attack(attacker, enemy);
+
+  let actionParagraph = document.querySelector(`#${attacker.id}`);
+
+  if (damageDealt === 0) {
+    actionParagraph.innerHTML = `${attacker.name}'s attack failed to hit target ${enemy.name}.`;
+  } else {
+    actionParagraph.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${enemy.name}.`;
+
+    notifyObservers(enemy);
+  }
+}
+
 function notifyObservers(target) {
   for (let i = 0; i < hpObservers.length; i++) {
     let character = hpObservers[i]._char;
@@ -412,16 +420,6 @@ function pullTargetCloserToTheChasm(attacker, target, damage) {
   console.log(
     `Enemy ${attacker.name} pulls ${attacker.target.name} closer to the chasm`
   );
-}
-
-function enableBreakButton() {
-  if (btnBreak.disabled) {
-    btnBreak.disabled = false;
-  }
-
-  if (btnBreak.classList.contains("noHover")) {
-    btnBreak.classList.remove("noHover");
-  }
 }
 
 function optionTwoWasClicked() {
@@ -451,7 +449,7 @@ function attemptToEscapeGrapple(target) {
     } else {
       console.log(`Immediately stepping 5ft away from the chasm!`);
     }
-    disableBreakButton();
+    toggleBreakButton();
   } else {
     console.log(`${target.name} failed to break free from the vine`);
     // TODO: Another reason to roll the drag damage in the function
