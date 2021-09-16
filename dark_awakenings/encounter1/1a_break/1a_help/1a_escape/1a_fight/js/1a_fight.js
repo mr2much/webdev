@@ -30,9 +30,7 @@ let hpObservers = [];
 window.addEventListener("load", (e) => {
   gameObj = gameObject;
 
-  disableBreakButton();
-  // btnBreak.disabled = true;
-  // btnBreak.classList.add("noHover");
+  toggleBreakButton();
 
   enemies = gameObj.enemies;
   amountOfEnemies = enemies.length;
@@ -98,14 +96,10 @@ function pickRandomTarget() {
   return allies[randomIndex];
 }
 
-function disableBreakButton() {
-  if (!btnBreak.disabled) {
-    btnBreak.disabled = true;
-  }
+function toggleBreakButton() {
+  btnBreak.disabled = !btnBreak.disabled;
 
-  if (!btnBreak.classList.contains("noHover")) {
-    btnBreak.classList.add("noHover");
-  }
+  btnBreak.classList.toggle("noHover");
 }
 
 function executeAttack() {
@@ -122,6 +116,10 @@ function executeAttack() {
       taintedRootGUI = new CharGUI(taintedRoot);
       target = pickRandomTarget();
       distance = gameObj.getDistanceForCharacter(target);
+
+      if (!btnBreak.disabled) {
+        toggleBreakButton();
+      }
 
       if (enemies.length === 0) {
         console.log(
@@ -278,9 +276,8 @@ function executeAttack() {
             taintedRoot.target = target;
             taintedRoot.targetGrappled = true;
 
-            enableBreakButton();
-            // btnBreak.disabled = false;
-            // btnBreak.classList.remove("noHover");
+            toggleBreakButton();
+            // enableBreakButton();
           }
         }
       }
@@ -290,7 +287,7 @@ function executeAttack() {
         if (target === theStone) {
           // check if The Stone died from the fall or due to damage
 
-          console.log("The Stone died");
+          console.log("The Stone died from the damage!");
           return;
         } else {
           // if the taintedRoot was grappling Gungurk, it should have no one grappled now
@@ -414,16 +411,6 @@ function pullTargetCloserToTheChasm(attacker, target, damage) {
   );
 }
 
-function enableBreakButton() {
-  if (btnBreak.disabled) {
-    btnBreak.disabled = false;
-  }
-
-  if (btnBreak.classList.contains("noHover")) {
-    btnBreak.classList.remove("noHover");
-  }
-}
-
 function optionTwoWasClicked() {
   console.log("You ran away!");
 }
@@ -451,7 +438,7 @@ function attemptToEscapeGrapple(target) {
     } else {
       console.log(`Immediately stepping 5ft away from the chasm!`);
     }
-    disableBreakButton();
+    toggleBreakButton();
   } else {
     console.log(`${target.name} failed to break free from the vine`);
     // TODO: Another reason to roll the drag damage in the function

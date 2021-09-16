@@ -97,7 +97,7 @@ const theStone = {
 const gungurk = {
   id: "gungurk",
   name: "Gungurk",
-  src: `${rootPath}res/img/Gungurk.jpg`,
+  src: `${rootPath}res/img/gungurk.jpg`,
   alt: "Gungurk's character portrait",
   maxHP: 26,
   hp: 26,
