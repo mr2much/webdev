@@ -147,13 +147,8 @@ function executeAttack() {
         notifyObservers(target);
 
         if (distance.feet <= 0) {
-          let paragraphTaintedRootActions = document.querySelector(
-            `#${taintedRoot.id}`
-          );
           let actionParagraph = document.querySelector(`#${target.id}`);
           actionParagraph.innerHTML += `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
-
-          // paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
 
           // if The Stone falls, I have to disable all buttons for the options
 
@@ -164,6 +159,7 @@ function executeAttack() {
             let paragraphTheStoneActions = document.querySelector(
               `#${target.id}`
             );
+
             paragraphTheStoneActions.innerHTML = `${target.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the the remaining 5 feet over the edge.`;
 
             let fallDamage = Math.floor(Math.random() * 10 + 1);
@@ -277,7 +273,6 @@ function executeAttack() {
             taintedRoot.targetGrappled = true;
 
             toggleBreakButton();
-            // enableBreakButton();
           }
         }
       }
@@ -334,17 +329,19 @@ function executeAttack() {
         for (var i = 0; i < allies.length; i++) {
           let attacker = allies[i];
 
-          let damageDealt = gameObj.attack(attacker, enemy);
+          attack(attacker, enemy);
 
-          actionParagraph = document.querySelector(`#${attacker.id}`);
+          // let damageDealt = gameObj.attack(attacker, enemy);
 
-          if (damageDealt === 0) {
-            actionParagraph.innerHTML = `${attacker.name}'s attack failed to hit target ${enemy.name}.`;
-          } else {
-            actionParagraph.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${enemy.name}.`;
+          // actionParagraph = document.querySelector(`#${attacker.id}`);
 
-            notifyObservers(enemy);
-          }
+          // if (damageDealt === 0) {
+          //   actionParagraph.innerHTML = `${attacker.name}'s attack failed to hit target ${enemy.name}.`;
+          // } else {
+          //   actionParagraph.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${enemy.name}.`;
+
+          //   notifyObservers(enemy);
+          // }
 
           console.log(`HP: ${enemy.hp}`);
 
@@ -384,6 +381,20 @@ function executeAttack() {
     newScene.onload = function () {
       this.gameObject = gameObj;
     };
+  }
+}
+
+function attack(attacker, enemy) {
+  let damageDealt = gameObj.attack(attacker, enemy);
+
+  let actionParagraph = document.querySelector(`#${attacker.id}`);
+
+  if (damageDealt === 0) {
+    actionParagraph.innerHTML = `${attacker.name}'s attack failed to hit target ${enemy.name}.`;
+  } else {
+    actionParagraph.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${enemy.name}.`;
+
+    notifyObservers(enemy);
   }
 }
 
