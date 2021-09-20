@@ -112,11 +112,11 @@ function executeAttack() {
 
   if (amountOfEnemies > 0) {
     if (taintedRoot.isDead()) {
+      // should only get here if the Tainted Root died due fall damage
       taintedRoot = enemies.shift();
-
-      display.removeChild(taintedRootGUI);
       taintedRootGUI = new CharGUI(taintedRoot);
-      display.appendChild(taintedRootGUI);
+
+      notifyObservers(taintedRoot);
 
       target = pickRandomTarget();
       distance = gameObj.getDistanceForCharacter(target);
@@ -356,6 +356,14 @@ function executeAttack() {
               actionParagraph.innerHTML += `<br>${target.name} steps 5 feet away from the Chasm!`;
               console.log(`${distance.name} is now ${distance.feet}`);
             }
+
+            // Switch enemies
+            setTimeout(() => {
+              taintedRoot = enemies.shift();
+              taintedRootGUI = new CharGUI(taintedRoot);
+
+              notifyObservers(taintedRoot);
+            }, 1000);
 
             break;
           }
