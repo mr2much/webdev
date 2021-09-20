@@ -363,14 +363,21 @@ function executeAttack() {
               taintedRootGUI = new CharGUI(taintedRoot);
 
               notifyObservers(taintedRoot);
-            }, 1000);
+
+              target = pickRandomTarget();
+              distance = gameObj.getDistanceForCharacter(target);
+
+              console.log(
+                `${target.name} is ${distance.feet} away from the chasm!`
+              );
+            }, 500);
 
             break;
           }
         }
       }
 
-      console.log(...gameObj.distanceFromChasm, theStone, gungurk);
+      console.log(gameObj.distanceFromChasm);
     }
   }
 
