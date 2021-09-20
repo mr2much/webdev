@@ -111,36 +111,38 @@ function executeAttack() {
   }
 
   if (amountOfEnemies > 0) {
-    if (taintedRoot.isDead()) {
-      // should only get here if the Tainted Root died due fall damage
-      taintedRoot = enemies.shift();
-      taintedRootGUI = new CharGUI(taintedRoot);
+    // if (taintedRoot.isDead()) {
+    //   console.log("The program never comes close to this piece of code!");
+    //   // should only get here if the Tainted Root died due fall damage
+    //   taintedRoot = enemies.shift();
+    //   taintedRootGUI = new CharGUI(taintedRoot);
 
-      notifyObservers(taintedRoot);
+    //   notifyObservers(taintedRoot);
 
-      target = pickRandomTarget();
-      distance = gameObj.getDistanceForCharacter(target);
+    //   target = pickRandomTarget();
+    //   distance = gameObj.getDistanceForCharacter(target);
 
-      // TODO: Here is where the vine GUI should be loaded
+    //   // TODO: Here is where the vine GUI should be loaded
 
-      // If the Break Button is disabled when a new enemy is loaded
-      if (!btnBreak.disabled) {
-        // Enable the Break Button
-        toggleButton(btnBreak);
-      }
+    //   // If the Break Button is disabled when a new enemy is loaded
+    //   if (!btnBreak.disabled) {
+    //     // Enable the Break Button
+    //     console.log("This never happens!");
+    //     // toggleButton(btnBreak);
+    //   }
 
-      if (enemies.length === 0) {
-        console.log(
-          `Enemies: ${enemies.length}, amountOfEnemies: ${amountOfEnemies}`
-        );
-      }
+    //   if (enemies.length === 0) {
+    //     console.log(
+    //       `Enemies: ${enemies.length}, amountOfEnemies: ${amountOfEnemies}`
+    //     );
+    //   }
 
-      if (amountOfEnemies > 1) {
-        paragraph.innerHTML = `There are still ${amountOfEnemies} enemies left. You both tighten the grip on your weapons and attack them. One of the ${taintedRoot.name}s lashes at ${target.name}!`;
-      } else {
-        paragraph.innerHTML = `Weapons drawn, you engage the remaining ${taintedRoot.name} as it lashes at ${target.name}!`;
-      }
-    }
+    //   // if (amountOfEnemies > 1) {
+    //   //   paragraph.innerHTML = `There are still ${amountOfEnemies} enemies left. You both tighten the grip on your weapons and attack them. One of the ${taintedRoot.name}s lashes at ${target.name}! The code never reaches here.`;
+    //   // } else {
+    //   //   paragraph.innerHTML = `Weapons drawn, you engage the remaining ${taintedRoot.name} as it lashes at ${target.name}!`;
+    //   // }
+    // }
 
     if (taintedRoot.hp > 0) {
       let taintedRootDamage = gameObj.attack(taintedRoot, target);
@@ -335,17 +337,15 @@ function executeAttack() {
           console.assert(gungurk.hp > 0, "Gungurk died!");
         }
       } else {
-        let enemy = taintedRoot;
-
         for (var i = 0; i < allies.length; i++) {
           let attacker = allies[i];
 
-          attack(attacker, enemy);
+          attack(attacker, taintedRoot);
 
-          console.log(`HP: ${enemy.hp}`);
+          console.log(`HP: ${taintedRoot.hp}`);
 
-          if (enemy.isDead()) {
-            enemyDied(enemy);
+          if (taintedRoot.isDead()) {
+            enemyDied(taintedRoot);
 
             // TODO: This can be a function
             // if target has not fallen yet
@@ -359,17 +359,17 @@ function executeAttack() {
 
             // Switch enemies
             setTimeout(() => {
-              taintedRoot = enemies.shift();
-              taintedRootGUI = new CharGUI(taintedRoot);
+              // TODO: This should be a function
+              if (amountOfEnemies > 1) {
+                paragraph.innerHTML = `There are still ${amountOfEnemies} enemies left. You both tighten the grip on your weapons and attack them. One of the ${taintedRoot.name}s lashes at ${target.name}!`;
+              } else {
+                paragraph.innerHTML = `Weapons drawn, you engage the remaining ${taintedRoot.name} as it lashes at ${target.name}!`;
+              }
 
-              notifyObservers(taintedRoot);
+              switchEnemies();
 
               target = pickRandomTarget();
               distance = gameObj.getDistanceForCharacter(target);
-
-              console.log(
-                `${target.name} is ${distance.feet} away from the chasm!`
-              );
             }, 500);
 
             break;
@@ -389,6 +389,13 @@ function executeAttack() {
       this.gameObject = gameObj;
     };
   }
+}
+
+function switchEnemies() {
+  taintedRoot = enemies.shift();
+  taintedRootGUI = new CharGUI(taintedRoot);
+
+  notifyObservers(taintedRoot);
 }
 
 function disableAllOptions() {
@@ -413,8 +420,9 @@ function enemyDied(enemy) {
   amountOfEnemies--;
 
   // if the Tainted Root was grabbing someone, who has not already fallen down into the Chasm
-  if (enemy.hasTargetGrappled() && distance.feet > 0) {
+  if (enemy.hasTargetGrappled()) {
     paragraphTaintedRootActions.innerHTML += ` ${target.name} is no longer grappled.`;
+    toggleButton(btnBreak);
   }
 }
 
