@@ -102,6 +102,259 @@ function toggleButton(button) {
   button.classList.toggle("noHover");
 }
 
+function enemyBehavior() {
+  // If the tainted root is alive, it will have these goals:
+  if (isAlive(taintedRoot)) {
+    // 1. If it doesn't have a target, pick one.
+    // 2. If it has a target, grapple it.
+    // 3. If the target is not grappled, attack it until it is grappled.
+    // 4. If target is grappled, drag it until it falls down the chasm.
+    // 5. The Tainted Root will die from the fall as it drags the target down the Chasm.
+
+    let taintedRootDamage = gameObj.attack(taintedRoot, target);
+
+    if (taintedRoot.weapon === dragWeapon) {
+      // when the weapon is dragWeapon, the attack always hits, so the Tainted Root always deals damage with it
+      // TODO: We are passing the taintedRootDamage temporarily, since the damage is being dealt when we call gameObj.attack(), to avoid dealing damage to the target twice
+      // have to remove the call to the attack function from outside this if, and call it in pullTargetCloserToTheChasm() instead
+
+      pullTargetCloserToTheChasm(taintedRoot, target, taintedRootDamage);
+
+      notifyObservers(target);
+
+      let actionParagraph = document.querySelector(`#${target.id}`);
+      actionParagraph.innerHTML += `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
+
+      // must contemplate a scenario where both allies die. If the number of allies reaches zero, must open the Game Over screen
+    } else {
+      // if we got here, then the Tainted Root is attacking with its grasp attack and not its drag attack
+      let paragraphTaintedRootActions = document.querySelector(
+        `#${taintedRoot.id}`
+      );
+
+      if (taintedRootDamage === 0) {
+        // if the grasping attack doesn't connect, then the target is not grabbed
+
+        paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name}'s attack failed to hit target ${target.name}`;
+
+        // if you are more than 5 feet away from the chasm, and are not more than 15ft away from it
+        if (distance.feet <= 10) {
+          distance.feet += 5;
+          console.log(`${distance.name} is now ${distance.feet}`);
+          console.log(`${gameObj.distanceFromChasm[`${target.name}`]}`);
+          paragraphTaintedRootActions.innerHTML += ` and he immediately walks 5 feet away from the threatening Chasm up ahead.`;
+        }
+      } else {
+        paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} grabs ${target.name}, dealing ${taintedRootDamage} points of damage with its vines! ${target.name} is now grabbed!`;
+
+        notifyObservers(target);
+
+        // if the attack connects, then the target is grabbed, and the tainted root will start dragging it towards the chasm
+        if (!taintedRoot.hasTargetGrappled()) {
+          taintedRoot.weapon = dragWeapon;
+          taintedRoot.target = target;
+          taintedRoot.targetGrappled = true;
+
+          toggleButton(btnBreak);
+        }
+      }
+    }
+
+    // to determine if the target died from the fall use the distanceFromChasm object
+    if (target.hp <= 0) {
+      if (target === theStone) {
+        disableAllOptions();
+        // check if The Stone died from the fall or due to damage
+        console.log("The Stone died from the damage!");
+
+        // TODO: Should load dead scenario specifying The Stone died from the damage
+        return;
+      } else {
+        // if the taintedRoot was grappling Gungurk, it should have no one grappled now
+        if (taintedRoot.hasTargetGrappled() && target !== theStone) {
+          taintedRoot.targetGrappled = false;
+        }
+
+        // check how Gungurk died and show a message describing it
+        let paragraph = document.querySelector(`#${taintedRoot.id}`);
+
+        console.assert(
+          paragraph,
+          `Paragraph not found for ID: ${taintedRoot.id}`
+        );
+
+        // remove Gungurk from the party
+        gameObj.removeFromParty(allies, target);
+        console.table(allies);
+
+        // change targets when Gungurk dies
+        target = pickRandomTarget();
+
+        paragraph.innerHTML += `<br>The vine's last attack killed ${gungurk.name}. <br>After getting rid of him, the enemy ${taintedRoot.name} shifts its focus to ${target.name}.`;
+
+        // should set a timer and remove gungurk's paragraph from the page
+        setInterval(() => {
+          let paragraphGungurkActions = document.querySelector(
+            `#${gungurk.id}`
+          );
+          if (paragraphGungurkActions) {
+            display.removeChild(paragraphGungurkActions);
+          }
+        }, 6000);
+
+        // remove Gungurk's reference from gameObject
+
+        toggleButton(btnBreak);
+
+        console.assert(gungurk.hp > 0, "Gungurk died!");
+      }
+    } else {
+      for (var i = 0; i < allies.length; i++) {
+        let attacker = allies[i];
+
+        attack(attacker, taintedRoot);
+
+        console.log(`HP: ${taintedRoot.hp}`);
+
+        if (taintedRoot.isDead()) {
+          enemyDied(taintedRoot);
+
+          // TODO: This can be a function
+          // if target has not fallen yet
+          if (gameObj.getDistanceForCharacter(target).feet >= 5) {
+            let actionParagraph;
+            distance.feet += 5;
+            actionParagraph = document.querySelector(`#${target.id}`);
+            actionParagraph.innerHTML += `<br>${target.name} steps 5 feet away from the Chasm!`;
+            console.log(`${distance.name} is now ${distance.feet}`);
+          }
+
+          // Switch enemies
+          setTimeout(() => {
+            // TODO: This should be a function
+            if (amountOfEnemies > 1) {
+              paragraph.innerHTML = `There are still ${amountOfEnemies} enemies left. You both tighten the grip on your weapons and attack them. One of the ${taintedRoot.name}s lashes at ${target.name}!`;
+            } else {
+              paragraph.innerHTML = `Weapons drawn, you engage the remaining ${taintedRoot.name} as it lashes at ${target.name}!`;
+            }
+
+            switchEnemies();
+
+            target = pickRandomTarget();
+            distance = gameObj.getDistanceForCharacter(target);
+          }, 500);
+
+          break;
+        }
+      }
+    }
+
+    console.log(gameObj.distanceFromChasm);
+  }
+}
+
+function theStoneBehavior() {
+  let distance = gameObj.getDistanceForCharacter(theStone);
+
+  // If The Stone falls
+  if (distance.feet <= 0) {
+    console.log(`Target: ${theStone.name} fell`);
+
+    // Immediately disable all the buttons
+    disableAllOptions();
+
+    console.log(`${theStone.name} fell`);
+    let paragraphTheStoneActions = document.querySelector(`#${theStone.id}`);
+
+    paragraphTheStoneActions.innerHTML = `${theStone.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the the remaining 5 feet over the edge.`;
+
+    let fallDamage = Math.floor(Math.random() * 10 + 1);
+    theStone.receiveDamage(fallDamage);
+
+    paragraphTheStoneActions.innerHTML += `<br>${theStone.name} receives ${fallDamage} of damage from the fall.`;
+
+    notifyObservers(theStone);
+
+    if (theStone.hp <= 0) {
+      // load dead scenario after a set interval
+      console.log(`${theStone.name} died from the fall!`);
+      return;
+    } else {
+      //   Must make a pause
+      setTimeout(() => {
+        console.log("Executing timeout function");
+        if (allies.indexOf(gungurk) < 0) {
+          let newScene = window.open(
+            "../../../../../encounter2/gungurk_fell_first.html"
+          );
+          newScene.onload = function () {
+            this.gameObject = gameObj;
+          };
+        } else {
+          //   and then load the second encounter
+          let newScene = window.open(
+            "../../../../../encounter2/stone_fell.html"
+          );
+
+          newScene.onload = function () {
+            this.gameObject = gameObj;
+          };
+        }
+      }, 6000);
+      return;
+    }
+  }
+}
+
+function gungurkBehavior() {
+  let distance = gameObj.getDistanceForCharacter(gungurk);
+
+  console.log("Gungurk's distance: ");
+  console.log(distance);
+
+  if (distance.feet <= 0) {
+    // if The Stone falls, I have to disable all buttons for the options
+
+    console.log(`Target: ${gungurk.name} fell`);
+
+    let paragraphGungurkActions = document.querySelector(`#${gungurk.id}`);
+    paragraphGungurkActions.innerHTML += ` ${gungurk.name} squeals like a terrified pig, and he disappears into the chasm. He splashes down, followed by disconcerting silence. At least the root that dragged him into the chasm apparently died from the fall.`;
+
+    let fallDamage = Math.floor(Math.random() * 10 + 1);
+
+    paragraphGungurkActions.innerHTML += `<br>${gungurk.name} received ${fallDamage} points of damage from the fall.`;
+    gungurk.receiveDamage(fallDamage);
+
+    // Confirming that both target and gungurk are pointing to the same Object
+    // console.log(`${target.name}: ${target.getCurrentHP()} HP`);
+    // console.log(`${gungurk.name}: ${gungurk.getCurrentHP()} HP`);
+
+    taintedRoot.hp = 0; // The fall kills the taintedRoot
+
+    gameObj.removeFromParty(allies, gungurk); // should change targets
+
+    // TODO: try to look for a way to avoid repeatedly checking the target's hp
+
+    notifyObservers(gungurk);
+
+    if (gungurk.hp <= 0) {
+      console.log("The fall killed Gungurk");
+
+      paragraphGungurkActions.innerHTML += `<br>${gungurk.name} seems to have gone awfully quiet. You fear for the worse.`;
+
+      // should set a timer and remove gungurk's paragraph from the page
+      setInterval(() => {
+        let paragraphGungurkActions = document.querySelector(`#${gungurk.id}`);
+        if (paragraphGungurkActions) {
+          display.removeChild(paragraphGungurkActions);
+        }
+      }, 6000);
+
+      target = pickRandomTarget();
+    }
+  }
+}
+
 function executeAttack() {
   console.log("Combat started!");
 
@@ -111,274 +364,229 @@ function executeAttack() {
   }
 
   if (amountOfEnemies > 0) {
+    // handle enemiy's turn
+    enemyBehavior();
+
     // if (taintedRoot.isDead()) {
     //   console.log("The program never comes close to this piece of code!");
     //   // should only get here if the Tainted Root died due fall damage
     //   taintedRoot = enemies.shift();
     //   taintedRootGUI = new CharGUI(taintedRoot);
-
     //   notifyObservers(taintedRoot);
-
     //   target = pickRandomTarget();
     //   distance = gameObj.getDistanceForCharacter(target);
-
     //   // TODO: Here is where the vine GUI should be loaded
-
     //   // If the Break Button is disabled when a new enemy is loaded
     //   if (!btnBreak.disabled) {
     //     // Enable the Break Button
     //     console.log("This never happens!");
     //     // toggleButton(btnBreak);
     //   }
-
     //   if (enemies.length === 0) {
     //     console.log(
     //       `Enemies: ${enemies.length}, amountOfEnemies: ${amountOfEnemies}`
     //     );
     //   }
-
     //   // if (amountOfEnemies > 1) {
     //   //   paragraph.innerHTML = `There are still ${amountOfEnemies} enemies left. You both tighten the grip on your weapons and attack them. One of the ${taintedRoot.name}s lashes at ${target.name}! The code never reaches here.`;
     //   // } else {
     //   //   paragraph.innerHTML = `Weapons drawn, you engage the remaining ${taintedRoot.name} as it lashes at ${target.name}!`;
     //   // }
     // }
+    // if (taintedRoot.hp > 0) {
+    //   let taintedRootDamage = gameObj.attack(taintedRoot, target);
+    //   if (taintedRoot.weapon === dragWeapon) {
+    //     // when the weapon is dragWeapon, the attack always hits, so the Tainted Root always deals damage with it
+    //     // TODO: We are passing the taintedRootDamage temporarily, since the damage is being dealt when we call gameObj.attack(), to avoid dealing damage to the target twice
+    //     // have to remove the call to the attack function from outside this if, and call it in pullTargetCloserToTheChasm() instead
+    //     pullTargetCloserToTheChasm(taintedRoot, target, taintedRootDamage);
+    //     notifyObservers(target);
+    //     if (distance.feet <= 0) {
+    //       let actionParagraph = document.querySelector(`#${target.id}`);
+    //       actionParagraph.innerHTML += `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
+    //       // if The Stone falls, I have to disable all buttons for the options
+    //       console.log(`Target: ${target.name} fell`);
+    //       if (target === theStone) {
+    //         // If The Stone falls, immediately disable all the buttons
+    //         disableAllOptions();
+    //         console.log(`${target.name} fell`);
+    //         let paragraphTheStoneActions = document.querySelector(
+    //           `#${target.id}`
+    //         );
+    //         paragraphTheStoneActions.innerHTML = `${target.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the the remaining 5 feet over the edge.`;
+    //         let fallDamage = Math.floor(Math.random() * 10 + 1);
+    //         target.receiveDamage(fallDamage);
+    //         paragraphTheStoneActions.innerHTML += `<br>${target.name} receives ${fallDamage} of damage from the fall.`;
+    //         console.log(target);
+    //         notifyObservers(target);
+    //         if (target.hp <= 0) {
+    //           // load dead scenario after a set interval
+    //           console.log(`${target.name} died from the fall!`);
+    //           return;
+    //         } else {
+    //           //   Must make a pause
+    //           setTimeout(() => {
+    //             console.log("Executing timeout function");
+    //             if (allies.indexOf(gungurk) < 0) {
+    //               let newScene = window.open(
+    //                 "../../../../../encounter2/gungurk_fell_first.html"
+    //               );
+    //               newScene.onload = function () {
+    //                 this.gameObject = gameObj;
+    //               };
+    //             } else {
+    //               //   and then load the second encounter
+    //               let newScene = window.open(
+    //                 "../../../../../encounter2/stone_fell.html"
+    //               );
+    //               newScene.onload = function () {
+    //                 this.gameObject = gameObj;
+    //               };
+    //             }
+    //           }, 6000);
+    //           return;
+    //         }
+    //       } else {
+    //         let paragraphGungurkActions = document.querySelector(
+    //           `#${target.id}`
+    //         );
+    //         paragraphGungurkActions.innerHTML += ` ${target.name} squeals like a terrified pig, and he disappears into the chasm. He splashes down, followed by disconcerting silence. At least the root that dragged him into the chasm apparently died from the fall.`;
+    //         let fallDamage = Math.floor(Math.random() * 10 + 1);
+    //         paragraphGungurkActions.innerHTML += `<br>${target.name} received ${fallDamage} points of damage from the fall.`;
+    //         target.receiveDamage(fallDamage);
+    //         // Confirming that both target and gungurk are pointing to the same Object
+    //         // console.log(`${target.name}: ${target.getCurrentHP()} HP`);
+    //         // console.log(`${gungurk.name}: ${gungurk.getCurrentHP()} HP`);
+    //         taintedRoot.hp = 0; // The fall kills the taintedRoot
+    //         gameObj.removeFromParty(allies, target); // should change targets
+    //         // TODO: try to look for a way to avoid repeatedly checking the target's hp
+    //         notifyObservers(target);
+    //         if (target.hp <= 0) {
+    //           console.log("The fall killed Gungurk");
+    //           paragraphGungurkActions.innerHTML += `<br>${gungurk.name} seems to have gone awfully quiet. You fear for the worse.`;
+    //           // should set a timer and remove gungurk's paragraph from the page
+    //           setInterval(() => {
+    //             let paragraphGungurkActions = document.querySelector(
+    //               `#${gungurk.id}`
+    //             );
+    //             if (paragraphGungurkActions) {
+    //               display.removeChild(paragraphGungurkActions);
+    //             }
+    //           }, 6000);
+    //           target = pickRandomTarget();
+    //         }
+    //       }
+    //     }
+    //     // must contemplate a scenario where both allies die. If the number of allies reaches zero, must open the Game Over screen
+    //   } else {
+    //     // if we got here, then the Tainted Root is attacking with its grasp attack and not its drag attack
+    //     let paragraphTaintedRootActions = document.querySelector(
+    //       `#${taintedRoot.id}`
+    //     );
+    //     if (taintedRootDamage === 0) {
+    //       // if the grasping attack doesn't connect, then the target is not grabbed
+    //       paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name}'s attack failed to hit target ${target.name}`;
+    //       // if you are more than 5 feet away from the chasm, and are not more than 15ft away from it
+    //       if (distance.feet <= 10) {
+    //         distance.feet += 5;
+    //         console.log(`${distance.name} is now ${distance.feet}`);
+    //         console.log(`${gameObj.distanceFromChasm[`${target.name}`]}`);
+    //         paragraphTaintedRootActions.innerHTML += ` and he immediately walks 5 feet away from the threatening Chasm up ahead.`;
+    //       }
+    //     } else {
+    //       paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} grabs ${target.name}, dealing ${taintedRootDamage} points of damage with its vines! ${target.name} is now grabbed!`;
+    //       notifyObservers(target);
+    //       // if the attack connects, then the target is grabbed, and the tainted root will start dragging it towards the chasm
+    //       if (!taintedRoot.hasTargetGrappled()) {
+    //         taintedRoot.weapon = dragWeapon;
+    //         taintedRoot.target = target;
+    //         taintedRoot.targetGrappled = true;
+    //         toggleButton(btnBreak);
+    //       }
+    //     }
+    //   }
+    //   // to determine if the target died from the fall use the distanceFromChasm object
+    //   if (target.hp <= 0) {
+    //     if (target === theStone) {
+    //       disableAllOptions();
+    //       // check if The Stone died from the fall or due to damage
+    //       console.log("The Stone died from the damage!");
+    //       // TODO: Should load dead scenario specifying The Stone died from the damage
+    //       return;
+    //     } else {
+    //       // if the taintedRoot was grappling Gungurk, it should have no one grappled now
+    //       if (taintedRoot.hasTargetGrappled() && target !== theStone) {
+    //         taintedRoot.targetGrappled = false;
+    //       }
+    //       // check how Gungurk died and show a message describing it
+    //       let paragraph = document.querySelector(`#${taintedRoot.id}`);
+    //       console.assert(
+    //         paragraph,
+    //         `Paragraph not found for ID: ${taintedRoot.id}`
+    //       );
+    //       // remove Gungurk from the party
+    //       gameObj.removeFromParty(allies, target);
+    //       console.table(allies);
+    //       // change targets when Gungurk dies
+    //       target = pickRandomTarget();
+    //       paragraph.innerHTML += `<br>The vine's last attack killed ${gungurk.name}. <br>After getting rid of him, the enemy ${taintedRoot.name} shifts its focus to ${target.name}.`;
+    //       // should set a timer and remove gungurk's paragraph from the page
+    //       setInterval(() => {
+    //         let paragraphGungurkActions = document.querySelector(
+    //           `#${gungurk.id}`
+    //         );
+    //         if (paragraphGungurkActions) {
+    //           display.removeChild(paragraphGungurkActions);
+    //         }
+    //       }, 6000);
+    //       // remove Gungurk's reference from gameObject
+    //       toggleButton(btnBreak);
+    //       console.assert(gungurk.hp > 0, "Gungurk died!");
+    //     }
+    //   } else {
+    //     for (var i = 0; i < allies.length; i++) {
+    //       let attacker = allies[i];
+    //       attack(attacker, taintedRoot);
+    //       console.log(`HP: ${taintedRoot.hp}`);
+    //       if (taintedRoot.isDead()) {
+    //         enemyDied(taintedRoot);
+    //         // TODO: This can be a function
+    //         // if target has not fallen yet
+    //         if (gameObj.getDistanceForCharacter(target).feet >= 5) {
+    //           let actionParagraph;
+    //           distance.feet += 5;
+    //           actionParagraph = document.querySelector(`#${target.id}`);
+    //           actionParagraph.innerHTML += `<br>${target.name} steps 5 feet away from the Chasm!`;
+    //           console.log(`${distance.name} is now ${distance.feet}`);
+    //         }
+    //         // Switch enemies
+    //         setTimeout(() => {
+    //           // TODO: This should be a function
+    //           if (amountOfEnemies > 1) {
+    //             paragraph.innerHTML = `There are still ${amountOfEnemies} enemies left. You both tighten the grip on your weapons and attack them. One of the ${taintedRoot.name}s lashes at ${target.name}!`;
+    //           } else {
+    //             paragraph.innerHTML = `Weapons drawn, you engage the remaining ${taintedRoot.name} as it lashes at ${target.name}!`;
+    //           }
+    //           switchEnemies();
+    //           target = pickRandomTarget();
+    //           distance = gameObj.getDistanceForCharacter(target);
+    //         }, 500);
+    //         break;
+    //       }
+    //     }
+    //   }
+    //   console.log(gameObj.distanceFromChasm);
+    // }
+  }
 
-    if (taintedRoot.hp > 0) {
-      let taintedRootDamage = gameObj.attack(taintedRoot, target);
+  // handle The Stone's turn
+  if (isAlive(theStone)) {
+    theStoneBehavior();
+  }
 
-      if (taintedRoot.weapon === dragWeapon) {
-        // when the weapon is dragWeapon, the attack always hits, so the Tainted Root always deals damage with it
-        // TODO: We are passing the taintedRootDamage temporarily, since the damage is being dealt when we call gameObj.attack(), to avoid dealing damage to the target twice
-        // have to remove the call to the attack function from outside this if, and call it in pullTargetCloserToTheChasm() instead
-
-        pullTargetCloserToTheChasm(taintedRoot, target, taintedRootDamage);
-
-        notifyObservers(target);
-
-        if (distance.feet <= 0) {
-          let actionParagraph = document.querySelector(`#${target.id}`);
-          actionParagraph.innerHTML += `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
-
-          // if The Stone falls, I have to disable all buttons for the options
-
-          console.log(`Target: ${target.name} fell`);
-
-          if (target === theStone) {
-            // If The Stone falls, immediately disable all the buttons
-            disableAllOptions();
-
-            console.log(`${target.name} fell`);
-            let paragraphTheStoneActions = document.querySelector(
-              `#${target.id}`
-            );
-
-            paragraphTheStoneActions.innerHTML = `${target.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the the remaining 5 feet over the edge.`;
-
-            let fallDamage = Math.floor(Math.random() * 10 + 1);
-            target.receiveDamage(fallDamage);
-
-            paragraphTheStoneActions.innerHTML += `<br>${target.name} receives ${fallDamage} of damage from the fall.`;
-
-            console.log(target);
-
-            notifyObservers(target);
-
-            if (target.hp <= 0) {
-              // load dead scenario after a set interval
-              console.log(`${target.name} died from the fall!`);
-              return;
-            } else {
-              //   Must make a pause
-              setTimeout(() => {
-                console.log("Executing timeout function");
-                if (allies.indexOf(gungurk) < 0) {
-                  let newScene = window.open(
-                    "../../../../../encounter2/gungurk_fell_first.html"
-                  );
-                  newScene.onload = function () {
-                    this.gameObject = gameObj;
-                  };
-                } else {
-                  //   and then load the second encounter
-                  let newScene = window.open(
-                    "../../../../../encounter2/stone_fell.html"
-                  );
-
-                  newScene.onload = function () {
-                    this.gameObject = gameObj;
-                  };
-                }
-              }, 6000);
-              return;
-            }
-          } else {
-            let paragraphGungurkActions = document.querySelector(
-              `#${target.id}`
-            );
-            paragraphGungurkActions.innerHTML += ` ${target.name} squeals like a terrified pig, and he disappears into the chasm. He splashes down, followed by disconcerting silence. At least the root that dragged him into the chasm apparently died from the fall.`;
-
-            let fallDamage = Math.floor(Math.random() * 10 + 1);
-
-            paragraphGungurkActions.innerHTML += `<br>${target.name} received ${fallDamage} points of damage from the fall.`;
-            target.receiveDamage(fallDamage);
-
-            // Confirming that both target and gungurk are pointing to the same Object
-            // console.log(`${target.name}: ${target.getCurrentHP()} HP`);
-            // console.log(`${gungurk.name}: ${gungurk.getCurrentHP()} HP`);
-
-            taintedRoot.hp = 0; // The fall kills the taintedRoot
-
-            gameObj.removeFromParty(allies, target); // should change targets
-
-            // TODO: try to look for a way to avoid repeatedly checking the target's hp
-
-            notifyObservers(target);
-
-            if (target.hp <= 0) {
-              console.log("The fall killed Gungurk");
-
-              paragraphGungurkActions.innerHTML += `<br>${gungurk.name} seems to have gone awfully quiet. You fear for the worse.`;
-
-              // should set a timer and remove gungurk's paragraph from the page
-              setInterval(() => {
-                let paragraphGungurkActions = document.querySelector(
-                  `#${gungurk.id}`
-                );
-                if (paragraphGungurkActions) {
-                  display.removeChild(paragraphGungurkActions);
-                }
-              }, 6000);
-
-              target = pickRandomTarget();
-            }
-          }
-        }
-
-        // must contemplate a scenario where both allies die. If the number of allies reaches zero, must open the Game Over screen
-      } else {
-        // if we got here, then the Tainted Root is attacking with its grasp attack and not its drag attack
-        let paragraphTaintedRootActions = document.querySelector(
-          `#${taintedRoot.id}`
-        );
-
-        if (taintedRootDamage === 0) {
-          // if the grasping attack doesn't connect, then the target is not grabbed
-
-          paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name}'s attack failed to hit target ${target.name}`;
-
-          // if you are more than 5 feet away from the chasm, and are not more than 15ft away from it
-          if (distance.feet <= 10) {
-            distance.feet += 5;
-            console.log(`${distance.name} is now ${distance.feet}`);
-            console.log(`${gameObj.distanceFromChasm[`${target.name}`]}`);
-            paragraphTaintedRootActions.innerHTML += ` and he immediately walks 5 feet away from the threatening Chasm up ahead.`;
-          }
-        } else {
-          paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} grabs ${target.name}, dealing ${taintedRootDamage} points of damage with its vines! ${target.name} is now grabbed!`;
-
-          notifyObservers(target);
-
-          // if the attack connects, then the target is grabbed, and the tainted root will start dragging it towards the chasm
-          if (!taintedRoot.hasTargetGrappled()) {
-            taintedRoot.weapon = dragWeapon;
-            taintedRoot.target = target;
-            taintedRoot.targetGrappled = true;
-
-            toggleButton(btnBreak);
-          }
-        }
-      }
-
-      // to determine if the target died from the fall use the distanceFromChasm object
-      if (target.hp <= 0) {
-        if (target === theStone) {
-          disableAllOptions();
-          // check if The Stone died from the fall or due to damage
-          console.log("The Stone died from the damage!");
-
-          // TODO: Should load dead scenario specifying The Stone died from the damage
-          return;
-        } else {
-          // if the taintedRoot was grappling Gungurk, it should have no one grappled now
-          if (taintedRoot.hasTargetGrappled() && target !== theStone) {
-            taintedRoot.targetGrappled = false;
-          }
-
-          // check how Gungurk died and show a message describing it
-          let paragraph = document.querySelector(`#${taintedRoot.id}`);
-
-          console.assert(
-            paragraph,
-            `Paragraph not found for ID: ${taintedRoot.id}`
-          );
-
-          // remove Gungurk from the party
-          gameObj.removeFromParty(allies, target);
-          console.table(allies);
-
-          // change targets when Gungurk dies
-          target = pickRandomTarget();
-
-          paragraph.innerHTML += `<br>The vine's last attack killed ${gungurk.name}. <br>After getting rid of him, the enemy ${taintedRoot.name} shifts its focus to ${target.name}.`;
-
-          // should set a timer and remove gungurk's paragraph from the page
-          setInterval(() => {
-            let paragraphGungurkActions = document.querySelector(
-              `#${gungurk.id}`
-            );
-            if (paragraphGungurkActions) {
-              display.removeChild(paragraphGungurkActions);
-            }
-          }, 6000);
-
-          // remove Gungurk's reference from gameObject
-
-          console.assert(gungurk.hp > 0, "Gungurk died!");
-        }
-      } else {
-        for (var i = 0; i < allies.length; i++) {
-          let attacker = allies[i];
-
-          attack(attacker, taintedRoot);
-
-          console.log(`HP: ${taintedRoot.hp}`);
-
-          if (taintedRoot.isDead()) {
-            enemyDied(taintedRoot);
-
-            // TODO: This can be a function
-            // if target has not fallen yet
-            if (gameObj.getDistanceForCharacter(target).feet >= 5) {
-              let actionParagraph;
-              distance.feet += 5;
-              actionParagraph = document.querySelector(`#${target.id}`);
-              actionParagraph.innerHTML += `<br>${target.name} steps 5 feet away from the Chasm!`;
-              console.log(`${distance.name} is now ${distance.feet}`);
-            }
-
-            // Switch enemies
-            setTimeout(() => {
-              // TODO: This should be a function
-              if (amountOfEnemies > 1) {
-                paragraph.innerHTML = `There are still ${amountOfEnemies} enemies left. You both tighten the grip on your weapons and attack them. One of the ${taintedRoot.name}s lashes at ${target.name}!`;
-              } else {
-                paragraph.innerHTML = `Weapons drawn, you engage the remaining ${taintedRoot.name} as it lashes at ${target.name}!`;
-              }
-
-              switchEnemies();
-
-              target = pickRandomTarget();
-              distance = gameObj.getDistanceForCharacter(target);
-            }, 500);
-
-            break;
-          }
-        }
-      }
-
-      console.log(gameObj.distanceFromChasm);
-    }
+  // handle Gungurk's turn
+  if (isAlive(gungurk)) {
+    gungurkBehavior();
   }
 
   // implement code for when all the enemies are slain, which might imply loading a new screen. Probably enemies_defeated.html or something
@@ -389,6 +597,10 @@ function executeAttack() {
       this.gameObject = gameObj;
     };
   }
+}
+
+function isAlive(target) {
+  return target.hp > 0;
 }
 
 function switchEnemies() {
