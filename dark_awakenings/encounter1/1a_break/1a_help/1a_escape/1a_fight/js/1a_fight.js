@@ -8,6 +8,7 @@ let taintedRoot = {};
 let graspWeapon = {};
 let dragWeapon = {};
 let enemies = [];
+let entities = [];
 // let distance = {};
 let paragraph = document.getElementById("narration");
 let flavorText = document.getElementsByClassName("flavor")[0];
@@ -49,27 +50,40 @@ window.addEventListener("load", (e) => {
   allies.unshift(gungurk);
   allies.unshift(theStone);
 
+  let enemyDisplay = document.createElement("div");
+  enemyDisplay.classList.add("display");
+
+  for (var i = 0; i < enemies.length; i++) {
+    let taintedRoot = enemies[i];
+
+    console.log(`Enemey ${taintedRoot}'s unique ID is: ${taintedRoot.uid}`);
+    console.log(taintedRoot);
+
+    if (taintedRoot) {
+      let enemyGUI = new CharGUI(taintedRoot);
+      enemyDisplay.appendChild(enemyGUI);
+      hpObservers.push(enemyGUI);
+    }
+  }
+
+  behaviorMap.set("enemy", enemyBehavior);
+
   taintedRoot = enemies.shift();
   target = pickRandomTarget();
-
-  // distance = gameObj.getDistanceForCharacter(target);
-
-  if (taintedRoot) {
-    taintedRootGUI = new CharGUI(taintedRoot);
-    behaviorMap.set("enemy", enemyBehavior);
-  }
 
   if (theStone) {
     theStoneGUI = new CharGUI(theStone);
     behaviorMap.set(theStone, theStoneBehavior);
+    entities.push(theStone);
   }
 
   if (gungurk) {
     gungurkGUI = new CharGUI(gungurk);
     behaviorMap.set(gungurk, gungurkBehavior);
+    entities.push(gungurk);
   }
 
-  hpObservers.push(theStoneGUI, gungurkGUI, taintedRootGUI);
+  hpObservers.push(theStoneGUI, gungurkGUI);
 
   paragraph.innerHTML += `<br><br>There are still ${amountOfEnemies} enemies left. You both tighten the grip on your weapons and attack them. One of the ${taintedRoot.name}s lashes at ${target.name}!`;
 
@@ -82,8 +96,8 @@ window.addEventListener("load", (e) => {
 
   gui.appendChild(theStoneGUI);
   gui.appendChild(gungurkGUI);
-  gui.appendChild(taintedRootGUI);
 
+  display.insertBefore(enemyDisplay, display.lastChild.nextSibling);
   display.insertBefore(gui, display.lastChild.nextSibling);
 
   btnAttack.addEventListener("click", executeAttack);
@@ -109,6 +123,27 @@ function toggleButton(button) {
 }
 
 function enemyBehavior() {
+  let taintedRoot = pickRandomEnemy();
+
+  let state = taintedRoot.state;
+
+  switch (state) {
+    case "dead":
+      console.log("This Tainted Root is dead");
+      break;
+    case "idle":
+      // look for a target
+      target = pickRandomTarget();
+      break;
+    case "attack":
+      break;
+    case "drag":
+      break;
+
+    default:
+      break;
+  }
+
   // If the tainted root is alive, it will have these goals:
   if (isAlive(taintedRoot)) {
     // 1. If it doesn't have a target, pick one.
@@ -143,7 +178,7 @@ function enemyBehavior() {
       if (distance.feet <= 0) {
         taintedRoot.hp = 0; // The fall kills the taintedRoot
         enemyDied(taintedRoot);
-        switchEnemies();
+        // switchEnemies();
         return;
       }
 
@@ -265,15 +300,18 @@ function theStoneBehavior() {
     }
     return;
   } else {
-    if (isAlive(taintedRoot)) {
+    // Pick a random tainted root from the array of enemies
+    let enemy = pickRandomEnemy();
+
+    if (isAlive(enemy)) {
       let attacker = theStone;
 
-      attack(attacker, taintedRoot);
+      attack(attacker, enemy);
 
-      console.log(`HP: ${taintedRoot.hp}`);
+      console.log(`UID: ${enemy.uid} HP: ${enemy.hp}`);
 
-      if (taintedRoot.isDead()) {
-        enemyDied(taintedRoot);
+      if (!isAlive(enemy)) {
+        enemyDied(enemy);
 
         // TODO: This can be a function
         // if target has not fallen yet
@@ -287,7 +325,7 @@ function theStoneBehavior() {
 
         // Switch enemies
 
-        switchEnemies();
+        // switchEnemies();
 
         target = pickRandomTarget();
 
@@ -297,11 +335,6 @@ function theStoneBehavior() {
         } else {
           paragraph.innerHTML = `Weapons drawn, you engage the remaining ${taintedRoot.name} as it lashes at ${target.name}!`;
         }
-        // distance = gameObj.getDistanceForCharacter(target);
-
-        // console.log(
-        //   `The Stone: New target ${target.name} is ${distance.feet} away from the Chasm`
-        // );
       }
     }
   }
@@ -405,15 +438,18 @@ function gungurkBehavior() {
       console.assert(gungurk.hp > 0, "Gungurk died!");
       return;
     } else {
-      if (isAlive(taintedRoot)) {
+      // Pick a random tainted root from the array of enemies
+      let enemy = pickRandomEnemy();
+
+      if (isAlive(enemy)) {
         let attacker = gungurk;
 
-        attack(attacker, taintedRoot);
+        attack(attacker, enemy);
 
-        console.log(`HP: ${taintedRoot.hp}`);
+        console.log(`UID: ${enemy.uid} HP: ${enemy.hp}`);
 
-        if (!isAlive(taintedRoot)) {
-          enemyDied(taintedRoot);
+        if (!isAlive(enemy)) {
+          enemyDied(enemy);
 
           // TODO: This can be a function
           // if target has not fallen yet
@@ -426,7 +462,7 @@ function gungurkBehavior() {
           }
 
           // Switch enemies
-          switchEnemies();
+          // switchEnemies();
 
           target = pickRandomTarget();
 
@@ -436,14 +472,21 @@ function gungurkBehavior() {
           } else {
             paragraph.innerHTML = `Weapons drawn, you engage the remaining ${taintedRoot.name} as it lashes at ${target.name}!`;
           }
-          // distance = gameObj.getDistanceForCharacter(target);
-          // console.log(
-          //   `Gungurk: New target ${target.name} is ${distance.feet} away from the Chasm`
-          // );
         }
       }
     }
   }
+}
+
+function pickRandomEnemy() {
+  console.log("pickRandomEnemy()");
+  // let numberOfEnemies = enemies.length;
+  // let randomIndex = Math.floor(Math.random() * numberOfEnemies);
+
+  // console.log("Enemies remaining: " + numberOfEnemies);
+  // let enemy = enemies[randomIndex];
+
+  return enemies[enemies.length - 1];
 }
 
 function executeAttack() {
@@ -463,6 +506,30 @@ function executeAttack() {
         console.log(`Executing behavior for: ${entity}`);
       }
       behaviorMap.get(entity)();
+    }
+
+    // Game checks targets that are still alive
+    console.log("Logging entities");
+    for (const enemy of enemies) {
+      if (enemy.state === "dead") {
+        let index = enemies.indexOf(enemy);
+
+        if (index > 0) {
+          enemies.splice(index, 1);
+        }
+      }
+    }
+
+    for (const entity of entities) {
+      // if the entity died
+      if (!isAlive(entity)) {
+        // remove it
+        let index = entities.indexOf(entity);
+
+        if (index > 0) {
+          entities.splice(index, 1);
+        }
+      }
     }
   }
 
@@ -504,6 +571,7 @@ function disableAllOptions() {
 }
 
 function enemyDied(enemy) {
+  enemy.state = "dead";
   let target = enemy.target;
   let paragraphTaintedRootActions = document.querySelector(`#${enemy.id}`);
 
@@ -536,7 +604,9 @@ function notifyObservers(target) {
     let character = hpObservers[i]._char;
 
     if (character.id === target.id) {
-      character.hp = target.hp;
+      if (character.uid === target.uid) {
+        character.hp = target.hp;
+      }
     }
   }
 }

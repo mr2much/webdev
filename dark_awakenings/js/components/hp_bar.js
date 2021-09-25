@@ -1,6 +1,6 @@
 let styleTemplate = (value) => `
     .health-bar {
-        width: 200px;
+        width: 10vw;
         height: 60px;
         display: flex;        
         align-items: center;
@@ -16,6 +16,8 @@ let styleTemplate = (value) => `
       width: 100%;
       height: 20px;
       border-radius: 5px;
+      margin: 0;
+      padding: 0;
       border: 1px solid black;
     }
 
@@ -26,6 +28,8 @@ let styleTemplate = (value) => `
       background-size: 1000%;
       background-position: ${value}%;
       transition: width 0.75s, background-position 0.75s;
+      margin: 0;
+      padding: 0;
     }
 
     .health-bar-value {
