@@ -1,7 +1,7 @@
 const avatarStyleTemplate = () => `
 
   .portrait img {     
-    height: 150px;
+    height: 20vh;
     width: auto;      
   }
   

@@ -108,9 +108,9 @@ let enemiesCount = 6;
 
 (function () {
   for (let i = 0; i < enemiesCount; i++) {
-    gameObject.enemies.push(
-      Object.create(gameObject.creatures.hostiles.taintedRoot)
-    );
+    let enemy = Object.create(gameObject.creatures.hostiles.taintedRoot);
+    enemy["uid"] = i;
+    gameObject.enemies.push(enemy);
   }
 })();
 
