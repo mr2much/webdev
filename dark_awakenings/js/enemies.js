@@ -8,6 +8,7 @@ const taintedRoot = {
   src: `${rootPath}res/img/TaintedRoot.png`,
   alt: "Tainted Root's character portrait",
   state: "idle",
+  type: "hostile",
   maxHP: 30,
   hp: 30,
   armor: 15,

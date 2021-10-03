@@ -1,0 +1,17 @@
+{
+  "name": "reserva_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "alert": "^5.0.10",
+    "chromedriver": "^94.0.0",
+    "selenium-webdriver": "^4.0.0-rc-2"
+  }
+}

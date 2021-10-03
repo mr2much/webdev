@@ -42,10 +42,8 @@ window.addEventListener("load", (e) => {
   dragWeapon = gameObj.weapons.drag;
 
   gungurk = gameObj.creatures.players.gungurk;
-  console.log(`${gungurk.name} ready to fight with ${gungurk.weapon.name}!`);
 
   theStone = gameObj.creatures.players.theStone;
-  console.log(`${theStone.name} ready to fight with ${theStone.weapon.name}!`);
 
   allies.unshift(gungurk);
   allies.unshift(theStone);
@@ -56,15 +54,14 @@ window.addEventListener("load", (e) => {
   for (var i = 0; i < enemies.length; i++) {
     let taintedRoot = enemies[i];
 
-    console.log(`Enemey ${taintedRoot}'s unique ID is: ${taintedRoot.uid}`);
-    console.log(taintedRoot);
-
     if (taintedRoot) {
       let enemyGUI = new CharGUI(taintedRoot);
       enemyDisplay.appendChild(enemyGUI);
       hpObservers.push(enemyGUI);
     }
   }
+
+  entities.push(...enemies);
 
   behaviorMap.set("enemy", enemyBehavior);
 
@@ -123,44 +120,89 @@ function toggleButton(button) {
 }
 
 function enemyBehavior() {
+  let taintedRootDamage;
+
   let taintedRoot = pickRandomEnemy();
+
+  if (taintedRoot) {
+  }
 
   let state = taintedRoot.state;
 
   switch (state) {
     case "dead":
       console.log("This Tainted Root is dead");
+      // if dead, pick a new enemy
       break;
     case "idle":
       // look for a target
-      target = pickRandomTarget();
+      do {
+        let numberOfEntities = entities.length;
+        let randomIndex = Math.floor(Math.random() * numberOfEntities);
+        target = entities[randomIndex];
+      } while (target !== "ally");
+
+      // Should display message indicating which character the Tainted Root is attacking
+
+      // target = pickRandomTarget();
+      taintedRoot.state = "attack";
+
       break;
     case "attack":
+      taintedRootDamage = gameObj.attack(taintedRoot, target);
+
+      // if the attack hits:
+      if (taintedRootDamage > 0) {
+        // show message showing the damage caused by the attack done to the target
+        // show message showing that the target is now grappled
+        paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} lashes at ${target.name}, dealing ${taintedRootDamage} points of damage with its vines! ${target.name} is now grabbed as the Tainted Root wraps its vines around him!`;
+
+        // change condition of target to "grappled"
+        taintedRoot.target = target;
+        target.condition = "grappled";
+
+        // change state of Tainted Root to drag
+        taintedRoot.state = "drag";
+
+        // change weapon of choice to drag
+        taintedRoot.weapon = dragWeapon;
+
+        // // if the attack connects, then the target is grabbed, and the tainted root will start dragging it towards the chasm
+        // if (!taintedRoot.hasTargetGrappled()) {
+        //   taintedRoot.weapon = dragWeapon;
+        //   taintedRoot.target = target;
+        //   taintedRoot.targetGrappled = true;
+
+        //   // toggleButton(btnBreak);
+        // }
+
+        // Turn on button to allow The Stone to attempt to break free of the grapple
+        toggleButton(btnBreak);
+
+        // Notify the target of the change in their HP
+        notifyObservers(target);
+      } else {
+        // if attack misses show message indicating the attack failed to hit the target
+        paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name}'s attack failed to hit target ${target.name}`;
+
+        // if you are more than 5 feet away from the chasm, and are not more than 15ft away from it
+
+        // This check should be in the ally's behaviors
+        if (distance.feet <= 10) {
+          distance.feet += 5;
+          console.log(`${distance.name} is now ${distance.feet}`);
+          console.log(`${gameObj.distanceFromChasm[`${target.name}`]}`);
+          paragraphTaintedRootActions.innerHTML += ` and he immediately walks 5 feet away from the threatening Chasm up ahead.`;
+        }
+      }
+
       break;
     case "drag":
-      break;
+      // Keep dragging the target until you bring it down the chasm, or kill it, if you kill it go idle, if you die, set state to dead
 
-    default:
-      break;
-  }
-
-  // If the tainted root is alive, it will have these goals:
-  if (isAlive(taintedRoot)) {
-    // 1. If it doesn't have a target, pick one.
-    // 2. If it has a target, grapple it.
-    // 3. If the target is not grappled, attack it until it is grappled.
-    // 4. If target is grappled, drag it until it falls down the chasm.
-    // 5. The Tainted Root will die from the fall as it drags the target down the Chasm.
-
-    let taintedRootDamage = gameObj.attack(taintedRoot, target);
-    let distance = gameObj.getDistanceForCharacter(target);
-
-    console.log(`Attacking: ${target.name}`);
-
-    if (taintedRoot.weapon === dragWeapon) {
       // when the weapon is dragWeapon, the attack always hits, so the Tainted Root always deals damage with it
-      // TODO: We are passing the taintedRootDamage temporarily, since the damage is being dealt when we call gameObj.attack(), to avoid dealing damage to the target twice
-      // have to remove the call to the attack function from outside this if, and call it in pullTargetCloserToTheChasm() instead
+      taintedRootDamage = gameObj.attack(taintedRoot, target);
+      let distance = gameObj.getDistanceForCharacter(target);
 
       distance = pullTargetCloserToTheChasm(
         taintedRoot,
@@ -170,54 +212,96 @@ function enemyBehavior() {
 
       notifyObservers(target);
 
-      // let distance = gameObj.getDistanceForCharacter(target);
+      if (target.hp <= 0) {
+        // target died
+        target.state = "dead";
 
-      // let actionParagraph = document.querySelector(`#${target.id}`);
-      // actionParagraph.innerHTML += `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
-
-      if (distance.feet <= 0) {
-        taintedRoot.hp = 0; // The fall kills the taintedRoot
-        enemyDied(taintedRoot);
-        // switchEnemies();
         return;
       }
 
-      // must contemplate a scenario where both allies die. If the number of allies reaches zero, must open the Game Over screen
-    } else {
-      // if we got here, then the Tainted Root is attacking with its grasp attack and not its drag attack
-      let paragraphTaintedRootActions = document.querySelector(
-        `#${taintedRoot.id}`
-      );
-
-      if (taintedRootDamage === 0) {
-        // if the grasping attack doesn't connect, then the target is not grabbed
-
-        paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name}'s attack failed to hit target ${target.name}`;
-
-        // if you are more than 5 feet away from the chasm, and are not more than 15ft away from it
-
-        if (distance.feet <= 10) {
-          distance.feet += 5;
-          console.log(`${distance.name} is now ${distance.feet}`);
-          console.log(`${gameObj.distanceFromChasm[`${target.name}`]}`);
-          paragraphTaintedRootActions.innerHTML += ` and he immediately walks 5 feet away from the threatening Chasm up ahead.`;
-        }
-      } else {
-        paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} grabs ${target.name}, dealing ${taintedRootDamage} points of damage with its vines! ${target.name} is now grabbed!`;
-
-        notifyObservers(target);
-
-        // if the attack connects, then the target is grabbed, and the tainted root will start dragging it towards the chasm
-        if (!taintedRoot.hasTargetGrappled()) {
-          taintedRoot.weapon = dragWeapon;
-          taintedRoot.target = target;
-          taintedRoot.targetGrappled = true;
-
-          toggleButton(btnBreak);
-        }
+      if (distance.feet <= 0) {
+        target.state = "falling";
+        taintedRoot.state = "dead";
       }
-    }
+
+      break;
+    default:
+      break;
   }
+
+  // // If the tainted root is alive, it will have these goals:
+  // if (isAlive(taintedRoot)) {
+  //   // 1. If it doesn't have a target, pick one.
+  //   // 2. If it has a target, grapple it.
+  //   // 3. If the target is not grappled, attack it until it is grappled.
+  //   // 4. If target is grappled, drag it until it falls down the chasm.
+  //   // 5. The Tainted Root will die from the fall as it drags the target down the Chasm.
+
+  //   let taintedRootDamage = gameObj.attack(taintedRoot, target);
+  //   let distance = gameObj.getDistanceForCharacter(target);
+
+  //   console.log(`Attacking: ${target.name}`);
+
+  //   if (taintedRoot.weapon === dragWeapon) {
+  //     // TODO: We are passing the taintedRootDamage temporarily, since the damage is being dealt when we call gameObj.attack(), to avoid dealing damage to the target twice
+  //     // have to remove the call to the attack function from outside this if, and call it in pullTargetCloserToTheChasm() instead
+
+  //     distance = pullTargetCloserToTheChasm(
+  //       taintedRoot,
+  //       target,
+  //       taintedRootDamage
+  //     );
+
+  //     notifyObservers(target);
+
+  //     // let distance = gameObj.getDistanceForCharacter(target);
+
+  //     // let actionParagraph = document.querySelector(`#${target.id}`);
+  //     // actionParagraph.innerHTML += `The enemy ${taintedRoot.name} drags ${target.name} 5 feet towards the Chasm, dealing ${taintedRootDamage} points of damage.`;
+
+  //     if (distance.feet <= 0) {
+  //       taintedRoot.hp = 0; // The fall kills the taintedRoot
+  //       enemyDied(taintedRoot);
+  //       // switchEnemies();
+  //       return;
+  //     }
+
+  //     // must contemplate a scenario where both allies die. If the number of allies reaches zero, must open the Game Over screen
+  //   } else {
+  //     // if we got here, then the Tainted Root is attacking with its grasp attack and not its drag attack
+  //     let paragraphTaintedRootActions = document.querySelector(
+  //       `#${taintedRoot.id}`
+  //     );
+
+  //     if (taintedRootDamage === 0) {
+  //       // if the grasping attack doesn't connect, then the target is not grabbed
+
+  //       paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name}'s attack failed to hit target ${target.name}`;
+
+  //       // if you are more than 5 feet away from the chasm, and are not more than 15ft away from it
+
+  //       if (distance.feet <= 10) {
+  //         distance.feet += 5;
+  //         console.log(`${distance.name} is now ${distance.feet}`);
+  //         console.log(`${gameObj.distanceFromChasm[`${target.name}`]}`);
+  //         paragraphTaintedRootActions.innerHTML += ` and he immediately walks 5 feet away from the threatening Chasm up ahead.`;
+  //       }
+  //     } else {
+  //       paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} grabs ${target.name}, dealing ${taintedRootDamage} points of damage with its vines! ${target.name} is now grabbed!`;
+
+  //       notifyObservers(target);
+
+  //       // if the attack connects, then the target is grabbed, and the tainted root will start dragging it towards the chasm
+  //       if (!taintedRoot.hasTargetGrappled()) {
+  //         taintedRoot.weapon = dragWeapon;
+  //         taintedRoot.target = target;
+  //         taintedRoot.targetGrappled = true;
+
+  //         toggleButton(btnBreak);
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 function theStoneBehavior() {
@@ -480,13 +564,16 @@ function gungurkBehavior() {
 
 function pickRandomEnemy() {
   console.log("pickRandomEnemy()");
-  // let numberOfEnemies = enemies.length;
-  // let randomIndex = Math.floor(Math.random() * numberOfEnemies);
 
-  // console.log("Enemies remaining: " + numberOfEnemies);
-  // let enemy = enemies[randomIndex];
+  let target;
 
-  return enemies[enemies.length - 1];
+  do {
+    let numberOfEntities = entities.length;
+    let randomIndex = Math.floor(Math.random() * numberOfEntities);
+    target = entities[randomIndex];
+  } while (target.type !== "hostile");
+
+  return target;
 }
 
 function executeAttack() {
