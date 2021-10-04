@@ -122,40 +122,68 @@ function toggleButton(button) {
 function enemyBehavior() {
   let taintedRootDamage;
 
-  let taintedRoot = pickRandomEnemy();
+  // This should ensure that once a taintedRoot is picked, it is not randomly switched
+  // taintedRoot = pickRandomEnemy();
 
-  if (taintedRoot) {
+  // This means that there are no more enemies
+  if (!taintedRoot) {
+    // remove enemy behavior
+    behaviorMap.delete("enemy");
+    return;
   }
 
   let state = taintedRoot.state;
 
   switch (state) {
     case "dead":
-      console.log("This Tainted Root is dead");
-      // if dead, pick a new enemy
+      // if taintedRoot is dead, remove it from entities and pick a new taintedRoot
+      let index = entities.indexOf(taintedRoot);
+
+      if (index > 0) {
+        entities.splice(index, 1);
+      }
+
+      taintedRoot = pickRandomEnemy();
+
+      // This means that there are no more enemies
+      if (!taintedRoot) {
+        // remove enemy behavior
+        behaviorMap.delete("enemy");
+        return;
+      }
+
+      taintedRoot.state = "idle";
       break;
     case "idle":
       // look for a target
-      do {
-        let numberOfEntities = entities.length;
-        let randomIndex = Math.floor(Math.random() * numberOfEntities);
-        target = entities[randomIndex];
-      } while (target !== "ally");
+      if (!target) {
+        target = pickRandomEntityOfType("ally");
+      }
 
       // Should display message indicating which character the Tainted Root is attacking
 
       // target = pickRandomTarget();
-      taintedRoot.state = "attack";
+      if (target) {
+        taintedRoot.state = "attack";
+      } else {
+        // TODO: Implement this scenario
+        console.log("Doesn't have a target for some reason");
+
+        return;
+      }
 
       break;
     case "attack":
+      let paragraphTaintedRootActions = document.querySelector(
+        `#${taintedRoot.id}`
+      );
       taintedRootDamage = gameObj.attack(taintedRoot, target);
 
       // if the attack hits:
       if (taintedRootDamage > 0) {
         // show message showing the damage caused by the attack done to the target
         // show message showing that the target is now grappled
-        paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name} lashes at ${target.name}, dealing ${taintedRootDamage} points of damage with its vines! ${target.name} is now grabbed as the Tainted Root wraps its vines around him!`;
+        paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name}${taintedRoot.uid} lashes at ${target.name}, dealing ${taintedRootDamage} points of damage with its vines! ${target.name} is now grabbed as the Tainted Root wraps its vines around him!`;
 
         // change condition of target to "grappled"
         taintedRoot.target = target;
@@ -167,15 +195,6 @@ function enemyBehavior() {
         // change weapon of choice to drag
         taintedRoot.weapon = dragWeapon;
 
-        // // if the attack connects, then the target is grabbed, and the tainted root will start dragging it towards the chasm
-        // if (!taintedRoot.hasTargetGrappled()) {
-        //   taintedRoot.weapon = dragWeapon;
-        //   taintedRoot.target = target;
-        //   taintedRoot.targetGrappled = true;
-
-        //   // toggleButton(btnBreak);
-        // }
-
         // Turn on button to allow The Stone to attempt to break free of the grapple
         toggleButton(btnBreak);
 
@@ -183,11 +202,12 @@ function enemyBehavior() {
         notifyObservers(target);
       } else {
         // if attack misses show message indicating the attack failed to hit the target
-        paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name}'s attack failed to hit target ${target.name}`;
+        paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name}${taintedRoot.uid}'s attack failed to hit target ${target.name}`;
 
         // if you are more than 5 feet away from the chasm, and are not more than 15ft away from it
 
         // This check should be in the ally's behaviors
+        let distance = gameObj.getDistanceForCharacter(target);
         if (distance.feet <= 10) {
           distance.feet += 5;
           console.log(`${distance.name} is now ${distance.feet}`);
@@ -562,18 +582,24 @@ function gungurkBehavior() {
   }
 }
 
+function pickRandomEntityOfType(type) {
+  let entity;
+
+  if (entities.some((entity) => entity["type"] === type)) {
+    do {
+      let numberOfEntities = entities.length;
+      let randomIndex = Math.floor(Math.random() * numberOfEntities);
+      entity = entities[randomIndex];
+    } while (entity.type !== type);
+  }
+
+  return entity;
+}
+
 function pickRandomEnemy() {
   console.log("pickRandomEnemy()");
 
-  let target;
-
-  do {
-    let numberOfEntities = entities.length;
-    let randomIndex = Math.floor(Math.random() * numberOfEntities);
-    target = entities[randomIndex];
-  } while (target.type !== "hostile");
-
-  return target;
+  return pickRandomEntityOfType("hostile");
 }
 
 function executeAttack() {
@@ -707,7 +733,7 @@ function pullTargetCloserToTheChasm(attacker, target, damage) {
   let paragraphTaintedRootActions = document.querySelector(
     `#${taintedRoot.id}`
   );
-  paragraphTaintedRootActions.innerHTML = `The enemy ${attacker.name} drags ${target.name} 5 feet closer to the Chasm, dealing ${damage} points of damage. ${target.name} is now ${distance.feet} away from the edge!`;
+  paragraphTaintedRootActions.innerHTML = `The enemy ${attacker.name}${attacker.uid} drags ${target.name} 5 feet closer to the Chasm, dealing ${damage} points of damage. ${target.name} is now ${distance.feet} away from the edge!`;
 
   console.log(
     `Enemy ${attacker.name} pulls ${target.name} closer to the chasm. ${target.name} is now ${distance.feet} away from the Chasm.`

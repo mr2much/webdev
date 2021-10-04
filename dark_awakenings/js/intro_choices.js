@@ -108,10 +108,14 @@ let enemiesCount = 6;
 
 (function () {
   for (let i = 0; i < enemiesCount; i++) {
-    let enemy = Object.create(gameObject.creatures.hostiles.taintedRoot);
-    enemy["uid"] = i;
+    let enemy = { ...gameObject.creatures.hostiles.taintedRoot, uid: i };
+    // let enemy = Object.create(gameObject.creatures.hostiles.taintedRoot);
+    // enemy["uid"] = i;
+
     gameObject.enemies.push(enemy);
   }
+
+  // console.log(gameObject.enemies.some((enemy) => enemy["type"] === "hostile"));
 })();
 
 let enemy = {};
