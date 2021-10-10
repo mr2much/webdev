@@ -476,7 +476,7 @@ function gungurkBehavior() {
         if (paragraphGungurkActions) {
           display.removeChild(paragraphGungurkActions);
         }
-      }, 8000);
+      }, 15000);
 
       behaviorMap.delete(gungurk);
 
@@ -560,107 +560,6 @@ function gungurkBehavior() {
     default:
       break;
   }
-
-  // console.log("Gungurk's distance: " + distance.feet);
-
-  // if (distance.feet <= 0) {
-  //   console.log(`Target: ${gungurk.name} fell`);
-
-  //   let paragraphGungurkActions = document.querySelector(`#${gungurk.id}`);
-  //   paragraphGungurkActions.innerHTML += ` ${gungurk.name} squeals like a terrified pig, and he disappears into the chasm. He splashes down, followed by disconcerting silence. At least the root that dragged him into the chasm apparently died from the fall.`;
-
-  //   let fallDamage = Math.floor(Math.random() * 10 + 1);
-
-  //   paragraphGungurkActions.innerHTML += `<br>${gungurk.name} received ${fallDamage} points of damage from the fall.`;
-  //   gungurk.receiveDamage(fallDamage);
-
-  //   gameObj.removeFromParty(allies, gungurk); // should change targets
-
-  //   // TODO: try to look for a way to avoid repeatedly checking the target's hp
-
-  //   notifyObservers(gungurk);
-
-  //   if (!isAlive(gungurk)) {
-  //     console.log("The fall killed Gungurk");
-
-  //     paragraphGungurkActions.innerHTML += `<br>${gungurk.name} seems to have gone awfully quiet. You fear for the worse.`;
-  //   }
-
-  //   // timer to remove gungurk's paragraph from the page
-  //   setInterval(() => {
-  //     let paragraphGungurkActions = document.querySelector(`#${gungurk.id}`);
-  //     if (paragraphGungurkActions) {
-  //       display.removeChild(paragraphGungurkActions);
-  //     }
-  //   }, 8000);
-
-  //   target = pickRandomTarget();
-
-  //   // check how Gungurk died and show a message describing it
-
-  //   behaviorMap.delete(gungurk);
-
-  //   return;
-  // } else {
-  //   if (!isAlive(gungurk)) {
-  //     // if the taintedRoot was grappling Gungurk, it should have no one grappled now
-  //     if (taintedRoot.hasTargetGrappled()) {
-  //       taintedRoot.targetGrappled = false;
-  //     }
-
-  //     // check how Gungurk died and show a message describing it
-
-  //     // remove Gungurk from the party
-  //     gameObj.removeFromParty(allies, gungurk);
-  //     console.table(allies);
-
-  //     // change targets when Gungurk dies
-  //     target = pickRandomTarget();
-
-  //     // paragraph.innerHTML += `<br>The vine's last attack killed ${gungurk.name}. <br>After getting rid of him, the enemy ${taintedRoot.name} shifts its focus to ${target.name}.`;
-
-  //     // should set a timer and remove gungurk's paragraph from the page
-  //     setInterval(() => {
-  //       let paragraphGungurkActions = document.querySelector(`#${gungurk.id}`);
-  //       if (paragraphGungurkActions) {
-  //         display.removeChild(paragraphGungurkActions);
-  //       }
-  //     }, 6000);
-
-  //     // remove Gungurk's reference from gameObject
-
-  //     behaviorMap.delete(gungurk);
-  //     console.assert(gungurk.hp > 0, "Gungurk died!");
-  //     return;
-  //   } else {
-  //     // Pick a random tainted root from the array of enemies
-  //     let enemy = pickRandomEnemy();
-
-  //     if (isAlive(enemy)) {
-  //       let attacker = gungurk;
-
-  //       attack(attacker, enemy);
-
-  //       console.log(`UID: ${enemy.uid} HP: ${enemy.hp}`);
-
-  //       if (!isAlive(enemy)) {
-  //         enemyDied(enemy);
-
-  //         // TODO: This can be a function
-  //         // if target has not fallen yet
-  //         if (distance.feet >= 5) {
-  //           let actionParagraph;
-  //           distance.feet += 5;
-  //           actionParagraph = document.querySelector(`#${gungurk.id}`);
-  //           actionParagraph.innerHTML += `<br>${gungurk.name} steps 5 feet away from the Chasm!`;
-  //           console.log(`${distance.name} is now ${distance.feet}`);
-  //         }
-
-  //         target = pickRandomTarget();
-  //       }
-  //     }
-  //   }
-  // }
 }
 
 function pickRandomEntityOfType(type) {
