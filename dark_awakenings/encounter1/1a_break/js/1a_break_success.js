@@ -44,27 +44,12 @@ function hasAxe({ weapon }) {
 }
 
 function optionTwoWasClicked() {
-  // is this check necessary? in this particular scenario, Gungurk will probably always be grappled anyways.
-  for (var i = 0; i < gameObj.party.length; i++) {
-    console.log(gameObj.party[i].name);
-  }
-  if (taintedRoot.hasTargetGrappled()) {
-    let index = gameObj.party.indexOf(gungurk);
-    gameObj.party.splice(index, 1);
+  console.log("You escaped alone");
+  let newScene = window.open("../conclusions/the_stone_escaped_alone.html");
 
-    for (var i = 0; i < gameObj.party.length; i++) {
-      console.log(gameObj.party[i].name);
-    }
+  newScene.onload = function () {
+    this.gameObject = gameObj;
+  };
 
-    console.log("You escaped alone");
-    let newScene = window.open("../conclusions/the_stone_escaped_alone.html");
-
-    newScene.onload = function () {
-      this.gameObject = gameObj;
-    };
-  } else {
-    // In this particular scenario, it's unlikely we will ever get here.
-    console.log("You escaped with Gungurk");
-  }
   console.log("You ran");
 }

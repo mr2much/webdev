@@ -18,6 +18,10 @@
             and the realization that you left your comrades to an unknown fate
             in the chasm.
           </p>
+          <p>
+            You have an important decision to make, you can either return to the
+            chasm to rescue them or abandon them and move on with your life.
+          </p>
         </div>
         <div class="options">
           <h2>What would you do?</h2>
@@ -25,11 +29,15 @@
             <li>
               <!-- This button should change depending on if you are alone of if Gungurk is with you -->
               <button class="btn" onclick="optionOneWasClicked()">
-                Go back to the campsite.
+                Go back to the campsite. If there is a slight chance that my
+                companions are still alive, I have to rescue them.
               </button>
             </li>
             <li>
-              <a class="btn" onclick="optionTwoWasClicked()"
+              <!-- <a class="btn" onclick="optionTwoWasClicked()"
+                >Well, they lived long happy lives and shall be missed.</a
+              > -->
+              <a class="btn" href="./abandon_them_ending.html"
                 >Well, they lived long happy lives and shall be missed.</a
               >
             </li>
