@@ -80,7 +80,8 @@ window.addEventListener("load", (e) => {
 
   hpObservers.push(theStoneGUI, gungurkGUI);
 
-  taintedRoot = enemies.shift();
+  // taintedRoot = enemies.shift();
+  taintedRoot = pickRandomEntityOfType("hostile");
   // target = pickRandomEntityOfType("ally");
   // target = pickRandomTarget();
 
@@ -105,16 +106,6 @@ window.addEventListener("load", (e) => {
   btnStepAway.addEventListener("click", optionFourWasClicked);
 });
 
-// function pickRandomTarget() {
-//   console.log("pickRandomTarget()");
-//   let numberOfAllies = allies.length;
-//   let randomIndex = Math.floor(Math.random() * numberOfAllies);
-
-//   console.log(`Random Number: ${randomIndex}`);
-
-//   return allies[randomIndex];
-// }
-
 function toggleButton(button) {
   button.disabled = !button.disabled;
 
@@ -123,9 +114,6 @@ function toggleButton(button) {
 
 function enemyBehavior() {
   let taintedRootDamage;
-
-  // This should ensure that once a taintedRoot is picked, it is not randomly switched
-  // taintedRoot = pickRandomEnemy();
 
   // This means that there are no more enemies
   if (!taintedRoot) {
@@ -150,7 +138,6 @@ function enemyBehavior() {
       }
 
       taintedRoot = pickRandomEntityOfType("hostile");
-      // taintedRoot = pickRandomEnemy();
 
       // This means that there are no more enemies
       if (!taintedRoot) {
@@ -167,9 +154,6 @@ function enemyBehavior() {
         target = pickRandomEntityOfType("ally");
       }
 
-      // Should display message indicating which character the Tainted Root is attacking
-
-      // target = pickRandomTarget();
       if (target) {
         taintedRoot.state = "attack";
 
@@ -291,11 +275,6 @@ function theStoneBehavior() {
   } else {
     btnBreak.classList.remove("noHover");
   }
-
-  // if (theStone.condition === "grappled") {
-  //   // Turn on button to allow The Stone to attempt to break free of the grapple
-  //   toggleButton(btnBreak);
-  // }
 
   switch (state) {
     case "idle":
@@ -576,11 +555,11 @@ function pickRandomEntityOfType(type) {
   return entity;
 }
 
-function pickRandomEnemy() {
-  console.log("pickRandomEnemy()");
+// function pickRandomEnemy() {
+//   console.log("pickRandomEnemy()");
 
-  return pickRandomEntityOfType("hostile");
-}
+//   return pickRandomEntityOfType("hostile");
+// }
 
 function executeAttack() {
   if (btnAttack !== null) {
@@ -774,8 +753,10 @@ function attemptToEscapeGrapple(target) {
 
       console.log(`Killing the vine!`);
     } else {
-      actionParagrapm.innerHTML += ` ${target.name} immediately steps 5 feet away from the ${taintedRoot.name}`;
-      target.state = "retreat";
+      let distance = gameObj.getDistanceForCharacter(target);
+      distance.feet += 5;
+      actionParagrapm.innerHTML += ` ${target.name} immediately steps 5 feet away from the Chasm! ${target.name} is now ${distance.feet} away from the Chasm!`;
+
       console.log(`Immediately stepping 5ft away from the chasm!`);
     }
   } else {
@@ -784,7 +765,7 @@ function attemptToEscapeGrapple(target) {
     // TODO: Another reason to roll the drag damage in the function
     pullTargetCloserToTheChasm(taintedRoot, target, damage);
 
-    if (target.hp === 0) {
+    if (target.hp <= 0) {
       target.state = "dead";
       taintedRoot.state = "idle";
     }
