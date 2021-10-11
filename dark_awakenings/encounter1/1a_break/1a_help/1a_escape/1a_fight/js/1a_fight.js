@@ -11,7 +11,7 @@ let dragWeapon = {};
 let enemies = [];
 let entities = [];
 // let distance = {};
-let paragraph = document.getElementById("narration");
+// let paragraph = document.getElementById("narration");
 let flavorText = document.getElementsByClassName("flavor")[0];
 let allies = [];
 let display = document.getElementById("feedback");
@@ -64,7 +64,7 @@ window.addEventListener("load", (e) => {
 
   entities.push(...enemies);
 
-  behaviorMap.set("enemy", enemyBehavior);
+  // behaviorMap.set("enemy", enemyBehavior);
 
   if (theStone) {
     theStoneGUI = new CharGUI(theStone);
@@ -525,11 +525,11 @@ function gungurkBehavior() {
       break;
 
     case "retreat":
-      paragraphGungurkActions = document.querySelector(`#${gungurk.id}`);
+      let parGungurkActions = document.querySelector(`#${gungurk.id}`);
       let distance = gameObj.getDistanceForCharacter(gungurk);
 
       distance.feet += 5;
-      paragraphGungurkActions.innerHTML = `${gungurk.name} steps 5 feet away from the Chasm. He is now ${distance.feet} feet away from the Chasm.`;
+      parGungurkActions.innerHTML = `${gungurk.name} steps 5 feet away from the Chasm. He is now ${distance.feet} feet away from the Chasm.`;
       break;
 
     case "escape":
@@ -555,17 +555,16 @@ function pickRandomEntityOfType(type) {
   return entity;
 }
 
-// function pickRandomEnemy() {
-//   console.log("pickRandomEnemy()");
-
-//   return pickRandomEntityOfType("hostile");
-// }
+// const taintedRootBehaviorHandler = require("./behaviors/taintedRoot/index");
+import { taintedRootBehaviorHandler } from "./behaviors/taintedRoot/index.js";
 
 function executeAttack() {
   if (btnAttack !== null) {
     btnAttack.textContent = "Keep attacking!";
     btnAttack = null;
   }
+
+  behaviorMap.set("enemy", taintedRootBehaviorHandler);
 
   if (amountOfEnemies > 0) {
     // handle enemiy's turn
@@ -642,19 +641,23 @@ function enemyDied(enemy) {
   amountOfEnemies--;
 
   // if the Tainted Root was grabbing someone, who has not already fallen down into the Chasm
-  let condition = target.condition;
+  if (target) {
+    let condition = target.condition;
 
-  switch (condition) {
-    case "grappled":
-      paragraphTaintedRootActions.innerHTML += ` ${target.name} is no longer grappled.`;
-      target.condition = "healthy";
+    switch (condition) {
+      case "grappled":
+        paragraphTaintedRootActions.innerHTML += ` ${target.name} is no longer grappled.`;
+        target.condition = "healthy";
 
-      toggleButton(btnBreak); // This should turn the break button off
-      break;
+        toggleButton(btnBreak); // This should turn the break button off
+        break;
 
-    default:
-      break;
+      default:
+        break;
+    }
   }
+
+  let paragraph = document.querySelector("#narration");
 
   if (amountOfEnemies > 1) {
     paragraph.innerHTML = `There are still ${amountOfEnemies} enemies left.`;
@@ -719,7 +722,7 @@ function optionTwoWasClicked() {
 
 function optionThreeWasClicked() {
   console.log("You attempt to break free from the vine");
-  attemptToEscapeGrapple(taintedRoot.target);
+  attemptToEscapeGrapple(theStone);
 }
 
 function attemptToEscapeGrapple(target) {
@@ -813,3 +816,5 @@ function getAcrobatics(character) {
 function optionFourWasClicked() {
   console.log("You step 5 feet away from the chasm.");
 }
+
+export { gameObj, enemies, entities, notifyObservers };

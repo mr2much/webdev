@@ -20,7 +20,6 @@ const taintedRoot = {
   acrobatics: false,
   weapon: grasp,
   targetGrappled: false,
-  target: {},
   isDead() {
     return this.hp <= 0;
   },
