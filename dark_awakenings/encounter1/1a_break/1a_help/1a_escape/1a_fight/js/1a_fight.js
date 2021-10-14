@@ -1,5 +1,7 @@
 import { CharGUI } from "../../../../../../js/components/char_gui.js";
-import { grasp } from "../../../../../../js/weapons.js";
+// import { grasp } from "../../../../../../js/weapons.js";
+// const taintedRootBehaviorHandler = require("./behaviors/taintedRoot/index");
+import { taintedRootBehaviorHandler } from "./behaviors/taintedRoot/index.js";
 
 let gameObj;
 let amountOfEnemies = 0;
@@ -59,12 +61,12 @@ window.addEventListener("load", (e) => {
       let enemyGUI = new CharGUI(taintedRoot);
       enemyDisplay.appendChild(enemyGUI);
       hpObservers.push(enemyGUI);
+
+      behaviorMap.set(taintedRoot, taintedRootBehaviorHandler); // Sets the behavior for individual taintedRoot
     }
   }
 
   entities.push(...enemies);
-
-  // behaviorMap.set("enemy", enemyBehavior);
 
   if (theStone) {
     theStoneGUI = new CharGUI(theStone);
@@ -112,155 +114,7 @@ function toggleButton(button) {
   button.classList.toggle("noHover");
 }
 
-function enemyBehavior() {
-  let taintedRootDamage;
-
-  // This means that there are no more enemies
-  if (!taintedRoot) {
-    // remove enemy behavior
-    behaviorMap.delete("enemy");
-    return;
-  }
-
-  let state = taintedRoot.state;
-
-  if (!isAlive(taintedRoot)) {
-    taintedRoot.state = "dead";
-  }
-
-  switch (state) {
-    case "dead":
-      // if taintedRoot is dead, remove it from entities and pick a new taintedRoot
-      let index = entities.indexOf(taintedRoot);
-
-      if (index >= 0) {
-        entities.splice(index, 1);
-      }
-
-      taintedRoot = pickRandomEntityOfType("hostile");
-
-      // This means that there are no more enemies
-      if (!taintedRoot) {
-        // remove enemy behavior
-        behaviorMap.delete("enemy");
-        return;
-      }
-
-      taintedRoot.state = "idle";
-      break;
-    case "idle":
-      // look for a target
-      if (!target) {
-        target = pickRandomEntityOfType("ally");
-      }
-
-      if (target) {
-        taintedRoot.state = "attack";
-
-        // TODO: This should be a function
-        if (amountOfEnemies > 1) {
-          paragraph.innerHTML = ` The ${taintedRoot.name}${taintedRoot.uid} lashes at ${target.name}!`;
-        } else {
-          paragraph.innerHTML = `The last enemy lashes at ${target.name}!`;
-        }
-      } else {
-        // TODO: Implement this scenario
-        console.log("Doesn't have a target for some reason");
-
-        return;
-      }
-
-      break;
-    case "attack":
-      let paragraphTaintedRootActions = document.querySelector(
-        `#${taintedRoot.id}`
-      );
-      taintedRoot.weapon = grasp;
-      taintedRootDamage = gameObj.attack(taintedRoot, target);
-
-      // if the attack hits:
-      if (taintedRootDamage > 0) {
-        // show message showing the damage caused by the attack done to the target
-        // show message showing that the target is now grappled
-        paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name}${taintedRoot.uid} lashes at ${target.name}, dealing ${taintedRootDamage} points of damage with its vines! ${target.name} is now grabbed as the Tainted Root wraps its vines around him!`;
-
-        if (target.hp <= 0) {
-          // show message indicating the the Tainted Root's last attack killed the target
-
-          target.state = "dead";
-
-          // If the target is dead, the Tainted Root should look go to idle state
-          taintedRoot.state = "idle";
-        }
-
-        // change condition of target to "grappled"
-        taintedRoot.target = target;
-        target.condition = "grappled";
-
-        // change state of Tainted Root to drag
-        taintedRoot.state = "drag";
-
-        // Notify the target of the change in their HP
-        notifyObservers(target);
-      } else {
-        // if attack misses show message indicating the attack failed to hit the target
-        paragraphTaintedRootActions.innerHTML = `The enemy ${taintedRoot.name}${taintedRoot.uid}'s attack failed to hit target ${target.name}`;
-
-        // if you are more than 5 feet away from the chasm, and are not more than 15ft away from it
-
-        // This check should be in the ally's behaviors
-        let distance = gameObj.getDistanceForCharacter(target);
-        if (distance.feet <= 10) {
-          distance.feet += 5;
-          console.log(`${distance.name} is now ${distance.feet}`);
-          console.log(`${gameObj.distanceFromChasm[`${target.name}`]}`);
-          paragraphTaintedRootActions.innerHTML += ` and he immediately walks 5 feet away from the threatening Chasm up ahead.`;
-        }
-      }
-
-      break;
-    case "drag":
-      // Keep dragging the target until you bring it down the chasm, or kill it, if you kill it go idle, if you die, set state to dead
-      // change weapon of choice to drag
-      taintedRoot.weapon = dragWeapon;
-
-      // when the weapon is dragWeapon, the attack always hits, so the Tainted Root always deals damage with it
-      taintedRootDamage = gameObj.attack(taintedRoot, target);
-      let distance = gameObj.getDistanceForCharacter(target);
-
-      distance = pullTargetCloserToTheChasm(
-        taintedRoot,
-        target,
-        taintedRootDamage
-      );
-
-      notifyObservers(target);
-
-      if (target.hp <= 0) {
-        // target died
-        target.state = "dead";
-
-        // Should probably display a message indicating that the Tainted Root's last attack killed the target
-
-        taintedRoot.state = "idle";
-
-        return;
-      }
-
-      if (distance.feet <= 0) {
-        target.state = "falling";
-        taintedRoot.hp = 0;
-        notifyObservers(taintedRoot);
-        enemyDied(taintedRoot);
-      }
-
-      break;
-    default:
-      break;
-  }
-}
-
-function theStoneBehavior() {
+function theStoneBehavior(arg) {
   let state = theStone.state;
   let distance = gameObj.getDistanceForCharacter(theStone);
 
@@ -407,7 +261,7 @@ function theStoneBehavior() {
   }
 }
 
-function gungurkBehavior() {
+function gungurkBehavior(arg) {
   let state = gungurk.state;
   let distance = gameObj.getDistanceForCharacter(gungurk);
 
@@ -555,16 +409,14 @@ function pickRandomEntityOfType(type) {
   return entity;
 }
 
-// const taintedRootBehaviorHandler = require("./behaviors/taintedRoot/index");
-import { taintedRootBehaviorHandler } from "./behaviors/taintedRoot/index.js";
-
 function executeAttack() {
   if (btnAttack !== null) {
     btnAttack.textContent = "Keep attacking!";
     btnAttack = null;
   }
 
-  behaviorMap.set("enemy", taintedRootBehaviorHandler);
+  // DONE: Add the different Tainted Roots in the behaviorMap using ${taintedRoot.name}${taintedRoot.uid} instead of "enemy"
+  // behaviorMap.set("enemy", taintedRootBehaviorHandler);
 
   if (amountOfEnemies > 0) {
     // handle enemiy's turn
@@ -572,11 +424,11 @@ function executeAttack() {
     for (const entity of behaviorMap.keys()) {
       // The value stored in the map is a function, so we execute it by getting it from the map and putting the () in front of it
       if (entity.name) {
-        console.log(`Executing behavior for: ${entity.name}`);
+        console.log(`Executing behavior for: ${entity.name}${entity.uid}`);
       } else {
         console.log(`Executing behavior for: ${entity}`);
       }
-      behaviorMap.get(entity)();
+      behaviorMap.get(entity)(entity);
     }
 
     // Game checks targets that are still alive
@@ -748,7 +600,7 @@ function attemptToEscapeGrapple(target) {
     target.condition = "healthy";
     taintedRoot.state = "attack";
     if (target === theStone) {
-      actionParagrapm.innerHTML += ` At ${target.name}'s might, the ${taintedRoot.name} explodes into a bunch of small fragments.`;
+      actionParagrapm.innerHTML += ` At ${target.name}'s might, the ${taintedRoot.name}${taintedRoot.uid} explodes into a bunch of small fragments.`;
       taintedRoot.hp = 0;
 
       notifyObservers(taintedRoot);
@@ -817,4 +669,4 @@ function optionFourWasClicked() {
   console.log("You step 5 feet away from the chasm.");
 }
 
-export { gameObj, enemies, entities, notifyObservers };
+export { gameObj, enemies, entities, notifyObservers, enemyDied, behaviorMap };

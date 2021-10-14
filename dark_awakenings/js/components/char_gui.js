@@ -28,6 +28,10 @@ export class CharGUI extends HTMLElement {
 
     charName.innerHTML = `${char.name}`;
 
+    if (char.uid) {
+      charName.innerHTML += `${char.uid}`;
+    }
+
     const section = document.createElement("section");
     section.id = `"${char.id}"`;
     section.classList.add("char-gui");

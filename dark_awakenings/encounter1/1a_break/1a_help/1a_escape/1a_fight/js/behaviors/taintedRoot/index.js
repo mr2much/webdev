@@ -1,15 +1,20 @@
 import { grasp, drag } from "../../../../../../../../js/weapons.js";
 import { taintedRoot } from "../../../../../../../../js/enemies.js";
-import { gameObj } from "../../1a_fight.js";
-import { enemies } from "../../1a_fight.js";
-import { entities } from "../../1a_fight.js";
-import { notifyObservers } from "../../1a_fight.js";
+import {
+  gameObj,
+  enemies,
+  entities,
+  notifyObservers,
+  enemyDied,
+  behaviorMap,
+} from "../../1a_fight.js";
+// import { dead } from "./dead.js";
 
 let amountOfEnemies = 0;
 let paragraph = document.getElementById("narration");
 let enemy;
 
-export function taintedRootBehaviorHandler() {
+export function taintedRootBehaviorHandler(enemy) {
   let taintedRootDamage;
   amountOfEnemies = enemies.length;
 
@@ -20,14 +25,14 @@ export function taintedRootBehaviorHandler() {
   //   return;
   // }
 
-  if (!enemy) {
-    enemy = pickRandomEntityOfType("hostile");
-  }
+  // if (!enemy) {
+  //   enemy = pickRandomEntityOfType("hostile");
+  // }
 
   let state = enemy.state;
 
   if (enemy.hp <= 0) {
-    enemey.state = "dead";
+    enemy.state = "dead";
   }
 
   switch (state) {
@@ -39,16 +44,25 @@ export function taintedRootBehaviorHandler() {
         entities.splice(index, 1);
       }
 
-      enemy = pickRandomEntityOfType("hostile");
+      console.log(
+        `Enemy ${enemy.name}${enemy.uid} died. Removing from behaviorMap`
+      );
+
+      console.assert(
+        behaviorMap.delete(enemy),
+        `Couldn't remove ${enemy.name}${enemy.uid}`
+      );
+
+      // enemy = pickRandomEntityOfType("hostile");
 
       // This means that there are no more enemies
-      if (!enemy) {
-        // remove enemy behavior
-        behaviorMap.delete("enemy");
-        return;
-      }
+      // if (!enemy) {
+      //   // remove enemy behavior
+      //   behaviorMap.delete(enemy);
+      //   return;
+      // }
 
-      enemy.state = "idle";
+      // enemy.state = "idle";
       break;
     case "idle":
       // look for a target
