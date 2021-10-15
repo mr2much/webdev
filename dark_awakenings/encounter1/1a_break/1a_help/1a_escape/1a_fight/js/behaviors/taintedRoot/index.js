@@ -1,5 +1,5 @@
 import { grasp, drag } from "../../../../../../../../js/weapons.js";
-import { taintedRoot } from "../../../../../../../../js/enemies.js";
+// import { taintedRoot } from "../../../../../../../../js/enemies.js";
 import {
   gameObj,
   enemies,
@@ -88,7 +88,9 @@ export function taintedRootBehaviorHandler(enemy) {
 
       break;
     case "attack":
-      let paragraphTaintedRootActions = document.querySelector(`#${enemy.id}`);
+      let paragraphTaintedRootActions = document.querySelector(
+        `#${enemy.id}${enemy.uid}`
+      );
       enemy.weapon = grasp;
       taintedRootDamage = gameObj.attack(enemy, enemy.target);
 
@@ -195,7 +197,7 @@ function pullTargetCloserToTheChasm(attacker, target, damage) {
 
   distance.feet -= 5;
   let paragraphTaintedRootActions = document.querySelector(
-    `#${taintedRoot.id}`
+    `#${attacker.id}${attacker.uid}`
   );
   paragraphTaintedRootActions.innerHTML = `The enemy ${attacker.name}${attacker.uid} drags ${target.name} 5 feet closer to the Chasm, dealing ${damage} points of damage. ${target.name} is now ${distance.feet} away from the edge!`;
 

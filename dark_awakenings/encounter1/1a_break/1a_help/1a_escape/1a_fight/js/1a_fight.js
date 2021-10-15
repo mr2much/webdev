@@ -62,6 +62,10 @@ window.addEventListener("load", (e) => {
       enemyDisplay.appendChild(enemyGUI);
       hpObservers.push(enemyGUI);
 
+      display.insertAdjacentHTML(
+        "beforeend",
+        `<p id="${taintedRoot.id}${taintedRoot.uid}"></p>`
+      );
       behaviorMap.set(taintedRoot, taintedRootBehaviorHandler); // Sets the behavior for individual taintedRoot
     }
   }
@@ -89,7 +93,7 @@ window.addEventListener("load", (e) => {
 
   // paragraph.innerHTML += `<br><br>There are still ${amountOfEnemies} enemies left. You both tighten the grip on your weapons and attack them. One of the ${taintedRoot.name}s lashes at ${target.name}!`;
 
-  display.insertAdjacentHTML("beforeend", `<p id="${taintedRoot.id}"></p>`);
+  // display.insertAdjacentHTML("beforeend", `<p id="${taintedRoot.id}"></p>`);
   display.insertAdjacentHTML("beforeend", `<p id="${theStone.id}"></p>`);
   display.insertAdjacentHTML("beforeend", `<p id="${gungurk.id}"></p>`);
 
