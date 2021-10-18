@@ -5,21 +5,19 @@ export function drag(enemy) {
   // Keep dragging the target until you bring it down the chasm, or kill it, if you kill it go idle, if you die, set state to dead
   // change weapon of choice to drag
   enemy.weapon = pull;
+  let target = enemy.target;
 
   // when the weapon is dragWeapon, the attack always hits, so the Tainted Root always deals damage with it
-  let taintedRootDamage = gameObj.attack(enemy, enemy.target);
-  let distance = gameObj.getDistanceForCharacter(enemy.target);
+  let taintedRootDamage = gameObj.attack(enemy, target);
+  let distance = gameObj.getDistanceForCharacter(target);
 
-  distance = pullTargetCloserToTheChasm(enemy, enemy.target, taintedRootDamage);
+  distance = pullTargetCloserToTheChasm(enemy, target, taintedRootDamage);
 
-  notifyObservers(enemy.target);
+  notifyObservers(target);
 
-  if (enemy.target.hp <= 0) {
+  if (target.hp <= 0) {
     // target died
-    enemy.target.state = "dead";
-
-    // Should probably display a message indicating that the Tainted Root's last attack killed the target
-    console.log(`${enemy.target.name} was killed!`);
+    target.state = "dead";
 
     enemy.state = "idle";
 
@@ -27,7 +25,10 @@ export function drag(enemy) {
   }
 
   if (distance.feet <= 0) {
-    enemy.target.state = "falling";
+    let targetActions = document.querySelector(`#${target.id}`);
+
+    targetActions.innerHTML = `${target.name} plummets into the chasm, falling into water as the ${enemy.name} drags you the the remaining 5 feet over the edge.`;
+    target.state = "falling";
     enemy.hp = 0;
     notifyObservers(enemy);
     enemyDied(enemy);
