@@ -1,7 +1,7 @@
 import { grasp } from "../../../../../../../../js/weapons.js";
 import { gameObj, notifyObservers } from "../../1a_fight.js";
 
-function attack(enemy) {
+export function attack(enemy) {
   let paragraphTaintedRootActions = document.querySelector(
     `#${enemy.id}${enemy.uid}`
   );
@@ -53,5 +53,3 @@ function attack(enemy) {
     }
   }
 }
-
-export { attack };

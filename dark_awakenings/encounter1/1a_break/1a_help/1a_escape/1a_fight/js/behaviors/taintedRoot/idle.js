@@ -1,6 +1,6 @@
 import { entities } from "../../1a_fight.js";
 
-function idle(enemy) {
+export function idle(enemy) {
   enemy.target = pickRandomEntityOfType("ally");
 
   if (enemy.target) {
@@ -29,5 +29,3 @@ function pickRandomEntityOfType(type) {
 
   return entity;
 }
-
-export { idle };

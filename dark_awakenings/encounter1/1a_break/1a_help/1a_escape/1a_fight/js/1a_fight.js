@@ -2,19 +2,20 @@ import { CharGUI } from "../../../../../../js/components/char_gui.js";
 // import { grasp } from "../../../../../../js/weapons.js";
 // const taintedRootBehaviorHandler = require("./behaviors/taintedRoot/index");
 import { taintedRootBehaviorHandler } from "./behaviors/taintedRoot/index.js";
+import { theStoneBehaviorHandler } from "./behaviors/theStone/index.js";
 
 let gameObj;
 let amountOfEnemies = 0;
 let gungurk = {};
 let theStone = {};
 let taintedRoot = {};
-let graspWeapon = {};
-let dragWeapon = {};
+// let graspWeapon = {};
+// let dragWeapon = {};
 let enemies = [];
 let entities = [];
 // let distance = {};
 // let paragraph = document.getElementById("narration");
-let flavorText = document.getElementsByClassName("flavor")[0];
+// let flavorText = document.getElementsByClassName("flavor")[0];
 let allies = [];
 let display = document.getElementById("feedback");
 
@@ -25,9 +26,9 @@ let btnStepAway = document.getElementById("step-away");
 
 let theStoneGUI;
 let gungurkGUI;
-let taintedRootGUI;
+// let taintedRootGUI;
 
-let target;
+// let target;
 
 let hpObservers = [];
 
@@ -41,8 +42,8 @@ window.addEventListener("load", (e) => {
   enemies = gameObj.enemies;
   amountOfEnemies = enemies.length;
 
-  graspWeapon = gameObj.weapons.grasp;
-  dragWeapon = gameObj.weapons.drag;
+  // graspWeapon = gameObj.weapons.grasp;
+  // dragWeapon = gameObj.weapons.drag;
 
   gungurk = gameObj.creatures.players.gungurk;
 
@@ -74,7 +75,7 @@ window.addEventListener("load", (e) => {
 
   if (theStone) {
     theStoneGUI = new CharGUI(theStone);
-    behaviorMap.set(theStone, theStoneBehavior);
+    behaviorMap.set(theStone, theStoneBehaviorHandler);
     entities.push(theStone);
   }
 
@@ -118,152 +119,152 @@ function toggleButton(button) {
   button.classList.toggle("noHover");
 }
 
-function theStoneBehavior(arg) {
-  let state = theStone.state;
-  let distance = gameObj.getDistanceForCharacter(theStone);
+// function theStoneBehavior(arg) {
+//   let state = theStone.state;
+//   let distance = gameObj.getDistanceForCharacter(theStone);
 
-  if (distance.feet <= 0) {
-    theStone.state = "falling";
-  }
+//   if (distance.feet <= 0) {
+//     theStone.state = "falling";
+//   }
 
-  btnBreak.disabled = !(theStone.condition === "grappled");
+//   btnBreak.disabled = !(theStone.condition === "grappled");
 
-  if (btnBreak.disabled) {
-    btnBreak.classList.add("noHover");
-  } else {
-    btnBreak.classList.remove("noHover");
-  }
+//   if (btnBreak.disabled) {
+//     btnBreak.classList.add("noHover");
+//   } else {
+//     btnBreak.classList.remove("noHover");
+//   }
 
-  switch (state) {
-    case "idle":
-      if (!theStone.target) {
-        theStone.target = pickRandomEntityOfType("hostile");
+//   switch (state) {
+//     case "idle":
+//       if (!theStone.target) {
+//         theStone.target = pickRandomEntityOfType("hostile");
 
-        let paragraphTheStoneActions = document.querySelector(
-          `#${theStone.id}`
-        );
+//         let paragraphTheStoneActions = document.querySelector(
+//           `#${theStone.id}`
+//         );
 
-        paragraphTheStoneActions.innerHTML = `${theStone.name} scans the battle field, setting his eyes on ${theStone.target.name}${theStone.target.uid} and charges!`;
-        theStone.state = "attack";
-      }
-      break;
-    case "attack":
-      let enemy = theStone.target;
+//         paragraphTheStoneActions.innerHTML = `${theStone.name} scans the battle field, setting his eyes on ${theStone.target.name}${theStone.target.uid} and charges!`;
+//         theStone.state = "attack";
+//       }
+//       break;
+//     case "attack":
+//       let enemy = theStone.target;
 
-      // If the enemy is still alive
-      if (isAlive(enemy)) {
-        // Attack it
-        let attacker = theStone;
+//       // If the enemy is still alive
+//       if (isAlive(enemy)) {
+//         // Attack it
+//         let attacker = theStone;
 
-        attack(attacker, enemy);
+//         attack(attacker, enemy);
 
-        console.log(`UID: ${enemy.uid} HP: ${enemy.hp}`);
+//         console.log(`UID: ${enemy.uid} HP: ${enemy.hp}`);
 
-        // If the attack killed the enemy Tainted Root
-        if (!isAlive(enemy)) {
-          enemyDied(enemy);
+//         // If the attack killed the enemy Tainted Root
+//         if (!isAlive(enemy)) {
+//           enemyDied(enemy);
 
-          // TODO: This can be a function
-          // if target has not fallen yet
-          if (distance.feet >= 5) {
-            let actionParagraph;
-            distance.feet += 5;
-            actionParagraph = document.querySelector(`#${theStone.id}`);
-            actionParagraph.innerHTML += `<br>${theStone.name} steps 5 feet away from the Chasm!`;
-            console.log(`${distance.name} is now ${distance.feet}`);
-          }
+//           // TODO: This can be a function
+//           // if target has not fallen yet
+//           if (distance.feet >= 5) {
+//             let actionParagraph;
+//             distance.feet += 5;
+//             actionParagraph = document.querySelector(`#${theStone.id}`);
+//             actionParagraph.innerHTML += `<br>${theStone.name} steps 5 feet away from the Chasm!`;
+//             console.log(`${distance.name} is now ${distance.feet}`);
+//           }
 
-          theStone.target = null;
-          theStone.state = "idle";
-        }
-      } else {
-        theStone.target = null;
-        theStone.state = "idle";
-      }
-      break;
-    case "dead":
-      disableAllOptions();
-      // check if The Stone died from the fall or due to damage
-      behaviorMap.delete(theStone);
-      console.log("The Stone died from the damage!");
+//           theStone.target = null;
+//           theStone.state = "idle";
+//         }
+//       } else {
+//         theStone.target = null;
+//         theStone.state = "idle";
+//       }
+//       break;
+//     case "dead":
+//       disableAllOptions();
+//       // check if The Stone died from the fall or due to damage
+//       behaviorMap.delete(theStone);
+//       console.log("The Stone died from the damage!");
 
-      // TODO: Should load dead scenario specifying The Stone died from the damage
-      behaviorMap.delete("enemy");
-      if (isAlive(gungurk)) {
-        behaviorMap.delete(gungurk);
-      }
-      return;
-    // break;
-    case "falling":
-      disableAllOptions();
+//       // TODO: Should load dead scenario specifying The Stone died from the damage
+//       behaviorMap.delete("enemy");
+//       if (isAlive(gungurk)) {
+//         behaviorMap.delete(gungurk);
+//       }
+//       return;
+//     // break;
+//     case "falling":
+//       disableAllOptions();
 
-      let paragraphTheStoneActions = document.querySelector(`#${theStone.id}`);
+//       let paragraphTheStoneActions = document.querySelector(`#${theStone.id}`);
 
-      paragraphTheStoneActions.innerHTML = `${theStone.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the the remaining 5 feet over the edge.`;
+//       paragraphTheStoneActions.innerHTML = `${theStone.name} plummets into the chasm, falling into water as the ${taintedRoot.name} drags you the the remaining 5 feet over the edge.`;
 
-      let fallDamage = Math.floor(Math.random() * 10 + 1);
-      theStone.receiveDamage(fallDamage);
+//       let fallDamage = Math.floor(Math.random() * 10 + 1);
+//       theStone.receiveDamage(fallDamage);
 
-      paragraphTheStoneActions.innerHTML += `<br>${theStone.name} receives ${fallDamage} of damage from the fall.`;
+//       paragraphTheStoneActions.innerHTML += `<br>${theStone.name} receives ${fallDamage} of damage from the fall.`;
 
-      notifyObservers(theStone);
+//       notifyObservers(theStone);
 
-      if (theStone.hp <= 0) {
-        // load dead scenario after a set interval
-        console.log(`${theStone.name} died from the fall!`);
+//       if (theStone.hp <= 0) {
+//         // load dead scenario after a set interval
+//         console.log(`${theStone.name} died from the fall!`);
 
-        paragraphTheStoneActions.innerHTML += ` The fall killed ${theStone.name}.`;
+//         paragraphTheStoneActions.innerHTML += ` The fall killed ${theStone.name}.`;
 
-        theStone.state = "dead";
+//         theStone.state = "dead";
 
-        // This is so that the game doesn't continue running.
-        // TODO: Find a better way of doing this
-        behaviorMap.delete(theStone);
-        behaviorMap.delete("enemy");
-        if (isAlive(gungurk)) {
-          behaviorMap.delete(gungurk);
-        }
+//         // This is so that the game doesn't continue running.
+//         // TODO: Find a better way of doing this
+//         behaviorMap.delete(theStone);
+//         behaviorMap.delete("enemy");
+//         if (isAlive(gungurk)) {
+//           behaviorMap.delete(gungurk);
+//         }
 
-        return;
-      } else {
-        //   Must make a pause
-        setTimeout(() => {
-          console.log("Executing timeout function");
-          if (allies.indexOf(gungurk) < 0) {
-            let newScene = window.open(
-              "../../../../../encounter2/gungurk_fell_first.html"
-            );
-            newScene.onload = function () {
-              this.gameObject = gameObj;
-            };
-          } else {
-            //   and then load the second encounter
-            let newScene = window.open(
-              "../../../../../encounter2/stone_fell.html"
-            );
+//         return;
+//       } else {
+//         //   Must make a pause
+//         setTimeout(() => {
+//           console.log("Executing timeout function");
+//           if (allies.indexOf(gungurk) < 0) {
+//             let newScene = window.open(
+//               "../../../../../encounter2/gungurk_fell_first.html"
+//             );
+//             newScene.onload = function () {
+//               this.gameObject = gameObj;
+//             };
+//           } else {
+//             //   and then load the second encounter
+//             let newScene = window.open(
+//               "../../../../../encounter2/stone_fell.html"
+//             );
 
-            newScene.onload = function () {
-              this.gameObject = gameObj;
-            };
-          }
-        }, 6000);
+//             newScene.onload = function () {
+//               this.gameObject = gameObj;
+//             };
+//           }
+//         }, 6000);
 
-        // This is so that the game doesn't continue running.
-        // TODO: Find a better way of doing this
-        behaviorMap.delete(theStone);
-        behaviorMap.delete("enemy");
-        if (isAlive(gungurk)) {
-          behaviorMap.delete(gungurk);
-        }
+//         // This is so that the game doesn't continue running.
+//         // TODO: Find a better way of doing this
+//         behaviorMap.delete(theStone);
+//         behaviorMap.delete("enemy");
+//         if (isAlive(gungurk)) {
+//           behaviorMap.delete(gungurk);
+//         }
 
-        return;
-      }
-    // break;
+//         return;
+//       }
+//     // break;
 
-    default:
-      break;
-  }
-}
+//     default:
+//       break;
+//   }
+// }
 
 function gungurkBehavior(arg) {
   let state = gungurk.state;
@@ -436,34 +437,10 @@ function executeAttack() {
       }
       behaviorMap.get(entity)(entity);
     }
-
-    // Game checks targets that are still alive
-    console.log("Logging entities");
-    for (const enemy of enemies) {
-      if (enemy.state === "dead") {
-        let index = enemies.indexOf(enemy);
-
-        if (index > 0) {
-          enemies.splice(index, 1);
-        }
-      }
-    }
-
-    for (const entity of entities) {
-      // if the entity died
-      if (!isAlive(entity)) {
-        // remove it
-        let index = entities.indexOf(entity);
-
-        if (index > 0) {
-          entities.splice(index, 1);
-        }
-      }
-    }
   }
 
   // implement code for when all the enemies are slain, which might imply loading a new screen. Probably enemies_defeated.html or something
-  if (amountOfEnemies === 0) {
+  if (amountOfEnemies <= 0) {
     let newScene = window.open("you_are_victorious/you_are_victorious.html");
 
     newScene.onload = function () {

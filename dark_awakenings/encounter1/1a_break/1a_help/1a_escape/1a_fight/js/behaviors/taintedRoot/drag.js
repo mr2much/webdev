@@ -1,7 +1,7 @@
 import { gameObj, notifyObservers, enemyDied } from "../../1a_fight.js";
 import { drag as pull } from "../../../../../../../../js/weapons.js";
 
-function drag(enemy) {
+export function drag(enemy) {
   // Keep dragging the target until you bring it down the chasm, or kill it, if you kill it go idle, if you die, set state to dead
   // change weapon of choice to drag
   enemy.weapon = pull;
@@ -57,5 +57,3 @@ function pullTargetCloserToTheChasm(attacker, target, damage) {
 
   return distance;
 }
-
-export { drag };
