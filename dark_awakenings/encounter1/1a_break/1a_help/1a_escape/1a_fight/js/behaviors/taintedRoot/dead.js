@@ -9,15 +9,6 @@ function dead(enemy) {
   }
 
   behaviorMap.delete(enemy);
-
-  // This means that there are no more enemies
-  //   if (!enemy) {
-  //     // remove enemy behavior
-  //     behaviorMap.delete(enemy);
-  //     return;
-  //   }
-
-  //   enemy.state = "idle";
 }
 
 export { dead };

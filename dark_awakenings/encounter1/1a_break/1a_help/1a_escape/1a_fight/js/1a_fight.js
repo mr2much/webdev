@@ -325,6 +325,8 @@ function gungurkBehavior(arg) {
       // this is to prevent that the Tainted Root keeps targetting Gungurk after he has fallen
       let index = entities.indexOf(gungurk); // Remove Gungurk
 
+      console.log("Gungurk died!");
+
       if (index >= 0) {
         entities.splice(index, 1);
       }
@@ -491,7 +493,9 @@ function disableAllOptions() {
 function enemyDied(enemy) {
   enemy.state = "dead";
   let target = enemy.target;
-  let paragraphTaintedRootActions = document.querySelector(`#${enemy.id}`);
+  let paragraphTaintedRootActions = document.querySelector(
+    `#${enemy.id}${enemy.uid}`
+  );
 
   paragraphTaintedRootActions.innerHTML = `Enemy ${enemy.name}${enemy.uid} was slain!`;
   amountOfEnemies--;
@@ -583,19 +587,23 @@ function optionThreeWasClicked() {
 
 function attemptToEscapeGrapple(target) {
   let damage = 10;
+  let taintedRoot = target.grappledBy;
+
   console.log(
     `${target.name} is attempting to break free from the ${taintedRoot.name}${taintedRoot.uid}'s grasp!`
   );
 
   let actionParagrapm = document.querySelector(`#${target.id}`);
 
-  actionParagrapm.innerHTML = `${target.name} attempts to escape from the ${taintedRoot.name}'s grasp. `;
+  actionParagrapm.innerHTML = `${target.name} attempts to escape from the ${taintedRoot.name}${taintedRoot.uid}'s grasp. `;
 
   const escapeCheck = grappleContest(target);
   const contestedCheck = grappleContest(taintedRoot);
 
   console.log(`${target.name}'s attempt is: ${escapeCheck}`);
-  console.log(`${taintedRoot.name}'s attempt is: ${contestedCheck}`);
+  console.log(
+    `${taintedRoot.name}${taintedRoot.uid}'s attempt is: ${contestedCheck}`
+  );
 
   if (escapeCheck >= contestedCheck) {
     actionParagrapm.innerHTML += `And is successful to do so!`;
@@ -618,16 +626,11 @@ function attemptToEscapeGrapple(target) {
 
       console.log(`Immediately stepping 5ft away from the chasm!`);
     }
+
+    target.grappledBy = null;
   } else {
     console.log(`${target.name} failed to break free from the vine`);
     actionParagrapm.innerHTML += ` But is unable to do so.`;
-    // TODO: Another reason to roll the drag damage in the function
-    pullTargetCloserToTheChasm(taintedRoot, target, damage);
-
-    if (target.hp <= 0) {
-      target.state = "dead";
-      taintedRoot.state = "idle";
-    }
   }
 }
 
