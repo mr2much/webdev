@@ -8,13 +8,15 @@ export function dead(theStone) {
 
   behaviorMap.clear();
 
-  // TODO: Load scenario with The Stone's dead
-
-  //   // TODO: Should load dead scenario specifying The Stone died from the damage
-  //   behaviorMap.delete("enemy");
-  //   if (gameObj.creatures.players.gungurk.hp > 0) {
-  //     behaviorMap.delete(gameObj.creatures.players.gungurk);
-  //   }
+  setTimeout(() => {
+    if (theStone.condition === "fell") {
+      // load scenario where you died from the fall
+      window.open("../../../../../gameover/you_drowned.html");
+    } else {
+      // load scenario where you died from damage
+      window.open("../../../../../gameover/you_were_killed.html");
+    }
+  }, 1000);
 }
 
 function disableAllOptions() {

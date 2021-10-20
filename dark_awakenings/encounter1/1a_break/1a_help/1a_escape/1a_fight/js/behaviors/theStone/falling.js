@@ -26,6 +26,12 @@ export function falling(theStone) {
     paragraphTheStoneActions.innerHTML += ` The fall killed ${theStone.name}.`;
 
     theStone.state = "dead";
+    theStone.condition = "fell";
+
+    setTimeout(() => {
+      // load scenario where you died from the fall
+      window.open("../../../../../gameover/you_drowned.html");
+    }, 1000);
 
     return;
   } else {

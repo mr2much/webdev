@@ -28,7 +28,7 @@ export function falling(gungurk) {
   }
 
   // timer to remove gungurk's paragraph from the page
-  setInterval(() => {
+  setTimeout(() => {
     let paragraphGungurkActions = document.querySelector(`#${gungurk.id}`);
     if (paragraphGungurkActions) {
       display.removeChild(paragraphGungurkActions);

@@ -7,8 +7,6 @@ import { falling } from "./falling.js";
 import { idle } from "./idle.js";
 import { retreat } from "./retreat.js";
 
-// let display = document.getElementById("feedback");
-
 const behaviors = {
   attack,
   dead,
