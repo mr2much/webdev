@@ -3,7 +3,7 @@ import { taintedRoot } from "./enemies.js";
 import { punch, handaxe, dagger, longsword, grasp, drag } from "./weapons.js";
 import { distanceFromChasm } from "./gameProperties.js";
 
-//TODO: move this to its own separate file, possibly game.js
+//DONE: move this to its own separate file, possibly game.js
 export const gameObject = {
   weapons: {
     punch: punch,

@@ -1,6 +1,17 @@
 import { theStone, gungurk } from "./characters.js";
 import { gameObject } from "./gameBehavior.js";
 
+let olChoices = document.getElementById("choices");
+let liOneTimeChoice = document.getElementById("one-time-choice");
+let divFlavor = document.getElementsByClassName("flavor")[0];
+let divFeedback = document.querySelector("#feedback");
+let newParagraph = document.createElement("p");
+let displayParagraph = document.createElement("p");
+
+window.optionOneWasClicked = optionOneWasClicked;
+window.optionTwoWasClicked = optionTwoWasClicked;
+window.optionThreeWasClicked = optionThreeWasClicked;
+
 let distances = [];
 
 function setDistance({ name }, feet) {
@@ -25,16 +36,7 @@ let enemiesCount = 6;
   }
 })();
 
-let olChoices = document.getElementById("choices");
-let liOneTimeChoice = document.getElementById("one-time-choice");
-let divFlavor = document.getElementsByClassName("flavor")[0];
-let divFeedback = document.querySelector("#feedback");
-let newParagraph = document.createElement("p");
-let displayParagraph = document.createElement("p");
-
-window.optionOneWasClicked = optionOneWasClicked;
-window.optionTwoWasClicked = optionTwoWasClicked;
-window.optionThreeWasClicked = optionThreeWasClicked;
+let enemy = gameObject.enemies.shift();
 
 function optionOneWasClicked() {
   console.log("Option1 was clicked");
@@ -47,6 +49,7 @@ function optionOneWasClicked() {
   console.log("Root: " + rootCheck);
 
   if (stoneCheck >= rootCheck) {
+    theStone.weapon = gameObject.weapons.punch;
     // when The Stone escapes the grapple, the Tainted Root should die. Even thought the enemy is discarded immediately anyways as the scene changes
 
     let newScene = window.open("encounter1/1a_break/1a_break_success.html");
@@ -75,8 +78,17 @@ function optionOneWasClicked() {
 
       displayParagraph.innerHTML += `<br>${theStone.name} receives ${fallDamage} of damage from the fall.`;
 
-      if (theStone.isDead()) {
-        // load dead scenario
+      if (theStone.hp <= 0) {
+        // load dead scenario after a set interval
+        displayParagraph.innerHTML += ` The fall killed ${theStone.name}.`;
+
+        theStone.state = "dead";
+        theStone.condition = "fell";
+
+        setTimeout(() => {
+          // load scenario where you died from the fall
+          window.open("../../../../../gameover/you_drowned.html");
+        }, 1000);
       } else {
         // wait a couple of seconds
         setTimeout(() => {

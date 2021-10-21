@@ -1,3 +1,4 @@
+// import { gameObject } from "../../../../js/gameBehavior.js";
 import { CharGUI } from "../../../../js/components/char_gui.js";
 
 let theStone = {};
@@ -5,7 +6,7 @@ let taintedRoot = {};
 let paragraph = document.getElementById("narration");
 let gameObj;
 let display = document.getElementById("feedback");
-let paragraphTheStoneActions = document.createElement("p");
+// let paragraphTheStoneActions = document.createElement("p");
 let theStoneGUI;
 let taintedRootGUI;
 let hpObservers = [];
@@ -93,4 +94,9 @@ function keepAttacking() {
 
 function abandonGungurk() {
   console.log("You decided to run away!");
+  let newScene = window.open("../../conclusions/the_stone_escaped_alone.html");
+
+  newScene.onload = function () {
+    this.gameObject = gameObj;
+  };
 }

@@ -1,7 +1,17 @@
+// import { gameObject } from "../../../../js/gameBehavior.js";
+
+let btnThrowAxe = document.querySelector("#throw-axe");
+let btnHackvine = document.querySelector("#hackvine");
+
 let gameObj;
 window.addEventListener("load", (e) => {
   gameObj = gameObject;
   console.log(`Number of Enemies: ${gameObj.enemies.length}`);
+
+  gameObj.creatures.players.theStone.weapon = gameObj.weapons.handaxe;
+
+  btnThrowAxe.addEventListener("click", optionOneWasClicked);
+  btnHackvine.addEventListener("click", optionTwoWasClicked);
 });
 
 function optionOneWasClicked() {

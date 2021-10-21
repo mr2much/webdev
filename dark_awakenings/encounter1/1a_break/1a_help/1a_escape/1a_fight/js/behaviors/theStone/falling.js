@@ -21,8 +21,6 @@ export function falling(theStone) {
 
   if (theStone.hp <= 0) {
     // load dead scenario after a set interval
-    console.log(`${theStone.name} died from the fall!`);
-
     paragraphTheStoneActions.innerHTML += ` The fall killed ${theStone.name}.`;
 
     theStone.state = "dead";
@@ -37,7 +35,6 @@ export function falling(theStone) {
   } else {
     //   Must make a pause
     setTimeout(() => {
-      console.log("Executing timeout function");
       if (allies.indexOf(gameObj.creatures.players.gungurk) < 0) {
         let newScene = window.open(
           "../../../../../encounter2/gungurk_fell_first.html"
