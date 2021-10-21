@@ -1,87 +1,16 @@
-import { punch, handaxe, dagger, longsword, grasp, drag } from "./weapons.js";
 import { theStone, gungurk } from "./characters.js";
-import { taintedRoot } from "./enemies.js";
-import { distanceFromChasm } from "./gameProperties.js";
+import { gameObject } from "./gameBehavior.js";
 
-//TODO: move this to weapons.js
-const weapons = {
-  punch: punch,
-  handaxe: handaxe,
-  dagger: dagger,
-  longsword: longsword,
-  grasp: grasp,
-  drag: drag,
-};
+let olChoices = document.getElementById("choices");
+let liOneTimeChoice = document.getElementById("one-time-choice");
+let divFlavor = document.getElementsByClassName("flavor")[0];
+let divFeedback = document.querySelector("#feedback");
+let newParagraph = document.createElement("p");
+let displayParagraph = document.createElement("p");
 
-//TODO: If I implement a level up system. Proficiency Bonus is calculated as:
-// pb = (Level / 4) + 1; rounded up
-
-//TODO: move this to characters.js
-const players = {
-  theStone: theStone,
-  gungurk: gungurk,
-};
-
-//TODO: move this to enemies.js
-const hostiles = {
-  taintedRoot: taintedRoot,
-};
-
-const creatures = { players: players, hostiles: hostiles };
-
-//TODO: move this to its own separate file, possibly game.js
-const gameObject = {
-  weapons: weapons,
-  creatures: creatures,
-  distanceFromChasm,
-  party: [],
-  enemies: [],
-  attack(attacker, target) {
-    console.log(
-      `${attacker.name} is attacking ${target.name} with ${attacker.weapon.name}`
-    );
-    if (this.attackHits(attacker, target)) {
-      let damage = attacker.attack(target);
-      target.receiveDamage(damage);
-      console.log(`${target.name} received ${damage} points of damage!`);
-      console.log(`${target.hp}`);
-
-      return damage;
-    }
-
-    return 0;
-  },
-
-  attackHits(attacker, target) {
-    if (attacker.weapon.alwaysHit) {
-      return true;
-    }
-
-    let attackRoll = attacker.rollAttack();
-
-    return target.attackHits(attackRoll);
-  },
-
-  getTotalDamage(attacker) {
-    let totalDamage = Math.floor(
-      Math.random() * attacker.weapon.damage +
-        1 +
-        Math.max(attacker.strengthMod, attacker.dexterityMod)
-    );
-
-    return totalDamage;
-  },
-  getDistanceForCharacter({ name }) {
-    return gameObject.distanceFromChasm.find((char) => char.name === name);
-  },
-  removeFromParty(party, member) {
-    let index = party.indexOf(member);
-
-    if (index > 0) {
-      party.splice(index, 1);
-    }
-  },
-};
+window.optionOneWasClicked = optionOneWasClicked;
+window.optionTwoWasClicked = optionTwoWasClicked;
+window.optionThreeWasClicked = optionThreeWasClicked;
 
 let distances = [];
 
@@ -97,45 +26,17 @@ function setInitialDistancesForTheCharacters() {
 
 setInitialDistancesForTheCharacters();
 
-// console.log(gameObject);
-
 let enemiesCount = 6;
-
-(function () {
-  gameObject.party.push(Object.create(gameObject.creatures.players.theStone));
-  gameObject.party.push(Object.create(gameObject.creatures.players.gungurk));
-})();
 
 (function () {
   for (let i = 0; i < enemiesCount; i++) {
     let enemy = { ...gameObject.creatures.hostiles.taintedRoot, uid: i };
-    // let enemy = Object.create(gameObject.creatures.hostiles.taintedRoot);
-    // enemy["uid"] = i;
 
     gameObject.enemies.push(enemy);
   }
-
-  // console.log(gameObject.enemies.some((enemy) => enemy["type"] === "hostile"));
 })();
 
-let enemy = {};
-
-function initGame() {
-  enemy = gameObject.creatures.hostiles.taintedRoot;
-}
-
-initGame();
-
-let olChoices = document.getElementById("choices");
-let liOneTimeChoice = document.getElementById("one-time-choice");
-let divFlavor = document.getElementsByClassName("flavor")[0];
-let divFeedback = document.getElementById("feedback");
-let newParagraph = document.createElement("p");
-let displayParagraph = document.createElement("p");
-
-window.optionOneWasClicked = optionOneWasClicked;
-window.optionTwoWasClicked = optionTwoWasClicked;
-window.optionThreeWasClicked = optionThreeWasClicked;
+let enemy = gameObject.enemies.shift();
 
 function optionOneWasClicked() {
   console.log("Option1 was clicked");
@@ -148,6 +49,7 @@ function optionOneWasClicked() {
   console.log("Root: " + rootCheck);
 
   if (stoneCheck >= rootCheck) {
+    theStone.weapon = gameObject.weapons.punch;
     // when The Stone escapes the grapple, the Tainted Root should die. Even thought the enemy is discarded immediately anyways as the scene changes
 
     let newScene = window.open("encounter1/1a_break/1a_break_success.html");
@@ -176,8 +78,17 @@ function optionOneWasClicked() {
 
       displayParagraph.innerHTML += `<br>${theStone.name} receives ${fallDamage} of damage from the fall.`;
 
-      if (theStone.isDead()) {
-        // load dead scenario
+      if (theStone.hp <= 0) {
+        // load dead scenario after a set interval
+        displayParagraph.innerHTML += ` The fall killed ${theStone.name}.`;
+
+        theStone.state = "dead";
+        theStone.condition = "fell";
+
+        setTimeout(() => {
+          // load scenario where you died from the fall
+          window.open("../../../../../gameover/you_drowned.html");
+        }, 1000);
       } else {
         // wait a couple of seconds
         setTimeout(() => {
@@ -193,10 +104,9 @@ function optionOneWasClicked() {
       displayParagraph.textContent = `${theStone.name} is now ${theStoneDistance.feet} away from the edge of the chasm`;
     }
 
-    divFeedback.insertBefore(
-      displayParagraph,
-      divFeedback.lastChild.nextSibling
-    );
+    divFeedback = document.querySelector("#feedback");
+
+    divFeedback.appendChild(displayParagraph, divFeedback.lastChild);
   }
 }
 
