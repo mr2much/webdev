@@ -36,9 +36,12 @@ let enemiesCount = 6;
   }
 })();
 
-let enemy = gameObject.enemies.shift();
+let enemy;
 
 function optionOneWasClicked() {
+  if (!enemy) {
+    gameObject.enemies.shift();
+  }
   console.log("Option1 was clicked");
 
   let dice = 20;

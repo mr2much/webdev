@@ -5,12 +5,14 @@ window.addEventListener("load", (e) => {
 });
 
 function optionOneWasClicked() {
-  console.log("You try to help without weapons");
+  let newScene = window.open("1a_punch/1a_punch.html");
+
+  newScene.onload = function () {
+    this.gameObject = gameObj;
+  };
 }
 
 function optionTwoWasClicked() {
-  console.log("Option two was clicked");
-
   let newScene = window.open("../../2a_look/1a_handaxe/1a_handaxe.html");
 
   newScene.onload = function () {
