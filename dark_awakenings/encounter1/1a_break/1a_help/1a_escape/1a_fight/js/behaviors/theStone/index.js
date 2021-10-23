@@ -4,14 +4,16 @@ import { idle } from "./idle.js";
 import { attack } from "./attack.js";
 import { dead } from "./dead.js";
 import { falling } from "./falling.js";
+import { escape } from "./escape.js";
 
 let btnBreak = document.getElementById("break");
 
 const behaviors = {
-  idle,
   attack,
   dead,
+  escape,
   falling,
+  idle,
 };
 
 export function theStoneBehaviorHandler(theStone) {
