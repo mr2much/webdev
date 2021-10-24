@@ -6,6 +6,7 @@ export function dead(gungurk) {
   console.log("Gungurk died!");
   // this is to prevent that the Tainted Root keeps targetting Gungurk after he has fallen
   entities.remove(gungurk);
+  behaviorMap.removeBehavior(gungurk);
 
   setTimeout(() => {
     let pGungurkActions = document.querySelector(`#${gungurk.id}`);
@@ -15,6 +16,5 @@ export function dead(gungurk) {
     }
   }, 6000);
 
-  behaviorMap.removeBehavior(gungurk);
   //   behaviorMap.delete(gungurk); // Remove Gungurk's behavior
 }

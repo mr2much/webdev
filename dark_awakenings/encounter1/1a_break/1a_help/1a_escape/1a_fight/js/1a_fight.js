@@ -118,8 +118,6 @@ function toggleButton(button) {
 function executeAttack() {
   let amountOfEnemies = entities.getCountOfType("hostile");
 
-  console.log("executeAttack() amountOfEnemies: ", amountOfEnemies);
-
   if (btnAttack !== null) {
     btnAttack.textContent = "Keep attacking!";
     btnAttack = null;
@@ -156,7 +154,8 @@ function optionTwoWasClicked() {
 function optionThreeWasClicked() {
   let currState = theStone.state; // save current state
   theStone.state = "escape"; // Set the Stone's behavior to escape
-  theStoneBehaviorHandler(theStone); // and immediately execute the behavior
+  // theStoneBehaviorHandler(thestone);
+  behaviorMap.run(theStone); // and immediately execute the behavior
   theStone.state = currState; // set The Stone's state to the previous one
 }
 

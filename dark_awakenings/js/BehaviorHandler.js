@@ -10,6 +10,12 @@ export class BehaviorHandler {
     }
   }
 
+  run(entity) {
+    if (this.behaviors.has(entity)) {
+      this.behaviors.get(entity)(entity);
+    }
+  }
+
   addBehavior(entity, behavior) {
     if (entity && behavior) {
       this.behaviors.set(entity, behavior);
