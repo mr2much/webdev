@@ -126,11 +126,11 @@ function executeAttack() {
   // DONE: Add the different Tainted Roots in the behaviorMap using ${taintedRoot.name}${taintedRoot.uid} instead of "enemy"
   // behaviorMap.set("enemy", taintedRootBehaviorHandler);
 
-  if (amountOfEnemies > 0) {
+  if (entities.getCountOfType("hostile") > 0) {
     behaviorMap.execute();
 
     let paragraph = document.querySelector("#narration");
-    if (amountOfEnemies > 1) {
+    if (entities.getCountOfType("hostile") > 1) {
       paragraph.innerHTML = `There are still ${amountOfEnemies} enemies left.`;
     } else {
       paragraph.innerHTML = `Weapons drawn, you engage the last remaining enemy!`;
@@ -138,7 +138,7 @@ function executeAttack() {
   }
 
   // implement code for when all the enemies are slain, which might imply loading a new screen. Probably enemies_defeated.html or something
-  if (amountOfEnemies <= 0) {
+  if (entities.getCountOfType("hostile") <= 0) {
     let newScene = window.open("you_are_victorious/you_are_victorious.html");
 
     newScene.onload = function () {

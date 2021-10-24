@@ -33,7 +33,7 @@ export function theStoneBehaviorHandler(theStone) {
   }
 
   if (theStone.hp <= 0) {
-    theStone.state = "dead";
+    state = "dead";
   }
 
   if (behaviors[state]) {

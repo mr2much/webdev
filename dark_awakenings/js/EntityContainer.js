@@ -17,7 +17,7 @@ export class EntityContainer {
         let numberOfEntities = this.entities.length;
         let randomIndex = Math.floor(Math.random() * numberOfEntities);
         entity = this.entities[randomIndex];
-      } while (entity.type !== type);
+      } while (entity.type !== type && entity.state !== "dead");
     }
 
     return entity;

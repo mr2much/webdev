@@ -31,7 +31,7 @@ export function gungurkBehaviorHandler(gungurk) {
   }
 
   if (gungurk.hp <= 0) {
-    gungurk.state = "dead";
+    state = "dead";
   }
 
   if (behaviors[state]) {
