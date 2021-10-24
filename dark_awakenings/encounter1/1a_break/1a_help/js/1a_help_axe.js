@@ -1,15 +1,17 @@
 // import { gameObject } from "../../../../js/gameBehavior.js";
 import { CharGUI } from "../../../../js/components/char_gui.js";
+import { ObserverHandler } from "../../../../js/observerhandler.js";
 
 let theStone = {};
 let taintedRoot = {};
 let paragraph = document.getElementById("narration");
 let gameObj;
 let display = document.getElementById("feedback");
-// let paragraphTheStoneActions = document.createElement("p");
+
 let theStoneGUI;
 let taintedRootGUI;
-let hpObservers = [];
+
+let hpObservers = new ObserverHandler();
 
 let btnAttack = document.querySelector("#attack");
 let btnRun = document.querySelector("#run_away");
@@ -27,7 +29,8 @@ window.addEventListener("load", (e) => {
     taintedRootGUI = new CharGUI(taintedRoot);
   }
 
-  hpObservers.push(theStoneGUI, taintedRootGUI);
+  hpObservers.add(theStoneGUI);
+  hpObservers.add(taintedRootGUI);
 
   let paragraphAction = document.createElement("p");
   paragraphAction.id = `${theStone.id}`;
@@ -60,17 +63,7 @@ function combat(attacker, target) {
   } else {
     actionParagraph.innerHTML = `${attacker.name} dealt ${damageDealt} to ${target.name}`;
 
-    notifyObservers(target);
-  }
-}
-
-function notifyObservers(target) {
-  for (let i = 0; i < hpObservers.length; i++) {
-    let character = hpObservers[i]._char;
-
-    if (character.id === target.id) {
-      character.hp = target.hp;
-    }
+    hpObservers.notify(target);
   }
 }
 

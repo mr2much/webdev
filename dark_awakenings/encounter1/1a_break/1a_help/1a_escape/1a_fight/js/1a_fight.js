@@ -1,4 +1,5 @@
 import { CharGUI } from "../../../../../../js/components/char_gui.js";
+import { ObserverHandler } from "../../../../../../js/observerhandler.js";
 
 import { taintedRootBehaviorHandler } from "./behaviors/taintedRoot/index.js";
 import { theStoneBehaviorHandler } from "./behaviors/theStone/index.js";
@@ -23,7 +24,7 @@ let btnStepAway = document.getElementById("step-away");
 let theStoneGUI;
 let gungurkGUI;
 
-let hpObservers = [];
+const hpObservers = new ObserverHandler();
 
 const behaviorMap = new Map();
 
@@ -51,7 +52,7 @@ window.addEventListener("load", (e) => {
     if (taintedRoot) {
       let enemyGUI = new CharGUI(taintedRoot);
       enemyDisplay.appendChild(enemyGUI);
-      hpObservers.push(enemyGUI);
+      hpObservers.add(enemyGUI);
 
       display.insertAdjacentHTML(
         "beforeend",
@@ -75,7 +76,8 @@ window.addEventListener("load", (e) => {
     entities.push(gungurk);
   }
 
-  hpObservers.push(theStoneGUI, gungurkGUI);
+  hpObservers.add(theStoneGUI);
+  hpObservers.add(gungurkGUI);
 
   // taintedRoot = enemies.shift();
   // taintedRoot = pickRandomEntityOfType("hostile");
@@ -189,17 +191,17 @@ function enemyDied(enemy) {
   // }
 }
 
-function notifyObservers(target) {
-  for (let i = 0; i < hpObservers.length; i++) {
-    let character = hpObservers[i]._char;
+// function notifyObservers(target) {
+//   for (let i = 0; i < hpObservers.length; i++) {
+//     let character = hpObservers[i]._char;
 
-    if (character.id === target.id) {
-      if (character.uid === target.uid) {
-        character.hp = target.hp;
-      }
-    }
-  }
-}
+//     if (character.id === target.id) {
+//       if (character.uid === target.uid) {
+//         character.hp = target.hp;
+//       }
+//     }
+//   }
+// }
 
 function optionTwoWasClicked() {
   console.log("You ran away!");
@@ -220,7 +222,7 @@ export {
   gameObj,
   enemies,
   entities,
-  notifyObservers,
+  hpObservers,
   enemyDied,
   behaviorMap,
   allies,

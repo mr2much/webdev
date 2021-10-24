@@ -30,7 +30,7 @@ let enemiesCount = 6;
 
 (function () {
   for (let i = 0; i < enemiesCount; i++) {
-    let enemy = { ...gameObject.creatures.hostiles.taintedRoot, uid: i };
+    let enemy = { ...gameObject.creatures.hostiles.taintedRoot, uid: i + 1 };
 
     gameObject.enemies.push(enemy);
   }

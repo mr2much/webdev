@@ -1,4 +1,8 @@
-import { gameObj, notifyObservers, enemyDied } from "../../1a_fight.js";
+import {
+  gameObj,
+  hpObservers as notifyObservers,
+  enemyDied,
+} from "../../1a_fight.js";
 import { drag as pull } from "../../../../../../../../js/weapons.js";
 
 export function drag(enemy) {
@@ -13,7 +17,7 @@ export function drag(enemy) {
 
   distance = pullTargetCloserToTheChasm(enemy, target, taintedRootDamage);
 
-  notifyObservers(target);
+  notifyObservers.notify(target);
 
   if (target.hp <= 0) {
     // target died
@@ -30,7 +34,7 @@ export function drag(enemy) {
     targetActions.innerHTML = `${target.name} plummets into the chasm, falling into water as the ${enemy.name} drags you the the remaining 5 feet over the edge.`;
     target.state = "falling";
     enemy.hp = 0;
-    notifyObservers(enemy);
+    notifyObservers.notify(enemy);
     enemyDied(enemy);
   }
 }
@@ -52,7 +56,7 @@ function pullTargetCloserToTheChasm(attacker, target, damage) {
 
   if (distance.feet <= 0) {
     attacker.hp = 0;
-    notifyObservers(attacker);
+    notifyObservers.notify(attacker);
     target.state = "falling";
   }
 

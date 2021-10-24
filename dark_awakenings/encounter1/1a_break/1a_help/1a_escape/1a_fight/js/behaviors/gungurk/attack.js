@@ -1,4 +1,4 @@
-import { gameObj, notifyObservers } from "../../1a_fight.js";
+import { gameObj, hpObservers as notifyObservers } from "../../1a_fight.js";
 
 export function attack(gungurk) {
   // Pick a random tainted root from the array of enemies
@@ -46,6 +46,6 @@ function execute(attacker, enemy) {
   } else {
     actionParagraph.innerHTML = `${attacker.name} dealt ${damageDealt} points of damage to ${enemy.name}${enemy.uid}.`;
 
-    notifyObservers(enemy);
+    notifyObservers.notify(enemy);
   }
 }
