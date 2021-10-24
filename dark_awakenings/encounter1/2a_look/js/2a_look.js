@@ -4,6 +4,9 @@ let gameObj;
 let divFeedback = document.getElementById("feedback");
 let olChoices = document.getElementById("choices");
 let liOneTimeChoice = document.getElementById("one-time-choice");
+let btnGrabAxe = document.querySelector("#grab-axe");
+let btnBreakVine = document.querySelector("#break-vine");
+let btnLetDrag = document.querySelector("#let-drag");
 
 window.addEventListener("load", (e) => {
   gameObj = gameObject;
@@ -11,6 +14,10 @@ window.addEventListener("load", (e) => {
   theStone = gameObject.creatures.players.theStone;
   console.log(`${theStone.name} loaded. HP:${theStone.hp}`);
   console.log(`Number of Enemies: ${gameObj.enemies.length}`);
+
+  btnGrabAxe.addEventListener("click", optionOneWasClicked);
+  btnBreakVine.addEventListener("click", optionTwoWasClicked);
+  btnLetDrag.addEventListener("click", optionThreeWasClicked);
 });
 
 function optionOneWasClicked() {

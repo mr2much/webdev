@@ -40,9 +40,8 @@ let enemy;
 
 function optionOneWasClicked() {
   if (!enemy) {
-    gameObject.enemies.shift();
+    enemy = gameObject.enemies.shift();
   }
-  console.log("Option1 was clicked");
 
   let dice = 20;
   let stoneCheck = doStrengthCheck(theStone, dice);
