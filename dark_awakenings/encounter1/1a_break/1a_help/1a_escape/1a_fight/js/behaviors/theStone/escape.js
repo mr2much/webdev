@@ -1,4 +1,4 @@
-import { hpObservers as notifyObservers, enemyDied } from "../../1a_fight.js";
+import { hpObservers as notifyObservers } from "../../1a_fight.js";
 
 export function escape(target) {
   if (!target.grappledBy) {
@@ -34,7 +34,6 @@ export function escape(target) {
     taintedRoot.hp = 0;
 
     notifyObservers.notify(taintedRoot);
-    enemyDied(taintedRoot);
   } else {
     console.log(`${target.name} failed to break free from the vine`);
     actionParagrapm.innerHTML += ` But is unable to do so.`;

@@ -12,8 +12,6 @@ export function attack(gungurk) {
     console.log(`UID: ${enemy.uid} HP: ${enemy.hp}`);
 
     if (enemy.hp <= 0) {
-      enemyDied(enemy);
-
       let distance = gameObj.getDistanceForCharacter(gungurk);
 
       // TODO: This can be a function
@@ -36,7 +34,6 @@ export function attack(gungurk) {
 }
 
 function execute(attacker, enemy) {
-  console.log("GUNGURK ESTA ATACANDO!!!");
   let damageDealt = gameObj.attack(attacker, enemy);
 
   let actionParagraph = document.querySelector(`#${attacker.id}`);

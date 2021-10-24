@@ -1,5 +1,4 @@
 import { CharGUI } from "../../../../../js/components/char_gui.js";
-
 import { ObserverHandler } from "../../../../../js/observerhandler.js";
 
 let theStone = {};
@@ -9,7 +8,7 @@ let paragraph = document.getElementById("narration");
 let display = document.getElementById("feedback");
 let theStoneGUI;
 let taintedRootGUI;
-// let hpObservers = [];
+
 let btnFight = document.querySelector("#fight");
 
 const hpObservers = new ObserverHandler();

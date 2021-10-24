@@ -1,8 +1,4 @@
-import {
-  gameObj,
-  hpObservers as notifyObservers,
-  enemyDied,
-} from "../../1a_fight.js";
+import { gameObj, hpObservers as notifyObservers } from "../../1a_fight.js";
 import { drag as pull } from "../../../../../../../../js/weapons.js";
 
 export function drag(enemy) {
@@ -35,7 +31,6 @@ export function drag(enemy) {
     target.state = "falling";
     enemy.hp = 0;
     notifyObservers.notify(enemy);
-    enemyDied(enemy);
   }
 }
 

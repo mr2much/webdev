@@ -155,54 +155,6 @@ function executeAttack() {
   }
 }
 
-function enemyDied(enemy) {
-  enemy.state = "dead";
-  let target = enemy.target;
-  let paragraphTaintedRootActions = document.querySelector(
-    `#${enemy.id}${enemy.uid}`
-  );
-
-  paragraphTaintedRootActions.innerHTML = `Enemy ${enemy.name}${enemy.uid} was slain!`;
-  amountOfEnemies--;
-
-  // if the Tainted Root was grabbing someone, who has not already fallen down into the Chasm
-  if (target) {
-    let condition = target.condition;
-
-    switch (condition) {
-      case "grappled":
-        paragraphTaintedRootActions.innerHTML += ` ${target.name} is no longer grappled.`;
-        target.condition = "healthy";
-
-        toggleButton(btnBreak); // This should turn the break button off
-        break;
-
-      default:
-        break;
-    }
-  }
-
-  // let paragraph = document.querySelector("#narration");
-
-  // if (amountOfEnemies > 1) {
-  //   paragraph.innerHTML = `There are still ${amountOfEnemies} enemies left.`;
-  // } else {
-  //   paragraph.innerHTML = `Weapons drawn, you engage the last remaining enemy, ${taintedRoot.name}${taintedRoot.uid}`;
-  // }
-}
-
-// function notifyObservers(target) {
-//   for (let i = 0; i < hpObservers.length; i++) {
-//     let character = hpObservers[i]._char;
-
-//     if (character.id === target.id) {
-//       if (character.uid === target.uid) {
-//         character.hp = target.hp;
-//       }
-//     }
-//   }
-// }
-
 function optionTwoWasClicked() {
   console.log("You ran away!");
 }
@@ -218,12 +170,4 @@ function optionFourWasClicked() {
   console.log("You step 5 feet away from the chasm.");
 }
 
-export {
-  gameObj,
-  enemies,
-  entities,
-  hpObservers,
-  enemyDied,
-  behaviorMap,
-  allies,
-};
+export { gameObj, enemies, entities, hpObservers, behaviorMap, allies };

@@ -1,8 +1,4 @@
-import {
-  gameObj,
-  enemyDied,
-  hpObservers as notifyObservers,
-} from "../../1a_fight.js";
+import { gameObj, hpObservers as notifyObservers } from "../../1a_fight.js";
 
 export function attack(theStone) {
   let enemy = theStone.target;
@@ -16,8 +12,6 @@ export function attack(theStone) {
 
     // If the attack killed the enemy Tainted Root
     if (enemy.hp <= 0) {
-      enemyDied(enemy);
-
       // TODO: This can be a function
       // if The Stone has not fallen yet
       let distance = gameObj.getDistanceForCharacter(theStone);
