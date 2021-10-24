@@ -104,9 +104,11 @@ window.addEventListener("load", (e) => {
 });
 
 function toggleButton(button) {
-  button.disabled = !button.disabled;
+  if (button) {
+    button.disabled = !button.disabled;
 
-  button.classList.toggle("noHover");
+    button.classList.toggle("noHover");
+  }
 }
 
 function executeAttack() {
