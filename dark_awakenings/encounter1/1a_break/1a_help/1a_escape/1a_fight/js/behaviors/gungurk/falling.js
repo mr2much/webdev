@@ -1,4 +1,4 @@
-import { behaviorMap } from "../../1a_fight.js";
+import { behaviorMap, entities, allies } from "../../1a_fight.js";
 
 let display = document.getElementById("feedback");
 
@@ -35,5 +35,13 @@ export function falling(gungurk) {
     }
   }, 15000);
 
-  behaviorMap.delete(gungurk);
+  let index = allies.indexOf(gungurk);
+
+  if (index >= 0) {
+    allies.splice(index, 1);
+  }
+
+  entities.remove(gungurk);
+  behaviorMap.removeBehavior(gungurk);
+  //   behaviorMap.delete(gungurk);
 }

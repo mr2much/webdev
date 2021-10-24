@@ -19,6 +19,5 @@ export function taintedRootBehaviorHandler(enemy) {
 
   if (behaviors[state]) {
     behaviors[state](enemy);
-    return;
   }
 }

@@ -32,6 +32,10 @@ export function theStoneBehaviorHandler(theStone) {
     btnBreak.classList.remove("noHover");
   }
 
+  if (theStone.hp <= 0) {
+    theStone.state = "dead";
+  }
+
   if (behaviors[state]) {
     behaviors[state](theStone);
   }

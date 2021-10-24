@@ -2,12 +2,17 @@ import { grasp } from "../../../../../../../../js/weapons.js";
 import { gameObj, hpObservers as notifyObservers } from "../../1a_fight.js";
 
 export function attack(enemy) {
+  if (enemy.hp <= 0) {
+    enemy.state = "dead";
+    return;
+  }
   let paragraphTaintedRootActions = document.querySelector(
     `#${enemy.id}${enemy.uid}`
   );
   enemy.weapon = grasp;
   let target = enemy.target;
 
+  // if the selected target is dead, start looking for a new target
   if (target.hp <= 0) {
     target.state = "dead";
     enemy.state = "idle";

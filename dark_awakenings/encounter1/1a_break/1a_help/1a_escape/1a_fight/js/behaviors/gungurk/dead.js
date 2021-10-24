@@ -3,20 +3,18 @@ import { behaviorMap, entities } from "../../1a_fight.js";
 let display = document.getElementById("feedback");
 
 export function dead(gungurk) {
-  // this is to prevent that the Tainted Root keeps targetting Gungurk after he has fallen
-  let index = entities.indexOf(gungurk); // Remove Gungurk
-
   console.log("Gungurk died!");
+  // this is to prevent that the Tainted Root keeps targetting Gungurk after he has fallen
+  entities.remove(gungurk);
 
-  if (index >= 0) {
-    entities.splice(index, 1);
-  }
+  setTimeout(() => {
+    let pGungurkActions = document.querySelector(`#${gungurk.id}`);
 
-  let pGungurkActions = document.querySelector(`#${gungurk.id}`);
+    if (pGungurkActions) {
+      display.removeChild(pGungurkActions);
+    }
+  }, 6000);
 
-  if (pGungurkActions) {
-    display.removeChild(pGungurkActions);
-  }
-
-  behaviorMap.delete(gungurk); // Remove Gungurk's behavior
+  behaviorMap.removeBehavior(gungurk);
+  //   behaviorMap.delete(gungurk); // Remove Gungurk's behavior
 }

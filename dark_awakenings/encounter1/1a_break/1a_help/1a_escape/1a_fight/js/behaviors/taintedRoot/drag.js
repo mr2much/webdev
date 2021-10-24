@@ -2,6 +2,10 @@ import { gameObj, hpObservers as notifyObservers } from "../../1a_fight.js";
 import { drag as pull } from "../../../../../../../../js/weapons.js";
 
 export function drag(enemy) {
+  if (enemy.hp <= 0) {
+    enemy.state = "dead";
+    return;
+  }
   // Keep dragging the target until you bring it down the chasm, or kill it, if you kill it go idle, if you die, set state to dead
   // change weapon of choice to drag
   enemy.weapon = pull;
@@ -30,6 +34,7 @@ export function drag(enemy) {
     targetActions.innerHTML = `${target.name} plummets into the chasm, falling into water as the ${enemy.name} drags you the the remaining 5 feet over the edge.`;
     target.state = "falling";
     enemy.hp = 0;
+    enemy.state = "dead"; // enemy fell over the edge
     notifyObservers.notify(enemy);
   }
 }

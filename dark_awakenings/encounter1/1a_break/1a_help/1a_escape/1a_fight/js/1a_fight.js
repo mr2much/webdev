@@ -1,17 +1,18 @@
 import { CharGUI } from "../../../../../../js/components/char_gui.js";
 import { ObserverHandler } from "../../../../../../js/observerhandler.js";
+import { EntityContainer } from "../../../../../../js/EntityContainer.js";
+import { BehaviorHandler } from "../../../../../../js/BehaviorHandler.js";
 
 import { taintedRootBehaviorHandler } from "./behaviors/taintedRoot/index.js";
 import { theStoneBehaviorHandler } from "./behaviors/theStone/index.js";
 import { gungurkBehaviorHandler } from "./behaviors/gungurk/index.js";
 
 let gameObj;
-let amountOfEnemies = 0;
 let gungurk = {};
 let theStone = {};
 
 let enemies = [];
-let entities = [];
+let entities = new EntityContainer();
 
 let allies = [];
 let display = document.getElementById("feedback");
@@ -26,7 +27,7 @@ let gungurkGUI;
 
 const hpObservers = new ObserverHandler();
 
-const behaviorMap = new Map();
+const behaviorMap = new BehaviorHandler();
 
 window.addEventListener("load", (e) => {
   gameObj = gameObject;
@@ -34,7 +35,6 @@ window.addEventListener("load", (e) => {
   toggleButton(btnBreak);
 
   enemies = gameObj.enemies;
-  amountOfEnemies = enemies.length;
 
   gungurk = gameObj.creatures.players.gungurk;
 
@@ -50,6 +50,7 @@ window.addEventListener("load", (e) => {
     let taintedRoot = enemies[i];
 
     if (taintedRoot) {
+      entities.add(taintedRoot);
       let enemyGUI = new CharGUI(taintedRoot);
       enemyDisplay.appendChild(enemyGUI);
       hpObservers.add(enemyGUI);
@@ -58,22 +59,23 @@ window.addEventListener("load", (e) => {
         "beforeend",
         `<p id="${taintedRoot.id}${taintedRoot.uid}"></p>`
       );
-      behaviorMap.set(taintedRoot, taintedRootBehaviorHandler); // Sets the behavior for individual taintedRoot
+      behaviorMap.addBehavior(taintedRoot, taintedRootBehaviorHandler);
+      // behaviorMap.set(taintedRoot, taintedRootBehaviorHandler); // Sets the behavior for individual taintedRoot
     }
   }
 
-  entities.push(...enemies);
-
   if (theStone) {
     theStoneGUI = new CharGUI(theStone);
-    behaviorMap.set(theStone, theStoneBehaviorHandler);
-    entities.push(theStone);
+    behaviorMap.addBehavior(theStone, theStoneBehaviorHandler);
+    // behaviorMap.set(theStone, theStoneBehaviorHandler);
+    entities.add(theStone);
   }
 
   if (gungurk) {
     gungurkGUI = new CharGUI(gungurk);
-    behaviorMap.set(gungurk, gungurkBehaviorHandler);
-    entities.push(gungurk);
+    behaviorMap.addBehavior(gungurk, gungurkBehaviorHandler);
+    // behaviorMap.set(gungurk, gungurkBehaviorHandler);
+    entities.add(gungurk);
   }
 
   hpObservers.add(theStoneGUI);
@@ -114,6 +116,10 @@ function toggleButton(button) {
 }
 
 function executeAttack() {
+  let amountOfEnemies = entities.getCountOfType("hostile");
+
+  console.log("executeAttack() amountOfEnemies: ", amountOfEnemies);
+
   if (btnAttack !== null) {
     btnAttack.textContent = "Keep attacking!";
     btnAttack = null;
@@ -123,25 +129,13 @@ function executeAttack() {
   // behaviorMap.set("enemy", taintedRootBehaviorHandler);
 
   if (amountOfEnemies > 0) {
-    // handle enemiy's turn
-    // enemyBehavior();
-    for (const entity of behaviorMap.keys()) {
-      // The value stored in the map is a function, so we execute it by getting it from the map and putting the () in front of it
-      if (entity.name) {
-        console.log(`Executing behavior for: ${entity.name}${entity.uid}`);
-      } else {
-        console.log(`Executing behavior for: ${entity}`);
-      }
+    behaviorMap.execute();
 
-      let paragraph = document.querySelector("#narration");
-
-      if (amountOfEnemies > 1) {
-        paragraph.innerHTML = `There are still ${amountOfEnemies} enemies left.`;
-      } else {
-        paragraph.innerHTML = `Weapons drawn, you engage the last remaining enemy!`;
-      }
-
-      behaviorMap.get(entity)(entity);
+    let paragraph = document.querySelector("#narration");
+    if (amountOfEnemies > 1) {
+      paragraph.innerHTML = `There are still ${amountOfEnemies} enemies left.`;
+    } else {
+      paragraph.innerHTML = `Weapons drawn, you engage the last remaining enemy!`;
     }
   }
 
