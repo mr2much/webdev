@@ -9,6 +9,10 @@ export class EntityContainer {
     }
   }
 
+  getCount() {
+    return this.entities.length;
+  }
+
   getEntityOfType(type) {
     let entity;
 
@@ -44,5 +48,15 @@ export class EntityContainer {
         "Couldn't remove: " + entity.name
       );
     }
+  }
+
+  list() {
+    for (let i = 0; i < this.entities.length; i++) {
+      console.log(`${i}) ${this.entities[i]}`);
+    }
+  }
+
+  clear() {
+    this.entities.splice(0, this.entities.length);
   }
 }

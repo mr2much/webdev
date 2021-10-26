@@ -1,4 +1,4 @@
-import { behaviorMap, entities, allies } from "../../1a_fight.js";
+import { gameObj, behaviorMap, allies } from "../../1a_fight.js";
 
 let display = document.getElementById("feedback");
 
@@ -10,8 +10,7 @@ export function falling(gungurk) {
     allies.splice(index, 1);
   }
 
-  entities.remove(gungurk);
-  behaviorMap.removeBehavior(gungurk);
+  behaviorMap.remove(gungurk);
 
   let paragraphGungurkActions = document.querySelector(`#${gungurk.id}`);
   paragraphGungurkActions.innerHTML += ` ${gungurk.name} squeals like a terrified pig, and he disappears into the chasm. He splashes down, followed by disconcerting silence. At least the root that dragged him into the chasm apparently died from the fall.`;

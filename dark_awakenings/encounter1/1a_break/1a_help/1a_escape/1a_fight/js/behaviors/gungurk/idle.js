@@ -1,8 +1,8 @@
-import { entities } from "../../1a_fight.js";
+import { behaviorMap } from "../../1a_fight.js";
 
 export function idle(gungurk) {
   if (!gungurk.target) {
-    gungurk.target = entities.getEntityOfType("hostile");
+    gungurk.target = behaviorMap.getEntityOfType("hostile");
 
     let paragraphGungurkActions = document.querySelector(`#${gungurk.id}`);
 

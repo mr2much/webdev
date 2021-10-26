@@ -1,4 +1,4 @@
-import { entities } from "../../1a_fight.js";
+import { behaviorMap } from "../../1a_fight.js";
 
 export function idle(enemy) {
   if (enemy.hp <= 0) {
@@ -6,7 +6,7 @@ export function idle(enemy) {
     return;
   }
 
-  enemy.target = entities.getEntityOfType("ally");
+  enemy.target = behaviorMap.getEntityOfType("ally");
 
   if (enemy.target) {
     enemy.state = "attack";

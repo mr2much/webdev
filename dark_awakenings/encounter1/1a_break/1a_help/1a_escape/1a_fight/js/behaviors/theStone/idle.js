@@ -1,8 +1,8 @@
-import { entities } from "../../1a_fight.js";
+import { behaviorMap } from "../../1a_fight.js";
 
 export function idle(theStone) {
   if (!theStone.target) {
-    theStone.target = entities.getEntityOfType("hostile");
+    theStone.target = behaviorMap.getEntityOfType("hostile");
 
     let paragraphTheStoneActions = document.querySelector(`#${theStone.id}`);
 

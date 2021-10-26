@@ -12,7 +12,6 @@ let gungurk = {};
 let theStone = {};
 
 let enemies = [];
-let entities = new EntityContainer();
 
 let allies = [];
 let display = document.getElementById("feedback");
@@ -50,7 +49,7 @@ window.addEventListener("load", (e) => {
     let taintedRoot = enemies[i];
 
     if (taintedRoot) {
-      entities.add(taintedRoot);
+      // entities.add(taintedRoot);
       let enemyGUI = new CharGUI(taintedRoot);
       enemyDisplay.appendChild(enemyGUI);
       hpObservers.add(enemyGUI);
@@ -68,18 +67,19 @@ window.addEventListener("load", (e) => {
     theStoneGUI = new CharGUI(theStone);
     behaviorMap.addBehavior(theStone, theStoneBehaviorHandler);
     // behaviorMap.set(theStone, theStoneBehaviorHandler);
-    entities.add(theStone);
+    // entities.add(theStone);
   }
 
   if (gungurk) {
     gungurkGUI = new CharGUI(gungurk);
     behaviorMap.addBehavior(gungurk, gungurkBehaviorHandler);
     // behaviorMap.set(gungurk, gungurkBehaviorHandler);
-    entities.add(gungurk);
+    // entities.add(gungurk);
   }
 
   hpObservers.add(theStoneGUI);
   hpObservers.add(gungurkGUI);
+  hpObservers.add(behaviorMap);
 
   // taintedRoot = enemies.shift();
   // taintedRoot = pickRandomEntityOfType("hostile");
@@ -115,36 +115,54 @@ function toggleButton(button) {
   }
 }
 
-function executeAttack() {
-  let amountOfEnemies = entities.getCountOfType("hostile");
+let amountOfEnemies = behaviorMap.getCountOfType("hostile");
+let intEnemies;
 
-  if (btnAttack !== null) {
-    btnAttack.textContent = "Keep attacking!";
-    btnAttack = null;
-  }
+function checkEnemies() {
+  if (amountOfEnemies !== behaviorMap.getCountOfType("hostile")) {
+    amountOfEnemies = behaviorMap.getCountOfType("hostile");
 
-  // DONE: Add the different Tainted Roots in the behaviorMap using ${taintedRoot.name}${taintedRoot.uid} instead of "enemy"
-  // behaviorMap.set("enemy", taintedRootBehaviorHandler);
-
-  if (entities.getCountOfType("hostile") > 0) {
-    behaviorMap.execute();
+    if (behaviorMap.getCount() === 0) {
+      clearInterval(intEnemies);
+      return;
+    }
 
     let paragraph = document.querySelector("#narration");
-    if (entities.getCountOfType("hostile") > 1) {
+    if (amountOfEnemies > 1) {
       paragraph.innerHTML = `There are still ${amountOfEnemies} enemies left.`;
     } else {
       paragraph.innerHTML = `Weapons drawn, you engage the last remaining enemy!`;
     }
+
+    if (amountOfEnemies <= 0) {
+      if (intEnemies) {
+        clearInterval(intEnemies);
+        console.log("Inverval stopped!");
+      }
+
+      setTimeout(() => {
+        let newScene = window.open(
+          "you_are_victorious/you_are_victorious.html"
+        );
+
+        newScene.onload = function () {
+          this.gameObject = gameObj;
+        };
+      }, 2000);
+    }
+  }
+}
+
+function executeAttack() {
+  // let amountOfEnemies = entities.getCountOfType("hostile");
+
+  if (btnAttack !== null) {
+    btnAttack.textContent = "Keep attacking!";
+    btnAttack = null;
+    intEnemies = setInterval(checkEnemies, 500);
   }
 
-  // implement code for when all the enemies are slain, which might imply loading a new screen. Probably enemies_defeated.html or something
-  if (entities.getCountOfType("hostile") <= 0) {
-    let newScene = window.open("you_are_victorious/you_are_victorious.html");
-
-    newScene.onload = function () {
-      this.gameObject = gameObj;
-    };
-  }
+  behaviorMap.execute();
 }
 
 function optionTwoWasClicked() {
@@ -163,4 +181,4 @@ function optionFourWasClicked() {
   console.log("You step 5 feet away from the chasm.");
 }
 
-export { gameObj, enemies, entities, hpObservers, behaviorMap, allies };
+export { gameObj, enemies, hpObservers, behaviorMap, allies };
