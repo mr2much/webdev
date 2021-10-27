@@ -1,6 +1,5 @@
 import { CharGUI } from "../../../../../../js/components/char_gui.js";
 import { ObserverHandler } from "../../../../../../js/observerhandler.js";
-import { EntityContainer } from "../../../../../../js/EntityContainer.js";
 import { BehaviorHandler } from "../../../../../../js/BehaviorHandler.js";
 
 import { taintedRootBehaviorHandler } from "./behaviors/taintedRoot/index.js";
@@ -73,13 +72,23 @@ window.addEventListener("load", (e) => {
   if (gungurk) {
     gungurkGUI = new CharGUI(gungurk);
     behaviorMap.addBehavior(gungurk, gungurkBehaviorHandler);
-    // behaviorMap.set(gungurk, gungurkBehaviorHandler);
-    // entities.add(gungurk);
   }
+
+  function TheStoneObserver() {}
+
+  TheStoneObserver._notify = (o) => {
+    if (o.id === "theStone") {
+      if (o.hp <= 0) {
+        clearInterval(intEnemies);
+        behaviorMap.clear();
+      }
+    }
+  };
 
   hpObservers.add(theStoneGUI);
   hpObservers.add(gungurkGUI);
   hpObservers.add(behaviorMap);
+  hpObservers.add(TheStoneObserver);
 
   // taintedRoot = enemies.shift();
   // taintedRoot = pickRandomEntityOfType("hostile");
@@ -119,13 +128,13 @@ let amountOfEnemies = behaviorMap.getCountOfType("hostile");
 let intEnemies;
 
 function checkEnemies() {
+  if (behaviorMap.getCount() === 0) {
+    clearInterval(intEnemies);
+    return;
+  }
+
   if (amountOfEnemies !== behaviorMap.getCountOfType("hostile")) {
     amountOfEnemies = behaviorMap.getCountOfType("hostile");
-
-    if (behaviorMap.getCount() === 0) {
-      clearInterval(intEnemies);
-      return;
-    }
 
     let paragraph = document.querySelector("#narration");
     if (amountOfEnemies > 1) {
@@ -135,6 +144,8 @@ function checkEnemies() {
     }
 
     if (amountOfEnemies <= 0) {
+      disableAllOptions();
+
       if (intEnemies) {
         clearInterval(intEnemies);
         console.log("Inverval stopped!");
@@ -150,6 +161,20 @@ function checkEnemies() {
         };
       }, 2000);
     }
+  }
+}
+
+function disableAllOptions() {
+  let allOptions = document.querySelectorAll("button.btn");
+
+  for (let i = 0; i < allOptions.length; i++) {
+    let button = allOptions[i];
+
+    if (button.disabled) {
+      continue;
+    }
+
+    toggleButton(button);
   }
 }
 

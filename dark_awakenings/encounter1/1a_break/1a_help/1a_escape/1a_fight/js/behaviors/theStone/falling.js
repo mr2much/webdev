@@ -1,5 +1,4 @@
 import {
-  behaviorMap,
   gameObj,
   hpObservers as notifyObservers,
   allies,
@@ -29,7 +28,7 @@ export function falling(theStone) {
     setTimeout(() => {
       // load scenario where you died from the fall
       window.open("../../../../../gameover/you_drowned.html");
-    }, 1000);
+    }, 6000);
 
     return;
   } else {
@@ -51,10 +50,6 @@ export function falling(theStone) {
         };
       }
     }, 6000);
-
-    // This is so that the game doesn't continue running.
-    // TODO: Find a better way of doing this
-    behaviorMap.clear();
   }
 }
 

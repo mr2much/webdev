@@ -1,4 +1,9 @@
-import { gameObj, behaviorMap, allies } from "../../1a_fight.js";
+import {
+  gameObj,
+  behaviorMap,
+  allies,
+  hpObservers as notifyObservers,
+} from "../../1a_fight.js";
 
 let display = document.getElementById("feedback");
 
