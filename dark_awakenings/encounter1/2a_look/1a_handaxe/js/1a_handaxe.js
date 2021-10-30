@@ -1,5 +1,3 @@
-// import { gameObject } from "../../../../js/gameBehavior.js";
-
 let btnThrowAxe = document.querySelector("#throw-axe");
 let btnHackvine = document.querySelector("#hackvine");
 

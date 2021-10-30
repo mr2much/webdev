@@ -1,13 +1,18 @@
 import { grasp } from "../../../../../../../../js/weapons.js";
-import { gameObj, notifyObservers } from "../../1a_fight.js";
+import { gameObj, hpObservers as notifyObservers } from "../../1a_fight.js";
 
 export function attack(enemy) {
+  if (enemy.hp <= 0) {
+    enemy.state = "dead";
+    return;
+  }
   let paragraphTaintedRootActions = document.querySelector(
     `#${enemy.id}${enemy.uid}`
   );
   enemy.weapon = grasp;
   let target = enemy.target;
 
+  // if the selected target is dead, start looking for a new target
   if (target.hp <= 0) {
     target.state = "dead";
     enemy.state = "idle";
@@ -20,7 +25,7 @@ export function attack(enemy) {
   // if the attack hits:
   if (taintedRootDamage > 0) {
     // Notify the target of the change in their HP
-    notifyObservers(target);
+    notifyObservers.notify(target);
 
     // show message showing the damage caused by the attack done to the target
     // show message showing that the target is now grappled
@@ -49,17 +54,5 @@ export function attack(enemy) {
   } else {
     // if attack misses show message indicating the attack failed to hit the target
     paragraphTaintedRootActions.innerHTML = `The enemy ${enemy.name}${enemy.uid}'s attack failed to hit target ${target.name}`;
-
-    // if you are more than 5 feet away from the chasm, and are not more than 15ft away from it
-
-    // This check should be in the ally's behaviors
-    // let distance = gameObj.getDistanceForCharacter(enemy.target);
-
-    // if (distance.feet <= 10) {
-    //   distance.feet += 5;
-    //   console.log(`${distance.name} is now ${distance.feet}`);
-    //   console.log(`${gameObj.distanceFromChasm[`${enemy.target.name}`]}`);
-    //   paragraphTaintedRootActions.innerHTML += ` and he immediately walks 5 feet away from the threatening Chasm up ahead.`;
-    // }
   }
 }

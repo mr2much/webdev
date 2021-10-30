@@ -1,16 +1,16 @@
 import { CharGUI } from "../../../../../../js/components/char_gui.js";
+import { ObserverHandler } from "../../../../../../js/observerhandler.js";
+import { BehaviorHandler } from "../../../../../../js/BehaviorHandler.js";
 
 import { taintedRootBehaviorHandler } from "./behaviors/taintedRoot/index.js";
 import { theStoneBehaviorHandler } from "./behaviors/theStone/index.js";
 import { gungurkBehaviorHandler } from "./behaviors/gungurk/index.js";
 
 let gameObj;
-let amountOfEnemies = 0;
 let gungurk = {};
 let theStone = {};
 
 let enemies = [];
-let entities = [];
 
 let allies = [];
 let display = document.getElementById("feedback");
@@ -23,9 +23,9 @@ let btnStepAway = document.getElementById("step-away");
 let theStoneGUI;
 let gungurkGUI;
 
-let hpObservers = [];
+const hpObservers = new ObserverHandler();
 
-const behaviorMap = new Map();
+const behaviorMap = new BehaviorHandler();
 
 window.addEventListener("load", (e) => {
   gameObj = gameObject;
@@ -33,7 +33,6 @@ window.addEventListener("load", (e) => {
   toggleButton(btnBreak);
 
   enemies = gameObj.enemies;
-  amountOfEnemies = enemies.length;
 
   gungurk = gameObj.creatures.players.gungurk;
 
@@ -49,33 +48,47 @@ window.addEventListener("load", (e) => {
     let taintedRoot = enemies[i];
 
     if (taintedRoot) {
+      // entities.add(taintedRoot);
       let enemyGUI = new CharGUI(taintedRoot);
       enemyDisplay.appendChild(enemyGUI);
-      hpObservers.push(enemyGUI);
+      hpObservers.add(enemyGUI);
 
       display.insertAdjacentHTML(
         "beforeend",
         `<p id="${taintedRoot.id}${taintedRoot.uid}"></p>`
       );
-      behaviorMap.set(taintedRoot, taintedRootBehaviorHandler); // Sets the behavior for individual taintedRoot
+      behaviorMap.addBehavior(taintedRoot, taintedRootBehaviorHandler);
+      // behaviorMap.set(taintedRoot, taintedRootBehaviorHandler); // Sets the behavior for individual taintedRoot
     }
   }
 
-  entities.push(...enemies);
-
   if (theStone) {
     theStoneGUI = new CharGUI(theStone);
-    behaviorMap.set(theStone, theStoneBehaviorHandler);
-    entities.push(theStone);
+    behaviorMap.addBehavior(theStone, theStoneBehaviorHandler);
+    // behaviorMap.set(theStone, theStoneBehaviorHandler);
+    // entities.add(theStone);
   }
 
   if (gungurk) {
     gungurkGUI = new CharGUI(gungurk);
-    behaviorMap.set(gungurk, gungurkBehaviorHandler);
-    entities.push(gungurk);
+    behaviorMap.addBehavior(gungurk, gungurkBehaviorHandler);
   }
 
-  hpObservers.push(theStoneGUI, gungurkGUI);
+  function TheStoneObserver() {}
+
+  TheStoneObserver._notify = (o) => {
+    if (o.id === "theStone") {
+      if (o.hp <= 0) {
+        clearInterval(intEnemies);
+        behaviorMap.clear();
+      }
+    }
+  };
+
+  hpObservers.add(theStoneGUI);
+  hpObservers.add(gungurkGUI);
+  hpObservers.add(behaviorMap);
+  hpObservers.add(TheStoneObserver);
 
   // taintedRoot = enemies.shift();
   // taintedRoot = pickRandomEntityOfType("hostile");
@@ -111,94 +124,70 @@ function toggleButton(button) {
   }
 }
 
+let amountOfEnemies = behaviorMap.getCountOfType("hostile");
+let intEnemies;
+
+function checkEnemies() {
+  if (behaviorMap.getCount() === 0) {
+    clearInterval(intEnemies);
+    return;
+  }
+
+  if (amountOfEnemies !== behaviorMap.getCountOfType("hostile")) {
+    amountOfEnemies = behaviorMap.getCountOfType("hostile");
+
+    let paragraph = document.querySelector("#narration");
+    if (amountOfEnemies > 1) {
+      paragraph.innerHTML = `There are still ${amountOfEnemies} enemies left.`;
+    } else {
+      paragraph.innerHTML = `Weapons drawn, you engage the last remaining enemy!`;
+    }
+
+    if (amountOfEnemies <= 0) {
+      disableAllOptions();
+
+      if (intEnemies) {
+        clearInterval(intEnemies);
+        console.log("Inverval stopped!");
+      }
+
+      setTimeout(() => {
+        let newScene = window.open(
+          "you_are_victorious/you_are_victorious.html"
+        );
+
+        newScene.onload = function () {
+          this.gameObject = gameObj;
+        };
+      }, 2000);
+    }
+  }
+}
+
+function disableAllOptions() {
+  let allOptions = document.querySelectorAll("button.btn");
+
+  for (let i = 0; i < allOptions.length; i++) {
+    let button = allOptions[i];
+
+    if (button.disabled) {
+      continue;
+    }
+
+    toggleButton(button);
+  }
+}
+
 function executeAttack() {
+  // let amountOfEnemies = entities.getCountOfType("hostile");
+
   if (btnAttack !== null) {
     btnAttack.textContent = "Keep attacking!";
     btnAttack = null;
+    intEnemies = setInterval(checkEnemies, 500);
   }
 
-  // DONE: Add the different Tainted Roots in the behaviorMap using ${taintedRoot.name}${taintedRoot.uid} instead of "enemy"
-  // behaviorMap.set("enemy", taintedRootBehaviorHandler);
-
-  if (amountOfEnemies > 0) {
-    // handle enemiy's turn
-    // enemyBehavior();
-    for (const entity of behaviorMap.keys()) {
-      // The value stored in the map is a function, so we execute it by getting it from the map and putting the () in front of it
-      if (entity.name) {
-        console.log(`Executing behavior for: ${entity.name}${entity.uid}`);
-      } else {
-        console.log(`Executing behavior for: ${entity}`);
-      }
-
-      let paragraph = document.querySelector("#narration");
-
-      if (amountOfEnemies > 1) {
-        paragraph.innerHTML = `There are still ${amountOfEnemies} enemies left.`;
-      } else {
-        paragraph.innerHTML = `Weapons drawn, you engage the last remaining enemy!`;
-      }
-
-      behaviorMap.get(entity)(entity);
-    }
-  }
-
-  // implement code for when all the enemies are slain, which might imply loading a new screen. Probably enemies_defeated.html or something
-  if (amountOfEnemies <= 0) {
-    let newScene = window.open("you_are_victorious/you_are_victorious.html");
-
-    newScene.onload = function () {
-      this.gameObject = gameObj;
-    };
-  }
-}
-
-function enemyDied(enemy) {
-  enemy.state = "dead";
-  let target = enemy.target;
-  let paragraphTaintedRootActions = document.querySelector(
-    `#${enemy.id}${enemy.uid}`
-  );
-
-  paragraphTaintedRootActions.innerHTML = `Enemy ${enemy.name}${enemy.uid} was slain!`;
-  amountOfEnemies--;
-
-  // if the Tainted Root was grabbing someone, who has not already fallen down into the Chasm
-  if (target) {
-    let condition = target.condition;
-
-    switch (condition) {
-      case "grappled":
-        paragraphTaintedRootActions.innerHTML += ` ${target.name} is no longer grappled.`;
-        target.condition = "healthy";
-
-        toggleButton(btnBreak); // This should turn the break button off
-        break;
-
-      default:
-        break;
-    }
-  }
-
-  // let paragraph = document.querySelector("#narration");
-
-  // if (amountOfEnemies > 1) {
-  //   paragraph.innerHTML = `There are still ${amountOfEnemies} enemies left.`;
-  // } else {
-  //   paragraph.innerHTML = `Weapons drawn, you engage the last remaining enemy, ${taintedRoot.name}${taintedRoot.uid}`;
-  // }
-}
-
-function notifyObservers(target) {
-  for (let i = 0; i < hpObservers.length; i++) {
-    let character = hpObservers[i]._char;
-
-    if (character.id === target.id) {
-      if (character.uid === target.uid) {
-        character.hp = target.hp;
-      }
-    }
-  }
+  behaviorMap.execute();
 }
 
 function optionTwoWasClicked() {
@@ -208,7 +197,8 @@ function optionTwoWasClicked() {
 function optionThreeWasClicked() {
   let currState = theStone.state; // save current state
   theStone.state = "escape"; // Set the Stone's behavior to escape
-  theStoneBehaviorHandler(theStone); // and immediately execute the behavior
+  // theStoneBehaviorHandler(thestone);
+  behaviorMap.run(theStone); // and immediately execute the behavior
   theStone.state = currState; // set The Stone's state to the previous one
 }
 
@@ -216,12 +206,4 @@ function optionFourWasClicked() {
   console.log("You step 5 feet away from the chasm.");
 }
 
-export {
-  gameObj,
-  enemies,
-  entities,
-  notifyObservers,
-  enemyDied,
-  behaviorMap,
-  allies,
-};
+export { gameObj, enemies, hpObservers, behaviorMap, allies };

@@ -2,6 +2,8 @@ let gameObj;
 
 window.addEventListener("load", (e) => {
   gameObj = gameObject;
+
+  console.log("Amount of enemies: " + gameObj.enemies.length);
 });
 
 function optionOneWasClicked() {
@@ -13,7 +15,7 @@ function optionOneWasClicked() {
 }
 
 function optionTwoWasClicked() {
-  let newScene = window.open("../../2a_look/1a_handaxe/1a_handaxe.html");
+  let newScene = window.open("../../1a_break/1a_help/1a_help_axe.html");
 
   newScene.onload = function () {
     this.gameObject = gameObj;

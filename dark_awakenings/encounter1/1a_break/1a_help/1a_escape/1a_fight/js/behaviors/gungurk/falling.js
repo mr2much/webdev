@@ -1,9 +1,21 @@
-import { behaviorMap } from "../../1a_fight.js";
+import {
+  gameObj,
+  behaviorMap,
+  allies,
+  hpObservers as notifyObservers,
+} from "../../1a_fight.js";
 
 let display = document.getElementById("feedback");
 
 export function falling(gungurk) {
   console.log(`Target: ${gungurk.name} fell`);
+  let index = allies.indexOf(gungurk);
+
+  if (index >= 0) {
+    allies.splice(index, 1);
+  }
+
+  behaviorMap.remove(gungurk);
 
   let paragraphGungurkActions = document.querySelector(`#${gungurk.id}`);
   paragraphGungurkActions.innerHTML += ` ${gungurk.name} squeals like a terrified pig, and he disappears into the chasm. He splashes down, followed by disconcerting silence. At least the root that dragged him into the chasm apparently died from the fall.`;
@@ -35,5 +47,5 @@ export function falling(gungurk) {
     }
   }, 15000);
 
-  behaviorMap.delete(gungurk);
+  //   behaviorMap.delete(gungurk);
 }

@@ -14,11 +14,10 @@ export function taintedRootBehaviorHandler(enemy) {
   let state = enemy.state;
 
   if (enemy.hp <= 0) {
-    enemy.state = "dead";
+    state = "dead";
   }
 
   if (behaviors[state]) {
     behaviors[state](enemy);
-    return;
   }
 }

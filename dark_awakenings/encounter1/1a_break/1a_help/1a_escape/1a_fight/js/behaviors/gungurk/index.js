@@ -20,16 +20,18 @@ export function gungurkBehaviorHandler(gungurk) {
   let state = gungurk.state;
   let distance = gameObj.getDistanceForCharacter(gungurk);
 
-  if (state !== "dead") {
-    if (distance.feet <= 0) {
-      state = "falling";
-    } else if (distance.feet < 15) {
-      state = "retreat";
-    }
+  if (distance.feet <= 0) {
+    state = "falling";
+  } else if (distance.feet < 15) {
+    state = "retreat";
+  }
 
-    if (gungurk.condition === "grappled") {
-      state = "escape";
-    }
+  if (gungurk.condition === "grappled") {
+    state = "escape";
+  }
+
+  if (gungurk.hp <= 0) {
+    state = "dead";
   }
 
   if (behaviors[state]) {

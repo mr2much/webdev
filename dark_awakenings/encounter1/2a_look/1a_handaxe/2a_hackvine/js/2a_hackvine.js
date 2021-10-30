@@ -1,4 +1,5 @@
 import { CharGUI } from "../../../../../js/components/char_gui.js";
+import { ObserverHandler } from "../../../../../js/observerhandler.js";
 
 let theStone = {};
 let taintedRoot = {};
@@ -7,8 +8,10 @@ let paragraph = document.getElementById("narration");
 let display = document.getElementById("feedback");
 let theStoneGUI;
 let taintedRootGUI;
-let hpObservers = [];
+
 let btnFight = document.querySelector("#fight");
+
+const hpObservers = new ObserverHandler();
 
 window.addEventListener("load", (e) => {
   gameObj = gameObject;
@@ -25,7 +28,8 @@ window.addEventListener("load", (e) => {
     taintedRootGUI = new CharGUI(taintedRoot);
   }
 
-  hpObservers.push(theStoneGUI, taintedRootGUI);
+  hpObservers.add(theStoneGUI);
+  hpObservers.add(taintedRootGUI);
 
   // TODO: Move this into its own function
   let paragraphAction = document.createElement("p");
@@ -56,12 +60,11 @@ function executeAttack(attacker, target) {
   } else {
     actionParagraph.innerHTML = `${attacker.name} dealt ${damageDealt} to ${target.name}`;
 
-    notifyObservers(target);
+    hpObservers.notify(target);
   }
 }
 
 function performAttack() {
-  console.log("Clicked");
   if (taintedRoot.hp > 0) {
     paragraph.innerHTML =
       "Despite your best efforts, the vine is still alive.<br><br>You hear Gungurk screaming behind you:<br><br>'Hurry up, precious! Hurry!'";
@@ -76,16 +79,6 @@ function performAttack() {
       newScene.onload = function () {
         this.gameObject = gameObj;
       };
-    }
-  }
-}
-
-function notifyObservers(target) {
-  for (let i = 0; i < hpObservers.length; i++) {
-    let character = hpObservers[i]._char;
-
-    if (character.id === target.id) {
-      hpObservers[i]._char.hp = target.hp;
     }
   }
 }

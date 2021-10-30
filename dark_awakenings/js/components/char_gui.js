@@ -63,6 +63,14 @@ export class CharGUI extends HTMLElement {
     shadow.appendChild(styles);
   }
 
+  _notify(o) {
+    if (this._char.id === o.id) {
+      if (this._char.uid === o.uid) {
+        this._char.hp = o.hp;
+      }
+    }
+  }
+
   connectedCallback() {
     console.log(this._char.name);
   }

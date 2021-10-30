@@ -1,7 +1,12 @@
-import { entities } from "../../1a_fight.js";
+import { behaviorMap } from "../../1a_fight.js";
 
 export function idle(enemy) {
-  enemy.target = pickRandomEntityOfType("ally");
+  if (enemy.hp <= 0) {
+    enemy.state = "dead";
+    return;
+  }
+
+  enemy.target = behaviorMap.getEntityOfType("ally");
 
   if (enemy.target) {
     enemy.state = "attack";
@@ -14,18 +19,4 @@ export function idle(enemy) {
     // TODO: Implement this scenario
     console.log("Doesn't have a target for some reason");
   }
-}
-
-function pickRandomEntityOfType(type) {
-  let entity;
-
-  if (entities.some((entity) => entity["type"] === type)) {
-    do {
-      let numberOfEntities = entities.length;
-      let randomIndex = Math.floor(Math.random() * numberOfEntities);
-      entity = entities[randomIndex];
-    } while (entity.type !== type && entity.state !== "dead");
-  }
-
-  return entity;
 }
