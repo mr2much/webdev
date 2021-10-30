@@ -7,7 +7,7 @@ export class BehaviorHandler {
   }
 
   getCount() {
-    this._entities.getCount();
+    return this._entities.getCount();
   }
 
   execute() {
