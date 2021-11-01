@@ -1,20 +1,18 @@
 getData();
 
-async function getData( ) {
-  const res = await fetch("res/data/ReporteATM30-10-2021.csv");
-  const data = await res.text();  
-  
-  const table = await data.split(/\r\n/).slice(3);  
+async function getData() {
+  const res = await fetch("res/data/ZonAnn.Ts+dSST.csv");
 
-  const headers = table.shift().split(",");  
-  
-  let columns;
+  const data = await res.text();
 
-  table.map(rows => {
-    columns =  rows.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+  const table = await data.split(/\r\n/);
+
+  table.forEach((row) => {
+    const columns = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+
+    const year = columns[0];
+    const temp = columns[1];
+
+    console.log(`${year}, ${temp}`);
   });
-
-  for (let i = 0; i < headers.length; i++){
-    console.log(`${headers[i]}: ${columns[i]}`);
-  }
 }
