@@ -9,7 +9,8 @@ async function createChart() {
       labels: data.xs,
       datasets: [
         {
-          label: "Global Temperature",
+          label:
+            "Combined Land-Surface Air and Sea-Surface Water Temperature Anomalies in C° - 1880-present",
           data: data.ys,
           fill: false,
           backgroundColor: "rgba(255, 99, 132, 0.2)",
