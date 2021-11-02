@@ -7,7 +7,7 @@ async function showImages() {
   for (let i = 0; i < imgs.length; i++) {
     let image = document.createElement("img");
     image.src = URL.createObjectURL(imgs[i]);
-    cont.appendChild(insertImage(image));
+    insertImage(image);
   }
 }
 
@@ -29,5 +29,5 @@ function insertImage(img) {
 
   div.appendChild(img);
 
-  return div;
+  document.body.appendChild(div);
 }
