@@ -1,6 +1,6 @@
 Gerencia Monitoreo TI,,,,,,,,,,,,
  Dirección Continuidad y Servicios TI ,,,,,,,,,,,,
-04 Septiembre de 2021,,,,,,,,,,,,
+04 Septiembre 2021,,,,,,,,,,,,
 REGION,INCIDENTE,FECHA,GRUPO,ATM,DRBR,DESCRIPCION,ERROR,ESTADO,ESTATUS,ASIGNADO,COMENTARIO,VERIFICACION DE IST
 DISTRITO NACIONAL,3336000027,8/24/2021 14:40,Gcia Cajeros Automaticos,14,DRBR014,ATM Oficina Aeropuerto Las Américas I ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
 DISTRITO NACIONAL,3336009158,9/1/2021 1:13,ReservaC Sto. Dgo.,113,DRBR113,ATM Autoservicio Atalaya del Mar ,GAVETA DE DEPOSITO LLENA,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETA DE DEPOSITO LLENA
