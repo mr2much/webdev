@@ -1,0 +1,114 @@
+Gerencia Monitoreo TI,,,,,,,,,,,,
+ Direcci???n Continuidad y Servicios TI ,,,,,,,,,,,,
+30 Octubre 2021,,,,,,,,,,,,
+REGION,INCIDENTE,FECHA,GRUPO,ATM,DRBR,DESCRIPCION,ERROR,ESTADO,ESTATUS,ASIGNADO,COMENTARIO,VERIFICACION DE IST
+DISTRITO NACIONAL,3336070813,10/27/2021 5:55,Gcia Cajeros Automaticos,10,DRBR010,ATM Ministerio Salud P??blica ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+DISTRITO NACIONAL,3336072093,10/28/2021 7:43,Gcia Cajeros Automaticos,686,DRBR686,ATM Autoservicio Oficina M??ximo G???mez,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+DISTRITO NACIONAL,3336073205,10/28/2021 17:48,Gcia Cajeros Automaticos,435,DRBR435,ATM Autobanco Torre I ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+DISTRITO NACIONAL,3336073286,10/29/2021 1:49,Gcia Cajeros Automaticos,18,DRBR018,ATM Oficina Haina Occidental I ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+DISTRITO NACIONAL,3336073288,10/29/2021 1:53,Gcia Cajeros Automaticos,232,DRBR232,ATM S/M Nacional Charles de Gaulle ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+SUR,3336073295,10/29/2021 2:01,Gcia Cajeros Automaticos,592,DRBR081,ATM Centro de Caja San Crist???bal I ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+DISTRITO NACIONAL,3336073296,10/29/2021 2:03,Gcia Cajeros Automaticos,545,DRBR995,ATM Oficina Isabel La Cat???lica II  ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+DISTRITO NACIONAL,3336073299,10/29/2021 2:06,Gcia Cajeros Automaticos,96,DRBR096,ATM S/M Caribe Av. Charles de Gaulle,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+DISTRITO NACIONAL,3336073300,10/29/2021 2:07,Gcia Cajeros Automaticos,152,DRBR152,ATM Kiosco Megacentro II ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+NORTE,3336073315,10/29/2021 7:30,DTEL Zona Norte,636,DRBR110,ATM Oficina Tambor??l ,DISPENSADOR,Fuera De Servicio,Open,"Acevedo Dominguez, Victor Leonardo",,DISPENSADOR
+NORTE,3336073617,10/29/2021 10:01,DTEL Zona Norte,986,DRBR986,ATM S/M Jumbo (La Vega) ,DISPENSADOR,Fuera De Servicio,Open,"Acevedo Dominguez, Victor Leonardo",,DISPENSADOR
+DISTRITO NACIONAL,3336073619,10/29/2021 10:03,Gcia Cajeros Automaticos,408,DRBR408,ATM Autobanco Las Palmas de Herrera ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+DISTRITO NACIONAL,3336073895,10/29/2021 12:06,Gcia Cajeros Automaticos,813,DRBR815,ATM Occidental Mall,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+DISTRITO NACIONAL,3336073921,10/29/2021 12:22,Gcia Cajeros Automaticos,961,DRBR03H,ATM List??n Diario ,DISPENSADOR,Fuera De Servicio,In Progress,"Trinidad Perez, Holmel David",,DISPENSADOR
+ESTE,3336074015,10/29/2021 13:31,Gcia Cajeros Automaticos,838,DRBR838,ATM UNP Consuelo ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+DISTRITO NACIONAL,3336074036,10/29/2021 13:48,Gcia Cajeros Automaticos,620,DRBR620,ATM Ministerio de Medio Ambiente ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+NORTE,3336074045,10/29/2021 13:52,DTEL Zona Norte,463,DRBR463,ATM La Sirena El Embrujo ,DISPENSADOR,Fuera De Servicio,Open,"Acevedo Dominguez, Victor Leonardo",,DISPENSADOR
+DISTRITO NACIONAL,3336074112,10/29/2021 14:25,Gcia Cajeros Automaticos,36,DRBR036,ATM Banco Central ,DISPENSADOR,Fuera De Servicio,Hold,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+NORTE,3336074115,10/29/2021 14:26,DTEL Zona Norte,489,DRBR489,ATM Aeropuerto El Catey (Saman??) ,DISPENSADOR,Fuera De Servicio,Open,"Acevedo Dominguez, Victor Leonardo",,DISPENSADOR
+DISTRITO NACIONAL,3336074194,10/29/2021 15:20,Gcia Cajeros Automaticos,239,DRBR239,ATM Autobanco Charles de Gaulle ,DISPENSADOR,Fuera De Servicio,Hold,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+SUR,3336074366,10/29/2021 16:59,Gcia Cajeros Automaticos,50,DRBR050,ATM Oficina Padre Las Casas (Azua) ,DISPENSADOR,Fuera De Servicio,Hold,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+NORTE,3336074404,10/29/2021 17:37,DTEL Zona Norte,778,DRBR202,ATM Oficina Esperanza (Mao) ,DISPENSADOR,Fuera De Servicio,Open,"Acevedo Dominguez, Victor Leonardo",,DISPENSADOR
+NORTE,3336074431,10/29/2021 19:46,DTEL Zona Norte,310,DRBR310,ATM Farmacia San Judas Tadeo Jarabacoa ,DISPENSADOR,Fuera De Servicio,Open,"Acevedo Dominguez, Victor Leonardo",,DISPENSADOR
+DISTRITO NACIONAL,3336074443,10/30/2021 2:09,Gcia Cajeros Automaticos,858,DRBR858,ATM Cooperativa Maestros (COOPNAMA) ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+DISTRITO NACIONAL,3336074487,10/30/2021 7:37,Gcia Cajeros Automaticos,671,DRBR671,ATM Ayuntamiento Sto. Dgo. Norte,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+SUR,3336074485,10/30/2021 7:36,Gcia Cajeros Automaticos,301,DRBR301,ATM UNP Alfa y Omega (Barahona) ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+DISTRITO NACIONAL,3336074484,10/30/2021 7:35,Gcia Cajeros Automaticos,708,DRBR505,ATM El Vestir De Hoy ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+ESTE,3336073200,10/28/2021 17:43,Gcia Cajeros Automaticos,803,DRBR803,ATM Hotel Be Live Canoa (Bayahibe) I ,FALLA NO CONFIRMADA,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,FALLA NO CONFIRMADA
+ESTE,3336074007,10/29/2021 13:24,Gcia Cajeros Automaticos,309,DRBR309,ATM Secrets Cap Cana I ,FALLA NO CONFIRMADA,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,FALLA NO CONFIRMADA
+DISTRITO NACIONAL,3336074097,10/29/2021 14:22,Gcia Cajeros Automaticos,443,DRBR443,ATM Edificio San Rafael ,FALLA NO CONFIRMADA,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,FALLA NO CONFIRMADA
+SUR,3336074438,10/29/2021 22:17,Gcia Cajeros Automaticos,311,DRBR381,ATM Plaza Eroski,FALLA NO CONFIRMADA,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,FALLA NO CONFIRMADA
+ESTE,3336074442,10/30/2021 1:27,Gcia Cajeros Automaticos,680,DRBR680,ATM Hotel Royalton,FALLA NO CONFIRMADA,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,FALLA NO CONFIRMADA
+NORTE,3336074444,10/30/2021 2:11,DTEL Zona Norte,151,DRBR151,ATM Oficina Nagua ,FALLA NO CONFIRMADA,Fuera De Servicio,Open,"Acevedo Dominguez, Victor Leonardo",,FALLA NO CONFIRMADA
+NORTE,3336074491,10/30/2021 7:51,Gcia Cajeros Automaticos,965,DRBR965,ATM S/M La Fuente FUN (Santiago) ,FALLA NO CONFIRMADA,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,FALLA NO CONFIRMADA
+NORTE,3336074429,10/29/2021 19:16,ReservaC Norte,304,DRBR304,ATM Multicentro La Sirena Estrella Sadhala ,GAVETA DE DEPOSITO LLENA,Fuera De Servicio,Open,"Brioso Luciano, Cristino ",,GAVETA DE DEPOSITO LLENA
+DISTRITO NACIONAL,3336074434,10/29/2021 20:38,Servicios y Operaciones,231,DRBR231,ATM Oficina Zona Oriental ,GAVETA DE DEPOSITO LLENA,Fuera De Servicio,Open,"Pereyra Gonzalez, Rocio del Carmen",,GAVETA DE DEPOSITO LLENA
+DISTRITO NACIONAL,3336074476,10/30/2021 5:46,ReservaC Sto. Dgo.,312,DRBR312,ATM Oficina Tiradentes II (Naco) ,GAVETA DE DEPOSITO LLENA,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETA DE DEPOSITO LLENA
+DISTRITO NACIONAL,3336071939,10/27/2021 16:41,Servicios y Operaciones,363,DRBR363,ATM Sirena Villa Mella,GAVETA DE RECHAZO LLENA,Fuera De Servicio,Open,"Cepeda Javier, Feilan Baldemiro",,GAVETA DE RECHAZO LLENA
+DISTRITO NACIONAL,3336074060,10/29/2021 14:01,Servicios y Operaciones,722,DRBR393,ATM Oficina Charles de Gaulle III ,GAVETA DE RECHAZO LLENA,Fuera De Servicio,Open,"Cepeda Javier, Feilan Baldemiro",,GAVETA DE RECHAZO LLENA
+DISTRITO NACIONAL,3336074430,10/29/2021 19:42,ReservaC Sto. Dgo.,60,DRBR060,ATM Autobanco 27 de Febrero ,GAVETA DE RECHAZO LLENA,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETA DE RECHAZO LLENA
+DISTRITO NACIONAL,3336072782,10/28/2021 13:03,ReservaC Sto. Dgo.,437,DRBR437,ATM Autobanco Torre III ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETAS VACIAS + GAVETAS FALLANDO
+DISTRITO NACIONAL,3336072855,10/28/2021 13:43,ReservaC Sto. Dgo.,696,DRBR696,ATM Ol? Jacobo Majluta,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETAS VACIAS + GAVETAS FALLANDO
+NORTE,3336073933,10/29/2021 12:28,ReservaC Norte,991,DRBR991,ATM UNP Las Matas de Santa Cruz ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Brioso Luciano, Cristino ",,GAVETAS VACIAS + GAVETAS FALLANDO
+DISTRITO NACIONAL,3336073962,10/29/2021 12:46,ReservaC Sto. Dgo.,227,DRBR227,ATM S/M Bravo Av. Enriquillo ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETAS VACIAS + GAVETAS FALLANDO
+DISTRITO NACIONAL,3336074054,10/29/2021 13:57,ReservaC Sto. Dgo.,391,DRBR391,ATM S/M Jumbo Luper???n ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETAS VACIAS + GAVETAS FALLANDO
+DISTRITO NACIONAL,3336074176,10/29/2021 15:02,ReservaC Sto. Dgo.,850,DRBR850,ATM Hotel Be Live Hamaca ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETAS VACIAS + GAVETAS FALLANDO
+DISTRITO NACIONAL,3336074357,10/29/2021 16:55,ReservaC Sto. Dgo.,57,DRBR057,ATM Oficina Malecon Center ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETAS VACIAS + GAVETAS FALLANDO
+DISTRITO NACIONAL,3336074360,10/29/2021 16:56,ReservaC Sto. Dgo.,224,DRBR224,ATM S/M Nacional El Mill???n (N???ez de C??ceres) ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETAS VACIAS + GAVETAS FALLANDO
+NORTE,3336074395,10/29/2021 17:23,Servicios y Operaciones,950,DRBR12G,ATM Oficina Monterrico ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Pereyra Gonzalez, Rocio del Carmen",,GAVETAS VACIAS + GAVETAS FALLANDO
+DISTRITO NACIONAL,3336074439,10/29/2021 22:42,ReservaC Sto. Dgo.,162,DRBR162,ATM Oficina Tiradentes I ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETAS VACIAS + GAVETAS FALLANDO
+DISTRITO NACIONAL,3336074467,10/30/2021 5:46,ReservaC Sto. Dgo.,406,DRBR406,ATM UNP Plaza Lama M??ximo G???mez ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETAS VACIAS + GAVETAS FALLANDO
+ESTE,3336074468,10/30/2021 5:46,ReservaC Sto. Dgo.,519,DRBR519,ATM Plaza Estrella (B??varo) ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETAS VACIAS + GAVETAS FALLANDO
+SUR,3336074469,10/30/2021 5:46,ReservaC Sto. Dgo.,616,DRBR187,ATM 5ta. Brigada Barahona ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETAS VACIAS + GAVETAS FALLANDO
+DISTRITO NACIONAL,3336074470,10/30/2021 5:46,ReservaC Sto. Dgo.,639,DRBR639,ATM Comisi???n Militar MOPC ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETAS VACIAS + GAVETAS FALLANDO
+DISTRITO NACIONAL,3336074471,10/30/2021 5:46,ReservaC Sto. Dgo.,655,DRBR655,ATM Farmacia Sandra,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETAS VACIAS + GAVETAS FALLANDO
+ESTE,3336074472,10/30/2021 5:46,ReservaC Sto. Dgo.,867,DRBR867,ATM Estaci???n Combustible Autopista El Coral ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETAS VACIAS + GAVETAS FALLANDO
+SUR,3336074473,10/30/2021 5:46,ReservaC Sto. Dgo.,871,DRBR871,ATM Plaza Cultural San Juan,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETAS VACIAS + GAVETAS FALLANDO
+ESTE,3336074474,10/30/2021 5:46,Servicios y Operaciones,912,DRBR973,ATM Oficina San Pedro II ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Gonzalez Feliz, Jesus Eliezer",,GAVETAS VACIAS + GAVETAS FALLANDO
+SUR,3336074475,10/30/2021 5:46,ReservaC Sto. Dgo.,995,DRBR545,ATM Oficina San Cristobal III (Lobby) ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETAS VACIAS + GAVETAS FALLANDO
+ESTE,3336074492,10/30/2021 7:54,Servicios y Operaciones,111,DRBR111,ATM Oficina San Pedro ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Gonzalez Feliz, Jesus Eliezer",,GAVETAS VACIAS + GAVETAS FALLANDO
+DISTRITO NACIONAL,3336074482,10/30/2021 7:34,ReservaC Sto. Dgo.,931,DRBR24N,ATM Autobanco Luper???n I ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,GAVETAS VACIAS + GAVETAS FALLANDO
+DISTRITO NACIONAL,3336074369,10/29/2021 17:03,Servicios y Operaciones,354,DRBR354,ATM Oficina N???ez de C??ceres II ,GAVETEA DE RECHAZO LLENA,Fuera De Servicio,Open,"Pereyra Gonzalez, Rocio del Carmen",,GAVETEA DE RECHAZO LLENA
+ESTE,3336073036,10/28/2021 15:45,Gcia Cajeros Automaticos,830,DRBR830,ATM UNP Sabana Grande de Boy?? ,INHIBIDO,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,INHIBIDO
+NORTE,3336073106,10/28/2021 16:25,Servicios y Operaciones,687,DRBR687,ATM Oficina Monterrico II,SIN EFECTIVO,Fuera De Servicio,Open,"Cepeda Javier, Feilan Baldemiro",,SIN EFECTIVO
+DISTRITO NACIONAL,3336073909,10/29/2021 12:13,ReservaC Sto. Dgo.,441,DRBR441,ATM Estacion de Servicio Romulo Betancour,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+SUR,3336073925,10/29/2021 12:24,Servicios y Operaciones,780,DRBR041,ATM Oficina Barahona I ,SIN EFECTIVO,Fuera De Servicio,Open,"Pereyra Gonzalez, Rocio del Carmen",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074168,10/29/2021 14:57,ReservaC Sto. Dgo.,12,DRBR012,ATM Comercial Ganadera (San Isidro) ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074171,10/29/2021 14:59,Servicios y Operaciones,715,DRBR992,ATM Oficina 27 de Febrero (Lobby) ,SIN EFECTIVO,Fuera De Servicio,Open,"Cepeda Javier, Feilan Baldemiro",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074181,10/29/2021 15:07,Servicios y Operaciones,554,DRBR011,ATM Oficina Isabel La Cat???lica I ,SIN EFECTIVO,Fuera De Servicio,Open,"Cepeda Javier, Feilan Baldemiro",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074183,10/29/2021 15:10,ReservaC Sto. Dgo.,836,DRBR836,ATM UNP Plaza Luper???n ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074352,10/29/2021 16:52,ReservaC Sto. Dgo.,237,DRBR237,ATM UNP Plaza V??squez ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074355,10/29/2021 16:53,ReservaC Sto. Dgo.,570,DRBR478,ATM S/M Liverpool Villa Mella ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+NORTE,3336074356,10/29/2021 16:54,ReservaC Norte,741,DRBR460,ATM CURNE UASD San Francisco de Macor??s,SIN EFECTIVO,Fuera De Servicio,Open,"Brioso Luciano, Cristino ",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074435,10/29/2021 21:38,ReservaC Sto. Dgo.,563,DRBR233,ATM Base A?rea San Isidro ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+NORTE,3336074436,10/29/2021 21:39,ReservaC Norte,754,DRBR754,ATM Autobanco Oficina Licey al Medio ,SIN EFECTIVO,Fuera De Servicio,Open,"Brioso Luciano, Cristino ",,SIN EFECTIVO
+SUR,3336074446,10/30/2021 5:45,ReservaC Sto. Dgo.,6,DRBR006,ATM Plaza WAO San Juan ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+NORTE,3336074447,10/30/2021 5:45,ReservaC Norte,22,DRBR813,ATM S/M Olimpico (Santiago),SIN EFECTIVO,Fuera De Servicio,Open,"Brioso Luciano, Cristino ",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074448,10/30/2021 5:45,ReservaC Sto. Dgo.,32,DRBR032,ATM Oficina San Mart??n II ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+SUR,3336074449,10/30/2021 5:45,ReservaC Sto. Dgo.,84,DRBR084,ATM Oficina Multicentro Sirena San Crist???bal ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+ESTE,3336074450,10/30/2021 5:45,Servicios y Operaciones,121,DRBR121,ATM Oficina Bayaguana ,SIN EFECTIVO,Fuera De Servicio,Open,"Cepeda Javier, Feilan Baldemiro",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074451,10/30/2021 5:45,ReservaC Sto. Dgo.,212,DRBR212,ATM Universidad Nacional Evang?lica (Santo Domingo),SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074452,10/30/2021 5:45,ReservaC Sto. Dgo.,235,DRBR235,ATM Oficina Multicentro La Sirena San Isidro ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+SUR,3336074453,10/30/2021 5:45,ReservaC Sto. Dgo.,252,DRBR252,ATM Banco Agr??cola (Barahona) ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074454,10/30/2021 5:45,ReservaC Sto. Dgo.,394,DRBR394,ATM Multicentro La Sirena Luper???n ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074455,10/30/2021 5:45,ReservaC Sto. Dgo.,407,DRBR407,ATM Multicentro La Sirena Villa Mella ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074456,10/30/2021 5:45,ReservaC Sto. Dgo.,486,DRBR486,ATM Ol? La Caleta ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074457,10/30/2021 5:45,ReservaC Sto. Dgo.,555,DRBR24P,ATM Estaci???n Shell Las Praderas ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+SUR,3336074458,10/30/2021 5:46,ReservaC Sto. Dgo.,584,DRBR404,ATM Oficina San Crist???bal I ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+NORTE,3336074459,10/30/2021 5:46,Servicios y Operaciones,605,DRBR141,ATM Oficina Bonao I ,SIN EFECTIVO,Fuera De Servicio,Open,"Pereyra Gonzalez, Rocio del Carmen",,SIN EFECTIVO
+SUR,3336074460,10/30/2021 5:46,ReservaC Norte,783,DRBR303,ATM Autobanco Alfa y Omega (Barahona) ,SIN EFECTIVO,Fuera De Servicio,Open,"Brioso Luciano, Cristino ",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074461,10/30/2021 5:46,ReservaC Sto. Dgo.,785,DRBR785,ATM S/M Nacional M??ximo G???mez ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074462,10/30/2021 5:46,ReservaC Sto. Dgo.,815,DRBR24A,ATM Oficina Atalaya del Mar ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074463,10/30/2021 5:46,ReservaC Sto. Dgo.,868,DRBR868,ATM Casino Diamante ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+SUR,3336074464,10/30/2021 5:46,ReservaC Sto. Dgo.,873,DRBR873,ATM Centro de Caja San Crist???bal II ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074465,10/30/2021 5:46,ReservaC Sto. Dgo.,904,DRBR24B,ATM Oficina Multicentro La Sirena Churchill ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+NORTE,3336074489,10/30/2021 7:41,ReservaC Norte,40,DRBR040,ATM Oficina El Pu?al ,SIN EFECTIVO,Fuera De Servicio,Open,"Brioso Luciano, Cristino ",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074488,10/30/2021 7:39,ReservaC Sto. Dgo.,13,DRBR013,ATM CDEEE ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074486,10/30/2021 7:37,ReservaC Sto. Dgo.,14,DRBR014,ATM Oficina Aeropuerto Las Am?ricas I ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+ESTE,3336074480,10/30/2021 7:31,Servicios y Operaciones,385,DRBR385,ATM Plaza Ver???n I ,SIN EFECTIVO,Fuera De Servicio,Open,"Pereyra Gonzalez, Rocio del Carmen",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074479,10/30/2021 7:28,ReservaC Sto. Dgo.,821,DRBR821,ATM S/M Bravo Churchill ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+DISTRITO NACIONAL,3336074478,10/30/2021 7:20,ReservaC Sto. Dgo.,879,DRBR879,ATM Plaza Metropolitana ,SIN EFECTIVO,Fuera De Servicio,Open,"Olivo Diaz, Maria Luisa",,SIN EFECTIVO
+DISTRITO NACIONAL,3336073867,10/29/2021 11:53,Gcia Cajeros Automaticos,887,DRBR887,ATM S/M Bravo Los Proceres,TARJETA TRABADA,Fuera De Servicio,Open,"Mejia Presinal, Engers Starlin",,TARJETA TRABADA
+DISTRITO NACIONAL,3336074020,10/29/2021 13:36,Gcia Cajeros Automaticos,663,DRBR663,ATM S/M Ol? Av. Espa?a,TARJETA TRABADA,Fuera De Servicio,Open,"Araujo Santiago, Osvaldo ",,TARJETA TRABADA
+DISTRITO NACIONAL,3336074022,10/29/2021 13:37,Gcia Cajeros Automaticos,302,DRBR302,ATM S/M Aprezio Los Mameyes  ,TARJETA TRABADA,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,TARJETA TRABADA
+DISTRITO NACIONAL,3336074091,10/29/2021 14:21,Gcia Cajeros Automaticos,562,DRBR226,ATM S/M Jumbo Carretera Mella ,TARJETA TRABADA,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,TARJETA TRABADA
+ESTE,3336074411,10/29/2021 17:45,Gcia Cajeros Automaticos,462,DRBR462,ATM Agrocafe Del Caribe,TARJETA TRABADA,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,TARJETA TRABADA
+DISTRITO NACIONAL,3336074412,10/29/2021 17:46,Gcia Cajeros Automaticos,318,DRBR318,ATM Autoservicio Lope de Vega,TARJETA TRABADA,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,TARJETA TRABADA
+DISTRITO NACIONAL,3336074414,10/29/2021 17:49,Gcia Cajeros Automaticos,622,DRBR622,ATM Ayuntamiento D.N. ,TARJETA TRABADA,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,TARJETA TRABADA
+DISTRITO NACIONAL,3336074483,10/30/2021 7:34,Gcia Cajeros Automaticos,325,DRBR325,ATM Casa Edwin,TARJETA TRABADA,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,TARJETA TRABADA
+DISTRITO NACIONAL,3336074481,10/30/2021 7:33,Gcia Cajeros Automaticos,149,DRBR149,ATM Estaci???n Metro Concepci???n,TARJETA TRABADA,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,TARJETA TRABADA
