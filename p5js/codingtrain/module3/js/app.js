@@ -2,7 +2,11 @@ const iss_url = "https://api.wheretheiss.at/v1/satellites/25544";
 
 // Making map and tiles
 
-const mymap = L.map("issmap").setView([0, 0], 5);
+const mymap = L.map("issmap", {
+  zoomControl: false,
+  scrollWheelZoom: false,
+}).setView([0, 0], 6);
+
 const attribution =
   'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 const tileUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
@@ -17,22 +21,23 @@ const myIcon = L.icon({
   iconAnchor: [25, 16],
 });
 
-const marker = L.marker([0, 0], { icon: myIcon }).addTo(mymap);
+let marker = L.marker([0, 0], { icon: myIcon }).addTo(mymap);
 
 let firstRun = true;
 async function getISS() {
   const res = await fetch(iss_url);
   const data = await res.json();
 
-  const { latitude, longitude } = data;
+  const { latitude, longitude, altitude } = data;
 
-  let altitude = Math.random() * 1000;
   const aspect = 1.5625;
-  const w = (altitude * aspect) / (altitude / 100);
-  const h = altitude / (altitude / 100);
+  const w = (altitude * aspect) / 5;
+  const h = altitude / 5;
 
   myIcon.options.iconSize = [w, h];
   myIcon.options.iconAnchor = [w / 2, h / 2];
+
+  marker.setIcon(myIcon);
 
   const lat = document.querySelector("#lat");
   const lon = document.querySelector("#lon");
@@ -44,7 +49,11 @@ async function getISS() {
   }
 
   marker.setLatLng([latitude, longitude]);
-  marker.setIcon(myIcon);
+  mymap.panTo(marker.getLatLng(), {
+    animate: true,
+    duration: 1.0,
+    easeLinearity: 0.9,
+  });
 
   lat.textContent = latitude.toFixed(2);
   lon.textContent = longitude.toFixed(2);
