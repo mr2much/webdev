@@ -43,7 +43,7 @@
 
         let marker = L.marker([0, 0]).addTo(mymap);
 
-        navigator.geolocation.getCurrentPosition((position) => {
+        navigator.geolocation.getCurrentPosition(async (position) => {
           const lat = position.coords.latitude;
           const lon = position.coords.longitude;
 
@@ -53,7 +53,20 @@
           document.querySelector("#lat").textContent = lat;
           document.querySelector("#lon").textContent = lon;
 
-          console.log(position);
+          const data = { lat, lon };
+
+          const options = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          };
+
+          const res = await fetch("/api", options);
+          const json = await res.json();
+
+          console.log(json);
         });
       } else {
         console.log("geolocation not available");
