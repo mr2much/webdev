@@ -23,7 +23,7 @@
       <strong>Longitude:</strong> <span id="lon"></span>°
     </p>
 
-    <button id="Submit">Submit</button>
+    <button id="submit">Submit</button>
 
     <script
       src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
@@ -33,6 +33,7 @@
 
     <script>
       if ("geolocation" in navigator) {
+        const submit = document.querySelector("#submit");
         const mymap = L.map("map").setView([0, 0], 25);
 
         const attribution =
@@ -45,16 +46,9 @@
 
         let marker = L.marker([0, 0]).addTo(mymap);
 
-        navigator.geolocation.getCurrentPosition(async (position) => {
-          const lat = position.coords.latitude;
-          const lon = position.coords.longitude;
+        let lat, lon;
 
-          mymap.setView([lat, lon], mymap.getZoom());
-          marker.setLatLng([lat, lon]);
-
-          document.querySelector("#lat").textContent = lat;
-          document.querySelector("#lon").textContent = lon;
-
+        submit.addEventListener("click", async (e) => {
           const data = { lat, lon };
 
           const options = {
@@ -69,6 +63,17 @@
           const json = await res.json();
 
           console.log(json);
+        });
+
+        navigator.geolocation.getCurrentPosition((position) => {
+          lat = position.coords.latitude;
+          lon = position.coords.longitude;
+
+          mymap.setView([lat, lon], mymap.getZoom());
+          marker.setLatLng([lat, lon]);
+
+          document.querySelector("#lat").textContent = lat;
+          document.querySelector("#lon").textContent = lon;
         });
       } else {
         console.log("geolocation not available");
