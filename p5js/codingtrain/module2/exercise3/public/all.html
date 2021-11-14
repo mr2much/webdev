@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="res/css/app.css" />
+  </head>
+  <body>
+    <div><a href="/">Home</a> | <a href="all.html">List</a></div>
+
+    <div id="map"></div>
+
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+
+    <script>
+      loadEntries();
+
+      async function loadEntries() {
+        const res = await fetch("/api");
+        const data = await res.json();
+
+        const map = displayMap();
+        showMarkers(map, data);
+      }
+
+      function displayMap() {
+        const mymap = L.map("map").setView([0, 0], 1);
+
+        const attribution =
+          'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+
+        const tileUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+
+        const tiles = L.tileLayer(tileUrl, { attribution });
+        tiles.addTo(mymap);
+
+        return mymap;
+      }
+
+      function showMarkers(map, data) {
+        for (let entry of data) {
+          const lat = entry.lat;
+          const lon = entry.lon;
+
+          //   let icon = new L.Icon.Default();
+          //   icon.options.shadowSize = [0, 0];
+
+          //   let marker = L.marker([lat, lon], { icon }).addTo(map);
+
+          let dateString = new Date(entry.timestamp).toLocaleString();
+          let marker = L.marker([lat, lon]).addTo(map);
+          marker.bindPopup(
+            `<strong>Mood:</strong> ${entry.mood}<br />
+            <strong>Lat:</strong> ${entry.lat}°, <strong>Lon:</strong> ${entry.lon}°<br />
+            ${dateString}
+            `
+          );
+        }
+      }
+    </script>
+  </body>
+</html>
