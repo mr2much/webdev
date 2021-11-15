@@ -23,6 +23,8 @@
       <strong>Longitude:</strong> <span id="lon"></span>°
     </p>
 
+    <form action=""><input id="mood" type="text" /></form>
+
     <button id="submit">Submit</button>
 
     <script
@@ -36,9 +38,11 @@
         let lat, lon;
 
         const submit = document.querySelector("#submit");
+        const input = document.querySelector("#mood");
 
         submit.addEventListener("click", async (e) => {
-          const data = { lat, lon };
+          const mood = input.value;
+          const data = { lat, lon, mood };
 
           const options = {
             method: "POST",

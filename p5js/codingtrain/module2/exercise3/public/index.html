@@ -14,6 +14,7 @@
     <title>Data Selfie App</title>
   </head>
   <body>
+    <div><a href="/">Home</a> | <a href="all.html">List</a></div>
     <h1>Welcome to the Data Selfie App</h1>
 
     <div id="map"></div>
@@ -22,6 +23,8 @@
       <strong>Latitude:</strong> <span id="lat"></span>°
       <strong>Longitude:</strong> <span id="lon"></span>°
     </p>
+
+    <input id="mood" type="text" />
 
     <button id="submit">Submit</button>
 
@@ -38,7 +41,8 @@
         const submit = document.querySelector("#submit");
 
         submit.addEventListener("click", async (e) => {
-          const data = { lat, lon };
+          const mood = document.querySelector("#mood").value;
+          const data = { lat, lon, mood };
 
           const options = {
             method: "POST",

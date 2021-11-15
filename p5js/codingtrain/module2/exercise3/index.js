@@ -23,8 +23,22 @@ app.post("/api", (req, res) => {
 
   res.json({
     status: "success",
+    mood: data.mood,
     timestamp: timestamp,
     latitude: data.lat,
     longitude: data.lon,
+  });
+});
+
+app.get("/api", (req, res) => {
+  console.log("All got a request!");
+
+  database.find({}, (err, data) => {
+    if (err) {
+      res.end();
+      return;
+    }
+
+    res.json(data);
   });
 });
