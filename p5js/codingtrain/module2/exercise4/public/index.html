@@ -70,21 +70,15 @@
           cnv.loadPixels();
 
           const name = input.elt.files[0].name;
+
           // convert image data to Encode 64
           const data64 = cnv.elt.toDataURL().split(";base64,");
-          const content = data64[0].split(":").pop().split("/");
-          const type = content[0];
-          const ext = `.${content[1]}`;
-
           const image64 = data64[1];
 
           // Create an object with the encoded base64 image
           const image = {
             filename: name,
             image64: image64,
-            base: "base64",
-            type: type,
-            ext: ext,
           };
 
           console.log(image);
