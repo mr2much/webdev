@@ -1,21 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-    async function loadATMFile( ){
-      const res = await fetch("/api");
-      const json = await res.json();
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="res/css/app.css" />
+  </head>
+  <body>
+    <div id="map"></div>
 
-      console.log(json);
-    }
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
 
-    loadATMFile();
-  </script>  
-</body>
+    <script>
+      loadATMFile();
+
+      async function loadATMFile() {
+        const res = await fetch("/api");
+        const json = await res.json();
+
+        console.log(json);
+
+        const map = await displayMap();
+        await showMarkers(map, json.data);
+      }
+
+      async function displayMap() {
+        const map = L.map("map").setView([18.939832, -70.394354], 8);
+
+        const attribution =
+          'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+
+        const tileUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+
+        const tiles = L.tileLayer(tileUrl, { attribution });
+        tiles.addTo(map);
+
+        return map;
+      }
+
+      async function showMarkers(map, atms) {
+        for (let atm of atms) {
+          const lat = Number(atm.lat.replace(/[^-0-9.]/g, ""));
+          const lon = Number(atm.lon.replace(/[^-0-9.]/g, ""));
+
+          let marker = L.marker([lat, lon]).addTo(map);
+
+          marker.bindPopup(`<strong>ID:</strong> ${atm.id}<br />
+          <strong>Description:</strong> ${atm.description}<br />
+          <strong>Lat:</strong> ${lat}°, <strong>Lon:</strong> ${lon}°`);
+        }
+      }
+    </script>
+  </body>
 </html>

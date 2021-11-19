@@ -39,7 +39,7 @@
       }
 
       function displayMap() {
-        const mymap = L.map("map").setView([0, 0], 1);
+        const mymap = L.map("map").setView([0, 0], 2);
 
         const attribution =
           'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
@@ -64,14 +64,53 @@
           //   let marker = L.marker([lat, lon], { icon }).addTo(map);
 
           let dateString = new Date(entry.timestamp).toLocaleString();
-          let marker = L.marker([lat, lon]).addTo(map);
+          let marker;
+          let path = entry.path.replace("public\\", "");
+
+          if (entry.path) {
+            marker = getCustomMarker(entry, map);
+          } else {
+            marker = L.marker([lat, lon]).addTo(map);
+          }
+
           marker.bindPopup(
             `<strong>Mood:</strong> ${entry.mood}<br />
-            <strong>Lat:</strong> ${entry.lat}°, <strong>Lon:</strong> ${entry.lon}°<br />
+            <strong>Lat:</strong> ${entry.lat}°, <strong>Lon:</strong> ${
+              entry.lon
+            }°<br />            
+            <img src="${path}"" width="${entry.width / 6}" height="${
+              entry.height / 6
+            }" />
             ${dateString}
             `
           );
         }
+      }
+
+      function getCustomMarker({ path, lat, lon, width, height }, map) {
+        path = path.replace("public\\", "");
+
+        const aspectRatio = height / width;
+
+        let prefWidth = 48;
+        let prefHeight = 24;
+
+        if (height > width) {
+          prefHeight = 48;
+          prefWidth = 24;
+        }
+
+        const icoWidth = prefWidth * aspectRatio;
+        const icoHeight = prefHeight * aspectRatio;
+
+        // custom icon
+        const cIcon = L.icon({
+          iconUrl: `${path}`,
+          iconSize: [icoWidth, icoHeight],
+          iconAnchor: [icoWidth / 2, icoHeight / 2],
+        });
+
+        return L.marker([lat, lon], { icon: cIcon }).addTo(map);
       }
     </script>
   </body>

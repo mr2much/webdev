@@ -71,17 +71,26 @@
 
           const name = input.elt.files[0].name;
 
+          console.log(img);
+
           // convert image data to Encode 64
-          const data64 = cnv.elt.toDataURL().split(";base64,");
+          const data64 = img.elt.src.split(";base64,");
+
+          // from data:image/format, split by :, then take the second argument which should be image/format
+          const type = data64[0].split(":")[1];
           const image64 = data64[1];
+
+          const width = img.width;
+          const height = img.height;
 
           // Create an object with the encoded base64 image
           const image = {
+            type: type,
+            width: width,
+            height: height,
             filename: name,
             image64: image64,
           };
-
-          console.log(image);
 
           const mood = document.querySelector("#mood").value;
           const data = { lat, lon, mood, image };
