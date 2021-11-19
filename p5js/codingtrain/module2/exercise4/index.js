@@ -1,5 +1,9 @@
 const express = require("express");
 const Datastore = require("nedb");
+const fs = require("fs");
+
+const _dir = "./public/res/img";
+const path = require("path");
 
 const app = express();
 app.listen("3000", () => {
@@ -12,16 +16,29 @@ app.use(express.json({ limit: "1mb" }));
 const database = new Datastore("database.db");
 database.loadDatabase(); // load database or create it if it doesn't exist
 
-app.post("/api", (req, res) => {
+app.post("/api", async (req, res) => {
   console.log("I got a request!");
 
   const data = req.body;
   const timestamp = Date.now();
 
-  console.log(data.image64.split(";base64,"));
-
   data.timestamp = timestamp;
-  // database.insert(data);
+  const imagePath = path.join(_dir, data.image.filename);
+  data.image.filename = imagePath;
+
+  const dbEntry = {
+    lat: data.lat,
+    lon: data.lon,
+    mood: data.mood,
+    timestamp: timestamp,
+    path: imagePath,
+    width: data.image.width,
+    height: data.image.height,
+  };
+
+  database.insert(dbEntry);
+
+  await dataBase64ToFile(data.image.image64, imagePath, data.image.type);
 
   res.json({
     status: "success",
@@ -31,6 +48,17 @@ app.post("/api", (req, res) => {
     longitude: data.lon,
   });
 });
+
+async function dataBase64ToFile(image64, path, mimeType) {
+  const asciiToBinary = Buffer.from(image64, "base64");
+
+  fs.writeFile(path, asciiToBinary, (e) => {
+    if (e) {
+      return console.log(`File error: ${e}`);
+    }
+    console.log(`File saved to: ${path}`);
+  });
+}
 
 app.get("/api", (req, res) => {
   console.log("All got a request!");
