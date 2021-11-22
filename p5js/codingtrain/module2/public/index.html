@@ -14,6 +14,7 @@
     <title>Data Selfie App</title>
   </head>
   <body>
+    <div><a href="/">Home</a> | <a href="list.html">List</a></div>
     <h1>Welcome to the Data Selfie App</h1>
 
     <div id="map"></div>
@@ -23,7 +24,11 @@
       <strong>Longitude:</strong> <span id="lon"></span>°
     </p>
 
+    <label for="mood">Mood</label>
+    <input id="mood" type="text" />
     <button id="submit">Submit</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
 
     <script
       src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
@@ -32,52 +37,133 @@
     ></script>
 
     <script>
-      if ("geolocation" in navigator) {
-        let lat, lon;
+      let img;
+      let cnv;
+      let imgInput;
 
-        const submit = document.querySelector("#submit");
+      function setup() {
+        background(0);
+        if ("geolocation" in navigator) {
+          let noVideo = true;
 
-        submit.addEventListener("click", async (e) => {
-          const data = { lat, lon };
+          (async () => {
+            const devices = await navigator.mediaDevices.enumerateDevices();
 
-          const options = {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          };
+            // check all available devices to see if there is video available
+            devices.forEach((device) => {
+              if (device.kind === "camera") {
+                noVideo = false;
+                return;
+              }
+            });
+          })();
 
-          const res = await fetch("/api", options);
-          const json = await res.json();
+          if (noVideo) {
+            console.log("No video input found!");
 
-          console.log(json);
-        });
+            // Create this basically empty canvas to add the image <input>
+            cnv = createCanvas(1, 1);
 
-        const mymap = L.map("map").setView([0, 0], 25);
+            // create an input to load local images
+            input = createFileInput((file) => {
+              if (file.type.includes("image")) {
+                img = createImg(file.data, "");
+                img.hide();
+              } else {
+                console.log(
+                  `Image type: ${file.type} is not a valid image format. Please choose an image file format.`
+                );
+              }
+            });
 
-        const attribution =
-          'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+            cnv.parent(input);
+          } else {
+            const video = createCapture(VIDEO);
+            video.size(320, 240);
 
-        const tileUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+            // proceed with code to capture images
+          }
 
-        const tiles = L.tileLayer(tileUrl, { attribution });
-        tiles.addTo(mymap);
+          let lat, lon;
 
-        let marker = L.marker([0, 0]).addTo(mymap);
+          const submit = document.querySelector("#submit");
 
-        navigator.geolocation.getCurrentPosition((position) => {
-          lat = position.coords.latitude;
-          lon = position.coords.longitude;
+          submit.addEventListener("click", async (e) => {
+            const moood = document.querySelector("#mood").value.trim();
 
-          mymap.setView([lat, lon], mymap.getZoom());
-          marker.setLatLng([lat, lon]);
+            let name;
 
-          document.querySelector("#lat").textContent = lat;
-          document.querySelector("#lon").textContent = lon;
-        });
-      } else {
-        console.log("geolocation not available");
+            if (imgInput) {
+              name = input.elt.files[0].name;
+            } else {
+              // check how to get image name when the image is captured from camera
+            }
+
+            const image = getBase64Image(img);
+            const data = { lat, lon, mood };
+
+            const options = {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            };
+
+            const res = await fetch("/api", options);
+            const json = await res.json();
+
+            console.log(json);
+          });
+
+          const mymap = L.map("map").setView([0, 0], 25);
+
+          const attribution =
+            'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+
+          const tileUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+
+          const tiles = L.tileLayer(tileUrl, { attribution });
+          tiles.addTo(mymap);
+
+          let marker = L.marker([0, 0]).addTo(mymap);
+
+          navigator.geolocation.getCurrentPosition((position) => {
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+
+            mymap.setView([lat, lon], mymap.getZoom());
+            marker.setLatLng([lat, lon]);
+
+            document.querySelector("#lat").textContent = lat;
+            document.querySelector("#lon").textContent = lon;
+          });
+        } else {
+          console.log("geolocation not available");
+        }
+      }
+
+      function getBase64Image(img, captured) {
+        const image = {};
+
+        let data64;
+        let type;
+        let imgBase64Data;
+        let width;
+        let height;
+
+        if (captured) {
+          // check how to optain this data from captured image
+          // TODO: Check if there is some way to obtain this directly from capture image
+          type = "image/png"; // type will always be image PNG from captured image
+        } else {
+          image.type = type;
+          image.width = width;
+          image.height = height;
+          image.image64 = imgBase64Data;
+        }
+
+        return image;
       }
     </script>
   </body>
