@@ -4,33 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
       integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
       crossorigin=""
     />
-    <link rel="stylesheet" href="res/css/app.css" />
-    <title>Data Selfie App</title>
-    <script defer src="res/js/app.js"></script>
+    <link rel="stylesheet" href="../res/css/app.css" />
+    <script defer src="../res/js/list.js"></script>
   </head>
   <body>
     <div><a href="/">Home</a> | <a href="/list">List</a></div>
-    <h1>Welcome to the Data Selfie App</h1>
 
-    <div id="map"></div>
-
-    <p>
-      <strong>Latitude:</strong> <span id="lat"></span>°
-      <strong>Longitude:</strong> <span id="lon"></span>°
-    </p>
-
-    <label for="mood">Mood</label>
-    <input id="mood" type="text" />
-
-    <button id="submit">Submit</button>
-
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
+    <div id="world-map"></div>
 
     <script
       src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
