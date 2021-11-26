@@ -21,6 +21,7 @@ function setup() {
         name = imgInput.elt.files[0].name;
       } else {
         // check how to get image name when the image is captured from camera
+        name = `${Date.now()}.png`;
       }
 
       const image = getBase64Image(img);
@@ -84,9 +85,11 @@ function setupImageCaptureMethod() {
 
     cnv.parent(imgInput);
   } else {
+    noCanvas();
     const video = createCapture(VIDEO);
     video.size(320, 240);
-
+    video.loadPixels();
+    img = video.canvas;
     // proceed with code to capture images
   }
 }
@@ -149,9 +152,10 @@ function getBase64Image(img, captured) {
   let height = img.height;
 
   if (captured) {
-    // check how to optain this data from captured image
-    // TODO: Check if there is some way to obtain this directly from capture image
-    type = "image/png"; // type will always be image PNG from captured image
+    // check how to optain this data from captured image.
+    // Apparently, captured or not, the image when converted to Base64 will practically have the same information. I have to do a few tests to validate this.
+
+    type = type; // type will always be image PNG from captured image
   } else {
     image.type = type;
     image.width = width;
