@@ -82,15 +82,23 @@ function setupImageCaptureMethod() {
         );
       }
     });
+    imgInput.id("load");
 
+    console.log(cnv);
+
+    const label = document.createElement("label");
+    label.setAttribute("for", "load");
+    label.textContent = "Pick an image file";
+
+    document.querySelector("main").append(label);
     cnv.parent(imgInput);
   } else {
+    // proceed with code to capture images
     noCanvas();
     const video = createCapture(VIDEO);
-    video.size(320, 240);
+    video.size(160, 120);
     video.loadPixels();
     img = video.canvas;
-    // proceed with code to capture images
   }
 }
 
