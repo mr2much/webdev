@@ -82,10 +82,11 @@ function setupImageCaptureMethod() {
         );
       }
     });
+    // add an ID for the image input
     imgInput.id("load");
 
-    console.log(cnv);
-
+    // create a label for the image file picker
+    // TODO: Make this a function
     const label = document.createElement("label");
     label.setAttribute("for", "load");
     label.textContent = "Pick an image file";
