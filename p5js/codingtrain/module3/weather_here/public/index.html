@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Here</title>
+  </head>
+  <body>
+    <div><a href="/">check in</a> | <a href="/list">view checkins</a></div>
+
+    <h1>The Weather Here</h1>
+
+    <p>
+      <strong>Latitude: </strong><span id="lat"></span>°
+      <strong>Longitude: </strong><span id="lon"></span>° <br />
+      <strong>Condition: </strong><span id="condition"></span>
+      <img id="icon" /> <br />
+      <strong>Temperature: </strong><span id="celsius"></span>C°<br />
+      <strong>Location: </strong><span id="name"></span>,
+      <span id="country"></span>
+    </p>
+
+    <button id="submit">Check In</button>
+
+    <div>
+      <a href="https://www.weatherapi.com/" title="Free Weather API"
+        ><img
+          src="//cdn.weatherapi.com/v4/images/weatherapi_logo.png"
+          alt="Weather data by WeatherAPI.com"
+          border="0"
+      /></a>
+    </div>
+
+    <script>
+      let data;
+      getGeolocationInfo();
+
+      async function getGeolocationInfo() {
+        let lat, lon;
+
+        // check if geolocation is available
+        if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition(async (position) => {
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+
+            document.querySelector("#lat").textContent = lat;
+            document.querySelector("#lon").textContent = lon;
+            data = await getData(lat, lon);
+
+            const text = data.current.condition.text;
+
+            document.querySelector("#condition").textContent = text;
+            const img = document.querySelector("#icon");
+            img.src = data.current.condition.icon;
+            img.alt = text;
+
+            document.querySelector("#celsius").textContent =
+              data.current.temp_c;
+
+            document.querySelector("#name").textContent = data.location.name;
+            document.querySelector("#country").textContent =
+              data.location.country;
+          });
+        }
+      }
+
+      async function getData(lat, lon) {
+        const res = await fetch(`/weather/${lat},${lon}`);
+
+        const json = await res.json();
+
+        return json;
+      }
+    </script>
+  </body>
+</html>
