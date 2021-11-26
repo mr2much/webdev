@@ -34,7 +34,8 @@ function showMarkers(map, data) {
     let lon = entry.lon;
     let marker;
 
-    entry.path = entry.path.replace("public\\", "");
+    // Move one directory up, and remove the reference to the public folder
+    entry.path = `..\\${entry.path.replace("public\\", "")}`;
 
     if (entry.path) {
       marker = getCustomMarker(entry);
