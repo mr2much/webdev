@@ -12,13 +12,14 @@
     <h1>The Weather Here</h1>
 
     <p>
-      <strong>Latitude: </strong><span id="lat"></span>°
-      <strong>Longitude: </strong><span id="lon"></span>° <br />
+      <strong>Latitude: </strong><span id="lat"></span>&deg;
+      <strong>Longitude: </strong><span id="lon"></span>&deg; <br />
       <strong>Condition: </strong><span id="condition"></span>
       <img id="icon" /> <br />
-      <strong>Temperature: </strong><span id="celsius"></span>C°<br />
+      <strong>Temperature: </strong><span id="celsius"></span>&deg; C<br />
       <strong>Location: </strong><span id="name"></span>,
-      <span id="country"></span>
+      <span id="country"></span><br />
+      <strong>Last Updated: </strong><span id="last"></span>
     </p>
 
     <button id="submit">Check In</button>
@@ -49,20 +50,29 @@
             document.querySelector("#lon").textContent = lon;
             data = await getData(lat, lon);
 
-            const text = data.current.condition.text;
+            const weather = data.weather;
+            const air = data.air_quality;
+
+            console.log(air);
+
+            const text = weather.current.condition.text;
 
             document.querySelector("#condition").textContent = text;
             const img = document.querySelector("#icon");
-            img.src = data.current.condition.icon;
+            img.src = weather.current.condition.icon;
             img.alt = text;
 
             document.querySelector("#celsius").textContent =
-              data.current.temp_c;
+              weather.current.temp_c;
 
-            document.querySelector("#name").textContent = data.location.name;
+            document.querySelector("#name").textContent = weather.location.name;
             document.querySelector("#country").textContent =
-              data.location.country;
+              weather.location.country;
+            document.querySelector("#last").textContent =
+              weather.current.last_updated;
           });
+        } else {
+          console.log("No geolocation data available");
         }
       }
 

@@ -23,9 +23,17 @@ app.get("/weather/:latlon", async (req, res) => {
   lon = latlon[1];
 
   const weatherAPI_url = `http://api.weatherapi.com/v1/current.json?key=${weatherAPI_key}&q=${lat},${lon}`;
+  const weather_res = await fetch(weatherAPI_url);
+  const weather_data = await weather_res.json();
 
-  const response = await fetch(weatherAPI_url);
-  const json = await response.json();
+  const openAQ_url = `https://u50g7n0cbj.execute-api.us-east-1.amazonaws.com/v2/latest?coordinates=${lat},${lon}`;
+  const openaq_res = await fetch(openAQ_url);
+  const openaq_data = await openaq_res.json();
 
-  res.json(json);
+  const data = {
+    weather: weather_data,
+    air_quality: openaq_data,
+  };
+
+  res.json(data);
 });
