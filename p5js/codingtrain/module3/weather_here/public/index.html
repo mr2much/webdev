@@ -22,15 +22,25 @@
       <strong>Last Updated: </strong><span id="last"></span>
     </p>
 
+    <div id="airq">
+      <h3>Air Quality Measurements:</h3>
+    </div>
+
     <button id="submit">Check In</button>
 
     <div>
-      <a href="https://www.weatherapi.com/" title="Free Weather API"
-        ><img
-          src="//cdn.weatherapi.com/v4/images/weatherapi_logo.png"
-          alt="Weather data by WeatherAPI.com"
-          border="0"
-      /></a>
+      <p>
+        <a href="https://www.weatherapi.com/" title="Free Weather API"
+          ><img
+            src="//cdn.weatherapi.com/v4/images/weatherapi_logo.png"
+            alt="Weather data by WeatherAPI.com"
+            border="0"
+        /></a>
+      </p>
+
+      <p>
+        <a href="https://openaq.org/#/" title="OpenAQ">Open Air Quality</a>
+      </p>
     </div>
 
     <script>
@@ -51,9 +61,31 @@
             data = await getData(lat, lon);
 
             const weather = data.weather;
-            const air = data.air_quality;
 
-            console.log(air);
+            const div = document.querySelector("#airq");
+
+            const air = data.air_quality.results;
+
+            if (air.length > 0) {
+              air.forEach((result) => {
+                let ul = document.createElement("ul");
+                ul.innerHTML = `<strong>Sensor: </strong> ${result.location}`;
+
+                result.measurements.forEach((measurement) => {
+                  let li = document.createElement("li");
+                  li.innerHTML = `<strong>${measurement.parameter.toUpperCase()}: </strong>${
+                    measurement.value
+                  } ${measurement.unit}`;
+                  ul.append(li);
+                });
+
+                div.append(ul);
+              });
+            } else {
+              let p = document.createElement("p");
+              p.textContent = "No measurements";
+              div.append(p);
+            }
 
             const text = weather.current.condition.text;
 
