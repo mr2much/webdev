@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Here</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="res/css/app.css" />
+  </head>
+  <body>
+    <div><a href="/">check in</a> | <a href="/list">view checkins</a></div>
+
+    <h1>The Weather Here</h1>
+
+    <div id="map"></div>
+
+    <p>Click on the marker for detailed info.</p>
+
+    <div id="airq">
+      <h3>Air Quality Measurements:</h3>
+    </div>
+
+    <button id="submit">Check In</button>
+
+    <div>
+      <p>
+        <a href="https://www.weatherapi.com/" title="Free Weather API"
+          ><img
+            src="//cdn.weatherapi.com/v4/images/weatherapi_logo.png"
+            alt="Weather data by WeatherAPI.com"
+            border="0"
+        /></a>
+      </p>
+
+      <p>
+        <a href="https://openaq.org/#/" title="OpenAQ">Open Air Quality</a>
+      </p>
+    </div>
+
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+
+    <script>
+      let data;
+      let btnSubmit = document.querySelector("#submit");
+
+      function leafletMap() {
+        const map = L.map("map").setView([0, 0], 0);
+
+        const attribution =
+          'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+
+        const tileUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+
+        const tiles = L.tileLayer(tileUrl, { attribution });
+        tiles.addTo(map);
+
+        return map;
+      }
+
+      getGeolocationInfo();
+
+      async function getGeolocationInfo() {
+        let lat, lon;
+
+        const map = leafletMap();
+
+        // check if geolocation is available
+        if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition(async (position) => {
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+
+            data = await getData(lat, lon);
+
+            const weather = data.weather;
+
+            let marker = getMarker(lat, lon, weather);
+            map.setView([lat, lon], 15);
+            map.addLayer(marker);
+
+            const div = document.querySelector("#airq");
+
+            const air = data.air_quality.results;
+
+            // TODO: Look for a way to add multiple popups which should be shown
+            // when the marker is clicked. A popup should be added for each
+            // sensor reading of the air quality results.
+            // Check this example: https://stackoverflow.com/questions/38957585/how-can-i-open-multiple-popups-in-leaflet-marker-at-a-time
+
+            const sensors = [];
+
+            if (air.length > 0) {
+              let p = document.createElement("p");
+              p.textContent = `Readings: ${air.length}`;
+
+              div.append(p);
+              air.forEach((result) => {
+                // Get sensor marker
+                // sLat = Sensor Latitude, sLon = Sensor Longitude
+                let { latitude, longitude } = result.coordinates;
+
+                // Sensor Marker
+                let sMarker = L.marker([latitude, longitude]);
+                map.addLayer(sMarker);
+                sensors.push(sMarker);
+
+                // Code fragment from: https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula
+                let distance = calculateHaversineDistance(
+                  marker.getLatLng(),
+                  sMarker.getLatLng()
+                );
+
+                let popupHTML = `<strong>Sensor: </strong>${
+                  result.location
+                }<br /><strong>Lat: </strong>${latitude}&deg;, <strong>Lon: </strong>${longitude}&deg;<br>
+                <strong>Distance: </strong>${distance.toFixed(3)} km
+                <hr />`;
+
+                result.measurements.forEach((measurement) => {
+                  let { parameter, value, unit } = measurement;
+
+                  popupHTML += `<strong>${parameter.toUpperCase()}: </strong> ${value} ${unit}<br />`;
+                });
+
+                sMarker.bindPopup(popupHTML);
+              });
+            } else {
+              let p = document.createElement("p");
+              p.textContent = "No measurements";
+              div.append(p);
+            }
+
+            const {
+              text = weather.current.condition.text,
+              celsius = weather.current.temp_c,
+              name = weather.location.name,
+              country = weather.location.country,
+              lastReading = weather.current.last_updated,
+            } = weather;
+
+            sensors.forEach((s) => {
+              L.polyline([s.getLatLng(), marker.getLatLng()]).addTo(map);
+            });
+
+            marker.bindPopup(
+              `<strong>Lat: </strong>${lat}&deg;, <strong>Lon: </strong>${lon}&deg;<br />
+            <strong>Temp: </strong>${celsius}&deg; C<br />
+            <strong>Condition: </strong>${text}<br />
+            <strong>Location: </strong>${name}, ${country}<br />
+            <strong>Last Reading: </strong>${lastReading}`
+            );
+          });
+        } else {
+          console.log("No geolocation data available");
+        }
+      }
+
+      function calculateHaversineDistance(latlng1, latlng2) {
+        let lat1 = latlng1.lat;
+        let lon1 = latlng1.lng;
+        let lat2 = latlng2.lat;
+        let lon2 = latlng2.lng;
+
+        let R = 6371; // Earth's radius
+        let p = Math.PI / (360 / 2); // 360 degrees / 2
+        let c = Math.cos;
+        let a =
+          0.5 -
+          Math.cos((lat2 - lat1) * p) / 2 +
+          (Math.cos(lat1 * p) *
+            Math.cos(lat2 * p) *
+            (1 - Math.cos((lon2 - lon1) * p))) /
+            2;
+
+        return R * 2 * Math.asin(Math.sqrt(a)); // 2 * R
+      }
+
+      function getMarker(lat, lon, weather) {
+        const icon = L.icon({
+          iconUrl: `${weather.current.condition.icon}`,
+          iconSize: [96, 96],
+          iconAnchor: [48, 48],
+        });
+
+        let marker = L.marker([lat, lon], { icon: icon });
+
+        return marker;
+      }
+
+      async function getData(lat, lon) {
+        const res = await fetch(`/weather/${lat},${lon}`);
+
+        const json = await res.json();
+
+        return json;
+      }
+    </script>
+  </body>
+</html>
