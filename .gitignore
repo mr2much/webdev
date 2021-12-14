@@ -1,4 +1,7 @@
 node_modules/
+build
+npm-debug.log
+.env
 JavaScript30
 bootcamp
 flexboxtest
