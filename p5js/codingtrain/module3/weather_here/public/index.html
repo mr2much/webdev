@@ -53,6 +53,21 @@
       let data;
       let btnSubmit = document.querySelector("#submit");
 
+      btnSubmit.addEventListener("click", async (e) => {
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        };
+
+        const res = await fetch("/weather", options);
+        const json = await res.json();
+
+        console.log(json.data);
+      });
+
       function leafletMap() {
         const map = L.map("map").setView([0, 0], 0);
 

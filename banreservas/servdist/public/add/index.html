@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agregar Servidores</title>
+    <link rel="stylesheet" href="../res//css/app.css" />
+  </head>
+  <body>
+    <div id="nav">
+      <a href="/">Home</a> | <a href="/add">Agregar</a> |
+      <a href="#">Contactos</a> |
+      <a href="#">Documentacion & Procedimientos</a>
+    </div>
+    <form class="form" action="/add" method="post">
+      <div>
+        <label for="server-name">Servidor:</label>
+        <input
+          id="server-name"
+          type="text"
+          name="server"
+          required
+          aria-required="true"
+        />
+        <p><span id="error"></span></p>
+      </div>
+      <p>
+        <label for="dns">DNS:</label>
+        <input id="dns" type="text" name="dns" />
+      </p>
+      <p>
+        <label for="server-function">Funci&#243;n:</label>
+        <input id="server-function" type="text" name="server-function" />
+      </p>
+      <p>
+        <label for="ip">IP:</label>
+        <input id="ip" type="text" name="ip" />
+      </p>
+      <p>
+        <label for="os_support">Soporte OS (Memoria, Discos, CPU):</label>
+        <input id="os_support" type="text" name="os_support" />
+      </p>
+      <p>
+        <label for="app_support">Soporte Aplicación:</label>
+        <input id="app_support" type="text" name="app_support" />
+      </p>
+
+      <button id="agregar" type="submit">Agregar</button>
+      <button type="reset">Limpiar</button>
+    </form>
+
+    <span id="status"></span>
+    <script src="../res/js/add.js"></script>
+  </body>
+</html>

@@ -1,9 +1,11 @@
 const express = require("express");
 const fetch = require("node-fetch");
-
+const Datastore = require("nedb");
 const app = express();
 const port = "3000";
 const weatherAPI_key = "aeaf67d82874488f8cf75614212611";
+
+const database = new Datastore("database.db");
 
 app.listen(port, () => {
   console.log(`Connected and listening on port: ${port}`);
@@ -15,7 +17,7 @@ app.use(express.json({ limit: "1mb" }));
 
 // Make new /weather endpoint on the server
 app.get("/weather/:latlon", async (req, res) => {
-  console.log("I got a request!");
+  console.log("I got a get request!");
 
   const latlon = req.params.latlon.split(",");
 
@@ -36,4 +38,14 @@ app.get("/weather/:latlon", async (req, res) => {
   };
 
   res.json(data);
+});
+
+app.post("/weather", async (req, res) => {
+  console.log("I got a post request!");
+
+  const data = req.body;
+
+  console.log(data);
+
+  res.json({ status: "success", data: data });
 });
