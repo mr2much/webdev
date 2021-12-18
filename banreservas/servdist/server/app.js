@@ -1,34 +1,30 @@
 const createError = require("http-errors");
 const express = require("express");
 const fetch = require("node-fetch");
-const Datastore = require("nedb");
+
 const fs = require("fs");
-const path = require("path");
+// const path = require("path");
 const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 const logger = require("morgan");
 
-const app = express();
+const servers = require("./api/servers");
 
-const __dir = "./db";
-const __db = "servidoresxunidadgssd.db";
-const dbFilePath = path.join(__dir, __db);
+const app = express();
 
 app.use(logger("dev"));
 app.use(express.json({ limit: "1mb" }));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-const database = new Datastore(dbFilePath);
-database.loadDatabase();
-app.get("/", async (req, res, next) => {
-  database.find({}, (err, entries) => {
-    if (err) {
-      next(err);
-    }
+app.use(cors());
 
-    res.json(entries);
-  });
+app.get("/", async (req, res, next) => {
+  res.json({ message: "Hello World!" });
 });
+
+app.use("/api/v1/servers", servers);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
