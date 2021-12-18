@@ -1,26 +1,15 @@
 const express = require("express");
-const Datastore = require("nedb");
-const path = require("path");
-
-const __dir = "./db";
-const __db = "servidoresxunidadgssd.db";
-const dbFilePath = path.join(__dir, __db);
 
 const router = express.Router();
 
-const database = new Datastore(dbFilePath);
-database.loadDatabase();
+const queries = require("../db/queries");
 
-router.get("/", (req, res, next) => {
-  // database.find({}, (err, entries) => {
-  //   if (err) {
-  //     next(err);
-  //   }
+// All requests that come here are prefixed with /api/v1/servers
 
-  //   res.json(entries);
-  // });
+router.get("/", async (req, res) => {
+  const entries = await queries.getAll();
 
-  res.json([]);
+  res.json(entries);
 });
 
 module.exports = router;
