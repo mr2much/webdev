@@ -7,5 +7,27 @@
     <title>Document</title>
     <script defer src="index.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div id="nav">
+      <a href="/">Home</a> | <a href="/add">Agregar</a> |
+      <a href="#">Contactos</a> |
+      <a href="#">Documentacion & Procedimientos</a>
+    </div>
+    <h1>Listado de servidores en Produccion - Sistemas Distribuidos</h1>
+
+    <form>
+      <label for="search">Servidor</label>
+      <input id="search" type="text" />
+      <button id="clear">Limpiar</button>
+    </form>
+
+    <main class="container">
+      <ul id="matches"></ul>
+    </main>
+
+    <script src="./js/commands/cancel.js"></script>
+    <script src="./js/commands/edit.js"></script>
+    <script src="./js/commands/remove.js"></script>
+    <script src="./js/commands/save.js"></script>
+  </body>
 </html>
