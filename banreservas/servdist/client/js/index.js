@@ -38,7 +38,7 @@ ulServer.addEventListener("click", buttonListeners);
 
 async function buttonListeners(e) {
   if (e.target instanceof HTMLButtonElement) {
-    const { className } = e.target;
+    const { id } = e.target;
     const servID = e.target.parentNode.parentNode.id;
     const parentContainer = e.target.parentNode.parentNode;
 
@@ -47,7 +47,7 @@ async function buttonListeners(e) {
       container: parentContainer,
     };
 
-    const data = await commands[className](params);
+    const data = await commands[id](params);
 
     console.log(data);
   }
@@ -76,23 +76,38 @@ function findMatches(searchTerm, servers) {
   });
 }
 
+// <div class="card">
+//   <h5 class="card-header">Featured</h5>
+//   <div class="card-body">
+//     <h5 class="card-title">Special title treatment</h5>
+//     <p class="card-text">
+//       With supporting text below as a natural lead-in to additional content.
+//     </p>
+//     <a href="#" class="btn btn-primary">
+//       Go somewhere
+//     </a>
+//   </div>
+// </div>;
+
 function getHTMLString(server) {
   const template = document.createElement("template");
   template.innerHTML = `
-        <li class="server-entry" id=${server._id}>
-            <div class="content">
-                <p><strong>Servidor: </strong><span class="server">${server.server}</span></p>
-                <p><strong>DNS: </strong><span class="dns">${server.dns}</span></p>
-                <p><strong>Función: </strong><span class="function">${server.function}</span></p>
-                <p><strong>IP: </strong><span class="ip">${server.ip}</span></p>
-                <p><strong>Soporte OS (Memoria, Discos, CPU): </strong><span class="os_support">${server.os_support}</span></p>
-                <p><strong>Soporte Aplicación: </strong><span class="app_support">${server.app_support}</span></p>
+        <li class="server-entry list-group-item" id=${server._id}>
+            <div class="card content border-0">
+                <h5 class="card-header"><strong>Servidor: </strong><span class="server">${server.server}</span></h5>
+                <div class="card-body flex-column">                  
+                  <p class="card-text"><strong>DNS: </strong><span class="dns">${server.dns}</span></p>
+                  <p><strong>Función: </strong><span class="function">${server.function}</span></p>                  
+                  <p><strong>IP: </strong><span class="ip">${server.ip}</span></p>
+                  <p><strong>Soporte OS (Memoria, Discos, CPU): </strong><span class="os_support">${server.os_support}</span></p>
+                  <p><strong>Soporte Aplicación: </strong><span class="app_support">${server.app_support}</span></p>
+                </div>
             </div>
-            <div>
-                <button class="save hidden">Grabar</button>
-                <button class="cancel hidden">Cancelar</button>
-                <button class="edit">Editar</button>
-                <button class="remove">Eliminar</button>
+            <div class="btn-group" role="group">
+                <button id="save" class="btn btn-success save hidden">Grabar</button>
+                <button id="cancel" class="btn btn-warning cancel hidden">Cancelar</button>
+                <button id="edit" class="btn btn-primary edit">Editar</button>
+                <button id="remove" class="btn btn-danger remove">Eliminar</button>
             </div>
         </li>`;
 

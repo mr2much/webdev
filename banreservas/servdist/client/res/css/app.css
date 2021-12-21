@@ -25,6 +25,7 @@ span {
 }
 
 span[contenteditable="true"] {
+  color: #333;
   background-color: #fff !important;
 }
 
@@ -32,7 +33,7 @@ span[contenteditable="true"] {
   display: none;
 }
 
-.server-entry {
+/* .server-entry {
   background: #ffe133;
   margin: 1.5rem;
   padding: 1.35rem;
@@ -45,7 +46,7 @@ span[contenteditable="true"] {
 
 .server-entry:hover {
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
-}
+} */
 
 #error,
 #status {
