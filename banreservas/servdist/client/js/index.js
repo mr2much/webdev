@@ -76,19 +76,6 @@ function findMatches(searchTerm, servers) {
   });
 }
 
-// <div class="card">
-//   <h5 class="card-header">Featured</h5>
-//   <div class="card-body">
-//     <h5 class="card-title">Special title treatment</h5>
-//     <p class="card-text">
-//       With supporting text below as a natural lead-in to additional content.
-//     </p>
-//     <a href="#" class="btn btn-primary">
-//       Go somewhere
-//     </a>
-//   </div>
-// </div>;
-
 function getHTMLString(server) {
   const template = document.createElement("template");
   template.innerHTML = `
@@ -103,11 +90,11 @@ function getHTMLString(server) {
                   <p><strong>Soporte Aplicación: </strong><span class="app_support">${server.app_support}</span></p>
                 </div>
             </div>
-            <div class="btn-group" role="group">
-                <button id="save" class="btn btn-success save hidden">Grabar</button>
-                <button id="cancel" class="btn btn-warning cancel hidden">Cancelar</button>
-                <button id="edit" class="btn btn-primary edit">Editar</button>
-                <button id="remove" class="btn btn-danger remove">Eliminar</button>
+            <div>
+                <button id="save" class="btn btn-outline-success save hidden">Grabar</button>
+                <button id="cancel" class="btn btn-outline-warning cancel hidden">Cancelar</button>
+                <button id="edit" class="btn btn-outline-info edit">Editar</button>
+                <button id="remove" class="btn btn-outline-danger remove">Eliminar</button>
             </div>
         </li>`;
 

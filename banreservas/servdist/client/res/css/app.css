@@ -1,4 +1,4 @@
-*,
+/* *,
 *::after,
 *::before {
   margin: 0;
@@ -9,7 +9,7 @@
 body {
   width: 50vw;
   margin: 0 auto;
-}
+} */
 
 ul {
   list-style: none;
