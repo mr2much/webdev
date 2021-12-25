@@ -12,4 +12,15 @@ module.exports = {
       });
     });
   },
+  getOne(id) {
+    return new Promise((resolve, reject) => {
+      connection.findOne({ _id: id }, function (err, doc) {
+        if (err) {
+          reject(err);
+        }
+
+        resolve(doc);
+      });
+    });
+  },
 };

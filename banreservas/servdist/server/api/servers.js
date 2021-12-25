@@ -12,4 +12,19 @@ router.get("/", async (req, res) => {
   res.json(entries);
 });
 
+router.get("/:id", async (req, res, next) => {
+  if (req.params.id.trim() == "") {
+    const error = new Error(`ID: ${id} is not a valid ID`);
+    next(error);
+  }
+
+  const server = await queries.getOne(req.params.id);
+
+  if (server) {
+    res.json(server);
+  } else {
+    next();
+  }
+});
+
 module.exports = router;
