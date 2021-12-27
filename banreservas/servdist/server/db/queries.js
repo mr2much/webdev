@@ -12,9 +12,9 @@ module.exports = {
       });
     });
   },
-  getOne(id) {
+  getOne(server) {
     return new Promise((resolve, reject) => {
-      connection.findOne({ _id: id }, function (err, doc) {
+      connection.findOne({ server: server.server }, function (err, doc) {
         if (err) {
           reject(err);
         }
@@ -27,9 +27,22 @@ module.exports = {
     return new Promise(async (resolve, reject) => {
       console.log("Received a request to create an entry");
 
-      const res = await this.getOne(server.id);
+      const res = await this.getOne(server);
 
-      console.log(res);
+      // if res is not null it means the entry exists
+      if (res) {
+        const error = `${server.server} already exists!`;
+        reject(error);
+      } else {
+        // save entry to DB
+        // connection.insert(server, (err, newDoc) => {
+        //   if(err) {
+        //     reject(err);
+        //   }
+        // });
+        console.log(server);
+        console.log("Saved correctly");
+      }
 
       // this.getOne({ server: data.server }, (err, server) => {
       //   if (err) {
