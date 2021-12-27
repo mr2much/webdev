@@ -1,5 +1,3 @@
-const alert = document.querySelector(".alert");
-const alertText = alert.querySelector("#alert-text");
 const form = document.querySelector("main form");
 
 form.addEventListener(
