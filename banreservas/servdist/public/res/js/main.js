@@ -66,27 +66,6 @@ async function fetchData() {
 
 searchBar.addEventListener("keyup", displayMatches);
 
-function displayMatches() {
-  const value = searchBar.value;
-  const matchArray = findMatches(value, servers);
-
-  ulServer.replaceChildren();
-
-  matchArray.map((server) => {
-    const html = getHTMLString(server);
-
-    ulServer.appendChild(html);
-  });
-}
-
-function findMatches(searchTerm, servers) {
-  return servers.filter((server) => {
-    const regex = new RegExp(searchTerm, "gi"); // g means globally, and i means that it's case insensitive
-
-    return server.server.match(regex);
-  });
-}
-
 function getHTMLString(server) {
   const template = document.createElement("template");
   template.innerHTML = `

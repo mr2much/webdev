@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/5/darkly/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="res/css/app.css" />
+    <script defer src="js/create.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand" aria-current="page" href="./">Home</a>
+          <nav class="nav nav-pills">
+            <a class="nav-link active" href="./create.html">Agregar</a>
+            <a class="nav-link" href="#">Contactos</a>
+            <a class="nav-link" href="#">Documentacion & Procedimientos</a>
+          </nav>
+          <form class="d-flex">
+            <fieldset class="d-flex" disabled>
+              <input
+                id="search"
+                class="form-control me-2"
+                placeholder="Servidor"
+                aria-label="Search"
+              />
+              <button id="clear" class="btn btn-outline-success">
+                Limpiar
+              </button>
+            </fieldset>
+          </form>
+        </div>
+      </nav>
+    </header>
+
+    <!-- svg path for exclamation triangle -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+      <symbol
+        id="exclamation-triangle-fill"
+        fill="currentColor"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+        />
+      </symbol>
+    </svg>
+
+    <main class="container w-50">
+      <form class="needs-validation" novalidate>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            name="server"
+            id="server"
+            placeholder="S460-Ejemplo"
+            required
+          />
+          <label for="server" class="form-label">Servidor</label>
+          <div class="invalid-feedback">
+            <div class="d-flex align-items-center">
+              <svg
+                class="bi flex-shrink-0 me-2"
+                width="24"
+                height="24"
+                role="img"
+                aria-label="Danger:"
+              >
+                <use xlink:href="#exclamation-triangle-fill" />
+              </svg>
+              Debe especificar el nombre del servidor
+            </div>
+          </div>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            name="dns"
+            id="dns"
+            placeholder="S460-Ejemplo.banreservas.com"
+          />
+          <label for="dns" class="form-label">DNS</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            name="func"
+            id="func"
+            placeholder="Uso del equipo"
+          />
+          <label for="func" class="form-label">Función</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            name="ip"
+            id="ip"
+            placeholder="127.0.0.1"
+          />
+          <label for="ip" class="form-label">IP</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            name="os_support"
+            id="os_support"
+            aria-describedby="os_supp_help"
+            placeholder="GSSD - Aplicaciones"
+          />
+          <label for="os_support" class="form-label"
+            >Soporte OS (Memoria, Discos, CPU)</label
+          >
+          <div id="os_supp_help" class="form-text text-warning">
+            Area que maneja casos relacionados al Sistema Operativo del equipo.
+          </div>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            name="app_support"
+            id="app_support"
+            aria-describedby="app_supp_help"
+            placeholder="GSSD - Aplicaciones"
+          />
+          <label for="app_support" class="form-label">Soporte Aplicación</label>
+          <div id="app_supp_help" class="form-text text-warning">
+            Area que maneja casos relacionados a la Aplicación que se ejecuta en
+            el equipo.
+          </div>
+        </div>
+        <div class="form-floating mb-3">
+          <textarea
+            type="text"
+            class="form-control"
+            name="notes"
+            id="notes"
+            placeholder="Cosas a tomar en cuenta al momento de reportar."
+          ></textarea>
+          <label for="notes" class="form-label">Notas</label>
+        </div>
+        <button type="submit" class="btn btn-success">Guardar</button>
+      </form>
+    </main>
+
+    <script src="js/shared.js"></script>
+  </body>
+</html>

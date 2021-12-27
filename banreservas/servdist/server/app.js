@@ -10,6 +10,7 @@ const cors = require("cors");
 const logger = require("morgan");
 
 const servers = require("./api/servers");
+const queries = require("./db/queries");
 
 const app = express();
 
@@ -20,11 +21,42 @@ app.use(cookieParser());
 
 app.use(cors());
 
+app.use("/api/v1/servers", servers);
+
 app.get("/", async (req, res, next) => {
   res.json({ message: "Hello World!" });
 });
 
-app.use("/api/v1/servers", servers);
+// all routes are appended with /api/v1/servers
+app.post("/", async (req, res, next) => {
+  if (validServer(req.body)) {
+    const { server, dns, func, ip, os_support, app_support, notes } = req.body;
+
+    notes = typeof notes === "undefined" ? "" : notes;
+
+    const entry = {
+      server,
+      dns,
+      func,
+      ip,
+      os_support,
+      app_support,
+      notes,
+      date_created: Date.now(),
+      last_modified: Date.now(),
+    };
+
+    const result = await queries.create(entry);
+    res.json(result);
+  } else {
+    const error = new Error("Invalid server");
+    next(error);
+  }
+});
+
+function validServer(server) {
+  return server.server == "string" && server.server.trim() != "";
+}
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
