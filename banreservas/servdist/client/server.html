@@ -10,7 +10,7 @@
       href="https://bootswatch.com/5/darkly/bootstrap.min.css"
     />
     <link rel="stylesheet" href="res/css/app.css" />
-    <script defer src="js/index.js"></script>
+    <script defer src="js/server.js"></script>
   </head>
   <body>
     <header>
@@ -22,7 +22,7 @@
             <a class="nav-link" href="#">Contactos</a>
             <a class="nav-link" href="#">Documentacion & Procedimientos</a>
           </nav>
-          <form class="d-flex">
+          <form class="d-flex" disabled>
             <input
               id="search"
               class="form-control me-2"
@@ -35,16 +35,10 @@
       </nav>
     </header>
 
-    <h1>Listado de servidores en Produccion - Sistemas Distribuidos</h1>
-
     <main class="container w-50">
-      <ul id="matches" class="list-group"></ul>
+      <section class="row"></section>
     </main>
 
     <script src="js/shared.js"></script>
-    <script src="./js/commands/cancel.js"></script>
-    <script src="./js/commands/edit.js"></script>
-    <script src="./js/commands/remove.js"></script>
-    <script src="./js/commands/save.js"></script>
   </body>
 </html>
