@@ -1008,3 +1008,4 @@
 {"server":"S460-AppFinApp2","dns":"S460-AppFinApp2.reservas.brrd.com","function":"Aplicaciones Financieras","ip":"172.22.52.39","os_support":"GSSD - Web","app_support":"GSSD - Web","_id":"zfFoTrkGnoxcW5Fp"}
 {"server":"S460-Mejora01","dns":"s460-mejora01.reservas.brrd.com","function":"Operaciones Monitoreo y Seguimiento (Julian Bodden)","ip":"172.22.43.210","os_support":"GSSD - Aplicaciones","app_support":"Operaciones","_id":"zq2husLmSUCBy36T"}
 {"server":"S460-CTXLIC","dns":"S460-CTXLIC.reservas.brrd.com","function":"Citrix XenApp XenDesktop","ip":"172.22.49.205","os_support":"GSSD - Aplicaciones","app_support":"GSSD - Aplicaciones","_id":"zuF2ez2idYSB12qG"}
+{"server":"s460-Prueba","dns":"","func":"","ip":"","os_support":"","app_support":"","notes":"","date_created":1640759574401,"last_modified":1640759574401,"_id":"HwslFf5LQIgw7w7R"}
