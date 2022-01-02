@@ -28,7 +28,6 @@ router.get("/:id", async (req, res, next) => {
 });
 
 router.post("/", async (req, res, next) => {
-  console.log("Received post request!");
   if (validServer(req.body)) {
     const { server, dns, func, ip, os_support, app_support, notes } = req.body;
 
@@ -53,8 +52,7 @@ router.post("/", async (req, res, next) => {
         next(error);
       });
   } else {
-    console.log("There was an error with: " + req.body);
-    const error = new Error("Invalid server");
+    const error = new Error(`Invalid server: ${req.body}`);
     next(error);
   }
 });

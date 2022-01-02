@@ -35,11 +35,14 @@ form.addEventListener(
 
     createServerEntry(entry)
       .then((result) => {
-        console.log(result);
-        // window.location = "./";
+        if (result.error) {
+          throw result.error;
+        }
+
+        window.location = "./";
       })
       .catch((error) => {
-        console.log(error);
+        return error;
       });
   },
   false
