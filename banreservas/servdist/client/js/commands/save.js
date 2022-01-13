@@ -26,9 +26,7 @@ async function save({ __id, container }) {
     span.contentEditable = false;
   });
 
-  container.querySelectorAll("button").forEach((button) => {
-    button.classList.toggle("hidden");
-  });
+  hideShowButtons(container);
 
   return json;
 }
