@@ -18,7 +18,7 @@ router.get("/:id", async (req, res, next) => {
     next(error);
   }
 
-  const server = await queries.getOne(req.params.id);
+  const server = await queries.findByID(req.params.id);
 
   if (server) {
     res.json(server);

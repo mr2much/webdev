@@ -12,6 +12,17 @@ module.exports = {
       });
     });
   },
+  findByID(id) {
+    return new Promise((resolve, reject) => {
+      connection.findOne({ _id: id }, function (err, doc) {
+        if (err) {
+          reject(err);
+        }
+
+        resolve(doc);
+      });
+    });
+  },
   getOne(server) {
     return new Promise((resolve, reject) => {
       connection.findOne({ server: server.server }, function (err, doc) {

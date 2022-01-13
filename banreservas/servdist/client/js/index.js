@@ -37,13 +37,25 @@ ulServer.addEventListener("click", buttonListeners);
 async function buttonListeners(e) {
   if (e.target instanceof HTMLButtonElement) {
     const { id } = e.target;
-    const servID = e.target.parentNode.parentNode.id;
+    const servID = e.target.parentNode.parentNode.getAttribute("data-id");
     const parentContainer = e.target.parentNode.parentNode;
+    const buttonContainer = parentContainer.querySelector(".button-group");
+    const cardData = parentContainer.querySelectorAll(".content span");
+
+    let server = getContentData(cardData);
+    // server.__id = servID;
+
+    // console.log(server);
+
+    console.log(await fetchSingleServerData(servID));
 
     const params = {
       __id: servID,
-      container: parentContainer,
+      container: cardData,
+      buttons: buttonContainer,
     };
+
+    console.log(parentContainer);
 
     const data = await commands[id](params);
 
