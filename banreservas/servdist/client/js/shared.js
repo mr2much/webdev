@@ -10,18 +10,36 @@ function getHTMLString(server) {
   template.innerHTML = `
           <li class="server-entry list-group-item" data-id=${server._id}>
               <div class="card content border-0">
-                  <h5 class="card-header"><strong>Servidor: </strong><span class="server">${server.server}</span></h5>
+                  <h5 class="card-header"><strong>Servidor: </strong><span class="server">${
+                    server.server
+                  }</span></h5>
                   <div class="card-body flex-column">                  
-                    <p class="card-text"><strong>DNS: </strong><span class="dns">${server.dns}</span></p>
-                    <p><strong>Función: </strong><span class="function">${server.func}</span></p>                  
-                    <p><strong>IP: </strong><span class="ip">${server.ip}</span></p>
-                    <p><strong>Soporte OS (Memoria, Discos, CPU): </strong><span class="os_support">${server.os_support}</span></p>
-                    <p><strong>Soporte Aplicación: </strong><span class="app_support">${server.app_support}</span></p>
-                    <p><strong>Notas: </strong><span class="notes">${server.notes}</
+                    <p class="card-text"><strong>DNS: </strong><span class="dns">${
+                      server.dns
+                    }</span></p>
+                    <p><strong>Función: </strong><span class="function">${
+                      server.func
+                    }</span></p>                  
+                    <p><strong>IP: </strong><span class="ip">${
+                      server.ip
+                    }</span></p>
+                    <p><strong>Soporte OS (Memoria, Discos, CPU): </strong><span class="os_support">${
+                      server.os_support
+                    }</span></p>
+                    <p><strong>Soporte Aplicación: </strong><span class="app_support">${
+                      server.app_support
+                    }</span></p>
+                    <p><strong>Notas: </strong><span class="notes">${
+                      server.notes
+                    }</
                     span></p>
-                    <p><strong>Fecha de Creación: </strong><span class="date_created">${server.date_created}</
+                    <p><strong>Fecha de Creación: </strong><span class="date_created">${getLocaleString(
+                      server.date_created
+                    )}</
                     span></p>
-                    <p><strong>Ultima Modificación: </strong><span class="last_modified">${server.last_modified}</
+                    <p><strong>Ultima Modificación: </strong><span class="last_modified">${getLocaleString(
+                      server.last_modified
+                    )}</
                     span></p>
                   </div>
               </div>
@@ -36,21 +54,33 @@ function getHTMLString(server) {
   return template.content.firstElementChild;
 }
 
+function getLocaleString(timestamp) {
+  return new Date(timestamp).toLocaleString();
+}
+
 function hideShowButtons(container) {
   container.querySelectorAll("button").forEach((button) => {
     button.classList.toggle("hidden");
   });
 }
 
-function getContentData(entries) {
+function getContentData(container) {
   const server = {
-    server: entries[0].textContent,
-    dns: entries[1].textContent,
-    function: entries[2].textContent,
-    ip: entries[3].textContent,
-    os_support: entries[4].textContent,
-    app_support: entries[5].textContent,
+    server: container[0].textContent,
+    dns: container[1].textContent,
+    function: container[2].textContent,
+    ip: container[3].textContent,
+    os_support: container[4].textContent,
+    app_support: container[5].textContent,
+    notes: container[6].textContent,
+    date_created: container[7].textContent,
+    last_modified: container[8].textContent,
   };
+
+  // TODO: Agregar
+  //   Notas:
+  //   Fecha de Creación:
+  //   Ultima Modificación:
 
   return server;
 }

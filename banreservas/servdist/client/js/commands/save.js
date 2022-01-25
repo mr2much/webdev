@@ -1,6 +1,5 @@
-async function save({ __id, container }) {
-  const data = getContentData(container.querySelectorAll(".content span"));
-  data._id = __id;
+async function save({ __id, container, buttons }) {
+  data = getContentData(container);
 
   // should call update on the database
   const options = {
@@ -11,22 +10,25 @@ async function save({ __id, container }) {
     body: JSON.stringify(data),
   };
 
-  const res = await fetch(`/${__id}`, options);
+  const res = await fetch(`${API_URL}/${__id}`, options);
   const json = await res.json();
+
+  console.log(`Updated server: ${json}`);
 
   // after updating, fetchData again
   servers = [];
-  await fetchData();
+  const entries = await fetchData();
+  servers.push(...entries);
 
   // display matches again
   displayMatches();
 
   // disable edit mode
-  container.querySelectorAll(".content span").forEach((span) => {
+  container.forEach((span) => {
     span.contentEditable = false;
   });
 
-  hideShowButtons(container);
+  hideShowButtons(buttons);
 
   return json;
 }
