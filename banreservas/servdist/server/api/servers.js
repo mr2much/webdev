@@ -27,6 +27,23 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+router.put("/:id", async (req, res, next) => {
+  if (validServer(req.body)) {
+    // query to update
+    queries
+      .update(req.params.id, req.body)
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((error) => {
+        next(error);
+      });
+  } else {
+    const error = new Error(`Invalid server: ${req.body}`);
+    next(error);
+  }
+});
+
 router.post("/", async (req, res, next) => {
   if (validServer(req.body)) {
     const { server, dns, func, ip, os_support, app_support, notes } = req.body;

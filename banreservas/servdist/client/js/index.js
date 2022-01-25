@@ -8,7 +8,7 @@ const commands = {
   save,
 };
 
-const servers = [];
+let servers = [];
 
 (async function () {
   const entries = await getServers();
@@ -47,15 +47,13 @@ async function buttonListeners(e) {
 
     // console.log(server);
 
-    console.log(await fetchSingleServerData(servID));
+    // console.log(await fetchSingleServerData(servID));
 
     const params = {
       __id: servID,
       container: cardData,
       buttons: buttonContainer,
     };
-
-    console.log(parentContainer);
 
     const data = await commands[id](params);
 
