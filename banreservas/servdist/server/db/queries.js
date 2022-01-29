@@ -6,7 +6,6 @@ module.exports = {
       connection.find({}, (err, entries) => {
         if (err) {
           reject(err);
-          return;
         }
 
         resolve(entries);
@@ -18,7 +17,6 @@ module.exports = {
       connection.findOne({ _id: id }, function (err, doc) {
         if (err) {
           reject(err);
-          return;
         }
 
         resolve(doc);
@@ -35,7 +33,6 @@ module.exports = {
         async (err, numReplaced) => {
           if (err) {
             reject(err);
-            return;
           }
 
           connection.loadDatabase();
@@ -49,7 +46,6 @@ module.exports = {
       connection.findOne({ server: server.server }, function (err, doc) {
         if (err) {
           reject(err);
-          return;
         }
 
         resolve(doc);
@@ -64,16 +60,33 @@ module.exports = {
       if (res) {
         const error = new Error(`${server.server} already exists!`);
         reject(error);
-        return;
       } else {
         // save entry to DB
         connection.insert(server, (err, newDoc) => {
           if (err) {
             reject(err);
-            return;
           }
 
           resolve(newDoc);
+        });
+      }
+    });
+  },
+  delete(id) {
+    return new Promise(async (resolve, reject) => {
+      const res = await this.findByID(id);
+
+      // If res is null it means the ID does not exists
+      if (!res) {
+        const error = new Error(`Server entry matching ID ${id} not found!`);
+        reject(error);
+      } else {
+        connection.remove({ _id: id }, {}, function (err, numRemoved) {
+          if (err) {
+            reject(err);
+          }
+
+          resolve(numRemoved);
         });
       }
     });

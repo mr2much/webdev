@@ -44,7 +44,7 @@ function getHTMLString(server) {
                   </div>
               </div>
               <div class="button-group">
-                  <button id="save" class="btn btn-outline-success save hidden">Grabar</button>
+                  <button id="save" class="btn btn-outline-success save hidden">Actualizar</button>
                   <button id="cancel" class="btn btn-outline-warning cancel hidden">Cancelar</button>
                   <button id="edit" class="btn btn-outline-info edit">Editar</button>
                   <button id="remove" class="btn btn-outline-danger remove">Eliminar</button>
@@ -76,11 +76,6 @@ function getContentData(container) {
     date_created: container[7].textContent,
     last_modified: container[8].textContent,
   };
-
-  // TODO: Agregar
-  //   Notas:
-  //   Fecha de Creación:
-  //   Ultima Modificación:
 
   return server;
 }
