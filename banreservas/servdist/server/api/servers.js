@@ -74,6 +74,17 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  queries
+    .delete(req.params.id)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
 function validServer(server) {
   return typeof server.server == "string" && server.server.trim() != "";
 }

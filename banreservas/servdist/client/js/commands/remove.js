@@ -1,17 +1,17 @@
 async function remove({ __id }) {
-  const options = {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
+  const serverToDelete = await fetchSingleServerData(__id);
 
-  const res = await fetch(`/${__id}`, options);
-  const json = await res.json();
+  let isDelete = confirm(
+    `Está seguro de que desea eliminar el servidor ${serverToDelete.server}?`
+  );
 
-  servers = [];
-  await fetchData();
-  displayMatches();
+  if (isDelete) {
+    const options = {
+      method: "DELETE",
+    };
 
-  return json;
+    fetch(`${API_URL}/${__id}`, options);
+
+    window.location = "./";
+  }
 }
