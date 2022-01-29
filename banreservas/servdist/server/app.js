@@ -1,16 +1,15 @@
 const createError = require("http-errors");
 const express = require("express");
-const fetch = require("node-fetch");
+// const fetch = require("node-fetch");
 
 const fs = require("fs");
-// const path = require("path");
+
 const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
+
 const cors = require("cors");
 const logger = require("morgan");
 
 const servers = require("./api/servers");
-const queries = require("./db/queries");
 
 const app = express();
 

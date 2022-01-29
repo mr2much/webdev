@@ -42,13 +42,6 @@ async function buttonListeners(e) {
     const buttonContainer = parentContainer.querySelector(".button-group");
     const cardData = parentContainer.querySelectorAll(".content span");
 
-    // let server = getContentData(cardData);
-    // server.__id = servID;
-
-    // console.log(server);
-
-    // console.log(await fetchSingleServerData(servID));
-
     const params = {
       __id: servID,
       container: cardData,
