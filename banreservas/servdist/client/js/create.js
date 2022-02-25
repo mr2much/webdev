@@ -36,12 +36,14 @@ form.addEventListener(
     createServerEntry(entry)
       .then((result) => {
         if (result.error) {
+          console.log(`Hubo un error: ${result.error}`);
           throw result.error;
         }
 
         window.location = "./";
       })
       .catch((error) => {
+        console.log(`Error en el catch: ${error}`);
         return error;
       });
   },
