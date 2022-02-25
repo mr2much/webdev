@@ -66,7 +66,7 @@ router.post("/", async (req, res, next) => {
         res.json(result);
       })
       .catch((error) => {
-        next(error);
+        res.json(error);
       });
   } else {
     const error = new Error(`Invalid server: ${req.body}`);

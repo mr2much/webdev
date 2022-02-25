@@ -301,7 +301,6 @@
 {"server":"S460-SISNAPA","dns":"S460-SISNAPA.extranet.brrd.com","func":"Transferencia a la Tesoreria apliacion Sisnapa","ip":"10.0.98.15","os_support":"GSSD - Aplicaciones","app_support":"GSSD - Aplicaciones","_id":"HnOLdLXEk3JRy5Bh"}
 {"server":"S460-KMFApp03","dns":"s460-kmfapp03.reservas.brrd.com","func":"App Personas AppServer (KMF V8)","ip":"10.0.81.143","os_support":"GSSD - Aplicaciones","app_support":"GSSD - Aplicaciones","_id":"HogSj0mv7AGKdJOm"}
 {"server":"S460-DYNADB01","dns":"S460-DYNADB01.reservas.brrd.com","func":"SQL Proyecto Migraci›n Dynamic R3 Nodo 1","ip":"172.22.47.30","os_support":"GSSD - Aplicaciones","app_support":"DBA SQL","_id":"HwKauMmVkAoaAKa6"}
-{"server":"s460-Prueba","dns":"","func":"","ip":"","os_support":"","app_support":"","notes":"","date_created":1640759574401,"last_modified":1640759574401,"_id":"HwslFf5LQIgw7w7R"}
 {"server":"S460-vDB012012","dns":"S460-vDB012012.reservas.brrd.com","func":"Bases de Datos SQL","ip":"172.22.43.190","os_support":"GSSD - Aplicaciones","app_support":"DBA SQL","_id":"HxeeVbtRzIMaOiuU"}
 {"server":"S460-APINDB02","dns":"S460-APINDB02.reservas.brrd.com","func":"Base de Datos (App Pin TC) Nodo 2","ip":"172.22.47.246","os_support":"GSSD - Aplicaciones","app_support":"DBA SQL","_id":"Hxggo1JsTIo7YEVc"}
 {"server":"S460-TellerWK17","dns":"s460-tellerwk17.reservas.brrd.com","func":"Teller Clientes -Citrix Worker Server 17","ip":"172.22.49.111","os_support":"GSSD - Aplicaciones","app_support":"GSSD - Aplicaciones","_id":"I16ht3WL6CCmUzsM"}
@@ -748,7 +747,7 @@
 {"server":"S460-CitasApp1","dns":"S460-CitasAPP1.extranet.brrd.com","func":"EFlow","ip":"10.0.81.153","os_support":"GSSD - Aplicaciones","app_support":"GSSD - Aplicaciones","_id":"imZAE7ZBd1mmbiAc"}
 {"server":"S460-XenPVS3","dns":"S460-XenPVS3.reservas.brrd.com","func":"Teller Client Citrix Farm Provisioning Server","ip":"172.22.49.28","os_support":"GSSD - Aplicaciones","app_support":"GSSD - Aplicaciones","_id":"inNjEAnkmsCL9qD6"}
 {"server":"S460-vSRBW02","dns":"S460-vSRBW02","func":"Filial Seguros Reservas - Integrador servicios Externos","ip":"10.0.97.228","os_support":"GSSD - Web","app_support":"GSSD - Web","_id":"j7J4l7gOEhH3AZRK"}
-{"server":"S460-SwiftAPP02","dns":"S460-SwiftAPP02","func":"SWIFT App 2","ip":"10.15.15.32","os_support":"GSSD - Web","app_support":"GSSD - Web","_id":"jAkm7rWHMiLy4X1q"}
+{"server":"S460-SwiftAPP02","dns":"S460-SwiftAPP02","func":"SWIFT App 2","ip":"10.15.15.32","os_support":"GSSD - Web","app_support":"GSSD - Web","_id":"jAkm7rWHMiLy4X1q","function":"SWIFT App 2","notes":"No reportar procesos de este equipo. Nodo pasivo","date_created":"Invalid Date","last_modified":1644986356314}
 {"server":"S460-CPMAPP","dns":"S460-CPMAPP.reservas.brrd.com","func":"Servidor Aplicativo Proyecto CPM. Capital Humano.","ip":"172.22.47.86","os_support":"GSSD - Aplicaciones","app_support":"GSSD - Aplicaciones","_id":"jDlBAn0dJcRFIcFS"}
 {"server":"S460-SQLSIS02","dns":"S460-SQLSIS02.reservas.brrd.com","func":"SQL Integration Services","ip":"172.22.43.214","os_support":"GSSD - Aplicaciones","app_support":"DBA SQL","_id":"jG3RlHgTnjyaBFEK"}
 {"server":"s460-voiceiddb2","dns":"s460-VoiceIdDB2.reservas.brrd.com","func":"VoiceID DB Server","ip":"172.22.7.99","os_support":"GSSD - Aplicaciones","app_support":"Telecomunicaciones","_id":"jI1SpkE3Zzj3MpbR"}
@@ -1009,3 +1008,4 @@
 {"server":"S460-AppFinApp2","dns":"S460-AppFinApp2.reservas.brrd.com","func":"Aplicaciones Financieras","ip":"172.22.52.39","os_support":"GSSD - Web","app_support":"GSSD - Web","_id":"zfFoTrkGnoxcW5Fp"}
 {"server":"S460-Mejora01","dns":"s460-mejora01.reservas.brrd.com","func":"Operaciones Monitoreo y Seguimiento (Julian Bodden)","ip":"172.22.43.210","os_support":"GSSD - Aplicaciones","app_support":"Operaciones","_id":"zq2husLmSUCBy36T"}
 {"server":"S460-CTXLIC","dns":"S460-CTXLIC.reservas.brrd.com","func":"Citrix XenApp XenDesktop","ip":"172.22.49.205","os_support":"GSSD - Aplicaciones","app_support":"GSSD - Aplicaciones","_id":"zuF2ez2idYSB12qG"}
+{"server":"s460-ejemplo","dns":"s460-ejemplo.banreservas.com","func":"Joder la paciencia","ip":"10.0.0.3","os_support":"GSSD - Aplicaciones","app_support":"GSSD - Aplicaciones","notes":"Prueba","date_created":1644986754163,"last_modified":1644986754163,"_id":"PREWl4lRJJz7Nx3i"}

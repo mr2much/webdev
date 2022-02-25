@@ -17,20 +17,11 @@
       <nav class="navbar navbar-dark bg-primary">
         <div class="container-fluid">
           <a class="navbar-brand" aria-current="page" href="./">Home</a>
-          <nav class="nav nav-pills">
+          <nav class="nav nav-pills mx-auto">
             <a class="nav-link" href="./create.html">Agregar</a>
             <a class="nav-link" href="#">Contactos</a>
             <a class="nav-link" href="#">Documentacion & Procedimientos</a>
           </nav>
-          <form class="d-flex">
-            <input
-              id="search"
-              class="form-control me-2"
-              placeholder="Servidor"
-              aria-label="Search"
-            />
-            <button id="clear" class="btn btn-outline-success">Limpiar</button>
-          </form>
         </div>
       </nav>
     </header>
@@ -38,7 +29,17 @@
     <!-- TODO: Add this to the search bar -->
 
     <main class="container w-50">
+      <form class="d-flex">
+        <input
+          id="search"
+          class="form-control me-2"
+          placeholder="Servidor"
+          aria-label="Search"
+        />
+        <button id="clear" class="btn btn-outline-success">Limpiar</button>
+      </form>
       <h1>Listado de servidores en Produccion - Sistemas Distribuidos</h1>
+
       <ul id="matches" class="list-group"></ul>
     </main>
 
