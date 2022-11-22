@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="https://www.w3.org/1999/xhtml"
+  xmlns:v="urn:schemas-microsoft-com:vml"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <title></title>
+    <!--[if mso]>
+      <style>
+        body {
+          background-color: #f2f2f2 !important;
+        }
+        table {
+          border-collapse: collapse;
+          border-spacing: 0;
+          border: none;
+          margin: 0;
+        }
+        div,
+        td {
+          padding: 0;
+        }
+        div {
+          margin: 0 !important;
+        }
+      </style>
+      <noscript>
+        <xml>
+          <o:OfficeDocumentSettings>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+          </o:OfficeDocumentSettings>
+        </xml>
+      </noscript>
+    <![endif]-->
+    <style>
+      :root {
+        color-scheme: light dark;
+        supported-color-schemes: light dark;
+      }
+
+      table,
+      td,
+      div,
+      h1,
+      p {
+        font-family: Arial, sans-serif;
+      }
+
+      table,
+      td {
+        border: 0px solid #000000 !important;
+        border: none !important;
+        border-width: 0 !important;
+        border-style: none !important;
+      }
+    </style>
+  </head>
+
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      word-spacing: normal;
+      background-color: #f2f2f2;
+    "
+  >
+    <div
+      role="article"
+      aria-roledescription="email"
+      lang="en"
+      style="
+        text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        background-color: #ffffff !important;
+        width: 100%;
+        max-width: 600px;
+        margin: 20px auto;
+      "
+    >
+      <table
+        align="center"
+        role="presentation"
+        style="width: 100%; border: none; border-spacing: 0"
+      >
+        <tr>
+          <td
+            width="15"
+            height="auto"
+            background="https://www.banreservas.com.do/CDN/MonitoreoTI/medium.png"
+            align="center"
+            valign="top"
+            style="
+              background: url('https://www.banreservas.com.do/CDN/MonitoreoTI/medium.png')
+                repeat-y;
+              background-size: cover;
+              background-position: center;
+              margin: 0;
+              padding: 0;
+              max-width: 15px;
+              width: 15px;
+            "
+          ></td>
+          <td align="center" style="padding: 0; margin: 0">
+            <!--[if mso]>
+              <table role="presentation" align="center" style="width: 600px;">
+                <tr>
+                  <td style="padding: 20px 0;">
+            <![endif]-->
+            <table
+              role="presentation"
+              style="
+                width: 100%;
+                max-width: 600px;
+                border: none;
+                border-spacing: 0;
+                text-align: left;
+                font-family: Arial, sans-serif;
+                font-size: 16px;
+                line-height: 22px;
+                background-color: #fffffe;
+                color: #363636;
+              "
+              bgcolor="#FFFFFE"
+            >
+              <tr>
+                <td>
+                  <!-- ${infoEvento} -->
+                  <table
+                    width="600"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                    align="center"
+                    style="max-width: 600px; width: 100%; line-height: 22px"
+                  >
+                    <tr>
+                      <td
+                        valign="top"
+                        style="
+                          background-color: #264e72;
+                          color: #fffffe;
+                          padding: 25px;
+                          border-bottom-width: 2px !important;
+                          border-bottom-color: #cccccc !important;
+                          border-bottom-style: solid !important;
+                        "
+                      >
+                        <p style="padding: 0; margin: 5px 0 5px 0">
+                          <strong>Cambio de Severidad</strong>
+                        </p>
+                        <h1 style="padding: 0; margin: 0; line-height: 1.2em">
+                          @{outputs('GetEventoModificado')?['body/Evento']}
+                        </h1>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        align="center"
+                        style="
+                          font-size: 1.2em;
+                          padding: 20px;
+                          margin: 0 0 0 0;
+                          background-color: rgb(0, 174, 240);
+                          color: #fffffe;
+                        "
+                      >
+                        <b>Ticket </b
+                        >@{outputs('GetEventoModificado')?['body/Title']}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        align="center"
+                        style="
+                          padding: 25px 60px 0px 60px;
+                          color: #909090;
+                          font-size: 1.1em;
+                        "
+                      >
+                        Este es un mensaje notificando que hubo un cambio de
+                        severidad en el evento
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" style="padding: 30px 50px 30px 50px">
+                        <!-- ${cambio} -->
+                        <table
+                          align="center"
+                          style="border-collapse: collapse; width: 100%"
+                          cellspacing="0"
+                          cellpadding="0"
+                          border="0"
+                        >
+                          <tr>
+                            <td
+                              align="center"
+                              style="padding: 20px; margin: 20px"
+                            >
+                              <table
+                                class="x_table-content x_container"
+                                align="center"
+                                style="
+                                  width: 100%;
+                                  padding: 20px;
+                                  border: 2px #00aef0 dashed !important;
+                                "
+                              >
+                                <tr>
+                                  <td
+                                    align="center"
+                                    style="
+                                      padding: 0 0 20px 0;
+                                      border-bottom-width: 2px !important;
+                                      border-bottom-style: solid !important;
+                                      border-bottom-color: #cccccc !important;
+                                    "
+                                  >
+                                    <table align="center" style="width: 100%">
+                                      <tr>
+                                        <td align="left">
+                                          <b>Razón del cambio:</b>
+                                        </td>
+                                        <td align="right">
+                                          @{triggerBody()['text_1']}
+                                        </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style="padding: 20px 0 0 0">
+                                    <table align="center" style="width: 100%">
+                                      <tr>
+                                        <td
+                                          align="center"
+                                          style="padding: 0; margin: 0"
+                                        >
+                                          <table align="center">
+                                            <tr>
+                                              <td style="padding: 0 0 10px 0">
+                                                Severidad Anterior
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td align="center">
+                                                <img
+                                                  width="32"
+                                                  height="48"
+                                                  style="margin: 0"
+                                                  src="https://www.banreservas.com.do/CDN/MonitoreoTI/medium.png"
+                                                  alt="@{outputs('GetEventoModificado')?['body/PrevSeverity/Value']}"
+                                                />
+                                              </td>
+                                            </tr>
+                                          </table>
+                                        </td>
+                                        <td align="center" style="width: 30%">
+                                          <img
+                                            align="center"
+                                            width="32"
+                                            style="
+                                              display: inline-block;
+                                              margin: 0 auto;
+                                              padding: 0;
+                                              max-width: 32px;
+                                              width: 100%;
+                                            "
+                                            src="https://www.banreservas.com.do/CDN/MonitoreoTI/Right_arrow.png"
+                                            alt="Cambio a"
+                                          />
+                                        </td>
+                                        <td style="padding: 0; margin: 0">
+                                          <table>
+                                            <tr>
+                                              <td style="padding: 0 0 10px 0">
+                                                Severidad Nueva
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <td align="center">
+                                                <img
+                                                  width="32"
+                                                  height="48"
+                                                  style="margin: 0"
+                                                  src="https://www.banreservas.com.do/CDN/MonitoreoTI/low.png"
+                                                  alt="@{outputs('GetEventoModificado')?['body/Severity/Value']}"
+                                                />
+                                              </td>
+                                            </tr>
+                                          </table>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="bottom" style="padding: 0px">
+                        <!-- Firma -->
+                        <img
+                          align="center"
+                          src="https://www.banreservas.com.do/CDN/MonitoreoTI/logo_monitoreo8.png"
+                          alt=""
+                          width="600"
+                          style="
+                            width: 100%;
+                            max-width: 600px;
+                            height: 200px;
+                            display: inline-block;
+                            border: 0;
+                            margin: auto;
+                            padding: 0;
+                          "
+                        />
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            <!--[if mso]>
+                  </td>
+                </tr>
+              </table>
+            <![endif]-->
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
