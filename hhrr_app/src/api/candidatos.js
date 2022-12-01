@@ -53,9 +53,11 @@ router.get('/:id', async (req, res, next) => {
       return;
     }
 
-    console.log('Found: ', data);
-
-    res.json(data);
+    if (data) {
+      res.json(data);
+    } else {
+      next();
+    }
   });
 
   // try {
