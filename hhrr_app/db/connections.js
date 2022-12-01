@@ -6,6 +6,4 @@ const config = require('../db_connections');
 const environmentConfig = config[environment];
 const ds = new Datastore(environmentConfig.connection);
 
-ds.loadDatabase();
-
 module.exports = ds;

@@ -30,48 +30,10 @@
           <th>Expectativa Salarial</th>
         </tr>
       </thead>
-      <tbody></tbody>
+      <tbody>
+        <!-- Aqui van los candidatos -->
+      </tbody>
     </table>
-    <script>
-      const tableBody = document.querySelector('table tbody');
-      loadEntries();
-
-      async function loadEntries() {
-        const res = await fetch('/api/v1/candidatos');
-        const data = await res.json();
-
-        let newRow = '';
-        for (candidato of data) {
-          newRow += `<tr id="${candidato._id}">
-            <td>
-              ${candidato.cedula}
-            </td>
-            <td>
-              ${candidato.nombres}
-            </td>
-            <td>
-              ${candidato.apellidos}
-            </td>
-            <td>
-              ${candidato.dob}
-            </td>
-            <td>
-              ${candidato.job_actual}
-            </td>
-            <td>
-              ${candidato.exp_salario}
-            </td>
-            <td>
-              <div>
-                <button>Editar</button>
-                <button>Eliminar</button>
-              </div>
-            </td>
-          </tr>`;
-        }
-
-        tableBody.innerHTML += newRow;
-      }
-    </script>
+    <script src="./js/script.js" charset="utf-8"></script>
   </body>
 </html>
