@@ -42,19 +42,24 @@ router.get('/', async (req, res, next) => {
 
 // Lee un candidato
 router.get('/:id', async (req, res, next) => {
-  try {
-    const { id } = req.params;
+  const { id } = req.params;
+  console.log('Leyendo uno: ', id);
+  res.json({
+    message: 'Got a request to READ one!',
+  });
+  // try {
+  //   const { id } = req.params;
 
-    const item = await candidatos.findOne({ _id: id });
+  //   const item = await candidatos.findOne({ _id: id });
 
-    if (!item) {
-      next();
-    }
+  //   if (!item) {
+  //     next();
+  //   }
 
-    return res.json(item);
-  } catch (error) {
-    next(error);
-  }
+  //   return res.json(item);
+  // } catch (error) {
+  //   next(error);
+  // }
 });
 
 // Crear un candidato
