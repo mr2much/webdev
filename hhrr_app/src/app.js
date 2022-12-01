@@ -9,6 +9,8 @@ const middlewares = require('./middlewares');
 const api = require('./api');
 
 const app = express();
+app.use(express.static('public'));
+app.use(express.json({ limit: '1mb' }));
 
 app.use(morgan('dev'));
 app.use(helmet());
