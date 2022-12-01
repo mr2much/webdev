@@ -43,10 +43,21 @@ router.get('/', async (req, res, next) => {
 // Lee un candidato
 router.get('/:id', async (req, res, next) => {
   const { id } = req.params;
+
+  console.log('Received params: ', req.params);
   console.log('Leyendo uno: ', id);
-  res.json({
-    message: 'Got a request to READ one!',
+
+  await db.findOne({ _id: id }, (err, data) => {
+    if (err) {
+      next(err);
+      return;
+    }
+
+    console.log('Found: ', data);
+
+    res.json(data);
   });
+
   // try {
   //   const { id } = req.params;
 

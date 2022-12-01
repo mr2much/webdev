@@ -34,7 +34,7 @@ function showCandidatos(listaCandidatos) {
     </td>
     <td>
       <div>
-        <a href="${API_URL}/index.html?id=${candidato._id}">Editar</a>
+        <a href="${API_URL}/${candidato._id}">Editar</a>
         <a href="#">Eliminar</a>
       </div>
     </td>
