@@ -1,6 +1,5 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-restricted-syntax */
-const API_URL = 'http://localhost:5000/api/v1/candidatos';
 const tableCandidatos = document.querySelector('table tbody');
 
 async function loadEntries() {
@@ -13,7 +12,7 @@ function showCandidatos(listaCandidatos) {
     const newRowCandidato = document.createElement('tr');
     tableCandidatos.appendChild(newRowCandidato);
 
-    newRowCandidato.outerHTML = `<tr id="${candidato._id}">
+    newRowCandidato.outerHTML = `<tr">
     <td>
       ${candidato.cedula}
     </td>
@@ -34,7 +33,7 @@ function showCandidatos(listaCandidatos) {
     </td>
     <td>
       <div>
-        <a href="${API_URL}/${candidato._id}">Editar</a>
+        <a href="/candidato.html?id=${candidato._id}">Editar</a>
         <a href="#">Eliminar</a>
       </div>
     </td>
