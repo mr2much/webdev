@@ -3,7 +3,9 @@ const environment = process.env.NODE_ENV || 'development';
 const Datastore = require('nedb');
 const config = require('../db_connections');
 
-const envieronmentConfig = config[environment];
-const connection = new Datastore(envieronmentConfig);
+const environmentConfig = config[environment];
+const ds = new Datastore(environmentConfig.connection);
 
-module.exports = connection;
+ds.loadDatabase();
+
+module.exports = ds;

@@ -2,29 +2,33 @@
 /* eslint-disable linebreak-style */
 const express = require('express');
 const multiparty = require('multiparty');
+// const queries = require('../../db/queries');
+
 const Datastore = require('nedb');
-const monk = require('monk');
-const Joi = require('@hapi/joi');
+// const monk = require('monk');
+// const Joi = require('@hapi/joi');
 
 // const db = monk(process.env.MONGO_URI);
 // const candidatos = db.get('candidatos');
 const db = new Datastore(process.env.NEDB_URI);
 const candidatos = db.loadDatabase();
 
-const schema = Joi.object({
-  cedula: Joi.string().trim().required(),
-  nombre: Joi.string().trim().required(),
-  apellidos: Joi.string().trim().required(),
-  dob: Joi.date().required(),
-  job_actual: Joi.string().trim(),
-  exp_salario: Joi.number().integer(),
-});
+// const schema = Joi.object({
+//   cedula: Joi.string().trim().required(),
+//   nombre: Joi.string().trim().required(),
+//   apellidos: Joi.string().trim().required(),
+//   dob: Joi.date().required(),
+//   job_actual: Joi.string().trim(),
+//   exp_salario: Joi.number().integer(),
+// });
 
 const router = express.Router();
 
 // Lee todos los candidatos
 router.get('/', async (req, res, next) => {
-  console.log(req.body);
+  // queries.getAll().then((data) => {
+  //   res.json(data);
+  // });
 
   db.find({}, (err, data) => {
     if (err) {
