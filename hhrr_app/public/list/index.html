@@ -33,12 +33,44 @@
       <tbody></tbody>
     </table>
     <script>
+      const tableBody = document.querySelector('table tbody');
       loadEntries();
 
       async function loadEntries() {
         const res = await fetch('/api/v1/candidatos');
         const data = await res.json();
-        console.log(data);
+
+        let newRow = '';
+        for (candidato of data) {
+          newRow += `<tr>
+            <td>
+              ${candidato.cedula}
+            </td>
+            <td>
+              ${candidato.nombres}
+            </td>
+            <td>
+              ${candidato.apellidos}
+            </td>
+            <td>
+              ${candidato.dob}
+            </td>
+            <td>
+              ${candidato.job_actual}
+            </td>
+            <td>
+              ${candidato.exp_salario}
+            </td>
+            <td>
+              <div>
+                <button>Editar</button>
+                <button>Eliminar</button>
+              </div>
+            </td>
+          </tr>`;
+        }
+
+        tableBody.innerHTML += newRow;
       }
     </script>
   </body>

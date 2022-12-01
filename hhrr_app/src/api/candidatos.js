@@ -58,11 +58,12 @@ router.post('/', async (req, res, next) => {
   const form = new multiparty.Form();
   form.on('error', next);
 
-  form.parse(req, function (err, fields) {
+  form.parse(req, (err, fields) => {
     if (err) {
       next(err);
     }
 
+    db.insert(fields);
     res.json(fields);
   });
 
