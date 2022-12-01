@@ -1,6 +1,7 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable linebreak-style */
 const express = require('express');
+const multiparty = require('multiparty');
 const Datastore = require('nedb');
 const monk = require('monk');
 const Joi = require('@hapi/joi');
@@ -23,6 +24,8 @@ const router = express.Router();
 
 // Lee todos los candidatos
 router.get('/', async (req, res, next) => {
+  console.log(req.body);
+
   db.find({}, (err, data) => {
     if (err) {
       next(err);
@@ -52,14 +55,25 @@ router.get('/:id', async (req, res, next) => {
 
 // Crear un candidato
 router.post('/', async (req, res, next) => {
-  try {
-    console.log(req.body);
-    const value = await schema.validateAsync(req.body);
-    const inserted = await candidatos.insert(value);
-    res.json(inserted);
-  } catch (error) {
-    next(error);
-  }
+  const form = new multiparty.Form();
+  form.on('error', next);
+
+  form.parse(req, function (err, fields) {
+    if (err) {
+      next(err);
+    }
+
+    res.json(fields);
+  });
+
+  // try {
+  //   console.log(req.body);
+  //   const value = await schema.validateAsync(req.body);
+  //   const inserted = await candidatos.insert(value);
+  //   res.json(inserted);
+  // } catch (error) {
+  //   next(error);
+  // }
 });
 
 // Actualizar un candidato

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../res/css/resets.css" />
+    <link rel="stylesheet" href="../res/css/styles.css" />
+  </head>
+  <body>
+    <section>
+      <a href="/">Home</a>
+      <a href="/new">Agregar Candidato</a>
+      <a href="./edit.html">Editar Candidato</a>
+      <a href="/list">Ver Candidatos</a>
+      <a href="./remove.html">Eliminar Candidato</a>
+    </section>
+
+    <h1>Listado de Candidatos</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Cedula</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Fecha de Nacimiento</th>
+          <th>Trabajo Actual</th>
+          <th>Expectativa Salarial</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+      loadEntries();
+
+      async function loadEntries() {
+        const res = await fetch('/api/v1/candidatos');
+        const data = await res.json();
+        console.log(data);
+      }
+    </script>
+  </body>
+</html>
