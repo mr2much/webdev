@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../res/css/resets.css" />
+    <link rel="stylesheet" href="../res/css/styles.css" />
+  </head>
+  <body>
+    <section>
+      <a href="/">Home</a>
+      <a href="/new">Agregar Candidato</a>
+      <a href="./edit.html">Editar Candidato</a>
+      <a href="/list">Ver Candidatos</a>
+      <a href="./remove.html">Eliminar Candidato</a>
+    </section>
+    <h1>Crear Nuevo Candidato</h1>
+    <section>
+      <form
+        action="/api/v1/candidatos/"
+        method="GET"
+        enctype="multipart/form-data"
+      >
+        <div>
+          <label for="cedula">Cedula:</label
+          ><input
+            id="cedula"
+            name="cedula"
+            type="text"
+            placeholder=""
+            required
+          />
+        </div>
+
+        <div>
+          <label for="nombres">Nombre:</label
+          ><input id="nombres" name="nombres" type="text" required />
+        </div>
+
+        <div>
+          <label for="apellidos">Apellidos:</label
+          ><input id="apellidos" name="apellidos" type="text" required />
+        </div>
+
+        <div>
+          <label for="dob">Fecha de Nacimiento:</label
+          ><input type="date" name="dob" id="dob" required />
+        </div>
+
+        <div>
+          <label for="job_actual">Lugar de Trabajo Actual:</label
+          ><input
+            id="job_actual"
+            name="job_actual"
+            type="text"
+            placeholder="EX: Nombre empresa"
+          />
+        </div>
+
+        <div>
+          <label for="salary_exp">Expectativa Salarial:</label
+          ><select name="exp_salario" id="salary_exp">
+            <option value="">--Elegir opcion--</option>
+            <option value="< 1000">< 1000</option>
+            <option value="< 5000">< 5000</option>
+            <option value="< 10000">< 10000</option>
+            <option value="10000">10000</option>
+            <option value="> 10000">> 10000</option>
+          </select>
+        </div>
+
+        <div>
+          <button type="submit">Guardar</button>
+          <button type="reset">Limpiar</button>
+          <button id="cancel-btn" type="button">Cancelar</button>
+        </div>
+      </form>
+    </section>
+
+    <script>
+      loadEntry();
+
+      async function loadEntry() {
+        // have to get data according to the currently selected id
+      }
+    </script>
+  </body>
+</html>
