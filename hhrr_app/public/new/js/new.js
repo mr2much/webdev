@@ -61,15 +61,3 @@ async function createNewCandidato(candidato) {
 
   return res.json();
 }
-
-// function validCandidato(candidato) {
-//   return (
-//     typeof candidato.nombres[0] === 'string' &&
-//     typeof candidato.apellidos[0] === 'string' &&
-//     typeof candidato.cedula[0] === 'string' &&
-//     candidato.cedula[0].length === 13 &&
-//     candidato.cedula[0].match('^[0-9]{3}-?[0-9]{7}-?[0-9]{1}$') !== null &&
-//     typeof candidato.dob[0] === 'string' &&
-//     candidato.dob[0].match('^[0-9]{4}-?[0-9]{2}-?[0-9]{2}$')
-//   );
-// }

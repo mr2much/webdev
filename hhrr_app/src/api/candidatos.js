@@ -88,28 +88,46 @@ function validCandidato(candidato) {
   );
 }
 
-// Crear un candidato
-router.post('/', async (req, res, next) => {
-  const candidato = req.body;
-
-  if (validCandidato(candidato)) {
-    db.insert(candidato);
-    db.findOne({ cedula: candidato.cedula }, (err, data) => {
-      if (err) {
-        next(err);
-        return;
-      }
-
-      if (data) {
-        res.json(data);
-      } else {
-        next();
-      }
-    });
+// Middleware that sends the appropriate response if the Candidato is valid
+function candidatoValidator(req, res, next) {
+  if (validCandidato(req.body)) {
+    next();
   } else {
     const error = new Error(`Candidato invalido! ${JSON.stringify(candidato)}`);
     next(error);
   }
+}
+
+// Crear un candidato
+router.post('/', candidatoValidator, (req, res, next) => {
+  const { cedula, nombres, apellidos, dob, job_actual, exp_salario } = req.body;
+
+  const candidato = {
+    cedula,
+    nombres,
+    apellidos,
+    dob,
+    job_actual,
+    exp_salario,
+  };
+
+  db.insert(candidato);
+
+  // After inserting, tries to get the newly created Candidato
+  db.findOne({ cedula: candidato.cedula }, (err, data) => {
+    if (err) {
+      next(err);
+      return;
+    }
+
+    if (data) {
+      res.json(data);
+    } else {
+      // if we were unable to retrieve the new Candidato, an error ocurred
+      const error = new Error(`Error when inserting candidato: ${candidato}`);
+      next(error);
+    }
+  });
 
   // const form = new multiparty.Form();
   // form.on('error', next);
