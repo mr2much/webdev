@@ -7,8 +7,19 @@
     <title>Document</title>
   </head>
   <body>
+    <section>
+      <a href="/">Home</a>
+      <a href="/new">Agregar Candidato</a>
+      <a href="/list">Ver Candidatos</a>
+    </section>
+
+    <main>
+      <section id="candidato"></section>
+    </main>
     <script src="./js/global.js" charset="utf-8"></script>
     <script>
+      const candidatoSection = document.querySelector('#candidato');
+
       const candidato_id = parseIDFromURL();
 
       function getCandidato(id) {
@@ -16,7 +27,17 @@
       }
 
       function showCandidato(candidato) {
-        console.log(candidato);
+        candidatoSection.innerHTML += `
+        <div>
+            <h2>${candidato.nombres} ${candidato.apellidos}</h2>
+            <p>Cedula: ${candidato.cedula}</p>
+            <p>Fecha de Nacimiento: ${candidato.dob}</p>
+            <p>Trabajo Actual: ${candidato.job_actual}</p>
+            <p>Expectativa Salarial: ${candidato.exp_salario}</p>
+            <a href="#">Editar</a>
+            <a href="#">Eliminar</a>
+        </div>
+        `;
       }
 
       getCandidato(candidato_id).then(showCandidato);

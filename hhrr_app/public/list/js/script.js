@@ -33,7 +33,7 @@ function showCandidatos(listaCandidatos) {
     </td>
     <td>
       <div>
-        <a href="/candidato.html?id=${candidato._id}">Editar</a>
+        <a href="/candidato.html?id=${candidato._id}">Ver Detalles</a>
         <a href="#">Eliminar</a>
       </div>
     </td>
