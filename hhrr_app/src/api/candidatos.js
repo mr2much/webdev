@@ -169,28 +169,59 @@ router.post('/', candidatoValidator, (req, res, next) => {
 });
 
 // Actualizar un candidato
-router.put('/:id', async (req, res, next) => {
-  try {
-    console.log(req.body);
+router.put('/:id', validCandidato, (req, res, next) => {
+  const {
+    _id: id,
+    cedula,
+    nombres,
+    apellidos,
+    dob,
+    job_actual,
+    exp_salario,
+  } = req.body;
 
-    const { id } = req.params;
-    const item = await candidatos.findOne({ _id: id });
+  const replaceCandidato = {
+    _id: id,
+    cedula,
+    nombres,
+    apellidos,
+    dob,
+    job_actual,
+    exp_salario,
+  };
 
-    if (!item) {
-      next();
+  db.findOne({ _id: req.params.id }, (err, data) => {
+    if (err) {
+      next(err);
     }
 
-    const value = await schema.validateAsync(req.body);
-    await candidatos.update(
-      { _id: id },
-      {
-        $set: value,
-      }
-    );
-    res.json(value);
-  } catch (error) {
-    next(error);
-  }
+    if (data) {
+      // do something
+      res.json(`Record found: ${data}`);
+      //res.json(replaceCandidato);
+    } else {
+      const error = new Error(`Error with Candidato: ${data}`);
+      next(error);
+    }
+  });
+  // try {
+  //   console.log(req.body);
+  //   const { id } = req.params;
+  //   const item = await candidatos.findOne({ _id: id });
+  //   if (!item) {
+  //     next();
+  //   }
+  //   const value = await schema.validateAsync(req.body);
+  //   await candidatos.update(
+  //     { _id: id },
+  //     {
+  //       $set: value,
+  //     }
+  //   );
+  //   res.json(value);
+  // } catch (error) {
+  //   next(error);
+  // }
 });
 
 // Remover un candidato
