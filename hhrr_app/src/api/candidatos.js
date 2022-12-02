@@ -98,9 +98,8 @@ function candidatoValidator(req, res, next) {
   }
 }
 
-// Crear un candidato
-router.post('/', candidatoValidator, (req, res, next) => {
-  const { cedula, nombres, apellidos, dob, job_actual, exp_salario } = req.body;
+function getCandidatoFromBody(body) {
+  const { cedula, nombres, apellidos, dob, job_actual, exp_salario } = body;
 
   const candidato = {
     cedula,
@@ -110,6 +109,13 @@ router.post('/', candidatoValidator, (req, res, next) => {
     job_actual,
     exp_salario,
   };
+
+  return candidato;
+}
+
+// Crear un candidato
+router.post('/', candidatoValidator, (req, res, next) => {
+  const candidato = getCandidatoFromBody(req.body);
 
   db.insert(candidato);
 
@@ -170,25 +176,7 @@ router.post('/', candidatoValidator, (req, res, next) => {
 
 // Actualizar un candidato
 router.put('/:id', validCandidato, (req, res, next) => {
-  const {
-    _id: id,
-    cedula,
-    nombres,
-    apellidos,
-    dob,
-    job_actual,
-    exp_salario,
-  } = req.body;
-
-  const replaceCandidato = {
-    _id: id,
-    cedula,
-    nombres,
-    apellidos,
-    dob,
-    job_actual,
-    exp_salario,
-  };
+  const replaceCandidato = getCandidatoFromBody(req.body);
 
   db.findOne({ _id: req.params.id }, (err, data) => {
     if (err) {
