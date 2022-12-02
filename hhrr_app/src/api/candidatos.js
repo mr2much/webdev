@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 /* eslint-disable comma-dangle */
 /* eslint-disable linebreak-style */
 const express = require('express');
@@ -75,6 +76,18 @@ router.get('/:id', async (req, res, next) => {
   // }
 });
 
+function validCandidato(candidato) {
+  return (
+    typeof candidato.nombres[0] === 'string' &&
+    typeof candidato.apellidos[0] === 'string' &&
+    typeof candidato.cedula[0] === 'string' &&
+    candidato.cedula[0].length === 13 &&
+    candidato.cedula[0].match('^[0-9]{3}-?[0-9]{7}-?[0-9]{1}$') !== null &&
+    typeof candidato.dob[0] === 'string' &&
+    candidato.dob[0].match('^[0-9]{4}-?[0-9]{2}-?[0-9]{2}$')
+  );
+}
+
 // Crear un candidato
 router.post('/', async (req, res, next) => {
   const form = new multiparty.Form();
@@ -85,8 +98,14 @@ router.post('/', async (req, res, next) => {
       next(err);
     }
 
-    db.insert(fields);
-    res.json(fields);
+    // validate received info
+    if (validCandidato(fields)) {
+      db.insert(fields);
+      res.json(fields);
+    } else {
+      const error = new Error(`Candidato invalido! ${JSON.stringify(fields)}`);
+      next(error);
+    }
   });
 
   // try {
