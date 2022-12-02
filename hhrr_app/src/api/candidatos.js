@@ -2,7 +2,7 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable linebreak-style */
 const express = require('express');
-const multiparty = require('multiparty');
+
 // const queries = require('../../db/queries');
 
 const Datastore = require('nedb');
@@ -78,46 +78,67 @@ router.get('/:id', async (req, res, next) => {
 
 function validCandidato(candidato) {
   return (
-    typeof candidato.nombres[0] === 'string' &&
-    typeof candidato.apellidos[0] === 'string' &&
-    typeof candidato.cedula[0] === 'string' &&
-    candidato.cedula[0].length === 13 &&
-    candidato.cedula[0].match('^[0-9]{3}-?[0-9]{7}-?[0-9]{1}$') !== null &&
-    typeof candidato.dob[0] === 'string' &&
-    candidato.dob[0].match('^[0-9]{4}-?[0-9]{2}-?[0-9]{2}$')
+    typeof candidato.nombres === 'string' &&
+    typeof candidato.apellidos === 'string' &&
+    typeof candidato.cedula === 'string' &&
+    candidato.cedula.length === 13 &&
+    candidato.cedula.match('^[0-9]{3}-?[0-9]{7}-?[0-9]{1}$') !== null &&
+    typeof candidato.dob === 'string' &&
+    candidato.dob.match('^[0-9]{4}-?[0-9]{2}-?[0-9]{2}$')
   );
 }
 
 // Crear un candidato
 router.post('/', async (req, res, next) => {
-  const form = new multiparty.Form();
-  form.on('error', next);
+  const candidato = req.body;
 
-  form.parse(req, (err, fields) => {
-    if (err) {
-      next(err);
-    }
+  if (validCandidato(candidato)) {
+    db.insert(candidato);
+    db.findOne({ cedula: candidato.cedula }, (err, data) => {
+      if (err) {
+        next(err);
+        return;
+      }
 
-    // validate received info
-    if (validCandidato(fields)) {
-      const { nombres, apellidos, cedula, dob, job_actual, exp_salario } =
-        fields;
-      const newCandidato = {
-        cedula,
-        nombres,
-        apellidos,
-        dob,
-        job_actual,
-        exp_salario,
-      };
+      if (data) {
+        res.json(data);
+      } else {
+        next();
+      }
+    });
+  } else {
+    const error = new Error(`Candidato invalido! ${JSON.stringify(candidato)}`);
+    next(error);
+  }
 
-      db.insert(newCandidato);
-      res.json(newCandidato);
-    } else {
-      const error = new Error(`Candidato invalido! ${JSON.stringify(fields)}`);
-      next(error);
-    }
-  });
+  // const form = new multiparty.Form();
+  // form.on('error', next);
+
+  // form.parse(req, (err, fields) => {
+  //   if (err) {
+  //     next(err);
+  //   }
+
+  //   // validate received info
+  //   if (validCandidato(fields)) {
+  //     const { nombres, apellidos, cedula, dob, job_actual, exp_salario } =
+  //       fields;
+  //     const newCandidato = {
+  //       cedula,
+  //       nombres,
+  //       apellidos,
+  //       dob,
+  //       job_actual,
+  //       exp_salario,
+  //     };
+
+  //     db.insert(newCandidato);
+  //     res.json(newCandidato);
+  //   } else {
+  //     const error = new Error(`Candidato invalido! ${JSON.stringify(fields)}`);
+  //     next(error);
+  //   }
+  // });
 
   // try {
   //   console.log(req.body);
