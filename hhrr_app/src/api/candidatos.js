@@ -100,8 +100,19 @@ router.post('/', async (req, res, next) => {
 
     // validate received info
     if (validCandidato(fields)) {
-      db.insert(fields);
-      res.json(fields);
+      const { nombres, apellidos, cedula, dob, job_actual, exp_salario } =
+        fields;
+      const newCandidato = {
+        cedula,
+        nombres,
+        apellidos,
+        dob,
+        job_actual,
+        exp_salario,
+      };
+
+      db.insert(newCandidato);
+      res.json(newCandidato);
     } else {
       const error = new Error(`Candidato invalido! ${JSON.stringify(fields)}`);
       next(error);
