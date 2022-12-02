@@ -14,13 +14,12 @@
       <a href="/new">Agregar Candidato</a>
       <a href="/list">Ver Candidatos</a>
     </section>
-    <h1>Crear Nuevo Candidato</h1>
+    <h1>Editar Candidato</h1>
     <section>
-      <form
-        action="/api/v1/candidatos/"
-        method="GET"
-        enctype="multipart/form-data"
-      >
+      <!-- <form action="/api/v1/candidatos/"
+      method="POST"
+      enctype="multipart/form-data"> -->
+      <form>
         <div>
           <label for="cedula">Cedula:</label
           ><input
@@ -76,13 +75,7 @@
         </div>
       </form>
     </section>
-
-    <script>
-      loadEntry();
-
-      async function loadEntry() {
-        // have to get data according to the currently selected id
-      }
-    </script>
+    <script src="../js/global.js" charset="utf-8"></script>
+    <script src="./js/edit.js" charset="utf-8"></script>
   </body>
 </html>
