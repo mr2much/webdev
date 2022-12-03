@@ -181,11 +181,19 @@ router.put('/:id', candidatoValidator, (req, res, next) => {
     }
 
     if (data) {
-      // do something
-      res.json({
-        message: `Record found: ${JSON.stringify(data)}`,
-      });
-      //res.json(replaceCandidato);
+      db.update(
+        { _id: req.params.id },
+        { $set: replaceCandidato },
+        {},
+        (err, numReplaced) => {
+          if (err) {
+            next(err);
+          }
+
+          db.loadDatabase();
+          res.json({ message: `Replaced: ${numReplaced} entry` });
+        }
+      );
     } else {
       const error = new Error(`Error with Candidato: ${data}`);
       next(error);
