@@ -6,3 +6,7 @@ function parseIDFromURL() {
   const parts = window.location.search.match(/\?id\=(.*)/);
   return parts[1].trim();
 }
+
+function getCandidato(id) {
+  return fetch(`${API_URL}/${id}`).then((res) => res.json());
+}

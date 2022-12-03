@@ -22,10 +22,6 @@
 
       const candidato_id = parseIDFromURL();
 
-      function getCandidato(id) {
-        return fetch(`${API_URL}/${id}`).then((res) => res.json());
-      }
-
       function showCandidato(candidato) {
         candidatoSection.innerHTML += `
         <div>
@@ -34,7 +30,7 @@
             <p>Fecha de Nacimiento: ${candidato.dob}</p>
             <p>Trabajo Actual: ${candidato.job_actual}</p>
             <p>Expectativa Salarial: ${candidato.exp_salario}</p>
-            <a href="/edit/index.html?${candidato._id}">Editar</a>
+            <a href="/edit/index.html?id=${candidato._id}">Editar</a>
             <a href="#">Eliminar</a>
         </div>
         `;
