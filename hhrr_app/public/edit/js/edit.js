@@ -1,10 +1,11 @@
 /* eslint-disable linebreak-style */
 const idCandidato = parseIDFromURL();
 const form = document.querySelector('form');
+
 const btnCancel = document.querySelector('form #cancel-btn');
 
 btnCancel.addEventListener('click', (e) => {
-  console.log('Cancel button clicked!');
+  window.location = '/';
 });
 
 function prepopulateFormWithCandidatoInfo(candidato) {
@@ -21,4 +22,27 @@ getCandidato(idCandidato).then(prepopulateFormWithCandidatoInfo);
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+
+  const modifiedCandidato = validateFormGetCandidato(form);
+
+  if (modifiedCandidato) {
+    updateCandidato(modifiedCandidato).then((result) => {
+      console.log(result);
+      window.location = `/candidato.html?id=${idCandidato}`;
+    });
+  }
 });
+
+async function updateCandidato(candidato) {
+  const options = {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify(candidato),
+  };
+
+  const res = await fetch(`${API_URL}/${idCandidato}`, options);
+
+  return res.json();
+}

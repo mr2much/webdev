@@ -1,15 +1,12 @@
 /* eslint-disable linebreak-style */
-const form = document.querySelector('form');
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
+const btnCancel = document.querySelector('form #cancel-btn');
 
-  const newCandidato = validateForm(form);
-
-  createNewCandidato(newCandidato).then((result) => {
-    window.location = `/candidato.html?id=${result._id}`;
-  });
+btnCancel.addEventListener('click', (e) => {
+  window.location = '/';
 });
+
+const form = document.querySelector('form');
 
 async function createNewCandidato(candidato) {
   const options = {
@@ -23,3 +20,15 @@ async function createNewCandidato(candidato) {
 
   return res.json();
 }
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const newCandidato = validateFormGetCandidato(form);
+
+  if (newCandidato) {
+    createNewCandidato(newCandidato).then((result) => {
+      window.location = `/candidato.html?id=${result._id}`;
+    });
+  }
+});

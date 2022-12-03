@@ -45,9 +45,6 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   const { id } = req.params;
 
-  console.log('Received params: ', req.params);
-  console.log('Leyendo uno: ', id);
-
   await db.findOne({ _id: id }, (err, data) => {
     if (err) {
       next(err);
@@ -175,7 +172,7 @@ router.post('/', candidatoValidator, (req, res, next) => {
 });
 
 // Actualizar un candidato
-router.put('/:id', validCandidato, (req, res, next) => {
+router.put('/:id', candidatoValidator, (req, res, next) => {
   const replaceCandidato = getCandidatoFromBody(req.body);
 
   db.findOne({ _id: req.params.id }, (err, data) => {
@@ -185,7 +182,9 @@ router.put('/:id', validCandidato, (req, res, next) => {
 
     if (data) {
       // do something
-      res.json(`Record found: ${data}`);
+      res.json({
+        message: `Record found: ${JSON.stringify(data)}`,
+      });
       //res.json(replaceCandidato);
     } else {
       const error = new Error(`Error with Candidato: ${data}`);

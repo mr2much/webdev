@@ -11,7 +11,7 @@ function getCandidato(id) {
   return fetch(`${API_URL}/${id}`).then((res) => res.json());
 }
 
-function validateForm(form) {
+function validateFormGetCandidato(form) {
   const formData = new FormData(form);
 
   const cedula = formData.get('cedula');
