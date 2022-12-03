@@ -1,8 +1,14 @@
 /* eslint-disable linebreak-style */
 const idCandidato = parseIDFromURL();
 const form = document.querySelector('form');
+const btnCancel = document.querySelector('form #cancel-btn');
 
-function fillFormWithCandidato(candidato) {
+btnCancel.addEventListener('click', (e) => {
+  console.log('Cancel button clicked!');
+});
+
+function prepopulateFormWithCandidatoInfo(candidato) {
+  // We don't use FormData because formData.set() doesn't update the info on the page
   document.querySelector('#cedula').value = candidato.cedula;
   document.querySelector('#nombres').value = candidato.nombres;
   document.querySelector('#apellidos').value = candidato.apellidos;
@@ -11,4 +17,8 @@ function fillFormWithCandidato(candidato) {
   document.querySelector('#salary_exp').value = candidato.exp_salario;
 }
 
-getCandidato(idCandidato).then(fillFormWithCandidato);
+getCandidato(idCandidato).then(prepopulateFormWithCandidatoInfo);
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+});
