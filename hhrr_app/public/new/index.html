@@ -39,64 +39,119 @@
       </div>
     </nav>
 
-    <h1>Crear Nuevo Candidato</h1>
-    <section>
-      <form>
-        <div>
-          <label for="cedula">Cedula:</label
-          ><input
-            id="cedula"
-            name="cedula"
-            type="text"
-            placeholder=""
-            required
-          />
-        </div>
+    <div class="container-fluid">
+      <h1 class="text-center">Crear Nuevo Candidato</h1>
 
-        <div>
-          <label for="nombres">Nombre:</label
-          ><input id="nombres" name="nombres" type="text" required />
-        </div>
+      <div class="d-flex mt-5 p-2 justify-content-center">
+        <form>
+          <div class="row mb-3">
+            <label for="cedula" class="col-sm-6 col-form-label-lg my-auto"
+              >Cedula:</label
+            >
+            <div class="col-sm-6">
+              <input
+                id="cedula"
+                class="form-control"
+                name="cedula"
+                type="text"
+                placeholder="000-0000000-0"
+                required
+              />
+            </div>
+          </div>
 
-        <div>
-          <label for="apellidos">Apellidos:</label
-          ><input id="apellidos" name="apellidos" type="text" required />
-        </div>
+          <div class="row mb-3">
+            <label for="nombres" class="col-sm-6 col-form-label-lg my-auto"
+              >Nombre:</label
+            >
+            <div class="col-sm-6">
+              <input
+                id="nombres"
+                class="form-control"
+                name="nombres"
+                type="text"
+                placeholder="John"
+                required
+              />
+            </div>
+          </div>
 
-        <div>
-          <label for="dob">Fecha de Nacimiento:</label
-          ><input type="date" name="dob" id="dob" required />
-        </div>
+          <div class="row mb-3">
+            <label for="apellidos" class="col-form-label-lg col-sm-6 my-auto"
+              >Apellidos:</label
+            >
+            <div class="col-sm-6">
+              <input
+                id="apellidos"
+                class="form-control"
+                name="apellidos"
+                type="text"
+                placeholder="Doe"
+                required
+              />
+            </div>
+          </div>
 
-        <div>
-          <label for="job_actual">Lugar de Trabajo Actual:</label
-          ><input
-            id="job_actual"
-            name="job_actual"
-            type="text"
-            placeholder="EX: Nombre empresa"
-          />
-        </div>
+          <div class="row mb-3">
+            <label for="dob" class="col-form-label col-sm-6 my-auto"
+              >Fecha de Nacimiento:</label
+            >
+            <div class="col-sm-6 input-with-post-icon">
+              <input
+                type="date"
+                class="form-control"
+                name="dob"
+                id="dob"
+                required
+              />
+              <i class="fas fa-calendar input-prefix"></i>
+            </div>
+          </div>
 
-        <div>
-          <label for="salary_exp">Expectativa Salarial:</label
-          ><select name="exp_salario" id="salary_exp">
-            <option value="">--Elegir opcion--</option>
-            <option value="< 1000">< 1000</option>
-            <option value="< 5000">< 5000</option>
-            <option value="< 10000">< 10000</option>
-            <option value="10000">10000</option>
-            <option value="> 10000">> 10000</option>
-          </select>
-        </div>
+          <div class="row mb-3">
+            <label for="job_actual" class="form-label col-sm-6 my-auto"
+              >Lugar de Trabajo Actual:</label
+            >
+            <div class="col-md-6">
+              <input
+                id="job_actual"
+                class="form-control"
+                name="job_actual"
+                type="text"
+                placeholder="EX: Nombre empresa"
+              />
+            </div>
+          </div>
 
-        <div>
-          <button class="btn" type="submit">Guardar</button>
-          <button class="btn" type="reset">Limpiar</button>
-          <button id="cancel-btn" class="btn" type="button">Cancelar</button>
-        </div>
-      </form>
-    </section>
+          <div class="row mb-3">
+            <label for="salary_exp" class="form-label col-sm-6 my-auto"
+              >Expectativa Salarial:</label
+            >
+            <div class="col-md-6">
+              <select name="exp_salario" id="salary_exp" class="form-select">
+                <option value="">--Elegir opcion--</option>
+                <option value="< 1000">< 1000</option>
+                <option value="< 5000">< 5000</option>
+                <option value="< 10000">< 10000</option>
+                <option value="10000">10000</option>
+                <option value="> 10000">> 10000</option>
+              </select>
+            </div>
+          </div>
+
+          <div
+            class="btn-group col-12"
+            role="group"
+            aria-label="Controles de Formulario Candidato Nuevo"
+          >
+            <button class="btn btn-success" type="submit">Guardar</button>
+            <button id="cancel-btn" class="btn btn-warning" type="button">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
     <script src="../js/global.js" charset="utf-8"></script>
     <script src="./js/new.js" charset="utf-8"></script>
   </body>

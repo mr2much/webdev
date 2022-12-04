@@ -8,11 +8,13 @@ async function loadEntries() {
 }
 
 function showCandidatos(listaCandidatos) {
+  let rowCount = 0;
   listaCandidatos.forEach((candidato) => {
     const newRowCandidato = document.createElement('tr');
     tableCandidatos.appendChild(newRowCandidato);
 
     newRowCandidato.outerHTML = `<tr">
+    <th scope="row">${++rowCount}</th>
     <td>
       ${candidato.cedula}
     </td>
