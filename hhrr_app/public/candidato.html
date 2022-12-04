@@ -9,12 +9,16 @@
       rel="stylesheet"
       href="https://bootswatch.com/5/darkly/bootstrap.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
     <link rel="stylesheet" href="./res/css/styles.css" />
   </head>
   <body>
     <nav class="navbar navbar-expand-lg fixed-top bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">HHRR</a>
+        <a class="navbar-brand" href="/"><i class="fas fa-home fs-3"></i></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -29,8 +33,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/new"
-                >Agregar Candidato</a
+              <a class="nav-link" aria-current="page" href="/new"
+                ><span
+                  ><i
+                    class="fas fa-user-plus text-success fs-2 p-0 pe-2"
+                  ></i></span
+                >Nuevo Candidato</a
               >
             </li>
           </ul>
@@ -66,7 +74,7 @@
                 </ul>                
             </div>
             <div class="btn-group col-md-12 p-3" role="group" aria-label="Controles de Candidato">
-                <a href="/edit/index.html?id=${candidato._id}" class="btn  btn-success mt-2 col-md-5">Editar</a><button id="deleteBtn" class="btn btn-danger mt-2 col-md-5">Eliminar</button>
+                <a href="/edit/index.html?id=${candidato._id}" class="btn  btn-success mt-2 col-md-5"><span class="pe-2"><i class="fas fa-user-edit"></i></span>Editar</a><button id="deleteBtn" class="btn btn-danger mt-2 col-md-5"><span class="pe-2"><i class="fas fa-trash-alt"></i></span>Eliminar</button>
             </div>
         </div>`;
 

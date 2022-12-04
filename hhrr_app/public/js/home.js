@@ -34,8 +34,10 @@ function showCandidatos(listaCandidatos) {
       ${candidato.exp_salario}
     </td>
     <td>
-      <div>
-        <a href="/candidato.html?id=${candidato._id}">Ver Detalles</a>        
+      <div>      
+        <a style="color: inherit;" href="/candidato.html?id=${
+          candidato._id
+        }"><i class="fas fa-eye"></i></a>        
       </div>
     </td>
   </tr>`;
