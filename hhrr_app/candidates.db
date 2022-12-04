@@ -1,3 +1,1 @@
-{"replaceCandidato":{"cedula":"001-1686342-4","nombres":"undefined","apellidos":"undefined","dob":"1982-03-07","job_actual":"undefined","exp_salario":null},"_id":"R198GCVSZloe1L0b","cedula":"001-1686342-4","nombres":"Anubis","apellidos":"Lockward","dob":"1982-03-07","job_actual":"BanReservas","exp_salario":"10000"}
-{"replaceCandidato":{"cedula":"223-0064964-1","nombres":"Natasha","apellidos":"Reinoso","dob":"1988-07-02","job_actual":"Fancy Details","exp_salario":"10000"},"_id":"Xume9N8N5HAir131","cedula":"223-0064964-1","nombres":"Natasha","apellidos":"Reinoso","dob":"1988-07-02","job_actual":"Fancy Details","exp_salario":"< 1000"}
-{"cedula":"123-4567890-1","nombres":"John","apellidos":"Doe","dob":"2022-12-03","job_actual":"Funeraria Blandino","exp_salario":"","_id":"lVDSPK1u38WH3cQ8"}
+{"cedula":"001-1686342-4","nombres":"Anubis","apellidos":"Lockward","dob":"1982-03-07","job_actual":"BanReservas","exp_salario":"10000","_id":"mZYCXzfHDl7cBzKi"}

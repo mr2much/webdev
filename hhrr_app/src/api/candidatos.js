@@ -221,17 +221,33 @@ router.put('/:id', candidatoValidator, (req, res, next) => {
 
 // Remover un candidato
 router.delete('/:id', async (req, res, next) => {
-  try {
-    const { id } = req.params;
+  db.findOne({ _id: req.params.id }, (err, data) => {
+    if (err) {
+      next(err);
+    }
 
-    await candidatos.remove({ _id: id });
+    if (data) {
+      db.remove({ _id: req.params.id }, {}, (error, numRemoved) => {
+        if (error) {
+          next(err);
+        }
 
-    res.json({
-      message: 'Success',
-    });
-  } catch (error) {
-    next(error);
-  }
+        db.loadDatabase();
+        res.json({ message: `Removed ${numRemoved} entries` });
+      });
+    }
+  });
+  // try {
+  //   const { id } = req.params;
+
+  //   await candidatos.remove({ _id: id });
+
+  //   res.json({
+  //     message: 'Success',
+  //   });
+  // } catch (error) {
+  //   next(error);
+  // }
 });
 
 module.exports = router;
