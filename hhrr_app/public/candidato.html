@@ -49,10 +49,6 @@
       async function deleteCandidato(id) {
         const options = {
           method: 'DELETE',
-          headers: {
-            'content-type': 'application/json',
-          },
-          body: JSON.stringify(candidato),
         };
 
         const res = await fetch(`${API_URL}/${id}`, options);
