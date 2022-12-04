@@ -5,7 +5,7 @@ const form = document.querySelector('form');
 const btnCancel = document.querySelector('form #cancel-btn');
 
 btnCancel.addEventListener('click', (e) => {
-  window.location = '/';
+  window.location = `/candidato.html?id=${idCandidato}`;
 });
 
 function prepopulateFormWithCandidatoInfo(candidato) {
