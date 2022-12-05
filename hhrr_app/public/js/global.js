@@ -13,6 +13,8 @@ function getCandidato(id) {
   return fetch(`${API_URL}/${id}`).then((res) => res.json());
 }
 
+function getCandidatoFromCedula(cedula) {}
+
 function validaCedula(cedula) {
   return (
     typeof cedula === 'string' &&
