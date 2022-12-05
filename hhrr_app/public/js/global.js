@@ -3,7 +3,11 @@
 /* eslint-disable function-paren-newline */
 /* eslint-disable linebreak-style */
 
-const API_URL = 'http://localhost:5000/api/v1/candidatos';
+const API_URL =
+  window.location.hostname === 'localhost'
+    ? 'http://localhost:5000/api/v1/candidatos'
+    : 'https://managerhhrr.fly.dev/api/v1/candidatos';
+
 const darkThemePath = 'https://bootswatch.com/5/darkly/bootstrap.min.css';
 const lightThemePath = 'https://bootswatch.com/5/flatly/bootstrap.min.css';
 

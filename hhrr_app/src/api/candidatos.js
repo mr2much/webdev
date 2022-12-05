@@ -3,9 +3,9 @@
 /* eslint-disable linebreak-style */
 const express = require('express');
 const monk = require('monk');
-const { update } = require('../db/connections');
+const url = process.env.MONGO_URI || 'localhost/candidatos';
 
-const db = monk(process.env.MONGO_URI);
+const db = monk(url, { useCreateIndex: true, useNewUrlParser: true });
 const candidatos = db.get('candidato');
 
 candidatos.createIndex({ cedula: 1 }, { unique: true });
