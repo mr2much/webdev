@@ -71,7 +71,7 @@ function validateFormGetCandidato(form, message) {
 }
 
 function fixDateFormat(dateString, replaceChar) {
-  return new Date(
-    dateString.replace(`${replaceChar}`, '/')
-  ).toLocaleDateString();
+  return new Date(dateString.replace(`${replaceChar}`, '/')).toLocaleDateString(
+    'es-DO'
+  );
 }
