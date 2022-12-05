@@ -2,22 +2,27 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable linebreak-style */
 const express = require('express');
+const monk = require('monk');
+const { update } = require('../db/connections');
+
+const db = monk(process.env.MONGO_URI);
+const candidatos = db.get('candidato');
+
+candidatos.createIndex({ cedula: 1 }, { unique: true });
 
 // const queries = require('../../db/queries');
 
-const Datastore = require('nedb');
+// const Datastore = require('nedb');
 // const monk = require('monk');
 // const Joi = require('@hapi/joi');
 
-// const db = monk(process.env.MONGO_URI);
-// const candidatos = db.get('candidatos');
-const db = new Datastore({ autoload: true, filename: process.env.NEDB_URI });
+// const db = new Datastore({ autoload: true, filename: process.env.NEDB_URI });
 
-db.ensureIndex({ fieldName: 'cedula', unique: true }, (err) => {
-  if (err) throw err;
-});
+// db.ensureIndex({ fieldName: 'cedula', unique: true }, (err) => {
+//   if (err) throw err;
+// });
 
-const candidatos = db.loadDatabase();
+// db.loadDatabase();
 
 // const schema = Joi.object({
 //   cedula: Joi.string().trim().required(),
@@ -32,60 +37,21 @@ const router = express.Router();
 
 // Lee todos los candidatos
 router.get('/', async (req, res, next) => {
-  // queries.getAll().then((data) => {
-  //   res.json(data);
-  // });
-
-  db.find({}, (err, data) => {
-    if (err) {
-      next(err);
-      return;
-    }
-
-    res.json(data);
+  candidatos.find().then((candidates) => {
+    res.status(200);
+    res.json(candidates);
   });
 });
 
 // Lee un candidato con ID
 router.get('/:id', async (req, res, next) => {
-  console.log(`Got a request to get Candidato with ID: ${req.params.id}`);
   const { id } = req.params;
 
-  await db.findOne({ _id: id }, (err, data) => {
-    if (err) {
-      next(err);
-      return;
-    }
-
-    if (data) {
-      res.json(data);
-    } else {
-      next();
-    }
+  candidatos.findOne({ _id: id }).then((candidato) => {
+    res.status(200);
+    res.json(candidato);
   });
-
-  // try {
-  //   const { id } = req.params;
-
-  //   const item = await candidatos.findOne({ _id: id });
-
-  //   if (!item) {
-  //     next();
-  //   }
-
-  //   return res.json(item);
-  // } catch (error) {
-  //   next(error);
-  // }
 });
-
-// function validaCedula(cedula) {
-//   return (
-//     typeof cedula === 'string' &&
-//     cedula.length === 13 &&
-//     cedula.match('^[0-9]{3}-?[0-9]{7}-?[0-9]{1}$') !== null
-//   );
-// }
 
 function validaCedula(cedula) {
   return (
@@ -136,147 +102,54 @@ router.post('/', candidatoValidator, (req, res, next) => {
   const candidato = getCandidatoFromBody(req.body);
 
   if (candidato) {
-    db.insert(candidato, (err) => {
-      if (err) {
+    candidatos
+      .insert(candidato)
+      .then((createdCandidato) => {
+        console.log('Error');
+        res.status(200);
+        res.json(createdCandidato);
+      })
+      .catch((err) => {
         next(err);
-      } else {
-        db.findOne({ cedula: candidato.cedula }, (e, data) => {
-          if (e) {
-            next(e);
-          }
-
-          if (data) {
-            res.json(data);
-          } else {
-            const error = new Error(
-              `Error when inserting candidato: ${candidato}`
-            );
-            next(error);
-          }
-        });
-      }
-    });
+      });
   } else {
     const error = new Error(`Error when inserting candidato: ${candidato}`);
     next(error);
   }
-
-  // const form = new multiparty.Form();
-  // form.on('error', next);
-
-  // form.parse(req, (err, fields) => {
-  //   if (err) {
-  //     next(err);
-  //   }
-
-  //   // validate received info
-  //   if (validCandidato(fields)) {
-  //     const { nombres, apellidos, cedula, dob, job_actual, exp_salario } =
-  //       fields;
-  //     const newCandidato = {
-  //       cedula,
-  //       nombres,
-  //       apellidos,
-  //       dob,
-  //       job_actual,
-  //       exp_salario,
-  //     };
-
-  //     db.insert(newCandidato);
-  //     res.json(newCandidato);
-  //   } else {
-  //     const error = new Error(`Candidato invalido! ${JSON.stringify(fields)}`);
-  //     next(error);
-  //   }
-  // });
-
-  // try {
-  //   console.log(req.body);
-  //   const value = await schema.validateAsync(req.body);
-  //   const inserted = await candidatos.insert(value);
-  //   res.json(inserted);
-  // } catch (error) {
-  //   next(error);
-  // }
 });
 
 // Actualizar un candidato
 router.put('/:id', candidatoValidator, (req, res, next) => {
   const replaceCandidato = getCandidatoFromBody(req.body);
 
-  db.findOne({ _id: req.params.id }, (err, data) => {
-    if (err) {
-      next(err);
-    }
-
-    if (data) {
-      db.update(
-        { _id: req.params.id },
-        { $set: replaceCandidato },
-        {},
-        (err, numReplaced) => {
-          if (err) {
-            next(err);
-          }
-
-          db.loadDatabase();
-          res.json({ message: `Replaced: ${numReplaced} entry` });
-        }
-      );
-    } else {
-      const error = new Error(`Error with Candidato: ${data}`);
-      next(error);
-    }
-  });
-  // try {
-  //   console.log(req.body);
-  //   const { id } = req.params;
-  //   const item = await candidatos.findOne({ _id: id });
-  //   if (!item) {
-  //     next();
-  //   }
-  //   const value = await schema.validateAsync(req.body);
-  //   await candidatos.update(
-  //     { _id: id },
-  //     {
-  //       $set: value,
-  //     }
-  //   );
-  //   res.json(value);
-  // } catch (error) {
-  //   next(error);
-  // }
+  candidatos
+    .update({ _id: req.params.id }, { $set: replaceCandidato })
+    .then((updatedCandidato) => {
+      res.status(200);
+      res.json(updatedCandidato);
+    });
 });
 
 // Remover un candidato
 router.delete('/:id', async (req, res, next) => {
-  db.findOne({ _id: req.params.id }, (err, data) => {
+  candidatos.findOne({ _id: req.params.id }, (err, data) => {
     if (err) {
       next(err);
+      return;
     }
 
     if (data) {
-      db.remove({ _id: req.params.id }, {}, (error, numRemoved) => {
+      candidatos.remove({ _id: req.params.id }, {}, (error, numRemoved) => {
         if (error) {
           next(err);
+          return;
         }
 
-        db.loadDatabase();
+        res.status(200);
         res.json({ message: `Removed ${numRemoved} entries` });
       });
     }
   });
-  // try {
-  //   const { id } = req.params;
-
-  //   await candidatos.remove({ _id: id });
-
-  //   res.json({
-  //     message: 'Success',
-  //   });
-  // } catch (error) {
-  //   next(error);
-  // }
 });
 
 module.exports = router;
