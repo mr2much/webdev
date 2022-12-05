@@ -1,0 +1,48 @@
+.wrapper {
+  max-width: 75em;
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 1.75em;
+  grid-template-columns: 100%;
+  grid-template-areas:
+    'header'
+    'about-section'
+    'content'
+    'footer';
+  justify-content: center;
+}
+
+.wrapper .jumbotron {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.header {
+  background-position: center center;
+  background-image: url('../res/imgs/incident_mngr_hero.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  /*line-height: calc(1.2em + (1.45 - 1.2) * ((100vw - 46em) / (70 - 46)));*/
+  /*padding: 10vw 2em;*/
+  text-shadow: 0 0 10px rgba(100, 100, 100, 0.4),
+    0 0 20px rgba(100, 100, 100, 0.1), 0 0 30px rgba(255, 255, 255, 0.6);
+  text-align: center;
+  color: #fff;
+  height: 500px;
+}
+
+.screen-show {
+  display: block;
+  width: 200px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 500px;
+}
+
+.screen-show img {
+  display: inline-block;
+}

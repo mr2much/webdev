@@ -1,0 +1,352 @@
+<!-- Fondo Azul Oscuro BR=#264e72
+Fondo Azul Claro BR=rgb(0,174,240)
+Color Font Azul BR=#00aef0
+Azul cielo: rgb(171, 206, 249)
+-->
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if !mso]><!-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--<![endif]-->
+    <meta name="x-apple-disable-message-reformatting" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="supported-color-schemes" content="light dark" />
+    <title>
+      Notificación Evento Severidad
+      @{outputs('RevalidaEvento')?['body/Severity/Value']} -
+      @{outputs('RevalidaEvento')?['body/Evento']}
+    </title>
+    <!--[if mso]>
+      <noscript>
+        <xml>
+          <o:OfficeDocumentSettings>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+          </o:OfficeDocumentSettings>
+        </xml>
+      </noscript>
+      <style>
+        body {
+          background-color: #f2f2f2 !important;
+        }
+        table {
+          border-collapse: collapse;
+          border-spacing: 0;
+          border: none !important;
+          margin: 0;
+        }
+        div,
+        td {
+          padding: 0;
+        }
+        div {
+          margin: 0 !important;
+        }
+        .vml-black {
+          mso-color-alt: auto;
+        }
+      </style>
+    <![endif]-->
+    <style>
+      :root {
+        color-scheme: light dark;
+        supported-color-schemes: light dark;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      table,
+      td,
+      div,
+      h1,
+      th,
+      a,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        font-family: Arial, sans-serif;
+      }
+      table,
+      td {
+        border: 0px solid #000000 !important;
+        border: none !important;
+        border-width: 0 !important;
+        border-style: none !important;
+        border-color: #f2f2f2;
+      }
+      td,
+      th,
+      div,
+      p,
+      a {
+        font-size: 16px;
+        line-height: 25px;
+      }
+    </style>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+      word-spacing: normal;
+    "
+  >
+    <center>
+      <table
+        role="presentation"
+        aria-roledescription="email"
+        lang="en"
+        width="100%"
+        cellspacing="0"
+        cellpadding="0"
+        border="0"
+        align="center"
+        style="
+          text-size-adjust: 100%;
+          -webkit-text-size-adjust: 100%;
+          -ms-text-size-adjust: 100%;
+          max-width: 600px;
+          width: 100%;
+          border: none !important;
+          border-spacing: 0;
+          background-color: #fffffe;
+        "
+        bgcolor="#FFFFFE"
+      >
+        <tr>
+          <td
+            class="severity"
+            width="15"
+            style="
+              background: url('https://www.banreservas.com.do/CDN/MonitoreoTI/high.jpg')
+                repeat-y;
+              background-size: cover;
+              background-position: center;
+              margin: 0;
+              padding: 0;
+              max-width: 15px;
+              width: 15px;
+            "
+          ></td>
+          <td align="center" valign="top" style="padding: 0px">
+            <!--[if mso]>
+  <table role="presentation" align="center" style="width: 600px;">
+    <tr>
+      <td>
+<![endif]-->
+            <table
+              width="600"
+              cellspacing="0"
+              cellpadding="0"
+              border="0"
+              align="center"
+              style="
+                max-width: 600px;
+                width: 100%;
+                border: none;
+                border-spacing: 0;
+                text-align: left;
+                font-family: Arial, sans-serif;
+                font-size: 16px;
+                line-height: 22px;
+                color: #363636;
+              "
+            >
+              <tr>
+                <td align="center" valign="top" style="padding: 0px">
+                  <!-- ${infoEvento} -->
+                  <table
+                    width="600"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                    align="center"
+                    style="max-width: 600px; width: 100%"
+                  >
+                    <tr>
+                      <td align="center" valign="top" style="padding: 0px">
+                        <table
+                          width="100%"
+                          cellpadding="7"
+                          cellspacing="0"
+                          border="0"
+                          style="background-color:{colorStatus}"
+                        >
+                          <tr>
+                            <td
+                              align="left"
+                              valign="top"
+                              style="background-color: #264e72"
+                            >
+                              <h1 style="line-height: 32px; color: #fffffe">
+                                @{outputs('RevalidaEvento')?['body/Evento']}
+                              </h1>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="left" valign="top">
+                              <h4 style="line-height: 8px">
+                                Información del Evento
+                              </h4>
+                              <p style="line-height: 20px">
+                                <strong>Ticket:</strong>
+                                <a
+                                  href="#"
+                                  target="_blank"
+                                  style="
+                                    color: #66cccc;
+                                    text-decoration: underline;
+                                    line-height: 20px;
+                                  "
+                                >
+                                  @{outputs('RevalidaEvento')?['body/Title']}</a
+                                >
+                              </p>
+                              <table>
+                                <tr>
+                                  <td>
+                                    <img
+                                      src="https://www.banreservas.com.do/CDN/MonitoreoTI/high.jpg"
+                                      alt=""
+                                      width="20"
+                                      height="50"
+                                      style="
+                                        max-width: 20px;
+                                        height: 50px;
+                                        display: inline-block;
+                                        border: 0;
+                                        margin: auto;
+                                        padding: 0;
+                                      "
+                                    />
+                                  </td>
+                                  <td>
+                                    <p style="line-height: 20px">
+                                      <strong>Severidad:</strong>
+                                      @{outputs('RevalidaEvento')?['body/Severity/Value']}
+                                    </p>
+                                  </td>
+                                </tr>
+                              </table>
+                              <p style="line-height: 20px">
+                                <strong>Status:</strong> El personal técnico de
+                                <em
+                                  >@{outputs('RevalidaEvento')?['body/Area/Value']}</em
+                                >
+                                se encuentra trabajando para detectar, y
+                                corregir el inconveniente en el menor tiempo
+                                posible.
+                              </p>
+                              <p style="line-height: 20px">
+                                <strong>Hora de Inicio:</strong>
+                                @{variables('varHoraInicioCalculada')}
+                              </p>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" valign="top" style="padding: 0px">
+                  <!-- ${servicios} -->
+                  <h3
+                    style="
+                      text-align: left;
+                      padding: 0 0 0 7px;
+                      line-height: 8px;
+                    "
+                  >
+                    Detalles
+                  </h3>
+                  <table
+                    width="100%"
+                    cellpadding="7"
+                    cellspacing="0"
+                    border="0"
+                  >
+                    <tr>
+                      <td align="center" valign="top" style="padding: 0">
+                        <tr>
+                          <td align="Left" valign="top">
+                            <h4 style="line-height: 8px">
+                              Servicios Afectados
+                            </h4>
+                            <p style="line-height: 20px">
+                              @{variables('varFinalString')}
+                            </p>
+                          </td>
+                        </tr>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" valign="top" style="padding: 0px">
+                  <!-- ${detalles} -->
+                  <table
+                    width="100%"
+                    cellpadding="7"
+                    cellspacing="0"
+                    border="0"
+                  >
+                    <tr>
+                      <td align="center" valign="top" style="padding: 0">
+                        <tr>
+                          <td align="left" valign="top">
+                            <p style="line-height: 20px">
+                              <strong>Impacto:</strong>
+                              @{outputs('RevalidaEvento')?['body/Impacto']}
+                            </p>
+                          </td>
+                        </tr>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" valign="top" style="padding: 0">
+                  <img
+                    align="center"
+                    src="https://www.banreservas.com.do/CDN/MonitoreoTI/logo_monitoreo8.png"
+                    alt=""
+                    width="600"
+                    style="
+                      width: 100%;
+                      max-width: 600px;
+                      height: 200px;
+                      display: inline-block;
+                      border: 0;
+                      margin: auto;
+                      padding: 0;
+                    "
+                  />
+                </td>
+              </tr>
+            </table>
+            <!--[if mso]>
+            </td>
+          </tr>
+        </table>
+<![endif]-->
+          </td>
+        </tr>
+      </table>
+    </center>
+  </body>
+</html>
