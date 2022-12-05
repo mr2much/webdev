@@ -62,6 +62,7 @@
                 name="cedula"
                 type="text"
                 placeholder="000-0000000-0"
+                pattern="^[0-9]{3}-?[0-9]{7}-?[0-9]{1}$"
                 required
               />
             </div>
@@ -164,6 +165,7 @@
           </div>
         </form>
       </div>
+      <div id="errorMessage" class="alert alert-danger" role="alert"></div>
     </div>
     <script src="../js/global.js" charset="utf-8"></script>
     <script src="./js/edit.js" charset="utf-8"></script>

@@ -1,6 +1,8 @@
 /* eslint-disable linebreak-style */
 
 const API_URL = 'http://localhost:5000/api/v1/candidatos';
+const darkThemePath = 'https://bootswatch.com/5/darkly/bootstrap.min.css';
+const lightThemePath = 'https://bootswatch.com/5/flatly/bootstrap.min.css';
 
 function parseIDFromURL() {
   const parts = window.location.search.match(/\?id\=(.*)/);
@@ -11,7 +13,16 @@ function getCandidato(id) {
   return fetch(`${API_URL}/${id}`).then((res) => res.json());
 }
 
-function validateFormGetCandidato(form) {
+function validaCedula(cedula) {
+  return (
+    typeof cedula === 'string' &&
+    cedula.trim() !== '' &&
+    cedula.length === 13 &&
+    cedula.match('^[0-9]{3}-?[0-9]{7}-?[0-9]{1}$') !== null
+  );
+}
+
+function validateFormGetCandidato(form, message) {
   const formData = new FormData(form);
 
   const cedula = formData.get('cedula');
@@ -20,8 +31,9 @@ function validateFormGetCandidato(form) {
   const dob = formData.get('dob');
 
   // should validate that the cedula has a valid format
-  if (cedula.trim() === '') {
-    // show alert message when cedula is empty
+  if (!validaCedula(cedula)) {
+    message.textContent = 'Por favor introduzca una cedula valida!';
+    message.style.display = '';
     return;
   }
 

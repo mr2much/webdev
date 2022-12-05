@@ -1,4 +1,7 @@
 /* eslint-disable linebreak-style */
+const errorMessage = document.querySelector('#errorMessage');
+
+errorMessage.style.display = 'none';
 
 const btnCancel = document.querySelector('form #cancel-btn');
 
@@ -24,7 +27,7 @@ async function createNewCandidato(candidato) {
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const newCandidato = validateFormGetCandidato(form);
+  const newCandidato = validateFormGetCandidato(form, errorMessage);
 
   if (newCandidato) {
     createNewCandidato(newCandidato).then((result) => {

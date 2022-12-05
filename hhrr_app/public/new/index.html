@@ -53,7 +53,7 @@
         <form class="bg-light p-3 rounded bg-opacity-10">
           <div class="row mb-3">
             <label for="cedula" class="col-sm-6 col-form-label-lg my-auto"
-              >Cedula:</label
+              >Cedula: <span class="text-danger">*</span></label
             >
             <div class="col-sm-6">
               <input
@@ -62,6 +62,7 @@
                 name="cedula"
                 type="text"
                 placeholder="000-0000000-0"
+                pattern="^[0-9]{3}-?[0-9]{7}-?[0-9]{1}$"
                 required
               />
             </div>
@@ -69,7 +70,7 @@
 
           <div class="row mb-3">
             <label for="nombres" class="col-sm-6 col-form-label-lg my-auto"
-              >Nombre:</label
+              >Nombre: <span class="text-danger">*</span></label
             >
             <div class="col-sm-6">
               <input
@@ -85,7 +86,7 @@
 
           <div class="row mb-3">
             <label for="apellidos" class="col-form-label-lg col-sm-6 my-auto"
-              >Apellidos:</label
+              >Apellidos: <span class="text-danger">*</span></label
             >
             <div class="col-sm-6">
               <input
@@ -101,7 +102,7 @@
 
           <div class="row mb-3">
             <label for="dob" class="col-form-label col-sm-6 my-auto"
-              >Fecha de Nacimiento:</label
+              >Fecha de Nacimiento: <span class="text-danger">*</span></label
             >
             <div class="col-sm-6 input-with-post-icon">
               <input
@@ -164,6 +165,7 @@
           </div>
         </form>
       </div>
+      <div id="errorMessage" class="alert alert-danger" role="alert"></div>
     </div>
     <script src="../js/global.js" charset="utf-8"></script>
     <script src="./js/new.js" charset="utf-8"></script>

@@ -2,6 +2,10 @@
 const idCandidato = parseIDFromURL();
 const form = document.querySelector('form');
 
+const errorMessage = document.querySelector('#errorMessage');
+
+errorMessage.style.display = 'none';
+
 const btnCancel = document.querySelector('form #cancel-btn');
 
 btnCancel.addEventListener('click', (e) => {
@@ -23,7 +27,7 @@ getCandidato(idCandidato).then(prepopulateFormWithCandidatoInfo);
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const modifiedCandidato = validateFormGetCandidato(form);
+  const modifiedCandidato = validateFormGetCandidato(form, errorMessage);
 
   if (modifiedCandidato) {
     updateCandidato(modifiedCandidato).then((result) => {

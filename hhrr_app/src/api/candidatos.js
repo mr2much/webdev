@@ -73,13 +73,28 @@ router.get('/:id', async (req, res, next) => {
   // }
 });
 
+// function validaCedula(cedula) {
+//   return (
+//     typeof cedula === 'string' &&
+//     cedula.length === 13 &&
+//     cedula.match('^[0-9]{3}-?[0-9]{7}-?[0-9]{1}$') !== null
+//   );
+// }
+
+function validaCedula(cedula) {
+  return (
+    typeof cedula === 'string' &&
+    cedula.trim() !== '' &&
+    cedula.length === 13 &&
+    cedula.match('^[0-9]{3}-?[0-9]{7}-?[0-9]{1}$') !== null
+  );
+}
+
 function validCandidato(candidato) {
   return (
     typeof candidato.nombres === 'string' &&
     typeof candidato.apellidos === 'string' &&
-    typeof candidato.cedula === 'string' &&
-    candidato.cedula.length === 13 &&
-    candidato.cedula.match('^[0-9]{3}-?[0-9]{7}-?[0-9]{1}$') !== null &&
+    validaCedula(candidato.cedula) &&
     typeof candidato.dob === 'string' &&
     candidato.dob.match('^[0-9]{4}-?[0-9]{2}-?[0-9]{2}$')
   );
@@ -114,23 +129,25 @@ function getCandidatoFromBody(body) {
 router.post('/', candidatoValidator, (req, res, next) => {
   const candidato = getCandidatoFromBody(req.body);
 
-  db.insert(candidato);
+  if (candidato) {
+    db.insert(candidato);
 
-  // After inserting, tries to get the newly created Candidato
-  db.findOne({ cedula: candidato.cedula }, (err, data) => {
-    if (err) {
-      next(err);
-      return;
-    }
+    db.findOne({ cedula: candidato.cedula }, (err, data) => {
+      if (err) {
+        next(err);
+      }
 
-    if (data) {
-      res.json(data);
-    } else {
-      // if we were unable to retrieve the new Candidato, an error ocurred
-      const error = new Error(`Error when inserting candidato: ${candidato}`);
-      next(error);
-    }
-  });
+      if (data) {
+        res.json(data);
+      } else {
+        const error = new Error(`Error when inserting candidato: ${candidato}`);
+        next(error);
+      }
+    });
+  } else {
+    const error = new Error(`Error when inserting candidato: ${candidato}`);
+    next(error);
+  }
 
   // const form = new multiparty.Form();
   // form.on('error', next);
