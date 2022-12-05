@@ -11,7 +11,12 @@ const Datastore = require('nedb');
 
 // const db = monk(process.env.MONGO_URI);
 // const candidatos = db.get('candidatos');
-const db = new Datastore(process.env.NEDB_URI);
+const db = new Datastore({ autoload: true, filename: process.env.NEDB_URI });
+
+db.ensureIndex({ fieldName: 'cedula', unique: true }, (err) => {
+  if (err) throw err;
+});
+
 const candidatos = db.loadDatabase();
 
 // const schema = Joi.object({
@@ -41,40 +46,9 @@ router.get('/', async (req, res, next) => {
   });
 });
 
-// Lee un Candidato con Cedula
-router.get('/:cedula', async (req, res, next) => {
-  const { cedula } = req.params;
-
-  await db.findOne({ cedula }, (err, data) => {
-    if (err) {
-      next(err);
-      return;
-    }
-
-    if (data) {
-      res.json(data);
-    } else {
-      next();
-    }
-  });
-
-  // try {
-  //   const { id } = req.params;
-
-  //   const item = await candidatos.findOne({ _id: id });
-
-  //   if (!item) {
-  //     next();
-  //   }
-
-  //   return res.json(item);
-  // } catch (error) {
-  //   next(error);
-  // }
-});
-
 // Lee un candidato con ID
 router.get('/:id', async (req, res, next) => {
+  console.log(`Got a request to get Candidato with ID: ${req.params.id}`);
   const { id } = req.params;
 
   await db.findOne({ _id: id }, (err, data) => {
@@ -162,18 +136,24 @@ router.post('/', candidatoValidator, (req, res, next) => {
   const candidato = getCandidatoFromBody(req.body);
 
   if (candidato) {
-    db.insert(candidato);
-
-    db.findOne({ cedula: candidato.cedula }, (err, data) => {
+    db.insert(candidato, (err) => {
       if (err) {
         next(err);
-      }
-
-      if (data) {
-        res.json(data);
       } else {
-        const error = new Error(`Error when inserting candidato: ${candidato}`);
-        next(error);
+        db.findOne({ cedula: candidato.cedula }, (e, data) => {
+          if (e) {
+            next(e);
+          }
+
+          if (data) {
+            res.json(data);
+          } else {
+            const error = new Error(
+              `Error when inserting candidato: ${candidato}`
+            );
+            next(error);
+          }
+        });
       }
     });
   } else {

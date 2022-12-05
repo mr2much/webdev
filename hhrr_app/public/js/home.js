@@ -25,7 +25,7 @@ function showCandidatos(listaCandidatos) {
       ${candidato.apellidos}
     </td>
     <td>
-      ${candidato.dob}
+      ${fixDateFormat(candidato.dob, '-')}
     </td>
     <td>
       ${candidato.job_actual}

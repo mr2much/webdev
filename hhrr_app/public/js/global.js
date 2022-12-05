@@ -1,3 +1,6 @@
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable comma-dangle */
+/* eslint-disable function-paren-newline */
 /* eslint-disable linebreak-style */
 
 const API_URL = 'http://localhost:5000/api/v1/candidatos';
@@ -12,8 +15,6 @@ function parseIDFromURL() {
 function getCandidato(id) {
   return fetch(`${API_URL}/${id}`).then((res) => res.json());
 }
-
-function getCandidatoFromCedula(cedula) {}
 
 function validaCedula(cedula) {
   return (
@@ -67,4 +68,10 @@ function validateFormGetCandidato(form, message) {
   };
 
   return candidato;
+}
+
+function fixDateFormat(dateString, replaceChar) {
+  return new Date(
+    dateString.replace(`${replaceChar}`, '/')
+  ).toLocaleDateString();
 }
