@@ -14,6 +14,7 @@
     />
     <link rel="stylesheet" type="text/css" href="../css/header.css" />
     <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <link rel="stylesheet" href="./css/cat-photo-app.css" />
   </head>
   <body>
     <header>
@@ -24,6 +25,73 @@
         <h3 class="display-4 text-white header-subtitle animate-pop-in">
           An Awesome App For Cat Lovers
         </h3>
+
+        <div class="mt-5">
+          <div
+            id="carouselCatFacts"
+            class="carousel slide"
+            data-ride="carousel"
+          >
+            <ol class="carousel-indicators">
+              <li
+                data-target="#carouselCatFacts"
+                data-slide-to="0"
+                class="active"
+              ></li>
+              <li data-target="#carouselCatFacts" data-slide-to="1"></li>
+              <li data-target="#carouselCatFacts" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="carousel-caption d-none d-md-block">
+                  <p>
+                    Nulla vitae elit libero, a pharetra augue mollis interdum.
+                  </p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="carousel-caption d-none d-md-block">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="carousel-caption d-none d-md-block">
+                  <p>
+                    Praesent commodo cursus magna, vel scelerisque nisl
+                    consectetur.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <a
+              class="carousel-control-prev"
+              href="#carouselCatFacts"
+              role="button"
+              data-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#carouselCatFacts"
+              role="button"
+              data-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+
         <button class="btn btn-lg btn-primary p-2 header-button animate-pop-in">
           Meet cats from all over the world, now!
         </button>
