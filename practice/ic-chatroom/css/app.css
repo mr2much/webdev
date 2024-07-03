@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333;
+}
+
+#chatroom {
+  margin: 0 auto;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.45),
+      rgba(255, 255, 255, 0.45)
+    ),
+    center / cover no-repeat url("../images/tavern_bg.jpg");
+  width: 70vw;
+  height: 90vh;
+  max-height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0 1em;
+  overflow-y: auto;
+}
+
+.chatbox {
+  background: #333;
+  display: flex;
+  margin: 1.75em 0;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.chatbox .message {
+  display: flex;
+  position: relative;
+  background: rgba(90, 90, 90, 0.75);
+  color: #eee;
+  flex-direction: row-reverse;
+  align-items: center;
+  border-radius: 2em;
+  border: 3px solid red;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+}
+
+.chatbox .message .token {
+  position: absolute;
+  margin-left: -15px;
+  border-radius: 100%;
+  width: 106px;
+  height: 106px;
+  border: 5px solid red;
+  overflow: hidden;
+}
+
+.chatbox:not(#tze-khan) .message .token {
+  right: -5px;
+}
+
+.chatbox .message .token img {
+  display: inline-block;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.chatbox .message .content {
+  overflow: hidden;
+}
+
+.chatbox .message .content .text {
+  width: 90%;
+  padding: 0.5em;
+  padding-left: 0.75em;
+  background: #333;
+  background: transparent;
+}
+
+.chatbox .message .content .text span {
+  display: block;
+  color: #111;
+  text-align: right;
+  font-size: 0.75rem;
+  margin-top: 0.75em;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+.chatbox .message .content .text span time {
+  font-weight: normal;
+  font-style: italic;
+  margin-left: 1em;
+}
+
+#tze-khan {
+  align-self: flex-start;
+}
+
+#tze-khan .message {
+  flex-direction: row;
+}
+
+#tze-khan .message .content .text {
+  width: 100%;
+  padding-left: 6em;
+}
+
+#tze-khan .message .content .text span {
+  text-align: left;
+}
+
+.tze-khan-message {
+  background: rgba(13, 13, 13, 0.75) !important;
+}
+
+.tze-khan-message,
+.tze-khan-message .content .text span {
+  color: #e1e1e1 !important;
+}
+
+.simon-message {
+  background: rgba(153, 217, 242, 0.75) !important;
+}
+
+.simon-message,
+.simon-message .content .text span {
+  color: #2a4359 !important;
+}

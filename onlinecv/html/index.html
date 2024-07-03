@@ -1,0 +1,485 @@
+<!-- TODO:
+	-Fix header content to make it more accessible 	
+	-Center all divs inside the all-elements div.
+	-Add icons to collapsible items.
+	-Add the option to change language of the CV from english to spanish and vice versa.
+	-Make CV look cooler by adding themes.
+	-Add section for people to post personal references
+	-Add database support
+	-Create these cards on trello and post there
+
+	DONE:
+	-Add nav bar to the top of the resume that moves between sections.
+	-Add footer
+	-Add social media icons and ways to contact me
+	-Add bootstrap
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
+
+	<meta property="og:title" content="Online Curriculum Vitae">
+	<meta property="og:description" content="Since I started learning HTML/CSS, I've dramed of making an online CV">
+	<meta property="og:image" content="https://mr2much.github.io/webdev/assets/res/thumbnails/onlinecv-meta-thumb.png">
+	<meta property="og:url" content="https://mr2much.github.io/webdev/onlinecv/html/index">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Online Curriculum Vitae">
+	<meta name="og:description" content="Since I started learning HTML/CSS, I've dreamed of making an online CV">
+	<meta name="og:image" content="https://mr2much.github.io/webdev/assets/res/thumbnails/onlinecv-meta-thumb.png">
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,500,800" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Vollkorn:400,600,700,900" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../css/styles.css">
+	<link rel="stylesheet" type="text/css" href="../css/header.css">
+	<title>Anubis Lockward's Online CV</title>
+</head>
+<body>
+	<nav id="mainNavbar" class="navbar fixed-top navbar-expand-lg navbar-light">
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+	  	<div class="container">
+		    <ul class="navbar-nav justify-content-between mt-2 mt-lg-0">
+		      <li class="nav-item">
+		        <a class="nav-link" href="#personal">Personal Info</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="#employment">Employment</a>
+		      </li>
+		      <li class="nav-item">
+		      	<a href="#projects" class="nav-link">Projects</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="#education">Education</a>
+		      </li>		      
+		      <li class="nav-item">
+		      	<a href="#courses" class="nav-link">Courses</a>
+		      </li>
+		      <li class="nav-item">
+		      	<a href="#skills" class="nav-link">Skills</a>
+		      </li>
+		      <li class="nav-item">
+		      	<a href="#testimonials" class="nav-link">Testimonials</a>
+		      </li>
+		      <li class="nav-item">
+		      	<a href="#social-media" class="nav-link">Contact Info</a>
+		      </li>
+		    </ul>
+		</div>
+	  </div>
+	</nav>
+	<span id="personal" class="anchor"></span>
+	<header id="head-cover" class="jumbotron d-flex align-items-center">
+		<div id="inner-cover" class="d-flex flex-column flex-md-row justify-content-center align-items-center mx-auto my-auto">
+			<div class="col-lg-9 d-flex flex-column justify-content-center align-items-center">
+				<h1 class="text-center mb-4"><span class="name animate-pop-in">Anubis</span><span class="lastname animate-pop-in">Lockward</span></h1>
+				<p class="personal-intro pt-5 animate-pop-in">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</div>
+			<div class="col-lg-3 d-flex flex-column justify-content-center">
+				<a class="btn btn-primary btn-lg mt-2 git-btn animate-pop-in" href="#"><i class="fab fa-github"></i> My GitHub</a>
+				<a class="btn btn-primary btn-lg mt-2 blog-btn animate-pop-in" href="#">My Blog</a>
+			</div>
+			<div class="header-down-arrow">
+				<img src="../res/down-arrow-pngrepo-com.png">
+			</div>
+		</div>
+	</header>
+	<div class="container">
+		<main class="content">			
+			<section class="employment section mb-3">
+				<span id="employment" class="anchor"></span>
+				<h3 class="display-5">Employment</h3>
+				<hr>
+				<div class="accordion" id="employment-section">
+					<div class="card">
+						<div class="emp-details d-flex flex-wrap justify-content-between mt-3 px-2 border-bottom">
+							<p>[Position]</p>
+							<p>[Company]</p>
+							<p>[Hire Date, End Date]</p>
+						</div>
+						<div class="card-header px-2" id="jobOne">
+							<h2 class="mb-0">
+								<button class="btn btn-link collapsed px-0 text-left" type="button" data-toggle="collapse" data-target="#collapseJobOne" aria-expanded="true" aria-controls="collapseJobOne">
+								  Short description detailing my responsibilities on this job, click to know more
+								</button>
+							</h2>
+						</div>
+						<div id="collapseJobOne" class="collapse" aria-labelledby="jobOne" data-parent="#employment-section">
+							<div class="card-body mx-0 px-0">
+								<ul>
+									<li>blah</li>
+									<li>blah</li>
+									<li>blah</li>
+									<li>blah</li>
+									<li>blah</li>
+									<li>blah</li>
+									<li>blah</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				  <div class="card">
+				  	<div class="emp-details d-flex flex-wrap justify-content-between mt-3 px-2 border-bottom">
+						<p>[Position]</p>
+						<p>[Company]</p>
+						<p>[Hire Date, End Date]</p>
+					</div>
+				    <div class="card-header px-2" id="jobTwo">
+				      <h2 class="mb-0">
+				        <button class="btn btn-link collapsed px-0 text-left" type="button" data-toggle="collapse" data-target="#collapseJobTwo" aria-expanded="false" aria-controls="collapseJobTwo">
+				          Short description detailing my responsibilities on this job, click to know more
+				        </button>
+				      </h2>
+				    </div>
+				    <div id="collapseJobTwo" class="collapse" aria-labelledby="jobTwo" data-parent="#employment-section">
+				      <div class="card-body mx-0 px-0">
+						<ul>
+							<li>blah</li>
+							<li>blah</li>
+							<li>blah</li>
+							<li>blah</li>
+							<li>blah</li>
+							<li>blah</li>
+							<li>blah</li>
+						</ul>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="card">
+				  	<div class="emp-details d-flex flex-wrap justify-content-between mt-3 px-2 border-bottom">
+						<p>[Position]</p>
+						<p>[Company]</p>
+						<p>[Hire Date, End Date]</p>
+					</div>
+				    <div class="card-header px-2" id="jobThree">
+				      <h2 class="mb-0">
+				        <button class="btn btn-link collapsed px-0 text-left" type="button" data-toggle="collapse" data-target="#collapseJobThree" aria-expanded="false" aria-controls="collapseJobThree">
+				          Short description detailing my responsibilities on this job, click to know more
+				        </button>
+				      </h2>
+				    </div>
+				    <div id="collapseJobThree" class="collapse" aria-labelledby="jobThree" data-parent="#employment-section">
+				      <div class="card-body mx-0 px-0">
+						<ul>
+							<li>blah</li>
+							<li>blah</li>
+							<li>blah</li>
+							<li>blah</li>
+							<li>blah</li>
+							<li>blah</li>
+							<li>blah</li>
+						</ul>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</section>
+			<section class="projects section mb-3">
+				<span id="projects" class="anchor"></span>
+				<h3 class="display-5">Software Projects</h3>
+				<hr>
+				<div class="project-description collapsible">
+					<button class="btn btn-link px-0" type="button" data-toggle="collapse" data-target="#collapseProject1" aria-expanded="false" aria-controls="collapseProject1">
+						[Project Name]
+					</button>
+					<div class="collapse" id="collapseProject1">
+						<div class="card card-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+						</div>
+					</div>
+				</div>
+				<div class="project-description collapsible">
+					<button class="btn btn-link px-0 pt-3" type="button" data-toggle="collapse" data-target="#collapseProject2" aria-expanded="false" aria-controls="collapseProject2">
+						[Project Name]
+					</button>
+					<div class="collapse" id="collapseProject2">
+						<div class="card card-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+						</div>
+					</div>
+				</div>
+				<div class="project-description collapsible">
+					<button class="btn btn-link px-0 pt-3" type="button" data-toggle="collapse" data-target="#collapseProject3" aria-expanded="false" aria-controls="collapseProject3">
+						[Project Name]
+					</button>
+					<div class="collapse" id="collapseProject3">
+						<div class="card card-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+						</div>
+					</div>
+				</div>
+				<div class="project-description collapsible">
+					<button class="btn btn-link px-0 pt-3" type="button" data-toggle="collapse" data-target="#collapseProject4" aria-expanded="false" aria-controls="collapseProject4">
+						[Project Name]
+					</button>
+					<div class="collapse" id="collapseProject4">
+						<div class="card card-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+						</div>
+					</div>
+				</div>
+				<div class="project-description collapsible">
+					<button class="btn btn-link px-0 pt-3" type="button" data-toggle="collapse" data-target="#collapseProject5" aria-expanded="false" aria-controls="collapseProject5">
+						[Project Name]
+					</button>
+					<div class="collapse" id="collapseProject5">
+						<div class="card card-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="education section mb-3">
+				<span id="education" class="anchor"></span>
+				<h3 class="display-5">Education</h3>
+				<hr>
+				<section class="study-description">
+					<div class="d-flex flex-wrap justify-content-between">
+						<p>Dominican Republic</p>
+						<p>Universidad Tecnol&#243;gica de Santiago &#40;UTESA&#41;</p>
+					</div>
+					<div class="study-detail">
+						<ul>
+							<li><strong>Major: </strong>System's Engineering</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section class="courses section">
+				<span id="courses" class="anchor"></span>
+				<h3 class="display-5">Courses</h3>
+				<hr>
+				<ul>
+					<li>[Course In Some Area]</li>
+					<li>[Course In Some Area]</li>
+					<li>[Course In Some Area]</li>
+					<li>[Course In Some Area]</li>
+					<li>[Course In Some Area]</li>
+				</ul>
+			</section>
+			<section class="skills section">
+				<span id="skills" class="anchor"></span>
+				<h3 class="display-5">Skills</h3>
+				<hr>
+				<ul>
+					<li>[Software Skills]</li>
+					<li>[Software Skills]</li>
+					<li>[Software Skills]</li>
+					<li>[Software Skills]</li>
+					<li>[Software Skills]</li>
+				</ul>
+			</section>
+			<span id="testimonials" class="anchor"></span>
+			<section class="testimonials section mb-2">
+				<div class="header-test">
+					<h3 class="display-5">Testimonials</h3>
+					<button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-plus"></i> Add Testimonial</button>
+					<hr>
+				</div>
+				<div class="card mb-3 testimony">
+					<div class="row no-gutters h-100">
+						<div class="d-flex col-md-4 align-items-center">
+							<div class="mx-3">
+								<h5>[Poster's Name]</h5>
+								<p>[Profession]</p>
+								<h6 class="how-we-met">[year] We met on a rainy Sunday under a tree.</h6>
+							</div>
+						</div>
+						<div class="d-flex col-md-8 border-left align-items-center">
+							<div class="card-body">
+								<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+								tempor incididunt ut labore et dolore magna aliqua.</p>
+								<p class="card-text"><small class="text-muted"><strong>Posted on:</strong> Feb 21, 2019</small></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card mb-3 testimony">
+					<div class="row no-gutters h-100">
+						<div class="d-flex col-md-4 align-items-center">
+							<div class="mx-3">
+								<h5>[Poster's Name]</h5>
+								<p>[Profession]</p>
+								<h6 class="how-we-met">[year] We met on a rainy Sunday under a tree.</h6>
+							</div>
+						</div>
+						<div class="d-flex col-md-8 border-left align-items-center">
+							<div class="card-body">
+								<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+								tempor incididunt ut labore et dolore magna aliqua.</p>
+								<p class="card-text"><small class="text-muted"><strong>Posted on:</strong> Feb 21, 2019</small></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card mb-3 testimony">
+					<div class="row no-gutters h-100">
+						<div class="d-flex col-md-4 align-items-center">
+							<div class="mx-3">
+								<h5>[Poster's Name]</h5>
+								<p>[Profession]</p>
+								<h6 class="how-we-met">[year] We met on a rainy Sunday under a tree.</h6>
+							</div>
+						</div>
+						<div class="d-flex col-md-8 border-left align-items-center">
+							<div class="card-body">
+								<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+								tempor incididunt ut labore et dolore magna aliqua.</p>
+								<p class="card-text"><small class="text-muted"><strong>Posted on:</strong> Feb 21, 2019</small></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+	<span id="social-media" class="anchor"></span>
+	<footer class="footer mt-auto bg-dark text-light">
+		<div id="foot-container" class="row">
+			<div id="mail-div" class="d-flex flex-column justify-content-center col-12 col-md-7 col-lg-8 py-4 px-4 px-sm-5 p-0 m-0">
+				<!-- TODO: add form for sending emails
+				     DONE: make div fill whole space of outer div -->
+				<h2 class="text-uppercase mb-5">Send me an email</h2>
+				<div id="mail-form" class="text-left">
+					<form>
+						<div class="d-flex flex-column justify-content-between mb-5">
+							<label for="sender-name">Your Full Name</label>
+							<input class="text-input border-glow" id="sender-name" type="text" name="sender-name" placeholder="Ex: What your parents call you">
+						</div>
+						<div class="d-flex flex-column justify-content-between mb-5">
+							<label for="sender-mail">Your Email</label>
+							<input class="text-input border-glow" id="sender-mail" type="sender-mail" name="sender-mail" placeholder="Ex: account@domain">
+						</div>
+						<div class="d-flex flex-column mb-5">
+							<label for="sender-msg">Type Your Message Below</label>
+							<textarea class="text-input border-glow" id="sender-msg" name="sender-msg" rows="5" cols="33" placeholder="Ex: This site sucks!"></textarea>
+						</div>
+						<div id="mail-btn" class="text-center d-flex flex-column flex-lg-row justify-content-center">
+							<button class="btn btn-lg btn-primary"><i class="far fa-envelope"></i> Send Mail</button>
+							<button class="btn btn-lg btn-primary">Clear</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div id="social-links" class="d-flex flex-wrap col-12 col-md-5 col-lg-4 text-center bg-dark text-white m-0 p-0 px-sm-5">
+				<!-- DONE: split this div into four pieces.
+					 DONE: include portfolio link and remove envelope for email -->
+				<a id="ico-facebook" class="soc-btn col-6 p-0 m-0" href="#">
+					<i class="fab fa-facebook-f"></i>
+				</a>
+				<a id="ico-twitter" class="soc-btn col-6 p-0 m-0" href="#">
+					<i class="fab fa-twitter"></i>
+				</a>
+				<a id="ico-linkedin" class="soc-btn col-6 p-0 m-0" href="#">
+					<i class="fab fa-linkedin"></i>
+				</a>
+				<a id="ico-portfolio" class="soc-btn col-6 p-0 m-0" href="#">
+					<i class="fas fa-briefcase"></i>
+				</a>
+			</div>
+		</div>
+		<div class="d-flex justify-content-between pt-3 px-4 text-center bg-light text-dark">
+			<p class="text-left">2019. Legal mumbo jumbo about reserved rights that I'm not sure if I have or how it works</p>
+			<p class="text-right">Created by <a href="">Anubis Lockward</a></p>
+		</div>
+	</footer>
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalCenterTitle">Add Testimonial</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <form id="testForm" method="dialog">
+	          <div class="form-row">
+	          	<div class="col-6">
+	          		<label for="poster-name" class="col-form-label">Your Name:</label>
+	            	<input type="text" class="form-control" id="poster-name" placeholder="ex: Albus Dumbledore">
+	          	</div>
+	          	<div class="col-6">
+		          	<label for="recipient-title" class="col-form-label">Your Job Title:</label>
+		            <input type="text" class="form-control" id="recipient-title" placeholder="ex: Headmaster of Hogwarts">	          		
+	          	</div>
+	          </div>
+	          <div class="form-group my-3">
+	          	<div class="col-4">
+	          		<label for="meet-date" class="col-form-label">When Did We Meet?</label>
+	            	<input type="date" class="form-control" id="meet-date">
+	          	</div>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="col-form-label">What Do You Have To Say About Me?</label>
+	            <textarea class="form-control" id="message-text" rows="5" placeholder="ex: This guy is lazy and unskilled"></textarea>
+	          </div>
+	          <div class="form-group">
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	      	<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+	        <button id="postButton" type="submit" class="btn btn-primary testimonial-submit" value="default">Post</button>         	
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- Smooth Scroll -->
+	<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@14.0.0/dist/smooth-scroll.polyfills.min.js"></script>
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../js/script.js"></script>
+
+    <script type="text/javascript">
+    	$(function() {
+    		$('body').on('click', '.testimonial-submit', function(e) {
+    			$('#testForm').submit();
+    			$('#exampleModalCenter').modal('hide');
+
+    			var name = $("#testForm #poster-name").val();
+    			var title = $("#testForm #recipient-title").val();
+    			var date = $("#testForm #meet-date").val();
+    			var msg = $("#testForm #message-text").val();
+    			console.log("Name: " + name + 
+    				"\nTitle: " + title + "\nDate: " + date + 
+    				"\nMessage: " + msg);
+    			var testimonialSection = document.querySelector("section.testimonials");
+    			var testimony = testimonialSection.querySelector(".testimony").cloneNode(true);
+    			var h5 = testimony.querySelector("h5");
+    			var jobTitle = testimony.querySelector("p");
+    			var h6 = testimony.querySelector("h6");
+    			var para = testimony.querySelector(".card-body p");
+    			h5.textContent = name;
+    			jobTitle.textContent = title;
+    			h6.textContent = date.split("-").reverse().join("/");
+    			para.textContent = msg;
+
+    			testimonialSection.appendChild(testimony);
+    		});
+    	});
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="res/css/app.css" />
+    <title>Data Selfie App</title>
+  </head>
+  <body>
+    <div><a href="/">Home</a> | <a href="all.html">List</a></div>
+    <h1>Welcome to the Data Selfie App</h1>
+
+    <div id="map"></div>
+
+    <p>
+      <strong>Latitude:</strong> <span id="lat"></span>°
+      <strong>Longitude:</strong> <span id="lon"></span>°
+    </p>
+
+    <input id="mood" type="text" />
+
+    <button id="submit">Submit</button>
+
+    <label for="load">Load Image</label>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
+
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+
+    <script>
+      let img;
+      let cnv;
+      let input;
+
+      function setup() {
+        cnv = createCanvas(1, 1);
+        input = createFileInput(handleFile);
+        cnv.parent(input);
+
+        pixelDensity(1);
+        background(0);
+      }
+
+      if ("geolocation" in navigator) {
+        let lat, lon;
+
+        const submitBtn = document.querySelector("#submit");
+
+        function handleFile(file) {
+          if (file.type.includes("image")) {
+            img = createImg(file.data, "");
+            img.hide();
+          } else {
+            console.log(file.type);
+          }
+        }
+
+        submitBtn.addEventListener("click", async (e) => {
+          cnv.loadPixels();
+
+          const name = input.elt.files[0].name;
+
+          console.log(img);
+
+          // convert image data to Encode 64
+          const data64 = img.elt.src.split(";base64,");
+
+          // from data:image/format, split by :, then take the second argument which should be image/format
+          const type = data64[0].split(":")[1];
+          const image64 = data64[1];
+
+          const width = img.width;
+          const height = img.height;
+
+          // Create an object with the encoded base64 image
+          const image = {
+            type: type,
+            width: width,
+            height: height,
+            filename: name,
+            image64: image64,
+          };
+
+          const mood = document.querySelector("#mood").value;
+          const data = { lat, lon, mood, image };
+
+          const options = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          };
+
+          const res = await fetch("/api", options);
+          const json = await res.json();
+
+          console.log(json);
+        });
+
+        const mymap = L.map("map").setView([0, 0], 25);
+
+        const attribution =
+          'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+
+        const tileUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+
+        const tiles = L.tileLayer(tileUrl, { attribution });
+        tiles.addTo(mymap);
+
+        let marker = L.marker([0, 0]).addTo(mymap);
+
+        navigator.geolocation.getCurrentPosition((position) => {
+          lat = position.coords.latitude;
+          lon = position.coords.longitude;
+
+          mymap.setView([lat, lon], mymap.getZoom());
+          marker.setLatLng([lat, lon]);
+
+          document.querySelector("#lat").textContent = lat;
+          document.querySelector("#lon").textContent = lon;
+        });
+      } else {
+        console.log("geolocation not available");
+      }
+    </script>
+  </body>
+</html>

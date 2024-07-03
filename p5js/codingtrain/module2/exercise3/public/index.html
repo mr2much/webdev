@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="res/css/app.css" />
+    <title>Data Selfie App</title>
+  </head>
+  <body>
+    <div><a href="/">Home</a> | <a href="all.html">List</a></div>
+    <h1>Welcome to the Data Selfie App</h1>
+
+    <div id="map"></div>
+
+    <p>
+      <strong>Latitude:</strong> <span id="lat"></span>°
+      <strong>Longitude:</strong> <span id="lon"></span>°
+    </p>
+
+    <input id="mood" type="text" />
+
+    <button id="submit">Submit</button>
+
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+
+    <script>
+      if ("geolocation" in navigator) {
+        let lat, lon;
+
+        const submit = document.querySelector("#submit");
+
+        submit.addEventListener("click", async (e) => {
+          const mood = document.querySelector("#mood").value;
+          const data = { lat, lon, mood };
+
+          const options = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          };
+
+          const res = await fetch("/api", options);
+          const json = await res.json();
+
+          console.log(json);
+        });
+
+        const mymap = L.map("map").setView([0, 0], 25);
+
+        const attribution =
+          'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+
+        const tileUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+
+        const tiles = L.tileLayer(tileUrl, { attribution });
+        tiles.addTo(mymap);
+
+        let marker = L.marker([0, 0]).addTo(mymap);
+
+        navigator.geolocation.getCurrentPosition((position) => {
+          lat = position.coords.latitude;
+          lon = position.coords.longitude;
+
+          mymap.setView([lat, lon], mymap.getZoom());
+          marker.setLatLng([lat, lon]);
+
+          document.querySelector("#lat").textContent = lat;
+          document.querySelector("#lon").textContent = lon;
+        });
+      } else {
+        console.log("geolocation not available");
+      }
+    </script>
+  </body>
+</html>

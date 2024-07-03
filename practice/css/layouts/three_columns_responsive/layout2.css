@@ -1,0 +1,24 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e1e1e1;
+  height: 100vh;
+}
+
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+  height: 50%;
+}
+
+.column {
+  flex: 1 1 300px;
+  background-color: lightgreen;
+  margin: 5px;
+  border-radius: 0.25em;
+  text-align: center;
+}

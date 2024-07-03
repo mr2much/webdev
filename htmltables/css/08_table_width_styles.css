@@ -1,0 +1,14 @@
+body {
+    background: #ccc;
+}
+
+.wrap {
+    width: 50vw;
+    margin: 0 auto;
+    background: white;
+}
+
+table {
+    border: solid thin red;
+    margin-bottom: 0.5rem;
+}

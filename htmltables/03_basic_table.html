@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Basic HTML Table with TFOOT</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Favorite Color</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Jim</td>
+                <td>00001</td>
+                <td>Blue</td>
+            </tr>
+            <tr>
+                <td>Sue</td>
+                <td>00002</td>
+                <td>Red</td>
+            </tr>
+            <tr>
+                <td>Barb</td>
+                <td>00003</td>
+                <td>Green</td>
+            </tr>
+        </tbody>
+        <!-- The tfoot might be used to identify the column names at the bottom of a table that contains many rows of data. But it can also be used to show the legend or meaning of certain symbols or colors of data, or notes. -->
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>ID</th>
+                <th>Favorite Color</th>
+            </tr>
+        </tfoot>
+    </table>        
+</body>
+</html>

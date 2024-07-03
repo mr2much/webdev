@@ -1,0 +1,185 @@
+/*Made text more fluid by following the advice of the following people:
+
+Geoff Graham: https://css-tricks.com/snippets/css/fluid-typography/
+Tim Brown: https://blog.typekit.com/2016/08/17/flexible-typography-with-css-locks/
+Mike Riethmuller: https://www.madebymike.com.au/writing/precise-control-responsive-typography/
+				  https://www.madebymike.com.au/writing/fluid-type-calc-examples/
+Richard Rutter: https://24ways.org/2016/responsive-display-text/
+
+Added Molten leading:
+Tim Brown: https://tbrown.org/notes/2012/02/03/molten-leading-or-fluid-line-height/
+		   https://blog.typekit.com/2016/08/17/flexible-typography-with-css-locks/
+
+Made the text look better by following Matthew Butterick's advice: https://practicaltypography.com/
+*/
+* {
+	box-sizing: border-box;
+	/*border: 1px solid black;*/
+}
+
+@viewport {
+	width: device-width;
+	zoom: 1.0;
+}
+
+@-ms-viewport {
+	width: device-width;
+}
+
+html {
+	font-size: 15px;
+}
+
+body {
+	margin: 0 auto;
+	max-width: 50em;
+	font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+	padding: 0 1em;
+	color: #566b78;
+	text-rendering: optimizeLegibility;
+	font-feature-settings: "kern" 1;
+	text-align: justify;
+	hyphens: auto;
+}
+
+.molten-leading {
+	line-height: 1.45em;
+}
+
+#main {
+	display: grid;
+	grid-template-rows: 25vw 1fr 5%;
+	grid-template-areas: "header"
+						 "main"
+						 "footer";
+	grid-gap: 1.5em;
+}
+
+#content {
+	grid-area: main;
+}
+
+header {
+	grid-area: header;
+	background: #eee;
+	text-align: center;
+	font-weight: 300;
+	align-self: center;
+	padding: 8vmin 2rem;
+	line-height: 1.0;
+	text-align: center;
+}
+
+header h1 {
+	font-variant: small-caps;
+	letter-spacing: 0.08em;
+	font-size: 5rem;
+	font-size: calc(24px + (58 - 24) * (100vw -  320px) / (1366 - 320));
+}
+
+section {
+	border-top: 2px solid #4b3c78;
+}
+
+footer {
+	grid-area: footer;
+	background: #eee;
+	align-self: center;
+	text-align: center;
+}
+
+h2 {
+	font-size: calc(0.5rem + 2.5vmin);
+}
+
+h1, h2, strong {
+	color: #333;
+}
+
+a {
+	text-decoration: none;
+	color: #e81c4f;
+}
+
+blockquote {
+	border-left: 4px solid #ccc;
+	border-radius: 4px;
+}
+
+blockquote > p {
+	margin: 0;
+	padding: 0;
+}
+
+#img-div {
+	border: 1px solid #EEE;
+	border-radius: 10px;
+	text-align: center;
+	padding: 0.4em;
+	margin-bottom: 0.4em;
+}
+
+#img-div #image {
+	width: 90%;
+	max-width: 1024px;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+}
+
+#middle-content {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-items: center;
+	justify-items: center;
+	grid-gap: 0.5em;
+}
+
+#secondary-img > img {
+	max-width: 22em;
+	width: auto;
+	height: auto;
+	margin: 0 auto;
+}
+
+/*TODO: Quitar los comentarios de esta parte y tratar de implementar el fluid-type pero para los h1 y h2.*/
+/*TODO: Probar que sucede si remuevo la clase .fluid-type y molten-leading y pongo los estilos directamente en el body*/
+@media screen and (min-width: 20em) {
+	.molten-leading {
+		line-height: calc(1.25em + 0.6 * ((100vw - 20em) / 60));
+	}
+}
+
+@media screen and (min-width: 80em) {
+	.molten-leading {
+		line-height: 1.35em;
+	}
+}
+
+@media screen and (min-width: 320px) {
+	html {
+		font-size: calc(15px + 9 * ((100vw - 320px) / 680));
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	html {
+		font-size: 22px;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	#main {
+		grid-gap: 1em;
+		grid-template-rows: 45vmin 1fr 3%;
+	}
+
+	h2 {
+		margin-top: 0;
+		padding-top: 0;
+	}
+
+	#middle-content {
+		grid-template-columns: 1fr;
+	}
+}

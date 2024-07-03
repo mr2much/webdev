@@ -1,0 +1,252 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background: linear-gradient(black, #000099, #66C2FF, #FFCCCC, #FFEEE6);
+	/*margin: auto;*/
+	/*width: 50%;*/
+}
+
+img:hover {
+	animation-name: width;
+	animation-duration: 500ms;
+	animation-fill-mode: forwards;
+}
+
+@keyframes width {
+	100% {
+		transform: scale(1.2);
+	}
+}
+
+h2 {
+	color: #FF790E;
+	font-size: 5em;
+	font-family: Lobster, sans-serif;
+	margin: 25px;
+}
+
+#ball {
+	width: 100px;
+	height: 100px;
+	margin: 50px auto;
+	/*position: relative;*/
+	border-radius: 50%;
+	animation-name: rotatecolor;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	float: left;
+}
+
+@keyframes rotatecolor {
+	0% {
+		background: linear-gradient(0deg, #CCFFFF, #FFCCCC);
+	}
+
+	15% {
+		background: linear-gradient(45deg, #CCFFFF, #FFCCCC);
+	}
+
+	30% {
+		background: linear-gradient(90deg, #CCFFFF, #FFCCCC);
+	}
+
+	45% {
+		background: linear-gradient(135deg, #CCFFFF, #FFCCCC);
+	}
+
+	60% {
+		background: linear-gradient(170deg, #CCFFFF, #FFCCCC);
+	}
+
+	75% {
+		background: linear-gradient(215deg, #CCFFFF, #FFCCCC);
+	}
+
+	90% {
+		background: linear-gradient(260deg, #CCFFFF, #FFCCCC);
+	}
+
+	100% {
+		background: linear-gradient(300deg, #CCFFFF, #FFCCCC);
+	}
+}
+
+#navbar {
+	animation-name: colorful;
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes colorful {
+	0% {
+		background-color: yellow;
+	}
+
+	40% {
+		background-color: red;
+	}
+
+	70% {
+		background-color: teal;
+	}
+
+	100% {
+		background-color: yellow;
+	}
+}
+
+form {
+	background-color: #09A7A1;
+	color: white;
+	padding-bottom: 10px;
+}
+
+input {
+	margin: 10px;
+}
+
+main {
+	margin: auto;
+	width: 50%;
+	height: 100px;
+	background-color: #09A7A1	;
+	color: white;
+	margin-bottom: 20px;
+	padding: 1.5em;
+}
+
+a {
+	text-decoration: none;
+}
+
+p {
+	font-weight: bold;
+}
+
+button {
+	background-color: #FF790E;
+}
+
+#img-container {
+	margin: auto;
+	width: 20%;
+	-webkit-transition: width 500ms;
+}
+
+#left {
+	width: 48%;
+	float: left;
+}
+
+#right {
+	width: 50%;
+	float: right;
+}
+
+.all-elements {
+	border-radius: 25px;
+	text-align: justify;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 15px 15px rgba(0, 0, 0, 0.23);
+	margin: auto;
+	padding: 10px;
+	background: linear-gradient(225deg, #CCFFFF, #FFCCCC);
+	width: 80%;
+}
+
+.header {
+	background-color: rgba(0, 128, 128, 0.3);
+	padding: 10px;
+	margin: 20px 0 20px 0;
+}
+
+.header, form {
+	border-radius: 10px;
+}
+
+.small-image {
+	width: 100px;
+}
+
+.thick-border {
+	border: 10px solid green;
+	border-radius: 50%;
+}
+
+.listing {
+	position: relative;
+	bottom: 14px;
+}
+
+.stars {
+	background-color: white;
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+	animation-iteration-count: infinite;
+}
+
+.star-1 {
+	margin-top: 30%;
+	margin-left: -10px;
+	animation-name: twinkle-1;
+	animation-duration: 1s;
+	float: left;
+}
+
+.star-2 {
+	margin-top: 10px;
+	margin-left: 5px;
+	animation-name: twinkle-2;
+	animation-duration: 1s;
+	float: right;
+}
+
+@keyframes twinkle-1 {
+	50% {
+		transform: scale(0.5);
+		opacity: 0.5;
+	}
+}
+
+@keyframes twinkle-2 {
+	20% {
+		transform: scale(0.7);
+		opacity: 0.5;
+	}
+}
+
+#navbar {
+	border: 1px solid #000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #909090;
+}
+
+nav ul {
+	margin: 0;
+	padding: 5px 0 5px 30px;
+	text-align: left;
+}
+
+nav li {
+	display: inline;
+	margin-right: 20px;
+}
+
+div li {
+	text-align: left;
+}
+
+[type='radio'] {
+	margin: 20px 20px 0 20px;
+}
+
+[type='checkbox'] {
+	margin: 15px 0 25px 0;
+}

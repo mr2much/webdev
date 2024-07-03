@@ -1,0 +1,13 @@
+:root {
+  --current-hp: "7/15";
+  --max-hp: "15";
+  /* try to implement this with ${hp}/${maxHP}*/
+}
+
+div {
+  width: 20%;
+  margin: 0 auto;
+  user-select: none;
+  text-align: center;
+  cursor: pointer;
+}

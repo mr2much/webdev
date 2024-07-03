@@ -1,0 +1,69 @@
+* {
+	box-sizing: border-box;
+}
+
+@viewport {
+	width: device-width;
+	zoom: 1.0;
+}
+
+@-ms-viewport {
+	width: device-width;
+}
+
+body {
+	background-color: #f5d9d5;
+	font-family: 'Nunito', sans-serif;
+}
+
+.content {
+	margin-top: 6em;
+	margin-bottom: 6em;
+}
+
+.blurb h2 {
+	color: #EA1C2C;
+	font-size: 2.5rem;
+}
+
+.blurb p {
+	color: #F498B8;
+	font-size: 1.125rem;
+	line-height: 2;
+}
+
+#mainNavbar {
+	font-size: 1.5rem;
+	font-weight: 100;
+}
+
+#mainNavbar .nav-link {
+	color: #fff;
+}
+
+#mainNavbar .nav-link:hover {
+	color: #EA1C2C;
+}
+
+#mainNavbar .navbar-brand {
+	color: #EA1C2C;
+	font-size: 1.5rem;
+}
+
+#headingGroup h1 {
+	font-size: calc(1rem + (5 - 3) * ((100vw - 20rem) / (75 - 20)));
+	font-weight: 100;
+}
+
+#headingGroup span {
+	color: #EA1C2C;
+}
+
+.navbar.scrolled {
+	background-color: rgb(222, 192, 222);
+	-webkit-transition: background 0.6s ease-in-out;
+	-moz-transition: background 0.6s ease-in-out;
+	-ms-transition: background 0.6s ease-in-out;
+	-o-transition: background 0.6s ease-in-out;
+	transition: background 0.6s ease-in-out;
+}

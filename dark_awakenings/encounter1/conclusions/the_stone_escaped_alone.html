@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dark Awakenings</title>
+    <link rel="stylesheet" href="../../css/app.css" />
+    <script defer src="js/you_escaped.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <section>
+        <div class="flavor">
+          <p>
+            You escape the frightful campsite and make it back to a nearby town.
+            After a night in a warm inn bed, you awaken with your memory intact
+            and the realization that you left your comrades to an unknown fate
+            in the chasm.
+          </p>
+          <p>
+            You have an important decision to make, you can either return to the
+            chasm to rescue them or abandon them and move on with your life.
+          </p>
+        </div>
+        <div class="options">
+          <h2>What would you do?</h2>
+          <ol>
+            <li>
+              <!-- This button should change depending on if you are alone of if Gungurk is with you -->
+              <button class="btn" onclick="optionOneWasClicked()">
+                Go back to the campsite. If there is a slight chance that my
+                companions are still alive, I have to rescue them.
+              </button>
+            </li>
+            <li>
+              <!-- <a class="btn" onclick="optionTwoWasClicked()"
+                >Well, they lived long happy lives and shall be missed.</a
+              > -->
+              <a class="btn" href="./abandon_them_ending.html"
+                >Well, they lived long happy lives and shall be missed.</a
+              >
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section>
+        <div id="feedback"></div>
+      </section>
+    </div>
+  </body>
+</html>

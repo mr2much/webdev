@@ -1,0 +1,71 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background-color: #999;
+}
+
+h1 {
+  font-size: 5rem;
+  font-weight: 100;
+  color: #d1d1d1;
+}
+
+span {
+  padding: 0.15em;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.breath {
+  color: black;
+}
+
+.split > span {
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  white-space: break-space;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .breath > span {
+    display: inline-block;
+    white-space: break-spaces;
+    animation: breath 1200ms ease calc(var(--index) * 100 * 1ms) infinite
+      alternate;
+  }
+
+  @keyframes breath {
+    from {
+      animation-timing-function: ease-out;
+    }
+    to {
+      transform: translateY(-5px) scale(1.25) perspective(1px);
+      text-shadow: 0 0 25px #fff;
+      animation-timing-function: ease-in-out;
+    }
+  }
+}
+
+@media (hover) {
+  .split:hover > span {
+    color: #444;
+    transform: scale(0.75);
+  }
+
+  .split > span:hover {
+    color: black;
+    transform: translateY(-5px) scale(1.25) perspective(1px);
+    text-shadow: 0 0 25px #fff;
+  }
+}

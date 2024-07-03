@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #161a1d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+button {
+  font-size: 1em;
+  background: none;
+  color: #f8961e;
+  outline: 0;
+  border: 3px solid;
+  padding: 1em 2em;
+  transition: transform 0.25s, color 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+button:hover {
+  color: #fff;
+  border-color: #eeef20;
+  transform: translateY(-0.25em);
+  box-shadow: 0 0.5em 0.5em -0.45em #eeef20;
+  cursor: pointer;
+}

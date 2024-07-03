@@ -1,0 +1,189 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;    
+}
+
+@viewport {
+    width: device-width;
+    zoom: 1;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+body {        
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 60px auto;
+    border: 1px solid red;
+    text-rendering: optimizeLegibility;    
+    font-feature-settings: "kern" 1;        
+    margin-top: 60px;
+    height: 100vh;
+    color: #333;    
+}
+
+div {
+    margin-top: 1.15em;
+}
+
+input, button {
+    font-family: inherit !important;        
+}
+
+#contact-info {    
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 1.25em 4.75em 1.25em 4.75em;
+    
+}
+
+#contact-list {
+    margin: 25px auto;
+    border: 1px solid black;
+    padding: 1.75em 3.75em;    
+    width: 70%;
+    height: 50%;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    overflow-y: auto;
+}
+
+#buttons {
+    text-align: right;
+}
+
+.heading {
+    font-size: 2.55em;
+    padding: 1.35rem 0 2.35rem 0;
+}
+
+.light-grey {
+    background-color: #eee;
+}
+
+.noPadding {
+    padding: 0;
+    margin: 0;
+    line-height: 0;
+}
+
+/* using table-layout: fixed; you ensure that things are more predictable when adding rows and values to a table, since you only have to set the values for the first row, like the width and height, and when you add more to the table, they inherit those same values. Normally, a table uses table-layout: auto; which make the values on the columns change the general layout of the table and it's unpredictable. */
+.contacts {
+    table-layout: fixed;
+    width: 100%;    
+    white-space: nowrap;
+    text-align: center;
+    border-spacing: 0;    
+}
+
+.contacts th, .contacts td {    
+    border: 1px solid #bbb;
+}
+
+.contacts th {
+    background-color: black;
+    color: #ddd;
+    padding: 5px;
+}
+
+.contacts th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.contacts th:nth-child(3) {
+    border-top-right-radius: 10px;
+}
+
+.contacts thead th:last-child {
+    border: none;
+    outline: none;
+    background: transparent;
+    opacity: 0;
+}
+
+.contacts .header {
+    font-weight: normal;
+    padding: 1.75rem 0;
+    font-size: 1.55em;
+    transition: all 500ms;
+}
+
+.contacts .header:hover {
+    color: rgb(70, 134, 230);
+}
+
+#contact-data tr:first-child td:last-child {
+    border-top-right-radius: 10px;
+}
+
+#contact-data tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;    
+}
+
+#contact-data tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+#contact-data input {
+    outline: none;
+    border: none;
+    background: none;
+    font-size: 1.2em;
+    height: 100%;
+    width: 100%;    
+    padding: 0.75em;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    transition: all 400ms;
+}
+
+#contact-data tr td input:focus {
+    font-size: 1.35em;    
+    text-shadow: none;
+    background: rgba(100,100,100,0.3);
+    box-shadow: 0 2px 0 rgba(0,0,155,0.6);
+    padding: 1.0em;
+}
+
+#contact-data tr:nth-child(even) {
+    background-color: #eee;
+    color: #555;
+}
+
+.row-name {
+    width: 20%;
+}
+
+.row-lastname {
+    width: 30%;
+}
+
+.row-phone {
+    width: 20%;
+}
+
+.del-button {    
+    background: transparent !important;
+    width: 5%;
+}
+
+.centered {
+    text-align: center;
+}
+
+.button-delete {    
+    color: red;    
+    font-weight: bold;
+    font-size: 1.15em;
+    padding: 0 0.25rem;
+    border: 0;
+    outline: none;
+    transition: all 300ms;    
+    background: none;
+}
+
+.button-delete:hover {
+    transform: scale(1.1);
+}

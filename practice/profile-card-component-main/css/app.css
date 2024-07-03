@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: hsl(185, 75%, 39%);
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Kumbh Sans", sans-serif;
+  background: no-repeat url("../images/bg-pattern-top.svg"),
+    no-repeat url("../images/bg-pattern-bottom.svg");
+  background-position: right 30vw bottom 50vh, left 50vw top 40vh;
+  color: hsl(0, 0%, 59%);
+}
+
+p {
+  margin: 0.35em 0;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 80%;
+}
+
+#content .main {
+  position: relative;
+  height: 100%;
+}
+
+.card .img {
+  border: 0.35em solid #fff;
+  background: center / cover url("../images/image-victor.jpg");
+  position: absolute;
+  top: -53px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 100%;
+  overflow: hidden;
+  width: 106px;
+  height: 106px;
+}
+
+#content .main .info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3em;
+  height: 100%;
+}
+
+#content .heading {
+  height: 100%;
+  background: top / cover no-repeat url("../images/bg-pattern-card.svg");
+}
+
+.card {
+  background-color: #fff;
+  width: 80%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1em;
+  box-shadow: 0px 15px 70px hsl(229, 23%, 23%);
+  overflow: hidden;
+}
+
+.attribution {
+  position: absolute;
+  width: 100%;
+  background-color: hsl(229, 23%, 23%);
+  padding: 0.75em 0;
+  bottom: 0;
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+.name,
+.stats {
+  color: #000;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.name span {
+  font-weight: normal;
+  color: hsl(227, 10%, 46%);
+}
+
+.statistics {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  font-size: 0.75rem;
+  border-top: 1px solid hsl(0, 0%, 59%);
+}
+
+@media (min-width: 800px) {
+  .card {
+    width: 60%;
+  }
+}
+
+@media (min-width: 1100px) {
+  .card {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1400px) {
+  body {
+    background: left -5vw top -50vh no-repeat
+        url("../images/bg-pattern-top.svg"),
+      right -5vw top 45vh no-repeat url("../images/bg-pattern-bottom.svg");
+  }
+
+  .card {
+    width: 24%;
+  }
+}

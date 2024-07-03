@@ -1,0 +1,26 @@
+body {
+    font: normal medium/1.4 sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 0.25rem;
+    text-align: left;
+    border: 1px solid #ccc;
+    background: #ddd; /*setting the background of a row or cell elements, will beat the background of a highlighted element*/
+}
+
+/* This gets beaten by setting the background color on the th and td elements above, regardless of specificity */
+/* col:nth-child(3) {
+    background: yellow;
+} */
+
+/* It's better to set a class name or set the background for each individual cell element that matches a column position on a row,
+like it's done below */
+td:nth-child(2), th:nth-child(2) {
+    background: yellow;
+}

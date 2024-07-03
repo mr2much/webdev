@@ -1,0 +1,26 @@
+@viewport {
+  width: device-width;
+  zoom: 1;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+
+/* Align icon to left */
+#what .items .item {
+  display: flex;
+  text-align: justify;
+}
+
+/* Position icon */
+#what .items .item i {
+  margin-right: 1.3rem;
+  align-self: center;
+  margin-bottom: 0;
+}
+
+#contact .map {
+  flex: 2;
+  flex-basis: 70%;
+}

@@ -1,0 +1,19 @@
+#map {
+  height: 80vh;
+}
+
+#world-map {
+  height: 100vh;
+}
+
+.leaflet-popup img {
+  display: block;
+  border: 2px solid black;
+  border-radius: 0.75rem;
+  max-height: 125px;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}

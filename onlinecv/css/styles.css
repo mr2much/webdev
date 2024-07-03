@@ -1,0 +1,405 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	-webkit-font-smoothing: antialiased;
+}
+
+@viewport {
+	width: device-width;
+	zoom: 1;
+}
+
+@-ms-viewport {
+	width: device-width;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	overflow-x: hidden;
+	color: #888;
+	margin: 0 auto;
+	height: 100vh;
+}
+
+ul {
+	list-style-type: none;
+}
+
+footer h4 {
+	font-size: calc(0.6rem + 10vmin);
+}
+
+textarea {
+	resize: none;
+}
+
+section, header {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-height: 100vh;
+	height: 100%;
+}
+
+#head-cover {
+	position: relative;
+	color: #fff;
+	text-shadow: 0 4px 3px rgba(0, 0, 0, 0.4),
+				 0 8px 13px rgba(0, 0, 0, 0.1),
+				 0 18px 23px rgba(0, 0, 0, 0.1);
+}
+
+#head-cover h1 {
+	font-family: 'Vollkorn', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	font-size: calc(1rem + 10vmin);
+	font-weight: 700;
+	line-height: 0.8;
+}
+
+#head-cover span {
+	display: inline-block;
+}
+
+#head-cover .name {
+	color: #989898;
+}
+
+#head-cover .name::first-letter, #head-cover .lastname::first-letter {
+	font-size: 170%;
+}
+
+#head-cover .lastname {
+	color: #CC0109;
+}
+
+#inner-cover {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+
+	-webkit-transition: background 0.8s ease-in-out;
+	   -moz-transition: background 0.8s ease-in-out;
+		-ms-transition: background 0.8s ease-in-out;
+		 -o-transition: background 0.8s ease-in-out;
+			transition: background 0.8s ease-in-out;
+}
+
+#inner-cover .btn-primary {
+	background-color: #CC0109;
+	font-weight: 600;
+	border: 0;
+}
+
+#inner-cover .btn-primary:hover {
+	background-color: #AA0109;
+}
+
+#inner-cover p {
+	font-size: 1.6rem;
+	color: #DDD;
+}
+
+#portfolio-link {
+	-webkit-transition: 0.3s all ease-in-out;
+	   -moz-transition: 0.3s all ease-in-out;
+	    -ms-transition: 0.3s all ease-in-out;
+	     -o-transition: 0.3s all ease-in-out;
+	        transition: 0.3s all ease-in-out;
+}
+
+#portfolio-link:hover { 
+	margin-left: 1rem; 
+	margin-right: 1rem;
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+#social {
+	font-size: calc(0.5rem + 10vmin);
+}
+
+#social li {
+	margin: 0 0.5rem;
+}
+
+.navbar {
+	-webkit-transition: background 0.8s ease-in-out;
+	-moz-transition: background 0.8s ease-in-out;
+	-ms-transition: background 0.8s ease-in-out;
+	-o-transition: background 0.8s ease-in-out;
+	transition: background 0.8s ease-in-out;
+}
+
+.navbar .nav-item .nav-link {
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: #DDD;
+	transition: all 0.6s ease-in-out;
+}
+
+.navbar .nav-item .nav-link:focus {
+	color: #Fa0917;
+}
+
+.navbar .nav-item .nav-link:hover {
+	color: #fff;
+}
+
+.jumbotron {
+/*	background: url("../res/tomas-yates-696872-unsplash.jpg");
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;*/
+	border-radius: 0;
+}
+
+.section {
+	position: relative;
+}
+
+.display-5 {
+	font-size: calc(0.5rem + 10vmin);
+}
+
+.anchor {
+	display: block;
+	position: absolute;
+	width: 0;
+	height: 0;
+	z-index: -1;
+	margin-top: -35px;
+	left: 0;
+	visibility: hidden;
+}
+
+.project-description button {
+	vertical-align: text-bottom;
+}
+
+/*Make collapsible items*/
+
+.collapsible {
+	border-bottom: 3px solid #7D7D7D;
+	padding-bottom: 0.2rem;
+}
+
+.details-content {
+	height: 0;
+	transform: scaleY(0);
+	padding: 0 0 0 50px;
+}
+
+.personal-intro {
+	display: none;
+	text-align: justify;
+}
+
+.emp-details p {
+	flex: 50%;
+}
+
+.testimonials {
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-areas: 
+		"header";
+	grid-gap: 0.5rem;
+	justify-content: center;
+}
+
+.header-test {
+	grid-area: header;
+}
+
+.how-we-met {
+	font-weight: 400;
+	font-size: 0.8rem;
+}
+
+footer h2 {
+	color: #CC0109;
+	font-weight: 700;
+	font-size: calc(0.5rem + 5vmin);
+	letter-spacing: 0.09em;
+}
+
+#foot-container {
+	overflow-y: hidden;
+}
+
+#mail-form #mail-btn .btn {
+	width: 100%;
+	margin-top: 0.8rem;
+}
+
+#mail-form .text-input {
+	padding: 0.8rem;
+}
+
+#mail-btn button {
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	background-color: transparent;
+	border: 0;
+	border-radius: 0;
+	border-top: 3px solid #666;
+	border-bottom: 3px solid #666;
+}
+
+#mail-btn button:hover {
+	border-color: #eee;
+}
+
+#social-links {
+	width: 100%;
+}
+
+#social-links .soc-btn {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+	height: 150px;
+	margin: 0;
+	text-decoration: none;
+	font-size: 5rem;
+	color: #CC0109;
+	transition: all 0.6s ease-in-out;
+}
+
+#social-links .soc-btn:hover {
+	color: #fff;
+	background-color: #aa0917;
+}
+
+#ico-facebook {
+	background-color: #656565;
+}
+
+#ico-twitter {
+	background-color: #989898;
+}
+
+#ico-linkedin {
+	background-color: #989898;
+}
+
+#ico-portfolio {
+	background-color: #656565;
+}
+
+.scrolled {
+	background-color: #aa0917;
+	animation-duration: 1s;
+	animation-name: paddingIn;
+	animation-fill-mode: forwards;
+}
+
+.scrolled .nav-item .nav-link:focus {
+	color: #111;
+}
+
+@keyframes paddingIn {
+	0% {
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
+	}
+
+	100% {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+}
+
+.nonScrolled {
+	animation-duration: 0.3s;
+	animation-name: paddingOut;
+	animation-fill-mode: forwards;
+}
+
+@keyframes paddingOut {
+	0% {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+	100% {
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
+	}
+}
+
+.darkerBG {
+	background-color: rgba(0, 0, 0, 0.9) !important;
+}
+
+@media only screen and (min-width: 568px) {
+	.emp-details p {
+		flex: 1;
+	}
+
+	.px-sm-5 {
+		padding-left: 3rem !important;
+	}
+
+	.px-sm-5 {
+		padding-right: 3rem !important;
+	}
+
+	#social-links .soc-btn {
+		height: 200px;
+	}
+}
+
+@media only screen and (min-width: 576px) {
+	.jumbotron {
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	#mail-div {
+		width: 65% !important;
+	}
+
+	#social-links {
+		width: 45%;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	#social-links .soc-btn {
+		height: 50%
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	.personal-intro {
+		display: block;
+	}
+
+	.testimonials {
+		grid-template-columns: repeat(2, [col] 50%);
+		grid-template-areas: 
+			"header header";
+	}
+
+	#mail-form #mail-btn .btn {
+		width: 40%;
+		margin-left: 0.5rem;
+		margin-right: 0.5rem;
+	}
+}

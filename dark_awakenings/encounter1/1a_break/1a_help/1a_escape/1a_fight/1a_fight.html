@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../../../../css/app.css" />
+    <script type="module" src="js/1a_fight.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <section>
+        <div class="flavor">
+          <p id="narration">
+            Gungurk swallows dry saliva as he looks at the remaining enemies.
+            But then he looks up at your stoic face, and this seems to bolster
+            his fighting spirit. Taking a deep breath, he unsheathes his dagger
+            and holds it in a reverse grip.<br />
+            <br />
+            "Right behind you, precious!"
+          </p>
+        </div>
+        <div class="options">
+          <h2>What would you do?</h2>
+          <ol>
+            <li>
+              <button id="btn-attack" class="btn">Charge!</button>
+            </li>
+            <li>
+              <button id="btn-run" class="btn">
+                You know what?, let's run away from this blasted place!
+              </button>
+            </li>
+            <li>
+              <!-- This option should be disabled by default, and only enabled when
+              the Tainted Root grabs The Stone -->
+              <button id="break" class="btn">Break free from the vine</button>
+            </li>
+            <li>
+              <button id="step-away" class="btn">
+                Step away from the Chasm
+              </button>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section>
+        <h2>Output</h2>
+        <div id="feedback"></div>
+      </section>
+    </div>
+  </body>
+</html>

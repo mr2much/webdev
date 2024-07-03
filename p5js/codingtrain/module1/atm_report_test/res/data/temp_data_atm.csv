@@ -1,0 +1,21 @@
+Gerencia Monitoreo TI,,,,,,,,,,,,
+ Direcci???n Continuidad y Servicios TI ,,,,,,,,,,,,
+30 Octubre 2021,,,,,,,,,,,,
+REGION,INCIDENTE,FECHA,GRUPO,ATM,DRBR,DESCRIPCION,ERROR,ESTADO,ESTATUS,ASIGNADO,COMENTARIO,VERIFICACION DE IST
+DISTRITO NACIONAL,3336070813,10/27/2021 5:55,Gcia Cajeros Automaticos,10,DRBR010,ATM Ministerio Salud P??blica ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+DISTRITO NACIONAL,3336072093,10/28/2021 7:43,Gcia Cajeros Automaticos,686,DRBR686,ATM Autoservicio Oficina M??ximo G???mez,LECTOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,LECTOR
+DISTRITO NACIONAL,3336073205,10/28/2021 17:48,Gcia Cajeros Automaticos,435,DRBR435,ATM Autobanco Torre I ,LECTOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,LECTOR
+DISTRITO NACIONAL,3336073286,10/29/2021 1:49,Gcia Cajeros Automaticos,18,DRBR018,ATM Oficina Haina Occidental I ,GAVETA DE DEPOSITO LLENA,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,GAVETA DE DEPOSITO LLENA
+DISTRITO NACIONAL,3336073288,10/29/2021 1:53,Gcia Cajeros Automaticos,232,DRBR232,ATM S/M Nacional Charles de Gaulle ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,GAVETAS VACIAS + GAVETAS FALLANDO
+SUR,3336073295,10/29/2021 2:01,Gcia Cajeros Automaticos,592,DRBR081,ATM Centro de Caja San Crist???bal I ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+DISTRITO NACIONAL,3336073296,10/29/2021 2:03,Gcia Cajeros Automaticos,545,DRBR995,ATM Oficina Isabel La Cat???lica II  ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+DISTRITO NACIONAL,3336073299,10/29/2021 2:06,Gcia Cajeros Automaticos,96,DRBR096,ATM S/M Caribe Av. Charles de Gaulle,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+DISTRITO NACIONAL,3336073300,10/29/2021 2:07,Gcia Cajeros Automaticos,152,DRBR152,ATM Kiosco Megacentro II ,FALLA NO CONFIRMADA,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,FALLA NO CONFIRMADA
+NORTE,3336073315,10/29/2021 7:30,DTEL Zona Norte,636,DRBR110,ATM Oficina Tambor??l ,FALLA NO CONFIRMADA,Fuera De Servicio,Open,"Acevedo Dominguez, Victor Leonardo",,FALLA NO CONFIRMADA
+NORTE,3336073617,10/29/2021 10:01,DTEL Zona Norte,986,DRBR986,ATM S/M Jumbo (La Vega) ,DISPENSADOR,Fuera De Servicio,Open,"Acevedo Dominguez, Victor Leonardo",,DISPENSADOR
+DISTRITO NACIONAL,3336073619,10/29/2021 10:03,Gcia Cajeros Automaticos,408,DRBR408,ATM Autobanco Las Palmas de Herrera ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+DISTRITO NACIONAL,3336073895,10/29/2021 12:06,Gcia Cajeros Automaticos,813,DRBR815,ATM Occidental Mall,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+DISTRITO NACIONAL,3336073921,10/29/2021 12:22,Gcia Cajeros Automaticos,961,DRBR03H,ATM List??n Diario ,GAVETAS VACIAS + GAVETAS FALLANDO,Fuera De Servicio,In Progress,"Trinidad Perez, Holmel David",,GAVETAS VACIAS + GAVETAS FALLANDO
+ESTE,3336074015,10/29/2021 13:31,Gcia Cajeros Automaticos,838,DRBR838,ATM UNP Consuelo ,DISPENSADOR,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,DISPENSADOR
+ESTE,3336074015,10/29/2021 13:31,Gcia Cajeros Automaticos,838,DRBR838,ATM UNP Consuelo ,SIN EFECTIVO,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,SIN EFECTIVO
+ESTE,3336074099,10/29/2021 18:00,Gcia Cajeros Automaticos,838,DRBR838,ATM UNP Consuelo ,TARJETA TRABADA,Fuera De Servicio,Open,"Pelaez Lugo, Ramon Aristides",,TARJETA TRABADA

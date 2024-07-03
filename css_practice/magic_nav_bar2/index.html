@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magic Navigation Menu Indicator with Radio Buttons</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+  <body>
+    <div class="navigation">
+      <ul>
+        <li class="list">
+          <a href="#">
+            <label>
+              <input type="radio" name="active" checked />
+              <span class="icon"><i class="fas fa-home"></i></span>
+              <span class="text">Home</span>
+            </label>
+          </a>
+        </li>
+        <li class="list">
+          <a href="#">
+            <label>
+              <input id="list2" type="radio" name="active" />
+              <span class="icon"><i class="fas fa-user-circle"></i></span>
+              <span class="text">Profile</span>
+            </label>
+          </a>
+        </li>
+        <li class="list">
+          <a href="#">
+            <label>
+              <input type="radio" name="active" />
+              <span class="icon"><i class="fas fa-envelope"></i></span>
+              <span class="text">Messages</span>
+            </label>
+          </a>
+        </li>
+        <li class="list">
+          <a href="#">
+            <label>
+              <input type="radio" name="active" />
+              <span class="icon"><i class="fas fa-camera"></i></span>
+              <span class="text">Photos</span>
+            </label>
+          </a>
+        </li>
+        <li class="list">
+          <a href="#">
+            <label>
+              <input type="radio" name="active" />
+              <span class="icon"><i class="fas fa-cog"></i></span>
+              <span class="text">Settings</span>
+            </label>
+          </a>
+        </li>
+        <div class="indicator"></div>
+      </ul>
+    </div>
+    <script>
+      const list = document.querySelectorAll(".list");
+      const root = document.querySelector(":root");
+
+      function activeLink(item, index) {
+        item.addEventListener("click", (e) => {
+          root.style.setProperty("--position", index * 70 + "px");
+          root.style.setProperty("--degrees", index * 60 + "deg");
+        });
+      }
+      list.forEach(activeLink);
+    </script>
+  </body>
+</html>

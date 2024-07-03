@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>My Online Phone Book</title>
+    <script defer src="js/savephone.js"></script>
+</head>
+<body>
+    <h1 class="centered">Phone Book</h1>
+    <div id="contact-info"  class="light-grey">
+        <h2 class="heading centered">Enter Information For New Contact</h2>
+        <form id="newcontact" action="#">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name">
+    
+                <label for="lastname">Last Name:</label>
+                <input type="text" name="lastname" id="lastname">
+            </div>
+
+            <div>
+                <label for="phonenumber">Phone Number:</label>
+                <input type="text" name="phonenumber" id="phonenumber">
+            </div>
+
+            <div id="buttons">
+                <button id="savebutton" type="submit">Save</button>
+                <button type="reset">Clear Fields</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="contact-list" class="light-grey">
+        <table class="contacts">
+            <thead>
+                <tr>
+                    <th class="header row-name">
+                        Name
+                    </th>
+                    <th class="header row-lastname">
+                        Last Name
+                    </th>
+                    <th class="header row-phone">
+                        Phone Number
+                    </th>
+                    <th class="del-button">
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="contact-data">
+                <tr class=".noPadding">
+                    <td>
+                        <input id="contact-name" type="text" value="Anubis">                        
+                    </td>
+                    <td>
+                        <input id="contact-lastName" type="text" value="Lockward Botello">                        
+                    </td>
+                    <td>
+                        <input id="contact-phone" type="text" value="(809) 501-2910">                        
+                    </td>
+                    <td>
+                        <button class="button-delete">X</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
