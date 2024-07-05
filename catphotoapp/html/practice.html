@@ -1,102 +1,186 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Cat Photo App</title>
-	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="../css/header.css">
-	<link rel="stylesheet" type="text/css" href="../css/styles.css">
-</head>
-<body>
-	<header>
-		<section>
-			<h1 class="display-2 text-white header-title animate-pop-in">Welcome To This Meow-tastic App!</h1>
-			<h3 class="display-4 text-white header-subtitle animate-pop-in">An Awesome App For Cat Lovers</h3>
-			<button class="btn btn-lg btn-primary p-2 header-button animate-pop-in">Meet cats from all over the world, now!</button>
-		</section>
-		<section class="header-down-arrow">
-			<img src="../res/downarrow.png" />
-		</section>
-	</header>
+  <head>
+    <title>Cat Photo App</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lobster"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="../css/header.css" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <link rel="stylesheet" href="./css/cat-photo-app.css" />
+  </head>
+  <body>
+    <header>
+      <section>
+        <h1 class="display-2 text-white header-title animate-pop-in">
+          Welcome To This Meow-tastic App!
+        </h1>
+        <h3 class="display-4 text-white header-subtitle animate-pop-in">
+          An Awesome App For Cat Lovers
+        </h3>
 
-	<div id="ball"></div>
-	<div class="star-1 stars"></div>
-	<div class="star-2 stars"></div>
-	<div class="all-elements">
-		<div id="anim" class="header">
-			<h2>CatPhotoApp</h2>
-			<hr>
-			<p>Click here to view more <a href="#">cat photos</a></p>
+        <div class="mt-5">
+          <div
+            id="carouselCatFacts"
+            class="carousel slide"
+            data-ride="carousel"
+          >
+            <div id="container-cat-facts" class="carousel-inner">
+              <!-- Here is where the Cat Facts go -->
+            </div>
+            <a
+              class="carousel-control-prev"
+              href="#carouselCatFacts"
+              role="button"
+              data-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#carouselCatFacts"
+              role="button"
+              data-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
 
-			<div id="img-container">
-				<a href="#"><img class="small-image thick-border" src="https://bit.ly/fcc-relaxing-cat" alt="A cute orange cat laying on its back."></a>
-			</div>
-		</div>
-		<div>
-			<main>
-				<div class="listing">
-					<div id="left">
-						<p>Things cats love:</p>
-					
-						<ul>
-							<li>cat nip</li>
-							<li>laser pointers</li>
-							<li>lasagna</li>
-						</ul>
-					</div>
-					<div id="right">
-						<p>Things cats hate:</p>
+        <button class="btn btn-lg btn-primary p-2 header-button animate-pop-in">
+          Meet cats from all over the world, now!
+        </button>
+      </section>
+      <section class="header-down-arrow">
+        <img src="../res/downarrow.png" />
+      </section>
+    </header>
 
-						<ul>
-							<li>flea treatment</li>
-							<li>thunder</li>
-							<li>other cats</li>
-						</ul>
-					</div>
-				</div>
-			</main>
-		</div>
-		<div class="footer">
-			<form action="/submit-cat-photo">
-				<label for="indoor">
-					<input id="indoor" type="radio" name="indoor-outdoor"checked>Indoor
-				</label>
+    <div id="ball"></div>
+    <div class="star-1 stars"></div>
+    <div class="star-2 stars"></div>
+    <div class="all-elements">
+      <div id="anim" class="header">
+        <h2>CatPhotoApp</h2>
+        <hr />
+        <p>Click here to view more <a href="#">cat photos</a></p>
 
-				<label for="outdoor">
-					<input id="outdoor" type="radio" name="indoor-outdoor">Outdoor
-				</label>
-				<br>
-				<input type="text" placeholder="cat photo URL" required="">
-				<br>
-				<label for="loving">
-					<input id="loving" type="checkbox" name="personality" checked>Loving
-				</label>
-				<label for="grumpy">
-					<input id="grumpy" type="checkbox" name="personality">Grumpy
-				</label>
-				<label for="sleepy">
-					<input id="sleepy" type="checkbox" name="personality">Sleepy
-				</label>
-				<br>
-				<button type="submit">Submit</button>
-			</form>
-		</div>
-	</div>
+        <div id="img-container">
+          <a href="#"
+            ><img
+              class="small-image thick-border"
+              src="https://bit.ly/fcc-relaxing-cat"
+              alt="A cute orange cat laying on its back."
+          /></a>
+        </div>
+      </div>
+      <div>
+        <main>
+          <div class="listing">
+            <div id="left">
+              <p>Things cats love:</p>
 
-	<script type="text/javascript">
-		// Prepare the body tag by adding a "js-paused" class
-		document.body.className += " js-loading";
+              <ul>
+                <li>cat nip</li>
+                <li>laser pointers</li>
+                <li>lasagna</li>
+              </ul>
+            </div>
+            <div id="right">
+              <p>Things cats hate:</p>
 
-		// Listen for when everything has loaded
-		window.addEventListener("load", showPage, false);
+              <ul>
+                <li>flea treatment</li>
+                <li>thunder</li>
+                <li>other cats</li>
+              </ul>
+            </div>
+          </div>
+        </main>
+      </div>
+      <div class="footer">
+        <form action="/submit-cat-photo">
+          <label for="indoor">
+            <input
+              id="indoor"
+              type="radio"
+              name="indoor-outdoor"
+              checked
+            />Indoor
+          </label>
 
-		function showPage() {
-			// Remove the "js-paused" class
-			document.body.className = document.body.className.replace("js-loading", "");
-		}
-	</script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
+          <label for="outdoor">
+            <input id="outdoor" type="radio" name="indoor-outdoor" />Outdoor
+          </label>
+          <br />
+          <input type="text" placeholder="cat photo URL" required="" />
+          <br />
+          <label for="loving">
+            <input
+              id="loving"
+              type="checkbox"
+              name="personality"
+              checked
+            />Loving
+          </label>
+          <label for="grumpy">
+            <input id="grumpy" type="checkbox" name="personality" />Grumpy
+          </label>
+          <label for="sleepy">
+            <input id="sleepy" type="checkbox" name="personality" />Sleepy
+          </label>
+          <br />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      // Prepare the body tag by adding a "js-paused" class
+      document.body.className += ' js-loading';
+
+      // Listen for when everything has loaded
+      window.addEventListener('load', showPage, false);
+
+      function showPage() {
+        // Remove the "js-paused" class
+        document.body.className = document.body.className.replace(
+          'js-loading',
+          ''
+        );
+      }
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
 </html>
